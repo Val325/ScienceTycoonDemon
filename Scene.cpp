@@ -4,11 +4,15 @@
 #include "D:/Program/raylib/Sourse/include/raylib-cpp.hpp"
 #include "Structs.cpp"
 #include "Utils.cpp"
+#include <nlohmann/json.hpp>
+#include <unordered_map>
+
+using json = nlohmann::json;
 
     struct EntityStruct MainHero;
     struct EntityStruct Table;
     struct RoomStruct RoomInfo;
-    struct TileStruct Floor;
+    struct TileStruct FloorTile;
 
 
     void animationHero() {
@@ -129,7 +133,7 @@
     //------------------------------------------------------------------------------------
     // TileSetFunction
     //------------------------------------------------------------------------------------
-
+    /*
     void tileFullingOneTile(){
         int monitorHeight = GetScreenHeight();
         int monitorWidth = GetScreenWidth();
@@ -148,7 +152,7 @@
 
     void tileFullFloor(){}
     void tileFullWall(){}
-    
+    */
     //------------------------------------------------------------------------------------
     // TileSetFunctionEnd
     //------------------------------------------------------------------------------------
@@ -162,15 +166,15 @@ void Scene1(void)
 
 //------------------------------------------------------------------------------------
 // Initialization
-//------------------------------------------------------------------------------------
-
+//---   ---------------------------------------------------------------------------------
     
     //Floor
-    Floor.PositionSpawn = (Vector2){0.0f, 0.0f};
-    Floor.ImageTile = LoadImage("src/location/laboratory/floor.png");
-    Floor.TextureTile = LoadTextureFromImage(Floor.ImageTile);
-    Floor.CollisionRec = (Rectangle){ Floor.PositionSpawn.x, Floor.PositionSpawn.y, (float)Floor.TextureTile.width, (float)Floor.TextureTile.height};
-
+    /*
+    FloorTile.PositionSpawn = (Vector2){0.0f, 0.0f};
+    FloorTile.ImageTile = LoadImage("src/location/laboratory/floor.png");
+    FloorTile.TextureTile = LoadTextureFromImage(FloorTile.ImageTile);
+    FloorTile.CollisionRec = (Rectangle){ FloorTile.PositionSpawn.x, FloorTile.PositionSpawn.y, (float)FloorTile.TextureTile.width, (float)FloorTile.TextureTile.height};
+    */
     //HeroInit
     MainHero.PositionSpawn = (Vector2){ (float)GetScreenWidth()/2, (float)GetScreenHeight()/2 };
     MainHero.animFrames = 0;
@@ -205,11 +209,13 @@ void Scene1(void)
 
 
 
+
     
 
-    JsonToArray("src/location/laboratory/Tiles/jsonFloor.json");
     
 
+    Room Lab("src/location/laboratory/Tiles/TiledMapLAboratory.json","src/location/laboratory/Tiles/JsonDataPath.json");
+    //Lab.InitArraysRoom();
     SetTargetFPS(60);
     
     //DownloadJson();
@@ -230,28 +236,30 @@ void Scene1(void)
 
         
 
-        tileFullingOneTile();
+        //tileFullingOneTile();
 
 
         //DrawTextureEx(RoomInfo.RoomTex, RoomInfo.PositionSpawn, 0, 6, WHITE);
         DrawTextureRec(MainHero.imgAnim, MainHero.frameRec, MainHero.PositionSpawn, WHITE);
+        
         //DrawTextureRec(Table.imgAnim, Table.frameRec, Table.PositionSpawn, WHITE);
         //DrawTextureRec(VesselAnim, frameRecVessel, PositionSpawnVessel, WHITE);
 
         //Log
-        /*
-        DrawText(TextFormat("PositionX: %04f", MainHero.PositionSpawn.x), 30, 20, 20, GRAY);
-        DrawText(TextFormat("PositionY: %04f", MainHero.PositionSpawn.y), 30, 50, 20, GRAY);
-        DrawText(TextFormat("Points: %01i", MainHero.points), 30, 80, 20, GRAY);
-        DrawText(TextFormat("MainHero.framesCounter: %04f", MainHero.framesCounter), 30, 110, 20, GRAY);
-        DrawText(TextFormat("MainHero.animFrames: %04f", MainHero.animFrames), 30, 140, 20, GRAY);
-        */
+        
+        DrawText(TextFormat("PositionX: %04f", MainHero.PositionSpawn.x), 30, 20, 20, WHITE);
+        DrawText(TextFormat("PositionY: %04f", MainHero.PositionSpawn.y), 30, 50, 20, WHITE);
+        DrawText(TextFormat("Points: %01i", MainHero.points), 30, 80, 20, WHITE);
+        //DrawText(TextFormat("NumberArrayFromJSON: %04i", JsonToArrayNumber("src/location/laboratory/Tiles/TiledMapLAboratory.json", 250)), 30, 110, 20, GRAY);
+        DrawText(TextFormat("MainHero.animFrames: %04f", MainHero.animFrames), 30, 140, 20, WHITE);
+        
         //DownloadJson();
 
         EndDrawing();
 
     }
     
+
     
 }
 

@@ -1,0 +1,5 @@
+D:/Program/raylib/Sourse/bin/CMakeFiles/Main.dir
+D:/Program/raylib/Sourse/bin/CMakeFiles/package.dir
+D:/Program/raylib/Sourse/bin/CMakeFiles/package_source.dir
+D:/Program/raylib/Sourse/bin/CMakeFiles/edit_cache.dir
+D:/Program/raylib/Sourse/bin/CMakeFiles/rebuild_cache.dir

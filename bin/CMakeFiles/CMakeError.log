@@ -1,0 +1,68 @@
+Performing C SOURCE FILE Test CMAKE_HAVE_LIBC_PTHREAD failed with the following output:
+Change Dir: D:/Program/raylib/Sourse/bin/CMakeFiles/CMakeScratch/TryCompile-agduj2
+
+Run Build Command(s):D:/Program/MinGW/bin/mingw32-make.exe -f Makefile cmTC_ed1a7/fast && mingw32-make.exe[1]: Entering directory 'D:/Program/raylib/Sourse/bin/CMakeFiles/CMakeScratch/TryCompile-agduj2'
+D:/Program/MinGW/bin/mingw32-make.exe  -f CMakeFiles\cmTC_ed1a7.dir\build.make CMakeFiles/cmTC_ed1a7.dir/build
+mingw32-make.exe[2]: Entering directory 'D:/Program/raylib/Sourse/bin/CMakeFiles/CMakeScratch/TryCompile-agduj2'
+Building C object CMakeFiles/cmTC_ed1a7.dir/src.c.obj
+D:\Program\gcc\bin\gcc.exe -DCMAKE_HAVE_LIBC_PTHREAD  -fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith   -o CMakeFiles\cmTC_ed1a7.dir\src.c.obj -c D:\Program\raylib\Sourse\bin\CMakeFiles\CMakeScratch\TryCompile-agduj2\src.c
+D:\Program\raylib\Sourse\bin\CMakeFiles\CMakeScratch\TryCompile-agduj2\src.c: In function 'main':
+D:\Program\raylib\Sourse\bin\CMakeFiles\CMakeScratch\TryCompile-agduj2\src.c:15:3: error: implicit declaration of function 'pthread_atfork'; did you mean 'pthread_join'? [-Werror=implicit-function-declaration]
+   15 |   pthread_atfork(NULL, NULL, NULL);
+      |   ^~~~~~~~~~~~~~
+      |   pthread_join
+cc1.exe: some warnings being treated as errors
+CMakeFiles\cmTC_ed1a7.dir\build.make:76: recipe for target 'CMakeFiles/cmTC_ed1a7.dir/src.c.obj' failed
+mingw32-make.exe[2]: *** [CMakeFiles/cmTC_ed1a7.dir/src.c.obj] Error 1
+mingw32-make.exe[2]: Leaving directory 'D:/Program/raylib/Sourse/bin/CMakeFiles/CMakeScratch/TryCompile-agduj2'
+Makefile:126: recipe for target 'cmTC_ed1a7/fast' failed
+mingw32-make.exe[1]: *** [cmTC_ed1a7/fast] Error 2
+mingw32-make.exe[1]: Leaving directory 'D:/Program/raylib/Sourse/bin/CMakeFiles/CMakeScratch/TryCompile-agduj2'
+
+
+Source file was:
+#include <pthread.h>
+
+static void* test_func(void* data)
+{
+  return data;
+}
+
+int main(void)
+{
+  pthread_t thread;
+  pthread_create(&thread, NULL, test_func, NULL);
+  pthread_detach(thread);
+  pthread_cancel(thread);
+  pthread_join(thread, NULL);
+  pthread_atfork(NULL, NULL, NULL);
+  pthread_exit(NULL);
+
+  return 0;
+}
+
+
+Determining if the function pthread_create exists in the pthreads failed with the following output:
+Change Dir: D:/Program/raylib/Sourse/bin/CMakeFiles/CMakeScratch/TryCompile-77mo40
+
+Run Build Command(s):D:/Program/MinGW/bin/mingw32-make.exe -f Makefile cmTC_acb50/fast && mingw32-make.exe[1]: Entering directory 'D:/Program/raylib/Sourse/bin/CMakeFiles/CMakeScratch/TryCompile-77mo40'
+D:/Program/MinGW/bin/mingw32-make.exe  -f CMakeFiles\cmTC_acb50.dir\build.make CMakeFiles/cmTC_acb50.dir/build
+mingw32-make.exe[2]: Entering directory 'D:/Program/raylib/Sourse/bin/CMakeFiles/CMakeScratch/TryCompile-77mo40'
+Building C object CMakeFiles/cmTC_acb50.dir/CheckFunctionExists.c.obj
+D:\Program\gcc\bin\gcc.exe   -fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith  -DCHECK_FUNCTION_EXISTS=pthread_create -std=gnu99 -o CMakeFiles\cmTC_acb50.dir\CheckFunctionExists.c.obj -c D:\Program\raylib\Sourse\bin\CMakeFiles\CMakeScratch\TryCompile-77mo40\CheckFunctionExists.c
+Linking C executable cmTC_acb50.exe
+D:\Program\CMake\bin\cmake.exe -E cmake_link_script CMakeFiles\cmTC_acb50.dir\link.txt --verbose=1
+D:\Program\CMake\bin\cmake.exe -E rm -f CMakeFiles\cmTC_acb50.dir/objects.a
+D:\Program\gcc\bin\ar.exe qc CMakeFiles\cmTC_acb50.dir/objects.a @CMakeFiles\cmTC_acb50.dir\objects1
+D:\Program\gcc\bin\gcc.exe -fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith  -DCHECK_FUNCTION_EXISTS=pthread_create -Wl,--whole-archive CMakeFiles\cmTC_acb50.dir/objects.a -Wl,--no-whole-archive -o cmTC_acb50.exe -Wl,--out-implib,libcmTC_acb50.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\cmTC_acb50.dir\linkLibs.rsp
+d:/program/gcc/bin/../lib/gcc/x86_64-w64-mingw32/12.2.0/../../../../x86_64-w64-mingw32/bin/ld.exe: cannot find -lpthreads
+collect2.exe: error: ld returned 1 exit status
+CMakeFiles\cmTC_acb50.dir\build.make:99: recipe for target 'cmTC_acb50.exe' failed
+mingw32-make.exe[2]: *** [cmTC_acb50.exe] Error 1
+mingw32-make.exe[2]: Leaving directory 'D:/Program/raylib/Sourse/bin/CMakeFiles/CMakeScratch/TryCompile-77mo40'
+Makefile:126: recipe for target 'cmTC_acb50/fast' failed
+mingw32-make.exe[1]: *** [cmTC_acb50/fast] Error 2
+mingw32-make.exe[1]: Leaving directory 'D:/Program/raylib/Sourse/bin/CMakeFiles/CMakeScratch/TryCompile-77mo40'
+
+
+

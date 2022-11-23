@@ -1,0 +1,45 @@
+CMakeFiles/raylib.dir/D_/Program/raylib/raylib/src/rtextures.c.obj: \
+ D:\Program\raylib\raylib\src\rtextures.c \
+ D:\Program\raylib\raylib\src\raylib.h \
+ d:\program\gcc\lib\gcc\x86_64-w64-mingw32\12.2.0\include\stdarg.h \
+ d:\program\gcc\x86_64-w64-mingw32\include\stdarg.h \
+ d:\program\gcc\x86_64-w64-mingw32\include\_mingw_stdarg.h \
+ d:\program\gcc\x86_64-w64-mingw32\include\vadefs.h \
+ d:\program\gcc\x86_64-w64-mingw32\include\_mingw.h \
+ d:\program\gcc\x86_64-w64-mingw32\include\_mingw_mac.h \
+ d:\program\gcc\x86_64-w64-mingw32\include\_mingw_secapi.h \
+ d:\program\gcc\x86_64-w64-mingw32\include\sdks/_mingw_ddk.h \
+ d:\program\gcc\lib\gcc\x86_64-w64-mingw32\12.2.0\include\stdbool.h \
+ D:\Program\raylib\raylib\src\config.h \
+ D:\Program\raylib\raylib\src\utils.h D:\Program\raylib\raylib\src\rlgl.h \
+ d:\program\gcc\x86_64-w64-mingw32\include\stdlib.h \
+ d:\program\gcc\x86_64-w64-mingw32\include\corecrt.h \
+ d:\program\gcc\x86_64-w64-mingw32\include\corecrt_wstdlib.h \
+ d:\program\gcc\lib\gcc\x86_64-w64-mingw32\12.2.0\include-fixed\limits.h \
+ d:\program\gcc\lib\gcc\x86_64-w64-mingw32\12.2.0\include-fixed\syslimits.h \
+ d:\program\gcc\x86_64-w64-mingw32\include\limits.h \
+ d:\program\gcc\x86_64-w64-mingw32\include\crtdefs.h \
+ d:\program\gcc\x86_64-w64-mingw32\include\sec_api\stdlib_s.h \
+ d:\program\gcc\x86_64-w64-mingw32\include\malloc.h \
+ d:\program\gcc\lib\gcc\x86_64-w64-mingw32\12.2.0\include\mm_malloc.h \
+ d:\program\gcc\x86_64-w64-mingw32\include\errno.h \
+ d:\program\gcc\x86_64-w64-mingw32\include\string.h \
+ d:\program\gcc\x86_64-w64-mingw32\include\sec_api\string_s.h \
+ d:\program\gcc\x86_64-w64-mingw32\include\math.h \
+ d:\program\gcc\x86_64-w64-mingw32\include\stdio.h \
+ d:\program\gcc\x86_64-w64-mingw32\include\corecrt_stdio_config.h \
+ d:\program\gcc\x86_64-w64-mingw32\include\_mingw_off_t.h \
+ d:\program\gcc\x86_64-w64-mingw32\include\swprintf.inl \
+ d:\program\gcc\x86_64-w64-mingw32\include\sec_api\stdio_s.h \
+ D:\Program\raylib\raylib\src\external/stb_image.h \
+ d:\program\gcc\lib\gcc\x86_64-w64-mingw32\12.2.0\include\stddef.h \
+ d:\program\gcc\x86_64-w64-mingw32\include\stddef.h \
+ d:\program\gcc\x86_64-w64-mingw32\include\assert.h \
+ d:\program\gcc\lib\gcc\x86_64-w64-mingw32\12.2.0\include\stdint.h \
+ d:\program\gcc\x86_64-w64-mingw32\include\stdint.h \
+ d:\program\gcc\lib\gcc\x86_64-w64-mingw32\12.2.0\include\emmintrin.h \
+ d:\program\gcc\lib\gcc\x86_64-w64-mingw32\12.2.0\include\xmmintrin.h \
+ d:\program\gcc\lib\gcc\x86_64-w64-mingw32\12.2.0\include\mmintrin.h \
+ D:\Program\raylib\raylib\src\external/qoi.h \
+ D:\Program\raylib\raylib\src\external/stb_image_write.h \
+ D:\Program\raylib\raylib\src\external/stb_image_resize.h
