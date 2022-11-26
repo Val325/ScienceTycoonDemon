@@ -1,0 +1,3 @@
+D:\Program\CMake\bin\cmake.exe -E rm -f CMakeFiles\Main.dir/objects.a
+D:\Program\gcc\bin\ar.exe qc CMakeFiles\Main.dir/objects.a @CMakeFiles\Main.dir\objects1
+D:\Program\gcc\bin\g++.exe -w -s -static -O2 -std=c++11 -Wall -Wl,--whole-archive CMakeFiles\Main.dir/objects.a -Wl,--no-whole-archive -o bin\Main.exe -Wl,--out-implib,lib\libMain.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\Main.dir\linkLibs.rsp
