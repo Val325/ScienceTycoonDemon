@@ -21,7 +21,7 @@ include_directories(D:/Program/raylib/raylib/src/external)
 
 
 add_executable(Main Main.cpp)
-#add_definitions(-static -lraylib -lopengl32 -lgdi32 -lwinmm)
+#add_definitions(-static -std=c++11 -lraylib -lopengl32 -lgdi32 -lwinmm)
 target_link_directories(Main PUBLIC ${Libs})
 target_link_libraries(Main PUBLIC libraylib.a)
 target_link_libraries(Main PUBLIC libjsoncpp.a)

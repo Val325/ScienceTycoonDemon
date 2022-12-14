@@ -212,10 +212,10 @@ void Scene1(void)
 
     
 
-    
-
     Room Lab("src/location/laboratory/Tiles/TiledMapLAboratory.json","src/location/laboratory/Tiles/JsonDataPath.json");
-    //Lab.InitArraysRoom();
+    
+    
+    
     SetTargetFPS(60);
     
     //DownloadJson();
@@ -228,7 +228,7 @@ void Scene1(void)
 
         BeginDrawing();
 
-
+        
 
         ClearBackground(RAYWHITE);
 
