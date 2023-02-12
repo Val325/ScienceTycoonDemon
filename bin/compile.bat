@@ -1,2 +1,3 @@
 @echo off
-echo cmake --build D:\Program\raylib\Sourse\bin
+cmake --build D:\Program\raylib\Sourse\bin
+pause
