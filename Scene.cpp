@@ -14,6 +14,24 @@ using json = nlohmann::json;
     struct RoomStruct RoomInfo;
     struct TileStruct FloorTile;
 
+    const char* bool_cast(const bool b) {
+        return b ? "true" : "false";
+    }
+
+
+    void BorderLimit(){
+        bool move = ((MainHero.PositionSpawn.x < 1116 && MainHero.PositionSpawn.x > 76) 
+            && (MainHero.PositionSpawn.y < 956 && MainHero.PositionSpawn.y > 240));
+
+        if (move){
+            MainHero.canMove = true;
+        }else{
+            MainHero.canMove = false;
+        }
+
+
+
+    }
 
     void animationHero() {
         if (MainHero.framesCounter >= MainHero.animFrames){
@@ -119,43 +137,79 @@ using json = nlohmann::json;
         
     }
     void MoveHero(){
-        Up();
-        Down();
-        Right();
-        Left();
+        MainHero.canMove = ((MainHero.PositionSpawn.x < 1116 && MainHero.PositionSpawn.x > 76) 
+            && (MainHero.PositionSpawn.y < 956 && MainHero.PositionSpawn.y > 240));
 
-    }
-    
-    //------------------------------------------------------------------------------------
-    // HeroEndFunctions
-    //------------------------------------------------------------------------------------
+        
 
-    //------------------------------------------------------------------------------------
-    // TileSetFunction
-    //------------------------------------------------------------------------------------
-    /*
-    void tileFullingOneTile(){
-        int monitorHeight = GetScreenHeight();
-        int monitorWidth = GetScreenWidth();
+        
 
-        int AmountTotalTileWidth = monitorWidth / Floor.TextureTile.width;
-        int AmountTotalTileHeight = monitorHeight / Floor.TextureTile.height;
+        if (MainHero.canMove)
+        {
+            Up();
+            Down();
+            Right();
+            Left(); 
+        }else{
 
-        //FullingTileX
-        for (int i = 0; i < AmountTotalTileWidth; i++) { 
-            DrawTextureRec(Floor.TextureTile, Floor.CollisionRec, (Vector2){(Floor.TextureTile.width)* i,0.0f}, WHITE);
-                for (int j = 0; j < AmountTotalTileHeight + 1; j++) { 
-                DrawTextureRec(Floor.TextureTile, Floor.CollisionRec, (Vector2){(Floor.TextureTile.width)* i, (Floor.TextureTile.height)* j}, WHITE);
-            }
+            if (MainHero.PositionSpawn.x >= 1116)
+            {
+                if (MainHero.PositionSpawn.y <= 240){
+                    Down();
+                    Left();
+                }else{
+                Up();
+                Down();
+                Left(); 
+                }
+            } 
+            //left top corner
+            if (MainHero.PositionSpawn.x <= 76){
+                if (MainHero.PositionSpawn.y <= 240 ){
+                    Down();
+                    Right();
+                }else{
+                    Up();
+                    Down();
+                    Right(); 
+                }
+                
+            } 
+
+            if (MainHero.PositionSpawn.y >= 956){
+                Up();
+                Right();
+                Left(); 
+            } 
+            if (MainHero.PositionSpawn.y <= 240 ){
+                if (MainHero.PositionSpawn.x <= 76){
+                    Down();
+                    Right();
+                } else if (MainHero.PositionSpawn.y <= 240){
+                    Down();
+                    Left();
+                }
+                else{
+                    Down();
+                    Right();
+                    Left(); 
+                } 
+
+            } 
         }
-    }
+            
+        
 
-    void tileFullFloor(){}
-    void tileFullWall(){}
-    */
-    //------------------------------------------------------------------------------------
-    // TileSetFunctionEnd
-    //------------------------------------------------------------------------------------
+        
+        
+        
+        
+        
+
+    }
+        
+    
+    
 
 
 //------------------------------------------------------------------------------------
@@ -168,19 +222,23 @@ void Scene1(void)
 // Initialization
 //---   ---------------------------------------------------------------------------------
     
+
+
+
     //Floor
-    /*
-    FloorTile.PositionSpawn = (Vector2){0.0f, 0.0f};
+    FloorTile.PositionSpawn = (Vector2){0, 0};
     FloorTile.ImageTile = LoadImage("src/location/laboratory/floor.png");
     FloorTile.TextureTile = LoadTextureFromImage(FloorTile.ImageTile);
     FloorTile.CollisionRec = (Rectangle){ FloorTile.PositionSpawn.x, FloorTile.PositionSpawn.y, (float)FloorTile.TextureTile.width, (float)FloorTile.TextureTile.height};
-    */
+    
     //HeroInit
     MainHero.PositionSpawn = (Vector2){ (float)GetScreenWidth()/2, (float)GetScreenHeight()/2 };
     MainHero.animFrames = 0;
     MainHero.img = LoadImageAnim("src/image/HeroAnimation/DemonSciencer.gif", &MainHero.animFrames);
     MainHero.imgAnim = LoadTextureFromImage(MainHero.img);
-    MainHero.frameRec = (Rectangle){ 0.0f, 0.0f, (float)MainHero.imgAnim.width, (float)MainHero.imgAnim.height};
+
+    //This offsets
+    MainHero.frameRec = (Rectangle){ MainHero.PositionSpawn.x - 15.0f, MainHero.PositionSpawn.y + 24.0f, (float)MainHero.imgAnim.width, (float)MainHero.imgAnim.height};
     MainHero.points = 0;
     MainHero.speedHero = 2.0f;
     MainHero.nextFrameDataOffset = 0;
@@ -189,12 +247,23 @@ void Scene1(void)
     MainHero.flipsCounterLeft = 0;
     MainHero.flipsCounterRight = 1;
 
+    
+
+    //Camera
+    Camera2D camera = { 0 };
+    camera.target = (Vector2){ MainHero.PositionSpawn.x + 20.0f, MainHero.PositionSpawn.y + 20.0f };
+    camera.offset = (Vector2){ GetScreenWidth()/2.0f, GetScreenHeight()/2.0f };
+    camera.rotation = 0.0f;
+    camera.zoom = 1.0f;
+
+
     //RoomInit
-    RoomInfo.PositionSpawn = (Vector2){ 150, 0 };
+    RoomInfo.PositionSpawn = (Vector2){ 0, 0 };
     RoomInfo.RoomTexImg = LoadImage("src/location/laboratory/LaboratoryHub.png");
     RoomInfo.RoomTex = LoadTextureFromImage(RoomInfo.RoomTexImg);
     RoomInfo.CollisionRec = (Rectangle){ 0.0f, 0.0f, (float)RoomInfo.RoomTex.width, (float)RoomInfo.RoomTex.height};
 
+    
     Table.PositionSpawn = (Vector2){ 10, 0 };
     Table.img = LoadImage("src/location/laboratory/Table.png");
     Table.imgAnim = LoadTextureFromImage(Table.img);
@@ -206,52 +275,39 @@ void Scene1(void)
     Texture2D VesselAnim = LoadTextureFromImage(Vessel);
     Rectangle frameRecVessel = { 0.0f, 0.0f, (float)VesselAnim.width, (float)VesselAnim.height};
 
-
-
-
-
-    
-
-    Room Lab("src/location/laboratory/Tiles/TiledMapLAboratory.json","src/location/laboratory/Tiles/JsonDataPath.json");
-    
-    
     
     SetTargetFPS(60);
-    
-    //DownloadJson();
 
+    
     while (!WindowShouldClose())    // Detect window close button or ESC key
     {
-        MainHero.framesCounter++;
-        MoveHero();
 
+        MainHero.framesCounter++;
+
+        MoveHero();
+        //BorderLimit();
+        camera.target = (Vector2){ MainHero.PositionSpawn.x + 20, MainHero.PositionSpawn.y + 20 };
+
+        //Rectancle person 
+        
 
         BeginDrawing();
 
-        
+        ClearBackground(BLACK);
 
-        ClearBackground(RAYWHITE);
-
-
-
-        
-
-        //tileFullingOneTile();
-
-
-        //DrawTextureEx(RoomInfo.RoomTex, RoomInfo.PositionSpawn, 0, 6, WHITE);
-        DrawTextureRec(MainHero.imgAnim, MainHero.frameRec, MainHero.PositionSpawn, WHITE);
-        
-        //DrawTextureRec(Table.imgAnim, Table.frameRec, Table.PositionSpawn, WHITE);
-        //DrawTextureRec(VesselAnim, frameRecVessel, PositionSpawnVessel, WHITE);
+        BeginMode2D(camera);    
+            DrawTextureEx(RoomInfo.RoomTex, RoomInfo.PositionSpawn, 0, 7.5, WHITE);
+            DrawTextureRec(MainHero.imgAnim, MainHero.frameRec, MainHero.PositionSpawn, WHITE);
+        EndMode2D();
 
         //Log
         
         DrawText(TextFormat("PositionX: %04f", MainHero.PositionSpawn.x), 30, 20, 20, WHITE);
         DrawText(TextFormat("PositionY: %04f", MainHero.PositionSpawn.y), 30, 50, 20, WHITE);
         DrawText(TextFormat("Points: %01i", MainHero.points), 30, 80, 20, WHITE);
-        //DrawText(TextFormat("NumberArrayFromJSON: %04i", JsonToArrayNumber("src/location/laboratory/Tiles/TiledMapLAboratory.json", 250)), 30, 110, 20, GRAY);
-        DrawText(TextFormat("MainHero.animFrames: %04f", MainHero.animFrames), 30, 140, 20, WHITE);
+        DrawText(TextFormat("InBorder: %s", bool_cast(MainHero.canMove)), 30, 140, 20, WHITE);
+        
+
         
         //DownloadJson();
 
