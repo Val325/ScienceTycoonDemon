@@ -1,6 +1,7 @@
 #include <iostream>
-#include "D:/Program/raylib/Sourse/include/raylib-cpp.hpp"
+//#include "D:/Program/raylib/Sourse/include/raylib-cpp.hpp"
 #include "Scene.cpp"
+#pragma comment(lib, "winmm.lib")
 
 #include <json/json.h>
 #include <nlohmann/json.hpp>
@@ -19,7 +20,7 @@ int main(void)
 {
     // Initialization
     //--------------------------------------------------------------------------------------
-    raylib::Window window(screenWidth, screenHeight, "raylib [core] example - keyboard input");
+    raylib::Window window(screenWidth, screenHeight, "Science tycoon");
 
     Scene1();
     

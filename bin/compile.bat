@@ -1,3 +1,3 @@
 @echo off
-cmake --build D:\Program\raylib\Sourse\bin
+cmake --build %~dp0
 pause
