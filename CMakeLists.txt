@@ -15,5 +15,6 @@ add_executable(Main Main.cpp)
 target_link_directories(Main PUBLIC ${Libs})
 target_link_libraries(Main PUBLIC libraylib.a)
 target_link_libraries(Main PUBLIC libjsoncpp.a)
+target_link_libraries(Main PUBLIC winmm.dll)
 
 

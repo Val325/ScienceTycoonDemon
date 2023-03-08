@@ -9,208 +9,18 @@
 
 using json = nlohmann::json;
 
+    const float SizeObj = 5.0f;
+
     struct EntityStruct MainHero;
     struct EntityStruct Table;
     struct RoomStruct RoomInfo;
     struct TileStruct FloorTile;
 
+    
+
     const char* bool_cast(const bool b) {
         return b ? "true" : "false";
     }
-
-
-    void BorderLimit(){
-        bool move = ((MainHero.PositionSpawn.x < 1116 && MainHero.PositionSpawn.x > 76) 
-            && (MainHero.PositionSpawn.y < 956 && MainHero.PositionSpawn.y > 240));
-
-        if (move){
-            MainHero.canMove = true;
-        }else{
-            MainHero.canMove = false;
-        }
-
-
-
-    }
-
-    void animationHero() {
-        if (MainHero.framesCounter >= MainHero.animFrames){
-
-            MainHero.currentFrame++;
-
-            if (MainHero.currentFrame >= 5) MainHero.currentFrame = 0;
-
-                MainHero.nextFrameDataOffset = MainHero.img.height*MainHero.img.height*4*MainHero.currentFrame;
-
-                UpdateTexture(MainHero.imgAnim, MainHero.img.data + MainHero.nextFrameDataOffset);
-
-
-
-                MainHero.framesCounter = 0;
-
-
-        }
-        
-    }
-    
-    //------------------------------------------------------------------------------------
-    // Flip
-    //------------------------------------------------------------------------------------
-    void flipLeft(){
-
-        if (MainHero.flipsCounterLeft > 0) {
-            MainHero.flipsCounterLeft = 0;
-
-            }else{
-
-                MainHero.img.width = -(MainHero.img.width);
-                MainHero.frameRec.width = -(MainHero.frameRec.width);
-
-
-            };
-        MainHero.flipsCounterLeft++;
-
-        
-    }
-
-    void flipRight(){
-
-        if (MainHero.flipsCounterRight > 0) {
-            MainHero.flipsCounterRight = 0;
-
-            }else{
-
-
-                MainHero.img.width = -(MainHero.img.width);
-                MainHero.frameRec.width = -(MainHero.frameRec.width);
-
-
-            };
-        MainHero.flipsCounterRight++;
-
-        
-    }
-    //------------------------------------------------------------------------------------
-    // Move
-    //------------------------------------------------------------------------------------
-    void Up(){
-        if (IsKeyDown(KEY_UP)){
-            MainHero.PositionSpawn.y -= MainHero.speedHero;
-            animationHero();
-        }
-       
-    }
-    void Down(){
-        if (IsKeyDown(KEY_DOWN)){
-            MainHero.PositionSpawn.y += MainHero.speedHero;
-            animationHero();
-        }
-            
-        }
-    void Right(){
-        if (IsKeyPressed(KEY_RIGHT)){
-            flipRight();
-            MainHero.flipsCounterLeft = 0;
-
-        }
-
-
-        if (IsKeyDown(KEY_RIGHT)){
-            MainHero.PositionSpawn.x += MainHero.speedHero;
-            animationHero();
-        }
-        
-    }
-    void Left(){
-        if (IsKeyPressed(KEY_LEFT)){
-
-            flipLeft();
-            MainHero.flipsCounterRight = 0;
-            
-        }
-        if (IsKeyDown(KEY_LEFT)){
-            animationHero();
-            MainHero.PositionSpawn.x -= MainHero.speedHero;
-            
-
-        }
-        
-    }
-    void MoveHero(){
-        MainHero.canMove = ((MainHero.PositionSpawn.x < 1116 && MainHero.PositionSpawn.x > 76) 
-            && (MainHero.PositionSpawn.y < 956 && MainHero.PositionSpawn.y > 240));
-
-        
-
-        
-
-        if (MainHero.canMove)
-        {
-            Up();
-            Down();
-            Right();
-            Left(); 
-        }else{
-
-            if (MainHero.PositionSpawn.x >= 1116)
-            {
-                if (MainHero.PositionSpawn.y <= 240){
-                    Down();
-                    Left();
-                }else{
-                Up();
-                Down();
-                Left(); 
-                }
-            } 
-            //left top corner
-            if (MainHero.PositionSpawn.x <= 76){
-                if (MainHero.PositionSpawn.y <= 240 ){
-                    Down();
-                    Right();
-                }else{
-                    Up();
-                    Down();
-                    Right(); 
-                }
-                
-            } 
-
-            if (MainHero.PositionSpawn.y >= 956){
-                Up();
-                Right();
-                Left(); 
-            } 
-            if (MainHero.PositionSpawn.y <= 240 ){
-                if (MainHero.PositionSpawn.x <= 76){
-                    Down();
-                    Right();
-                } else if (MainHero.PositionSpawn.y <= 240){
-                    Down();
-                    Left();
-                }
-                else{
-                    Down();
-                    Right();
-                    Left(); 
-                } 
-
-            } 
-        }
-            
-        
-
-        
-        
-        
-        
-        
-
-    }
-        
-    
-    
-
 
 //------------------------------------------------------------------------------------
 // Program main entry point
@@ -222,36 +32,29 @@ void Scene1(void)
 // Initialization
 //---   ---------------------------------------------------------------------------------
     
-
-
+    
 
     //Floor
     FloorTile.PositionSpawn = (Vector2){0, 0};
     FloorTile.ImageTile = LoadImage("src/location/laboratory/floor.png");
     FloorTile.TextureTile = LoadTextureFromImage(FloorTile.ImageTile);
     FloorTile.CollisionRec = (Rectangle){ FloorTile.PositionSpawn.x, FloorTile.PositionSpawn.y, (float)FloorTile.TextureTile.width, (float)FloorTile.TextureTile.height};
-    
-    //HeroInit
-    MainHero.PositionSpawn = (Vector2){ (float)GetScreenWidth()/2, (float)GetScreenHeight()/2 };
-    MainHero.animFrames = 0;
-    MainHero.img = LoadImageAnim("src/image/HeroAnimation/DemonSciencer.gif", &MainHero.animFrames);
-    MainHero.imgAnim = LoadTextureFromImage(MainHero.img);
 
-    //This offsets
-    MainHero.frameRec = (Rectangle){ MainHero.PositionSpawn.x - 15.0f, MainHero.PositionSpawn.y + 24.0f, (float)MainHero.imgAnim.width, (float)MainHero.imgAnim.height};
-    MainHero.points = 0;
-    MainHero.speedHero = 2.0f;
-    MainHero.nextFrameDataOffset = 0;
-    MainHero.currentFrame = 0;
-    MainHero.framesCounter = 0;
-    MainHero.flipsCounterLeft = 0;
-    MainHero.flipsCounterRight = 1;
 
-    
+    Player hero("src/image/HeroAnimation/DemonSciencer.gif");
 
+    Object computer("computer","src/computer.png", 4.0f);
+    computer.SetPosObj(200, 200);
+
+    Object panel("panel","src/panel.png", SizeObj);
+    panel.SetPosObj(600, 230);
+
+    BuildObj buildCell("buildCell","src/location/laboratory/buildingCell.png", 1.5f);
+    buildCell.SetPosObj(200, 500);
+    buildCell.SetPosRect(buildCell.getPosVector().x,buildCell.getPosVector().y);
     //Camera
     Camera2D camera = { 0 };
-    camera.target = (Vector2){ MainHero.PositionSpawn.x + 20.0f, MainHero.PositionSpawn.y + 20.0f };
+    camera.target = (Vector2){ hero.ReturnPositionX() + 20.0f, hero.ReturnPositionY() + 20.0f };
     camera.offset = (Vector2){ GetScreenWidth()/2.0f, GetScreenHeight()/2.0f };
     camera.rotation = 0.0f;
     camera.zoom = 1.0f;
@@ -275,41 +78,50 @@ void Scene1(void)
     Texture2D VesselAnim = LoadTextureFromImage(Vessel);
     Rectangle frameRecVessel = { 0.0f, 0.0f, (float)VesselAnim.width, (float)VesselAnim.height};
 
-    
+
     SetTargetFPS(60);
-
     
-    while (!WindowShouldClose())    // Detect window close button or ESC key
+    
+    while (!WindowShouldClose())    
     {
-
-        MainHero.framesCounter++;
-
-        MoveHero();
-        //BorderLimit();
-        camera.target = (Vector2){ MainHero.PositionSpawn.x + 20, MainHero.PositionSpawn.y + 20 };
-
-        //Rectancle person 
         
+        
+        hero.MoveHero();
+
+        hero.FramesIncrement();
+        
+        buildCell.countPoint(hero.points, buildCell.IsExist());
+        camera.target = (Vector2){ hero.ReturnPositionX() + 20, hero.ReturnPositionY() + 20};
+
+        
+
 
         BeginDrawing();
-
+        
+       
         ClearBackground(BLACK);
-
+        
         BeginMode2D(camera);    
             DrawTextureEx(RoomInfo.RoomTex, RoomInfo.PositionSpawn, 0, 7.5, WHITE);
-            DrawTextureRec(MainHero.imgAnim, MainHero.frameRec, MainHero.PositionSpawn, WHITE);
+
+            panel.DrawObj();
+
+            computer.DrawObj();
+            
+            hero.collisionDetect(computer.ReturnRect(false));
+            hero.DrawHero();
+            buildCell.Draw();
+            //buildCell.DrawRect();
+            buildCell.clickEventListen();
         EndMode2D();
-
+        
         //Log
+        hero.DrawStatistics();
         
-        DrawText(TextFormat("PositionX: %04f", MainHero.PositionSpawn.x), 30, 20, 20, WHITE);
-        DrawText(TextFormat("PositionY: %04f", MainHero.PositionSpawn.y), 30, 50, 20, WHITE);
-        DrawText(TextFormat("Points: %01i", MainHero.points), 30, 80, 20, WHITE);
-        DrawText(TextFormat("InBorder: %s", bool_cast(MainHero.canMove)), 30, 140, 20, WHITE);
+       DrawText(TextFormat("InBorder: %s", bool_cast(CheckCollisionRecs(hero.ReturnframeRec(), computer.ReturnRect(false)))), 30, 140, 20, WHITE);
+        
         
 
-        
-        //DownloadJson();
 
         EndDrawing();
 
