@@ -138,7 +138,7 @@ using json = nlohmann::json;
             return PositionSpawn;
         }
         void SetPosRect(float x, float y){
-            frameRec = (Rectangle){ x, y, (float)imgAnim.width * 1.5, (float)imgAnim.height * 1.5};
+            frameRec = (Rectangle){ x, y, (float)imgAnim.width * 1.5f, (float)imgAnim.height * 1.5f};
         }
         void countAnim(){
             framesCounter++;
