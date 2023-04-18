@@ -122,7 +122,7 @@ using json = nlohmann::json;
 
                 nextFrameDataOffset = img.height*img.height*4*currentFrame;
 
-                UpdateTexture(imgAnim, img.data + nextFrameDataOffset);
+                UpdateTexture(imgAnim, reinterpret_cast<uint8_t*>(img.data) + nextFrameDataOffset);
 
 
 
@@ -276,7 +276,7 @@ using json = nlohmann::json;
 
                 nextFrameDataOffset = img.height*img.height*4*currentFrame;
 
-                UpdateTexture(imgAnim, img.data + nextFrameDataOffset);
+                UpdateTexture(imgAnim, reinterpret_cast<uint8_t*>(img.data) + nextFrameDataOffset);
 
 
 
