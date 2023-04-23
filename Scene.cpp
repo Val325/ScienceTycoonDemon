@@ -32,7 +32,7 @@ void Scene1(void)
 // Initialization
 //---   ---------------------------------------------------------------------------------
     
-    
+    int points;
 
     //Floor
     FloorTile.PositionSpawn = (Vector2){0, 0};
@@ -90,7 +90,7 @@ void Scene1(void)
 
         hero.FramesIncrement();
         
-        buildCell.countPoint(hero.points, buildCell.IsExist());
+        points = buildCell.countPointRet(hero.points, buildCell.IsExist());
         camera.target = (Vector2){ hero.ReturnPositionX() + 20, hero.ReturnPositionY() + 20};
 
         
@@ -110,16 +110,20 @@ void Scene1(void)
             
             hero.collisionDetect(computer.ReturnRect(false));
             hero.DrawHero();
+            buildCell.clickEventListen(camera);
+            buildCell.countPoint(0, buildCell.IsExist());
             buildCell.Draw();
             //buildCell.DrawRect();
-            buildCell.clickEventListen();
+            
         EndMode2D();
         
         //Log
-        hero.DrawStatistics();
+
         
-       DrawText(TextFormat("InBorder: %s", bool_cast(CheckCollisionRecs(hero.ReturnframeRec(), computer.ReturnRect(false)))), 30, 140, 20, WHITE);
+        //hero.DrawStatistics();
         
+        DrawText(TextFormat("InBorder: %s", bool_cast(CheckCollisionRecs(hero.ReturnframeRec(), computer.ReturnRect(false)))), 30, 140, 20, WHITE);
+        DrawText(TextFormat("Knowledge (Points): %04d", points), 30, 80, 20, WHITE);
         
 
 
