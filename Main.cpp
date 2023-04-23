@@ -1,7 +1,7 @@
 #include <iostream>
-#include "D:/Program/raylib/Sourse/include/raylib-cpp.hpp"
+//#include "D:/Program/raylib/Sourse/include/raylib-cpp.hpp"
 #include "Scene.cpp"
-#include "Structs.cpp"
+#pragma comment(lib, "winmm.lib")
 
 #include <json/json.h>
 #include <nlohmann/json.hpp>
@@ -10,7 +10,6 @@
 const int screenWidth = 1280;
 const int screenHeight = 720;
 
-Room Lab("src/location/laboratory/Tiles/TiledMapLAboratory.json","src/location/laboratory/Tiles/JsonDataPath.json");
 
 
 //------------------------------------------------------------------------------------
@@ -21,7 +20,7 @@ int main(void)
 {
     // Initialization
     //--------------------------------------------------------------------------------------
-    raylib::Window window(screenWidth, screenHeight, "raylib [core] example - keyboard input");
+    raylib::Window window(screenWidth, screenHeight, "Science tycoon");
 
     Scene1();
     

@@ -121,6 +121,12 @@ CMakeFiles/Main.dir/Main.cpp.obj: D:\Program\raylib\Sourse\Main.cpp \
  d:\program\gcc\include\c++\12.2.0\bits\ostream.tcc \
  d:\program\gcc\include\c++\12.2.0\istream \
  d:\program\gcc\include\c++\12.2.0\bits\istream.tcc \
+ D:\Program\raylib\Sourse\Scene.cpp \
+ d:\program\gcc\include\c++\12.2.0\fstream \
+ d:\program\gcc\include\c++\12.2.0\bits\codecvt.h \
+ d:\program\gcc\include\c++\12.2.0\x86_64-w64-mingw32\bits\basic_file.h \
+ d:\program\gcc\include\c++\12.2.0\x86_64-w64-mingw32\bits\c++io.h \
+ d:\program\gcc\include\c++\12.2.0\bits\fstream.tcc \
  D:/Program/raylib/Sourse/include/raylib-cpp.hpp \
  d:\program\raylib\sourse\include\audiodevice.hpp \
  d:\program\raylib\sourse\include\raylib.hpp \
@@ -187,12 +193,6 @@ CMakeFiles/Main.dir/Main.cpp.obj: D:\Program\raylib\Sourse\Main.cpp \
  d:\program\raylib\sourse\include\vrstereoconfig.hpp \
  d:\program\raylib\sourse\include\wave.hpp \
  d:\program\raylib\sourse\include\window.hpp \
- D:\Program\raylib\Sourse\Scene.cpp \
- d:\program\gcc\include\c++\12.2.0\fstream \
- d:\program\gcc\include\c++\12.2.0\bits\codecvt.h \
- d:\program\gcc\include\c++\12.2.0\x86_64-w64-mingw32\bits\basic_file.h \
- d:\program\gcc\include\c++\12.2.0\x86_64-w64-mingw32\bits\c++io.h \
- d:\program\gcc\include\c++\12.2.0\bits\fstream.tcc \
  D:\Program\raylib\Sourse\Structs.cpp D:\Program\raylib\Sourse\Utils.cpp \
  D:/Program/raylib/Sourse/include/nlohmann/json.hpp \
  d:\program\gcc\include\c++\12.2.0\algorithm \
@@ -316,6 +316,9 @@ CMakeFiles/Main.dir/Main.cpp.obj: D:\Program\raylib\Sourse\Main.cpp \
  D:/Program/raylib/Sourse/include/nlohmann/ordered_map.hpp \
  D:/Program/raylib/Sourse/include/nlohmann/detail/macro_unscope.hpp \
  D:/Program/raylib/Sourse/include/nlohmann/thirdparty/hedley/hedley_undef.hpp \
+ d:\program\gcc\include\c++\12.2.0\set \
+ d:\program\gcc\include\c++\12.2.0\bits\stl_set.h \
+ d:\program\gcc\include\c++\12.2.0\bits\stl_multiset.h \
  D:/Program/raylib/Sourse/include/json/json.h \
  D:/Program/raylib/Sourse/include/json/config.h \
  D:/Program/raylib/Sourse/include/json/allocator.h \

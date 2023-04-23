@@ -124,6 +124,12 @@ CMakeFiles/Main.dir/Main.cpp.obj: D:/Program/raylib/Sourse/Main.cpp \
   D:/Program/gcc/include/c++/12.2.0/bits/ostream.tcc \
   D:/Program/gcc/include/c++/12.2.0/istream \
   D:/Program/gcc/include/c++/12.2.0/bits/istream.tcc \
+  D:/Program/raylib/Sourse/Scene.cpp \
+  D:/Program/gcc/include/c++/12.2.0/fstream \
+  D:/Program/gcc/include/c++/12.2.0/bits/codecvt.h \
+  D:/Program/gcc/include/c++/12.2.0/x86_64-w64-mingw32/bits/basic_file.h \
+  D:/Program/gcc/include/c++/12.2.0/x86_64-w64-mingw32/bits/c++io.h \
+  D:/Program/gcc/include/c++/12.2.0/bits/fstream.tcc \
   D:/Program/raylib/Sourse/include/raylib-cpp.hpp \
   D:/Program/raylib/Sourse/include/AudioDevice.hpp \
   D:/Program/raylib/Sourse/include/raylib.hpp \
@@ -190,12 +196,6 @@ CMakeFiles/Main.dir/Main.cpp.obj: D:/Program/raylib/Sourse/Main.cpp \
   D:/Program/raylib/Sourse/include/VrStereoConfig.hpp \
   D:/Program/raylib/Sourse/include/Wave.hpp \
   D:/Program/raylib/Sourse/include/Window.hpp \
-  D:/Program/raylib/Sourse/Scene.cpp \
-  D:/Program/gcc/include/c++/12.2.0/fstream \
-  D:/Program/gcc/include/c++/12.2.0/bits/codecvt.h \
-  D:/Program/gcc/include/c++/12.2.0/x86_64-w64-mingw32/bits/basic_file.h \
-  D:/Program/gcc/include/c++/12.2.0/x86_64-w64-mingw32/bits/c++io.h \
-  D:/Program/gcc/include/c++/12.2.0/bits/fstream.tcc \
   D:/Program/raylib/Sourse/Structs.cpp \
   D:/Program/raylib/Sourse/Utils.cpp \
   D:/Program/raylib/Sourse/include/nlohmann/json.hpp \
@@ -320,6 +320,9 @@ CMakeFiles/Main.dir/Main.cpp.obj: D:/Program/raylib/Sourse/Main.cpp \
   D:/Program/raylib/Sourse/include/nlohmann/ordered_map.hpp \
   D:/Program/raylib/Sourse/include/nlohmann/detail/macro_unscope.hpp \
   D:/Program/raylib/Sourse/include/nlohmann/thirdparty/hedley/hedley_undef.hpp \
+  D:/Program/gcc/include/c++/12.2.0/set \
+  D:/Program/gcc/include/c++/12.2.0/bits/stl_set.h \
+  D:/Program/gcc/include/c++/12.2.0/bits/stl_multiset.h \
   D:/Program/raylib/Sourse/include/json/json.h \
   D:/Program/raylib/Sourse/include/json/config.h \
   D:/Program/raylib/Sourse/include/json/allocator.h \
@@ -670,6 +673,16 @@ D:/Program/gcc/include/c++/12.2.0/bits/ostream.tcc:
 
 D:/Program/gcc/include/c++/12.2.0/bits/istream.tcc:
 
+D:/Program/raylib/Sourse/Scene.cpp:
+
+D:/Program/gcc/include/c++/12.2.0/fstream:
+
+D:/Program/gcc/include/c++/12.2.0/x86_64-w64-mingw32/bits/basic_file.h:
+
+D:/Program/gcc/include/c++/12.2.0/x86_64-w64-mingw32/bits/c++io.h:
+
+D:/Program/gcc/include/c++/12.2.0/bits/fstream.tcc:
+
 D:/Program/raylib/Sourse/include/raylib-cpp.hpp:
 
 D:/Program/raylib/Sourse/include/AudioDevice.hpp:
@@ -726,6 +739,8 @@ D:/Program/gcc/include/c++/12.2.0/bits/indirect_array.h:
 
 D:/Program/gcc/include/c++/12.2.0/vector:
 
+D:/Program/gcc/include/c++/12.2.0/bits/stl_multiset.h:
+
 D:/Program/gcc/include/c++/12.2.0/bits/stl_vector.h:
 
 D:/Program/gcc/include/c++/12.2.0/bits/stl_bvector.h:
@@ -767,16 +782,6 @@ D:/Program/raylib/Sourse/include/Touch.hpp:
 D:/Program/raylib/Sourse/include/VrStereoConfig.hpp:
 
 D:/Program/raylib/Sourse/include/Window.hpp:
-
-D:/Program/raylib/Sourse/Scene.cpp:
-
-D:/Program/gcc/include/c++/12.2.0/fstream:
-
-D:/Program/gcc/include/c++/12.2.0/x86_64-w64-mingw32/bits/basic_file.h:
-
-D:/Program/gcc/include/c++/12.2.0/x86_64-w64-mingw32/bits/c++io.h:
-
-D:/Program/gcc/include/c++/12.2.0/bits/fstream.tcc:
 
 D:/Program/raylib/Sourse/Structs.cpp:
 
@@ -957,6 +962,10 @@ D:/Program/gcc/include/c++/12.2.0/bits/locale_conv.h:
 D:/Program/gcc/include/c++/12.2.0/bits/quoted_string.h:
 
 D:/Program/gcc/include/c++/12.2.0/bits/sstream.tcc:
+
+D:/Program/gcc/include/c++/12.2.0/set:
+
+D:/Program/gcc/include/c++/12.2.0/bits/stl_set.h:
 
 D:/Program/raylib/Sourse/include/json/config.h:
 
