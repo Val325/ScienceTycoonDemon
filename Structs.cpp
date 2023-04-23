@@ -43,7 +43,10 @@ using json = nlohmann::json;
         public:
             Rectangle frameRec;
             int framesCounter;
-        BuildObj(std::string name, const char *path, float size){
+        BuildObj() {
+            
+        }
+        BuildObj(std::string name, const char *path, float size): NameObj(""), Path(""),sizeObject(1.5f){
             NameObj = name;
             sizeObject = size;
 

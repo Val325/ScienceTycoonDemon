@@ -48,10 +48,24 @@ void Scene1(void)
 
     Object panel("panel","src/panel.png", SizeObj);
     panel.SetPosObj(600, 230);
-
+    /*
     BuildObj buildCell("buildCell","src/location/laboratory/buildingCell.png", 1.5f);
     buildCell.SetPosObj(200, 500);
     buildCell.SetPosRect(buildCell.getPosVector().x,buildCell.getPosVector().y);
+    */
+    int maxOjb = 5;
+    BuildObj BuildObjArray[maxOjb];
+
+
+    for (int i = 0; i < maxOjb; ++i)
+    {
+        int distanceX = 200 + i * 200;
+        BuildObj buildCell("buildCell" + std::to_string(i),"src/location/laboratory/buildingCell.png", 1.5f);
+        BuildObjArray[i] = buildCell;
+        BuildObjArray[i].SetPosObj(distanceX, 500);
+        BuildObjArray[i].SetPosRect(BuildObjArray[i].getPosVector().x,BuildObjArray[i].getPosVector().y);
+    }
+
     //Camera
     Camera2D camera = { 0 };
     camera.target = (Vector2){ hero.ReturnPositionX() + 20.0f, hero.ReturnPositionY() + 20.0f };
@@ -90,7 +104,13 @@ void Scene1(void)
 
         hero.FramesIncrement();
         
+         
+            
+
+
+        /*
         points = buildCell.countPointRet(hero.points, buildCell.IsExist());
+        hero.points = points;*/
         camera.target = (Vector2){ hero.ReturnPositionX() + 20, hero.ReturnPositionY() + 20};
 
         
@@ -110,9 +130,14 @@ void Scene1(void)
             
             hero.collisionDetect(computer.ReturnRect(false));
             hero.DrawHero();
-            buildCell.clickEventListen(camera);
-            buildCell.countPoint(0, buildCell.IsExist());
-            buildCell.Draw();
+            for (BuildObj obj : BuildObjArray){
+                points = obj.countPointRet(hero.points, obj.IsExist());
+                hero.points += points;
+                obj.clickEventListen(camera);
+                obj.countPoint(0, obj.IsExist());
+                obj.Draw();
+            }
+            
             //buildCell.DrawRect();
             
         EndMode2D();
