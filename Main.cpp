@@ -20,6 +20,8 @@ int main(void)
 {
     // Initialization
     //--------------------------------------------------------------------------------------
+
+    
     raylib::Window window(screenWidth, screenHeight, "Science tycoon");
 
     Scene1();

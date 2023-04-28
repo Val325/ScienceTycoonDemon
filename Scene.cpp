@@ -1,11 +1,13 @@
 #include <iostream>
 #include <fstream>
 #include <string>
-#include "D:/Program/raylib/Sourse/include/raylib-cpp.hpp"
+#include "raylib-cpp.hpp"
 #include "Structs.cpp"
 #include "Utils.cpp"
 #include <nlohmann/json.hpp>
 #include <unordered_map>
+
+
 
 using json = nlohmann::json;
 
@@ -16,7 +18,7 @@ using json = nlohmann::json;
     struct RoomStruct RoomInfo;
     struct TileStruct FloorTile;
 
-    
+
 
     const char* bool_cast(const bool b) {
         return b ? "true" : "false";
@@ -31,8 +33,10 @@ void Scene1(void)
 //------------------------------------------------------------------------------------
 // Initialization
 //---   ---------------------------------------------------------------------------------
+
     
-    int points;
+    int points = 0;
+
 
     //Floor
     FloorTile.PositionSpawn = (Vector2){0, 0};
@@ -48,24 +52,20 @@ void Scene1(void)
 
     Object panel("panel","src/panel.png", SizeObj);
     panel.SetPosObj(600, 230);
-    /*
-    BuildObj buildCell("buildCell","src/location/laboratory/buildingCell.png", 1.5f);
-    buildCell.SetPosObj(200, 500);
-    buildCell.SetPosRect(buildCell.getPosVector().x,buildCell.getPosVector().y);
-    */
-    int maxOjb = 5;
-    BuildObj BuildObjArray[maxOjb];
 
-
-    for (int i = 0; i < maxOjb; ++i)
+    int amountBuildCell = 5;
+    int amountActiveBuildCell = 0;
+    BuildObj buildCells [amountBuildCell];
+    int pointsCell [amountBuildCell];
+    for (int i = 0; i < amountBuildCell; ++i)
     {
-        int distanceX = 200 + i * 200;
         BuildObj buildCell("buildCell" + std::to_string(i),"src/location/laboratory/buildingCell.png", 1.5f);
-        BuildObjArray[i] = buildCell;
-        BuildObjArray[i].SetPosObj(distanceX, 500);
-        BuildObjArray[i].SetPosRect(BuildObjArray[i].getPosVector().x,BuildObjArray[i].getPosVector().y);
+        buildCell.SetPosObj(200 + 100 * i, 500);
+        buildCell.SetPosRect(buildCell.getPosVector().x,buildCell.getPosVector().y);
+        buildCells[i] = buildCell;
     }
 
+    
     //Camera
     Camera2D camera = { 0 };
     camera.target = (Vector2){ hero.ReturnPositionX() + 20.0f, hero.ReturnPositionY() + 20.0f };
@@ -80,7 +80,7 @@ void Scene1(void)
     RoomInfo.RoomTex = LoadTextureFromImage(RoomInfo.RoomTexImg);
     RoomInfo.CollisionRec = (Rectangle){ 0.0f, 0.0f, (float)RoomInfo.RoomTex.width, (float)RoomInfo.RoomTex.height};
 
-    
+
     Table.PositionSpawn = (Vector2){ 10, 0 };
     Table.img = LoadImage("src/location/laboratory/Table.png");
     Table.imgAnim = LoadTextureFromImage(Table.img);
@@ -94,73 +94,79 @@ void Scene1(void)
 
 
     SetTargetFPS(60);
-    
-    
-    while (!WindowShouldClose())    
+
+
+    while (!WindowShouldClose())
     {
-        
-        
+
+
         hero.MoveHero();
 
         hero.FramesIncrement();
+
         
-         
+        for (int i = 0; i < amountBuildCell; ++i)
+        {
             
+        }
+        
 
 
-        /*
-        points = buildCell.countPointRet(hero.points, buildCell.IsExist());
-        hero.points = points;*/
         camera.target = (Vector2){ hero.ReturnPositionX() + 20, hero.ReturnPositionY() + 20};
 
-        
+
 
 
         BeginDrawing();
-        
-       
+
+
         ClearBackground(BLACK);
-        
-        BeginMode2D(camera);    
+
+        BeginMode2D(camera);
             DrawTextureEx(RoomInfo.RoomTex, RoomInfo.PositionSpawn, 0, 7.5, WHITE);
 
             panel.DrawObj();
 
             computer.DrawObj();
-            
+
             hero.collisionDetect(computer.ReturnRect(false));
             hero.DrawHero();
-            for (BuildObj obj : BuildObjArray){
-                points = obj.countPointRet(hero.points, obj.IsExist());
-                hero.points += points;
-                obj.clickEventListen(camera);
-                obj.countPoint(0, obj.IsExist());
-                obj.Draw();
+            for (int i = 0; i < amountBuildCell; ++i)
+            {
+                buildCells[i].clickEventListen(camera);
+                buildCells[i].countPoint(0, buildCells[i].IsExist());
+                buildCells[i].Draw();
             }
             
             //buildCell.DrawRect();
             
         EndMode2D();
-        
+
         //Log
+
 
         
         //hero.DrawStatistics();
         
         DrawText(TextFormat("InBorder: %s", bool_cast(CheckCollisionRecs(hero.ReturnframeRec(), computer.ReturnRect(false)))), 30, 140, 20, WHITE);
-        DrawText(TextFormat("Knowledge (Points): %04d", points), 30, 80, 20, WHITE);
         
+        for (int i = 0; i < amountBuildCell; ++i)
+        {
+            pointsCell[i] = buildCells[i].countPointRet(hero.points, buildCells[i].IsExist()); 
+            hero.points += pointsCell[i];
+
+            
+        }
+        
+       
+        DrawText(TextFormat("Knowledge (Points): %04d", hero.points), 30, 80, 20, WHITE);
+
 
 
         EndDrawing();
 
     }
-    
 
-    
+
+
 }
-
-
-
-
-

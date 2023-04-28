@@ -1,39 +1,42 @@
 #include <iostream>
-#include "D:/Program/raylib/Sourse/include/raylib-cpp.hpp"
+#include "raylib-cpp.hpp"
 #include "Utils.cpp"
 #include <nlohmann/json.hpp>
 #include <unordered_map>
 #include <set>
-#include <iostream>
-
+#include<cstdio>
+#include<ctime>
 
 
 #pragma once
 using json = nlohmann::json;
+// for times
 
 //------------------------------------------------------------------------------------
 // Program main entry point
 //------------------------------------------------------------------------------------
 //
-   
+
     class BuildObj{
         private:
             Vector2 PositionSpawn;
-            Image img; 
-            Texture2D imgAnim; 
+            Image img;
+            Texture2D imgAnim;
 
             std::string NameObj;
             std::string Path;
 
             double startTime;
-
+            int startTimeTimer;
+            int interval;
+            bool flag;
 
             float sizeObject;
             float speedHero;
             int points;
             int nextFrameDataOffset;
             int currentFrame;
-            
+
             int flipsCounterLeft;
             int flipsCounterRight;
             int framesSpeed;
@@ -43,19 +46,19 @@ using json = nlohmann::json;
         public:
             Rectangle frameRec;
             int framesCounter;
-        BuildObj() {
-            
-        }
-        BuildObj(std::string name, const char *path, float size): NameObj(""), Path(""),sizeObject(1.5f){
+        BuildObj(std::string name, const char *path, float size): NameObj("buildCell"), Path("src/location/laboratory/buildingCell.png"), sizeObject(1.5f){
             NameObj = name;
             sizeObject = size;
-
+            Path = path;
             PositionSpawn = (Vector2){ (float)GetScreenWidth()/2.0f, (float)GetScreenHeight()/2.0f };
             animFrames = 0;
             img = LoadImageAnim(path, &animFrames);
             imgAnim = LoadTextureFromImage(img);
-            
+
             startTime = GetTime(); // сохраняем текущее время
+            startTimeTimer = static_cast<int>(GetTime()) - 5;
+            interval = 5;
+            flag = false;
 
             exists = false;
             frameRec; 
@@ -63,13 +66,41 @@ using json = nlohmann::json;
             points = 0;
             nextFrameDataOffset = 0;
             currentFrame = 0;
-            framesCounter = 0; 
+            framesCounter = 0;
             flipsCounterLeft = 0;
             flipsCounterRight = 1;
-            
+
         }
+        BuildObj(): NameObj("buildCell"), Path("src/location/laboratory/buildingCell.png"), sizeObject(1.5f){
+            NameObj = "buildCell";
+            sizeObject = 1.5f;
+            Path = "src/location/laboratory/buildingCell.png";
+            PositionSpawn = (Vector2){ (float)GetScreenWidth()/2.0f, (float)GetScreenHeight()/2.0f };
+            animFrames = 0;
+            img = LoadImageAnim(Path.c_str(), &animFrames);
+            imgAnim = LoadTextureFromImage(img);
+
+            startTime = GetTime(); // сохраняем текущее время
+            startTimeTimer = static_cast<int>(GetTime()) - 5;
+            interval = 5;
+            flag = false;
+
+
+            exists = false;
+            frameRec; 
+            speedHero = 2.0f;
+            points = 0;
+            nextFrameDataOffset = 0;
+            currentFrame = 0;
+            framesCounter = 0;
+            flipsCounterLeft = 0;
+            flipsCounterRight = 1;
+
+        }
+
         void countPoint(int num, bool exist){
-        Timer getPointsTimer;
+            /*
+            Timer getPointsTimer;
             
             StartTimer(getPointsTimer, 5.5d);
             std::cout << "Elapsed: " << GetElapsed(getPointsTimer) << std::endl;
@@ -87,36 +118,52 @@ using json = nlohmann::json;
                 std::cout << "----" << std::endl;
 
             }
+            */
 
         }
-         
+         //
         int countPointRet(int num, bool exist){
-        Timer getPointsTimer;
+            int currentTime = static_cast<int>(GetTime());
+            int elapsedTime = currentTime - startTimeTimer;
             
-            StartTimer(getPointsTimer, 5.5d);
-            std::cout << "Elapsed: " << GetElapsed(getPointsTimer) << std::endl;
-            DrawText(TextFormat("PositionframeRecX: %04d", static_cast<int>(GetElapsed(getPointsTimer))), 30, 80, 20, WHITE);
+            
 
+            int totalPoint = 0;
+           
 
-            //
-            if (!(TimerDone(getPointsTimer) && exist)){
-                getPointsTimer.startTime = GetTime();
-                num++;
-                //std::cout << "----" << std::endl;
-                //std::cout << "second: " << static_cast<int>(GetElapsed(getPointsTimer)) << std::endl;
-                //std::cout << "----" << std::endl;
-                //std::cout << "num: " << num << std::endl;
-                //std::cout << "----" << std::endl;
-                
+            if (elapsedTime >= interval) 
+            {
+                flag = true;  
+                startTimeTimer = currentTime;  
             }
-            return static_cast<int>(GetElapsed(getPointsTimer));
+    
+            if (flag && exist)  
+            {
+                totalPoint = points + 1;
+                flag = false;  
+            }
+           
+
+            //std::cout << "----" << std::endl;
+            //std::cout << "total number every 5 second +1: " << points << std::endl;
+            //std::cout << "beginNum: " << beginNum << std::endl;
+            //std::cout << "interval: " << intervalNum << std::endl;
+            //std::cout << "this need working every 5 second"<< std::endl;
+            //std::cout << "----" << std::endl;
+            //()
+            
+            return totalPoint;
         }
-        
+        int getPoints(){
+            return points;
+        }
         bool IsExist(){
             return exists;
         }
+
         void clickEventListen(Camera2D camera){
             
+
 
             Vector2 PositionClick = GetMousePosition();
             PositionClick = GetScreenToWorld2D(PositionClick, camera);
@@ -139,13 +186,15 @@ using json = nlohmann::json;
                 UpdateTexture(imgAnim, NULL);
                 
 
+
                 
                 exists = true;
+
             }
             if (exists)
             {
-                
-                
+
+
                 static BuildObj tableReserarch("tableResearch","src/tableResearch.gif", 4.5f);
 
                 tableReserarch.SetPosObj(frameRec.x + 10.0f, frameRec.y - 60.0f);
@@ -167,7 +216,7 @@ using json = nlohmann::json;
 
                 nextFrameDataOffset = img.height*img.height*4*currentFrame;
 
-                UpdateTexture(imgAnim, img.data + nextFrameDataOffset);
+                UpdateTexture(imgAnim, reinterpret_cast<uint8_t*>(img.data) + nextFrameDataOffset);
 
 
 
@@ -183,29 +232,29 @@ using json = nlohmann::json;
             return PositionSpawn;
         }
         void SetPosRect(float x, float y){
-            frameRec = (Rectangle){ x, y, (float)imgAnim.width * 1.5, (float)imgAnim.height * 1.5};
+            frameRec = (Rectangle){ x, y, (float)imgAnim.width * 1.5f, (float)imgAnim.height * 1.5f};
         }
         void countAnim(){
             framesCounter++;
         }
         void Draw(){
-            DrawTextureEx(imgAnim, PositionSpawn, 0, sizeObject, WHITE);            
+            DrawTextureEx(imgAnim, PositionSpawn, 0, sizeObject, WHITE);
 
-            
+
         }
-       
+
     };
     class Player{
         private:
             Vector2 PositionSpawn;
-            Image img; 
-            Texture2D imgAnim; 
-            
+            Image img;
+            Texture2D imgAnim;
+
             float speedHero;
-            
+
             int nextFrameDataOffset;
             int currentFrame;
-            
+
             int flipsCounterLeft;
             int flipsCounterRight;
             int framesSpeed;
@@ -231,18 +280,21 @@ using json = nlohmann::json;
             animFrames = 0;
             img = LoadImageAnim(path, &animFrames);
             imgAnim = LoadTextureFromImage(img);
-            
-            
-            
-            frameRec = (Rectangle){ PositionSpawn.x - 15.0f, PositionSpawn.y + 24.0f, (float)imgAnim.width, (float)imgAnim.height}; 
+
+
+
+            frameRec = (Rectangle){ PositionSpawn.x - 15.0f, PositionSpawn.y + 24.0f, (float)imgAnim.width, (float)imgAnim.height};
             speedHero = 2.0f;
             points = 0;
             nextFrameDataOffset = 0;
             currentFrame = 0;
-            framesCounter = 0; 
+            framesCounter = 0;
             flipsCounterLeft = 0;
             flipsCounterRight = 1;
-            
+
+        }
+        void addPoints(int num){
+            points += num;
         }
         void resetAnimation(){
             currentFrame = 0;
@@ -275,27 +327,27 @@ using json = nlohmann::json;
             Rectangle rightRect = (Rectangle){ recCollide.x + 193.0f, recCollide.y, (float)imgAnim.width/7.0f, (float)imgAnim.height * 0.75f};
             //DrawRectangle(rightRect.x, rightRect.y, (float)rightRect.width, (float)rightRect.height, YELLOW);
             collision = CheckCollisionRecs(ReturnframeRec(), recCollide);
-            if (collision){                
-                
+            if (collision){
+
                 if (CheckCollisionRecs(ReturnframeRec(), leftRect)){
                     DrawText("Collision and key left is detected!", 100, 100, 60, RED);
                     resetAnimation();
                     Down();
                     Left();
-                    
-                    
+
+
                 }else if (CheckCollisionRecs(ReturnframeRec(), rightRect)){
                     DrawText("Collision and key right is detected!", 100, 100, 60, RED);
                     resetAnimation();
                     Down();
                     Right();
-                    
+
                 }else{
                     resetAnimation();
                     CantTopMove();
                 }
 
-                
+
             }
         }
 
@@ -321,7 +373,7 @@ using json = nlohmann::json;
 
                 nextFrameDataOffset = img.height*img.height*4*currentFrame;
 
-                UpdateTexture(imgAnim, img.data + nextFrameDataOffset);
+                UpdateTexture(imgAnim, reinterpret_cast<uint8_t*>(img.data) + nextFrameDataOffset);
 
 
 
@@ -329,9 +381,9 @@ using json = nlohmann::json;
 
 
         }
-        
+
     }
-    
+
     //------------------------------------------------------------------------------------
     // Flip
     //------------------------------------------------------------------------------------
@@ -349,7 +401,7 @@ using json = nlohmann::json;
             };
         flipsCounterLeft++;
 
-        
+
     }
     void flipRight(){
 
@@ -366,7 +418,7 @@ using json = nlohmann::json;
             };
         flipsCounterRight++;
 
-        
+
     }
 
     //------------------------------------------------------------------------------------
@@ -375,10 +427,10 @@ using json = nlohmann::json;
     void CantTopMove(){
         if (CantMoveLeft) {
             Down();
-            Right(); 
+            Right();
         }else if (CantMoveRight){
             Down();
-            Left(); 
+            Left();
         }else{
             Down();
             Right();
@@ -388,10 +440,10 @@ using json = nlohmann::json;
     void CantDownMove(){
     if (CantMoveLeft) {
             Up();
-            Right(); 
+            Right();
         }else if (CantMoveRight){
             Up();
-            Left(); 
+            Left();
         }else{
             Up();
             Right();
@@ -401,10 +453,10 @@ using json = nlohmann::json;
     void CantRightMove(){
     if (CantMoveTop){
             Down();
-            Left();  
+            Left();
         }else if (CantMoveDown){
             Up();
-            Left(); 
+            Left();
         }else{
             Up();
             Down();
@@ -414,10 +466,10 @@ using json = nlohmann::json;
     void CantleftMove(){
         if (CantMoveTop){
             Down();
-            Right();  
+            Right();
         }else if (CantMoveDown){
             Up();
-            Right(); 
+            Right();
         }else{
             Up();
             Down();
@@ -432,14 +484,14 @@ using json = nlohmann::json;
             PositionSpawn.y -= speedHero;
             animationHero();
         }
-       
+
     }
     void Down(){
         if (IsKeyDown(KEY_DOWN)){
             PositionSpawn.y += speedHero;
             animationHero();
         }
-            
+
         }
     void Right(){
         if (IsKeyPressed(KEY_RIGHT)){
@@ -453,22 +505,22 @@ using json = nlohmann::json;
             PositionSpawn.x += speedHero;
             animationHero();
         }
-        
+
     }
     void Left(){
         if (IsKeyPressed(KEY_LEFT)){
 
             flipLeft();
             flipsCounterRight = 0;
-            
+
         }
         if (IsKeyDown(KEY_LEFT)){
             animationHero();
             PositionSpawn.x -= speedHero;
-            
+
 
         }
-        
+
     }
     //------------------------------------------------------------------------------------
     // Move
@@ -490,7 +542,7 @@ using json = nlohmann::json;
             CantMoveRight = !(PositionSpawn.x <= 1110);
             CantMoveLeft = !(PositionSpawn.x >= 90);
             CantMoveDown = !(PositionSpawn.y <= 946);
-        
+
 
             //CheckBorders
             if (CantMoveTop){
@@ -507,12 +559,12 @@ using json = nlohmann::json;
                 Right();
                 Left();
             }
-    
+
 
         }
 
-        
-        
+
+
     }
 
     void DrawHero(){
@@ -534,8 +586,8 @@ using json = nlohmann::json;
         float WidthTile;
         float HeigthTile;
         bool Permeable;
-        Image image; 
-        Texture2D TextureGame; 
+        Image image;
+        Texture2D TextureGame;
         public:
             Rectangle CollisionRec;
         Object(std::string name, std::string path, float size){
@@ -544,14 +596,14 @@ using json = nlohmann::json;
 
             PositionSpawn = (Vector2){0.0, 0.0};
             image = LoadImage(path.c_str());
-            
+
             WidthTile = (float)image.width * sizeObject;
             HeigthTile = (float)image.height * sizeObject;
-            
- 
+
+
             CollisionRec = (Rectangle){ PositionSpawn.x, PositionSpawn.y, (float)WidthTile, (float)HeigthTile};
             TextureGame = LoadTextureFromImage(image);
-            
+
         }
         Rectangle ReturnRect(bool draw){
 
@@ -560,7 +612,7 @@ using json = nlohmann::json;
             {
                DrawRectangle(checkRect.x, checkRect.y, (float)checkRect.width, (float)checkRect.height, GREEN);
             }
-            
+
             return checkRect;
         }
         Vector2 ReturnPosition(){
@@ -579,31 +631,31 @@ using json = nlohmann::json;
         }
 
         void DrawObj(){
-            DrawTextureEx(TextureGame, PositionSpawn, 0, sizeObject, WHITE);            
+            DrawTextureEx(TextureGame, PositionSpawn, 0, sizeObject, WHITE);
         }
 
     };
-    
+
     struct TileStruct{
         Vector2 PositionSpawn;
         Texture2D TextureTile;
         Image ImageTile;
         Rectangle CollisionRec;
-        bool Permeable; 
+        bool Permeable;
     };
 
     struct RoomStruct{
         Vector2 PositionSpawn;
         Texture2D RoomTex;
         Image RoomTexImg;
-        Rectangle CollisionRec; 
+        Rectangle CollisionRec;
     };
-    
+
     struct EntityStruct{
         Vector2 PositionSpawn;
         Image img; //demonSciencer
         Texture2D imgAnim; //demonSciencerAnim
-        Rectangle frameRec; 
+        Rectangle frameRec;
         float speedHero;
         int points;
         int nextFrameDataOffset;
@@ -615,8 +667,3 @@ using json = nlohmann::json;
         int animFrames;
         bool canMove;
     };
-
-    
-    
-    
-    
