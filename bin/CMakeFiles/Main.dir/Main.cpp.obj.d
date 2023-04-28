@@ -316,6 +316,10 @@ CMakeFiles/Main.dir/Main.cpp.obj: D:\Program\raylib\Sourse\Main.cpp \
  D:/Program/raylib/Sourse/include/nlohmann/ordered_map.hpp \
  D:/Program/raylib/Sourse/include/nlohmann/detail/macro_unscope.hpp \
  D:/Program/raylib/Sourse/include/nlohmann/thirdparty/hedley/hedley_undef.hpp \
+ d:\program\gcc\include\c++\12.2.0\chrono \
+ d:\program\gcc\include\c++\12.2.0\bits\chrono.h \
+ d:\program\gcc\include\c++\12.2.0\ratio \
+ d:\program\gcc\include\c++\12.2.0\bits\parse_numbers.h \
  d:\program\gcc\include\c++\12.2.0\set \
  d:\program\gcc\include\c++\12.2.0\bits\stl_set.h \
  d:\program\gcc\include\c++\12.2.0\bits\stl_multiset.h \
