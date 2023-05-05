@@ -320,6 +320,10 @@ CMakeFiles/Main.dir/Main.cpp.obj: D:/Program/raylib/Sourse/Main.cpp \
   D:/Program/raylib/Sourse/include/nlohmann/ordered_map.hpp \
   D:/Program/raylib/Sourse/include/nlohmann/detail/macro_unscope.hpp \
   D:/Program/raylib/Sourse/include/nlohmann/thirdparty/hedley/hedley_undef.hpp \
+  D:/Program/gcc/include/c++/12.2.0/chrono \
+  D:/Program/gcc/include/c++/12.2.0/bits/chrono.h \
+  D:/Program/gcc/include/c++/12.2.0/ratio \
+  D:/Program/gcc/include/c++/12.2.0/bits/parse_numbers.h \
   D:/Program/gcc/include/c++/12.2.0/set \
   D:/Program/gcc/include/c++/12.2.0/bits/stl_set.h \
   D:/Program/gcc/include/c++/12.2.0/bits/stl_multiset.h \
@@ -735,6 +739,8 @@ D:/Program/raylib/Sourse/include/ModelAnimation.hpp:
 
 D:/Program/raylib/Sourse/include/Material.hpp:
 
+D:/Program/gcc/include/c++/12.2.0/bits/parse_numbers.h:
+
 D:/Program/gcc/include/c++/12.2.0/bits/indirect_array.h:
 
 D:/Program/gcc/include/c++/12.2.0/vector:
@@ -963,9 +969,15 @@ D:/Program/gcc/include/c++/12.2.0/bits/quoted_string.h:
 
 D:/Program/gcc/include/c++/12.2.0/bits/sstream.tcc:
 
-D:/Program/gcc/include/c++/12.2.0/set:
+D:/Program/gcc/include/c++/12.2.0/chrono:
+
+D:/Program/gcc/include/c++/12.2.0/bits/chrono.h:
 
 D:/Program/gcc/include/c++/12.2.0/bits/stl_set.h:
+
+D:/Program/gcc/include/c++/12.2.0/ratio:
+
+D:/Program/gcc/include/c++/12.2.0/set:
 
 D:/Program/raylib/Sourse/include/json/config.h:
 

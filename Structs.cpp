@@ -10,241 +10,14 @@
 
 #pragma once
 using json = nlohmann::json;
+
 // for times
 
 //------------------------------------------------------------------------------------
 // Program main entry point
 //------------------------------------------------------------------------------------
 //
-
-    class BuildObj{
-        private:
-            Vector2 PositionSpawn;
-            Image img;
-            Texture2D imgAnim;
-
-            std::string NameObj;
-            std::string Path;
-
-            double startTime;
-            int startTimeTimer;
-            int interval;
-            bool flag;
-
-            float sizeObject;
-            float speedHero;
-            int points;
-            int nextFrameDataOffset;
-            int currentFrame;
-
-            int flipsCounterLeft;
-            int flipsCounterRight;
-            int framesSpeed;
-            int animFrames;
-            bool collision;
-            bool exists;
-        public:
-            Rectangle frameRec;
-            int framesCounter;
-        BuildObj(std::string name, const char *path, float size): NameObj("buildCell"), Path("src/location/laboratory/buildingCell.png"), sizeObject(1.5f){
-            NameObj = name;
-            sizeObject = size;
-            Path = path;
-            PositionSpawn = (Vector2){ (float)GetScreenWidth()/2.0f, (float)GetScreenHeight()/2.0f };
-            animFrames = 0;
-            img = LoadImageAnim(path, &animFrames);
-            imgAnim = LoadTextureFromImage(img);
-
-            startTime = GetTime(); // сохраняем текущее время
-            startTimeTimer = static_cast<int>(GetTime()) - 5;
-            interval = 5;
-            flag = false;
-
-            exists = false;
-            frameRec; 
-            speedHero = 2.0f;
-            points = 0;
-            nextFrameDataOffset = 0;
-            currentFrame = 0;
-            framesCounter = 0;
-            flipsCounterLeft = 0;
-            flipsCounterRight = 1;
-
-        }
-        BuildObj(): NameObj("buildCell"), Path("src/location/laboratory/buildingCell.png"), sizeObject(1.5f){
-            NameObj = "buildCell";
-            sizeObject = 1.5f;
-            Path = "src/location/laboratory/buildingCell.png";
-            PositionSpawn = (Vector2){ (float)GetScreenWidth()/2.0f, (float)GetScreenHeight()/2.0f };
-            animFrames = 0;
-            img = LoadImageAnim(Path.c_str(), &animFrames);
-            imgAnim = LoadTextureFromImage(img);
-
-            startTime = GetTime(); // сохраняем текущее время
-            startTimeTimer = static_cast<int>(GetTime()) - 5;
-            interval = 5;
-            flag = false;
-
-
-            exists = false;
-            frameRec; 
-            speedHero = 2.0f;
-            points = 0;
-            nextFrameDataOffset = 0;
-            currentFrame = 0;
-            framesCounter = 0;
-            flipsCounterLeft = 0;
-            flipsCounterRight = 1;
-
-        }
-
-        void countPoint(int num, bool exist){
-            /*
-            Timer getPointsTimer;
-            
-            StartTimer(getPointsTimer, 5.5d);
-            std::cout << "Elapsed: " << GetElapsed(getPointsTimer) << std::endl;
-            //DrawText(TextFormat("PositionframeRecX: %04d", static_cast<int>(GetElapsed(getPointsTimer))), 30, 80, 20, WHITE);
-
-
-            //TimerDone(getPointsTimer) && exist
-            if (TimerDone(getPointsTimer) && exist){
-                getPointsTimer.startTime = GetTime();
-                num++;
-                std::cout << "----" << std::endl;
-                std::cout << "second: " << static_cast<int>(GetElapsed(getPointsTimer)) << std::endl;
-                std::cout << "----" << std::endl;
-                std::cout << "num: " << num << std::endl;
-                std::cout << "----" << std::endl;
-
-            }
-            */
-
-        }
-         //
-        int countPointRet(int num, bool exist){
-            int currentTime = static_cast<int>(GetTime());
-            int elapsedTime = currentTime - startTimeTimer;
-            
-            
-            /**/
-            int totalPoint = 0;
-           
-
-            if (elapsedTime >= interval) 
-            {
-                flag = true;  
-                startTimeTimer = currentTime;  
-            }
-    
-            if (flag && exist)  
-            {
-                totalPoint = points + 1;
-                flag = false;  
-            }
-           
-
-            //std::cout << "----" << std::endl;
-            //std::cout << "total number every 5 second +1: " << points << std::endl;
-            //std::cout << "beginNum: " << beginNum << std::endl;
-            //std::cout << "interval: " << intervalNum << std::endl;
-            //std::cout << "this need working every 5 second"<< std::endl;
-            //std::cout << "----" << std::endl;
-            //()
-            
-            return totalPoint;
-        }
-        int getPoints(){
-            return points;
-        }
-        bool IsExist(){
-            return exists;
-        }
-
-        void clickEventListen(Camera2D camera){
-            
-
-
-            Vector2 PositionClick = GetMousePosition();
-            PositionClick = GetScreenToWorld2D(PositionClick, camera);
-
-            //
-            //DrawText(TextFormat("PositionMouseX: %04f", PositionClick.x), 30, 20, 20, WHITE);
-            //DrawText(TextFormat("PositionMouseY: %04f", PositionClick.y), 30, 50, 20, WHITE);
-
-            
-
-            //DrawText(TextFormat("PositionframeRecX: %04f", frameRec.x), 30, 80, 20, WHITE);
-            //DrawText(TextFormat("PositionframeRecY: %04f", frameRec.y), 30, 110, 20, WHITE);
-            
-
-
-
-
-            if (CheckCollisionPointRec(PositionClick, frameRec) && IsMouseButtonDown(0) && !exists)
-            {
-                UpdateTexture(imgAnim, NULL);
-                
-
-
-                
-                exists = true;
-
-            }
-            if (exists)
-            {
-
-
-                static BuildObj tableReserarch("tableResearch","src/tableResearch.gif", 4.5f);
-
-                tableReserarch.SetPosObj(frameRec.x + 10.0f, frameRec.y - 60.0f);
-                tableReserarch.SetPosRect(tableReserarch.getPosVector().x,tableReserarch.getPosVector().y);
-                tableReserarch.Draw();
-                tableReserarch.countAnim();
-                tableReserarch.animation();
-            }
-        }
-        void DrawRect(){
-            DrawRectangle(frameRec.x, frameRec.y, frameRec.width, frameRec.height, RED);
-        }
-        void animation() {
-        if (framesCounter >= animFrames){
-
-            currentFrame++;
-
-            if (currentFrame >= 4) currentFrame = 0;
-
-                nextFrameDataOffset = img.height*img.height*4*currentFrame;
-
-                UpdateTexture(imgAnim, reinterpret_cast<uint8_t*>(img.data) + nextFrameDataOffset);
-
-
-
-                framesCounter = 0;
-
-
-            }
-        }
-        void SetPosObj(float x, float y){
-            PositionSpawn = (Vector2){x, y};
-        }
-        Vector2 getPosVector(){
-            return PositionSpawn;
-        }
-        void SetPosRect(float x, float y){
-            frameRec = (Rectangle){ x, y, (float)imgAnim.width * 1.5f, (float)imgAnim.height * 1.5f};
-        }
-        void countAnim(){
-            framesCounter++;
-        }
-        void Draw(){
-            DrawTextureEx(imgAnim, PositionSpawn, 0, sizeObject, WHITE);
-
-
-        }
-
-    };
-    class Player{
+class Player{
         private:
             Vector2 PositionSpawn;
             Image img;
@@ -273,6 +46,7 @@ using json = nlohmann::json;
             bool CantMoveDown;
         public:
             int points;
+            int money;
             Rectangle frameRec;
             int framesCounter;
         Player(const char *path){
@@ -280,7 +54,7 @@ using json = nlohmann::json;
             animFrames = 0;
             img = LoadImageAnim(path, &animFrames);
             imgAnim = LoadTextureFromImage(img);
-
+            money = 500;
 
 
             frameRec = (Rectangle){ PositionSpawn.x - 15.0f, PositionSpawn.y + 24.0f, (float)imgAnim.width, (float)imgAnim.height};
@@ -576,6 +350,246 @@ using json = nlohmann::json;
             DrawText(TextFormat("Knowledge: %04f", points), 30, 80, 20, WHITE);
         }
     };
+
+    class BuildObj{
+        private:
+            Vector2 PositionSpawn;
+            Image img;
+            Texture2D imgAnim;
+
+            std::string NameObj;
+            std::string Path;
+
+            double startTime;
+            int startTimeTimer;
+            int interval;
+            bool flag;
+
+            float sizeObject;
+            float speedHero;
+            int points;
+            int nextFrameDataOffset;
+            int currentFrame;
+
+            int flipsCounterLeft;
+            int flipsCounterRight;
+            int framesSpeed;
+            int animFrames;
+            bool collision;
+            bool exists;
+        public:
+            Rectangle frameRec;
+            int framesCounter;
+            int price;
+            int numCells;
+        BuildObj(std::string name, const char *path, float size): NameObj("buildCell"), Path("src/location/laboratory/buildingCell.png"), sizeObject(1.5f){
+            NameObj = name;
+            sizeObject = size;
+            Path = path;
+            PositionSpawn = (Vector2){ (float)GetScreenWidth()/2.0f, (float)GetScreenHeight()/2.0f };
+            animFrames = 0;
+            img = LoadImageAnim(path, &animFrames);
+            imgAnim = LoadTextureFromImage(img);
+            price = 50;
+            numCells = 0;
+
+            startTime = GetTime(); // сохраняем текущее время
+            startTimeTimer = static_cast<int>(GetTime()) - 5;
+            interval = 5;
+            flag = false;
+
+            exists = false;
+            frameRec; 
+            speedHero = 2.0f;
+            points = 0;
+            nextFrameDataOffset = 0;
+            currentFrame = 0;
+            framesCounter = 0;
+            flipsCounterLeft = 0;
+            flipsCounterRight = 1;
+
+        }
+        BuildObj(): NameObj("buildCell"), Path("src/location/laboratory/buildingCell.png"), sizeObject(1.5f){
+            NameObj = "buildCell";
+            sizeObject = 1.5f;
+            Path = "src/location/laboratory/buildingCell.png";
+            PositionSpawn = (Vector2){ (float)GetScreenWidth()/2.0f, (float)GetScreenHeight()/2.0f };
+            animFrames = 0;
+            img = LoadImageAnim(Path.c_str(), &animFrames);
+            imgAnim = LoadTextureFromImage(img);
+            price = 50;
+            numCells = 0;
+
+            startTime = GetTime(); // сохраняем текущее время
+            startTimeTimer = static_cast<int>(GetTime()) - 5;
+            interval = 5;
+            flag = false;
+
+
+            exists = false;
+            frameRec; 
+            speedHero = 2.0f;
+            points = 0;
+            nextFrameDataOffset = 0;
+            currentFrame = 0;
+            framesCounter = 0;
+            flipsCounterLeft = 0;
+            flipsCounterRight = 1;
+
+        }
+
+        void countPoint(int num, bool exist){
+            /*
+            Timer getPointsTimer;
+            
+            StartTimer(getPointsTimer, 5.5d);
+            std::cout << "Elapsed: " << GetElapsed(getPointsTimer) << std::endl;
+            //DrawText(TextFormat("PositionframeRecX: %04d", static_cast<int>(GetElapsed(getPointsTimer))), 30, 80, 20, WHITE);
+
+
+            //TimerDone(getPointsTimer) && exist
+            if (TimerDone(getPointsTimer) && exist){
+                getPointsTimer.startTime = GetTime();
+                num++;
+                std::cout << "----" << std::endl;
+                std::cout << "second: " << static_cast<int>(GetElapsed(getPointsTimer)) << std::endl;
+                std::cout << "----" << std::endl;
+                std::cout << "num: " << num << std::endl;
+                std::cout << "----" << std::endl;
+
+            }
+            */
+
+        }
+         //
+        int countPointRet(int num, bool exist){
+            int currentTime = static_cast<int>(GetTime());
+            int elapsedTime = currentTime - startTimeTimer;
+            
+            
+            /**/
+            int totalPoint = 0;
+           
+
+            if (elapsedTime >= interval) 
+            {
+                flag = true;  
+                startTimeTimer = currentTime;  
+            }
+    
+            if (flag && exist)  
+            {
+                totalPoint = points + 1;
+                flag = false;  
+            }
+           
+
+            //std::cout << "----" << std::endl;
+            //std::cout << "total number every 5 second +1: " << points << std::endl;
+            //std::cout << "beginNum: " << beginNum << std::endl;
+            //std::cout << "interval: " << intervalNum << std::endl;
+            //std::cout << "this need working every 5 second"<< std::endl;
+            //std::cout << "----" << std::endl;
+            //()
+            
+            return totalPoint;
+        }
+        int getPoints(){
+            return points;
+        }
+        bool IsExist(){
+            return exists;
+        }
+
+        void clickEventListen(Camera2D camera, int &money){
+            
+
+
+            Vector2 PositionClick = GetMousePosition();
+            PositionClick = GetScreenToWorld2D(PositionClick, camera);
+
+            //
+            //DrawText(TextFormat("PositionMouseX: %04f", PositionClick.x), 30, 20, 20, WHITE);
+            //DrawText(TextFormat("PositionMouseY: %04f", PositionClick.y), 30, 50, 20, WHITE);
+
+            
+
+            //DrawText(TextFormat("PositionframeRecX: %04f", frameRec.x), 30, 80, 20, WHITE);
+            //DrawText(TextFormat("PositionframeRecY: %04f", frameRec.y), 30, 110, 20, WHITE);
+            
+
+
+
+
+            if (CheckCollisionPointRec(PositionClick, frameRec) && IsMouseButtonDown(0) && !exists)
+            {
+                //UpdateTexture(imgAnim, NULL);
+                //UnloadTexture(imgAnim);
+                //UnloadImage(img);
+                numCells += 1;
+                
+                money -= price * numCells;
+                //If you click on a cell to build it will teleport to the ass of the game map
+                PositionSpawn = (Vector2){ (float)999999999.0f, (float)999999999.0f };
+                
+                exists = true;
+
+            }
+            if (exists)
+            {
+
+
+                static BuildObj tableReserarch("tableResearch","src/tableResearch.gif", 4.5f);
+
+                tableReserarch.SetPosObj(frameRec.x + 10.0f, frameRec.y - 60.0f);
+                tableReserarch.SetPosRect(tableReserarch.getPosVector().x,tableReserarch.getPosVector().y);
+                tableReserarch.Draw();
+                tableReserarch.countAnim();
+                tableReserarch.animation();
+            }
+
+        }
+        void DrawRect(){
+            DrawRectangle(frameRec.x, frameRec.y, frameRec.width, frameRec.height, RED);
+        }
+        void animation() {
+        if (framesCounter >= animFrames){
+
+            currentFrame++;
+
+            if (currentFrame >= 4) currentFrame = 0;
+
+                nextFrameDataOffset = img.height*img.height*4*currentFrame;
+
+                UpdateTexture(imgAnim, reinterpret_cast<uint8_t*>(img.data) + nextFrameDataOffset);
+
+
+
+                framesCounter = 0;
+
+
+            }
+        }
+        void SetPosObj(float x, float y){
+            PositionSpawn = (Vector2){x, y};
+        }
+        Vector2 getPosVector(){
+            return PositionSpawn;
+        }
+        void SetPosRect(float x, float y){
+            frameRec = (Rectangle){ x, y, (float)imgAnim.width * 1.5f, (float)imgAnim.height * 1.5f};
+        }
+        void countAnim(){
+            framesCounter++;
+        }
+        void Draw(){
+            DrawTextureEx(imgAnim, PositionSpawn, 0, sizeObject, WHITE);
+
+
+        }
+
+    };
+   
 
     class Object{
         private:

@@ -1,0 +1,1 @@
+Player hero("src/image/HeroAnimation/DemonSciencer.gif");

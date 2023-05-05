@@ -10,19 +10,14 @@
 
 
 using json = nlohmann::json;
-
-    const float SizeObj = 5.0f;
-
-    struct EntityStruct MainHero;
-    struct EntityStruct Table;
-    struct RoomStruct RoomInfo;
-    struct TileStruct FloorTile;
-
-
-
-    const char* bool_cast(const bool b) {
-        return b ? "true" : "false";
-    }
+const float SizeObj = 5.0f;
+struct EntityStruct MainHero;
+struct EntityStruct Table;
+struct RoomStruct RoomInfo;
+struct TileStruct FloorTile;
+const char* bool_cast(const bool b) {
+    return b ? "true" : "false";
+}
 
 //------------------------------------------------------------------------------------
 // Program main entry point
@@ -46,6 +41,7 @@ void Scene1(void)
 
 
     Player hero("src/image/HeroAnimation/DemonSciencer.gif");
+
 
     Object computer("computer","src/computer.png", 4.0f);
     computer.SetPosObj(200, 200);
@@ -91,6 +87,7 @@ void Scene1(void)
     Image Vessel = LoadImage("src/image/Science/ChemicalVessel.png");
     Texture2D VesselAnim = LoadTextureFromImage(Vessel);
     Rectangle frameRecVessel = { 0.0f, 0.0f, (float)VesselAnim.width, (float)VesselAnim.height};
+    
 
 
     SetTargetFPS(60);
@@ -105,10 +102,6 @@ void Scene1(void)
         hero.FramesIncrement();
 
         
-        for (int i = 0; i < amountBuildCell; ++i)
-        {
-            
-        }
         
 
 
@@ -133,7 +126,7 @@ void Scene1(void)
             hero.DrawHero();
             for (int i = 0; i < amountBuildCell; ++i)
             {
-                buildCells[i].clickEventListen(camera);
+                buildCells[i].clickEventListen(camera, hero.money);
                 buildCells[i].countPoint(0, buildCells[i].IsExist());
                 buildCells[i].Draw();
             }
@@ -160,7 +153,7 @@ void Scene1(void)
         
        
         DrawText(TextFormat("Knowledge (Points): %04d", hero.points), 30, 80, 20, WHITE);
-
+        DrawText(TextFormat("Money (hryvnia): %04d", hero.money), 30, 110, 20, WHITE);
 
 
         EndDrawing();
