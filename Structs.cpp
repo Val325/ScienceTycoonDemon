@@ -377,6 +377,7 @@ class Player{
             int animFrames;
             bool collision;
             bool exists;
+            std::vector<BuildObj> ojects;
         public:
             Rectangle frameRec;
             int framesCounter;
@@ -504,10 +505,10 @@ class Player{
         void clickEventListen(Camera2D camera, int &money){
             
 
-
+            bool isLoadTexture = false;
             Vector2 PositionClick = GetMousePosition();
             PositionClick = GetScreenToWorld2D(PositionClick, camera);
-
+            BuildObj *table;
             //
             //DrawText(TextFormat("PositionMouseX: %04f", PositionClick.x), 30, 20, 20, WHITE);
             //DrawText(TextFormat("PositionMouseY: %04f", PositionClick.y), 30, 50, 20, WHITE);
@@ -538,22 +539,36 @@ class Player{
             if (exists)
             {
 
+                //static 
+                if (!isLoadTexture) {
+                  BuildObj tableReserarch("tableResearch","src/tableResearch.gif", 4.5f);
+                  table = &tableReserarch;
+                  ojects.push_back(*table);
+                  isLoadTexture = true;
+                }
+                //BuildObj tableReserarch("tableResearch","src/tableResearch.gif", 4.5f);
+                //ojects.push_back(tableReserarch);
 
-                static BuildObj tableReserarch("tableResearch","src/tableResearch.gif", 4.5f);
+                for (int i = 0; i <= numCells; i++) {
+                  ojects[i].SetPosObj(frameRec.x + 10.0f, frameRec.y - 60.0f);
+                  ojects[i].SetPosRect(ojects[i].getPosVector().x,ojects[i].getPosVector().y);
+                  ojects[i].Draw();
+                  ojects[i].countAnim(ojects[i]);
+                  ojects[i].animation(ojects[i]);
 
-                tableReserarch.SetPosObj(frameRec.x + 10.0f, frameRec.y - 60.0f);
-                tableReserarch.SetPosRect(tableReserarch.getPosVector().x,tableReserarch.getPosVector().y);
-                tableReserarch.Draw();
-                tableReserarch.countAnim();
-                tableReserarch.animation();
+                }
+                //ojects[i].countAnim();
+               // ojects[i].animation();
+
             }
 
+           
         }
         void DrawRect(){
             DrawRectangle(frameRec.x, frameRec.y, frameRec.width, frameRec.height, RED);
         }
-        void animation() {
-        if (framesCounter >= animFrames){
+        void animation(BuildObj &obj) {
+        if (obj.framesCounter >= animFrames){
 
             currentFrame++;
 
@@ -579,9 +594,13 @@ class Player{
         void SetPosRect(float x, float y){
             frameRec = (Rectangle){ x, y, (float)imgAnim.width * 1.5f, (float)imgAnim.height * 1.5f};
         }
+        void countAnim(BuildObj &obj){
+            obj.framesCounter++;
+        }
+        /*
         void countAnim(){
             framesCounter++;
-        }
+        }*/
         void Draw(){
             DrawTextureEx(imgAnim, PositionSpawn, 0, sizeObject, WHITE);
 

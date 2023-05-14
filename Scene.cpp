@@ -49,7 +49,7 @@ void Scene1(void)
     Object panel("panel","src/panel.png", SizeObj);
     panel.SetPosObj(600, 230);
 
-    int amountBuildCell = 5;
+    int amountBuildCell = 10;
     int amountActiveBuildCell = 0;
     BuildObj buildCells [amountBuildCell];
     int pointsCell [amountBuildCell];
@@ -124,13 +124,13 @@ void Scene1(void)
 
             hero.collisionDetect(computer.ReturnRect(false));
             hero.DrawHero();
-            for (int i = 0; i < amountBuildCell; ++i)
+            for (int i = 0; i < amountBuildCell; i++)
             {
                 buildCells[i].clickEventListen(camera, hero.money);
-                buildCells[i].countPoint(0, buildCells[i].IsExist());
+              //  buildCells[i].countPoint(0, buildCells[i].IsExist());
                 buildCells[i].Draw();
             }
-            
+            //fgfsdfgsdgf
             //buildCell.DrawRect();
             
         EndMode2D();
