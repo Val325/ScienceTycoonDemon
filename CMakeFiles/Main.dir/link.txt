@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/Main.dir/Main.cpp.o -o Main  -lraylib 

@@ -2,18 +2,15 @@
 *
 *   rgestures - Gestures system, gestures processing based on input events (touch/mouse)
 *
-*   NOTE: Memory footprint of this library is aproximately 128 bytes (global variables)
-*
 *   CONFIGURATION:
+*       #define GESTURES_IMPLEMENTATION
+*           Generates the implementation of the library into the included file.
+*           If not defined, the library is in header only mode and can be included in other headers
+*           or source files without problems. But only ONE file should hold the implementation.
 *
-*   #define GESTURES_IMPLEMENTATION
-*       Generates the implementation of the library into the included file.
-*       If not defined, the library is in header only mode and can be included in other headers
-*       or source files without problems. But only ONE file should hold the implementation.
-*
-*   #define GESTURES_STANDALONE
-*       If defined, the library can be used as standalone to process gesture events with
-*       no external dependencies.
+*       #define GESTURES_STANDALONE
+*           If defined, the library can be used as standalone to process gesture events with
+*           no external dependencies.
 *
 *   CONTRIBUTORS:
 *       Marc Palau:         Initial implementation (2014)
@@ -24,7 +21,7 @@
 *
 *   LICENSE: zlib/libpng
 *
-*   Copyright (c) 2014-2022 Ramon Santamaria (@raysan5)
+*   Copyright (c) 2014-2023 Ramon Santamaria (@raysan5)
 *
 *   This software is provided "as-is", without any express or implied warranty. In no event
 *   will the authors be held liable for any damages arising from the use of this software.
@@ -151,6 +148,7 @@ float GetGesturePinchAngle(void);                       // Get gesture pinch ang
 
 #if defined(GESTURES_IMPLEMENTATION)
 
+#if defined(GESTURES_STANDALONE)
 #if defined(_WIN32)
     #if defined(__cplusplus)
     extern "C" {        // Prevents name mangling of functions
@@ -174,6 +172,7 @@ float GetGesturePinchAngle(void);                       // Get gesture pinch ang
 #if defined(__APPLE__)                  // macOS also defines __MACH__
     #include <mach/clock.h>             // Required for: clock_get_time()
     #include <mach/mach.h>              // Required for: mach_timespec_t
+#endif
 #endif
 
 //----------------------------------------------------------------------------------
@@ -247,7 +246,7 @@ static double rgGetCurrentTime(void);
 // Module Functions Definition
 //----------------------------------------------------------------------------------
 
-// Enable only desired getures to be detected
+// Enable only desired gestures to be detected
 void SetGesturesEnabled(unsigned int flags)
 {
     GESTURES.enabledFlags = flags;
@@ -298,7 +297,7 @@ void ProcessGestureEvent(GestureEvent event)
         {
             if (GESTURES.current == GESTURE_DRAG) GESTURES.Touch.upPosition = event.position[0];
 
-            // NOTE: GESTURES.Drag.intensity dependend on the resolution of the screen
+            // NOTE: GESTURES.Drag.intensity dependent on the resolution of the screen
             GESTURES.Drag.distance = rgVector2Distance(GESTURES.Touch.downPositionA, GESTURES.Touch.upPosition);
             GESTURES.Drag.intensity = GESTURES.Drag.distance/(float)((rgGetCurrentTime() - GESTURES.Swipe.timeDuration));
 
@@ -470,7 +469,7 @@ Vector2 GetGestureDragVector(void)
 }
 
 // Get drag angle
-// NOTE: Angle in degrees, horizontal-right is 0, counterclock-wise
+// NOTE: Angle in degrees, horizontal-right is 0, counterclockwise
 float GetGestureDragAngle(void)
 {
     // NOTE: drag angle is calculated on one touch points TOUCH_ACTION_UP
@@ -486,8 +485,8 @@ Vector2 GetGesturePinchVector(void)
     return GESTURES.Pinch.vector;
 }
 
-// Get angle beween two pinch points
-// NOTE: Angle in degrees, horizontal-right is 0, counterclock-wise
+// Get angle between two pinch points
+// NOTE: Angle in degrees, horizontal-right is 0, counterclockwise
 float GetGesturePinchAngle(void)
 {
     // NOTE: pinch angle is calculated on two touch points TOUCH_ACTION_MOVE
@@ -526,6 +525,9 @@ static double rgGetCurrentTime(void)
 {
     double time = 0;
 
+#if !defined(GESTURES_STANDALONE)
+    time = GetTime();
+#else
 #if defined(_WIN32)
     unsigned long long int clockFrequency, currentTime;
 
@@ -558,6 +560,7 @@ static double rgGetCurrentTime(void)
     unsigned long long int nowTime = (unsigned long long int)now.tv_sec*1000000000LLU + (unsigned long long int)now.tv_nsec;     // Time in nanoseconds
 
     time = ((double)nowTime/1000000.0);     // Time in miliseconds
+#endif
 #endif
 
     return time;
