@@ -329,6 +329,9 @@ CMakeFiles/Main.dir/Main.cpp.o: \
  /usr/include/c++/12.2.1/bits/parse_numbers.h /usr/include/c++/12.2.1/set \
  /usr/include/c++/12.2.1/bits/stl_set.h \
  /usr/include/c++/12.2.1/bits/stl_multiset.h \
+ /home/projects/Raylib4.5/ScienceTycoonDemon/techprogressHUD.cpp \
+ /home/projects/Raylib4.5/ScienceTycoonDemon/include/raygui.h \
+ /home/projects/Raylib4.5/ScienceTycoonDemon/include/raylib.h \
  /home/projects/Raylib4.5/ScienceTycoonDemon/include/json/json.h \
  /home/projects/Raylib4.5/ScienceTycoonDemon/include/json/config.h \
  /home/projects/Raylib4.5/ScienceTycoonDemon/include/json/allocator.h \
@@ -340,6 +343,4 @@ CMakeFiles/Main.dir/Main.cpp.o: \
  /usr/include/c++/12.2.1/deque /usr/include/c++/12.2.1/bits/stl_deque.h \
  /usr/include/c++/12.2.1/bits/deque.tcc /usr/include/c++/12.2.1/stack \
  /usr/include/c++/12.2.1/bits/stl_stack.h \
- /home/projects/Raylib4.5/ScienceTycoonDemon/include/json/writer.h \
- /home/projects/Raylib4.5/ScienceTycoonDemon/include/raygui.h \
- /home/projects/Raylib4.5/ScienceTycoonDemon/include/raylib.h
+ /home/projects/Raylib4.5/ScienceTycoonDemon/include/json/writer.h

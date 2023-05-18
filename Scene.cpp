@@ -124,6 +124,7 @@ void Scene1(void)
 
             hero.collisionDetect(computer.ReturnRect(false));
             hero.DrawHero();
+            //hero.showHUDtech();
             for (int i = 0; i < amountBuildCell; i++)
             {
                 buildCells[i].clickEventListen(camera, hero.money);
@@ -151,6 +152,7 @@ void Scene1(void)
             
         }
         
+        hero.showHUDtech();
        
         DrawText(TextFormat("Knowledge (Points): %04d", hero.points), 30, 80, 20, WHITE);
         DrawText(TextFormat("Money (hryvnia): %04d", hero.money), 30, 110, 20, WHITE);

@@ -6,7 +6,7 @@
 #include <set>
 #include<cstdio>
 #include<ctime>
-
+#include"techprogressHUD.cpp"
 
 #pragma once
 using json = nlohmann::json;
@@ -44,6 +44,8 @@ class Player{
             bool CantMoveRight;
             bool CantMoveLeft;
             bool CantMoveDown;
+
+            bool HUDtechShow;
         public:
             int points;
             int money;
@@ -65,6 +67,25 @@ class Player{
             framesCounter = 0;
             flipsCounterLeft = 0;
             flipsCounterRight = 1;
+            HUDtechShow = false;
+
+        }
+        void showHUDtech(){
+          
+          if (HUDtechShow) {
+            HUDtechShow = showTechTree(); 
+          }
+          //showTechTree(HUDtechShow); 
+          /*
+          if (IsKeyPressed(KEY_TAB) && HUDtechShow) {
+            //HUDtechShow = false;
+
+          }*/
+          if (IsKeyPressed(KEY_TAB)) {
+            HUDtechShow = true;
+
+          }
+
 
         }
         void addPoints(int num){

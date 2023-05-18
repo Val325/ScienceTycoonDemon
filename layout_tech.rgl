@@ -1,0 +1,36 @@
+#
+# rgl layout text file (v3.0) - raygui layout file generated using rGuiLayout
+#
+# Number of controls:     10
+#
+# Ref. window:    r <x> <y> <width> <height>
+# Anchor info:    a <id> <name> <posx> <posy> <enabled>
+# Control info:   c <id> <type> <name> <rectangle> <anchor_id> <text>
+#
+r 0 0 -1 -1
+a 000 anchorMain 0 0 0
+a 001 anchor01 240 120 1
+a 002 anchor02 0 0 0
+a 003 anchor03 0 0 0
+a 004 anchor04 0 0 0
+a 005 anchor05 0 0 0
+a 006 anchor06 0 0 0
+a 007 anchor07 0 0 0
+a 008 anchor08 0 0 0
+a 009 anchor09 0 0 0
+a 010 anchor10 0 0 0
+a 011 anchor11 0 0 0
+a 012 anchor12 0 0 0
+a 013 anchor13 0 0 0
+a 014 anchor14 0 0 0
+a 015 anchor15 0 0 0
+c 000 0 WindowBox000 0 0 720 456 1 SAMPLE TEXT
+c 001 5 Button001 304 56 120 24 1 SAMPLE TEXT
+c 002 5 Button002 304 88 120 24 1 SAMPLE TEXT
+c 003 5 Button003 304 120 120 24 1 SAMPLE TEXT
+c 004 5 Button004 200 160 120 24 1 SAMPLE TEXT
+c 005 5 Button005 408 160 120 24 1 SAMPLE TEXT
+c 006 5 Button006 408 192 120 24 1 SAMPLE TEXT
+c 007 5 Button007 200 192 120 24 1 SAMPLE TEXT
+c 008 5 Button008 304 224 120 24 1 SAMPLE TEXT
+c 009 5 Button009 304 256 120 24 1 SAMPLE TEXT
