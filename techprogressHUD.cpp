@@ -76,16 +76,16 @@ bool showTechTree(){
             //if (WindowBox000Active)
             //{//WindowBox000Active = !GuiWindowBox(layoutRecs[0], "SAMPLE TEXT");
 
-                WindowBox000Active = !GuiWindowBox(layoutRecs[0], "SAMPLE TEXT");
-                if (GuiButton(layoutRecs[1], "SAMPLE TEXT")) Button001(); 
-                if (GuiButton(layoutRecs[2], "SAMPLE TEXT")) Button002(); 
-                if (GuiButton(layoutRecs[3], "SAMPLE TEXT")) Button003(); 
-                if (GuiButton(layoutRecs[4], "SAMPLE TEXT")) Button004(); 
-                if (GuiButton(layoutRecs[5], "SAMPLE TEXT")) Button005(); 
-                if (GuiButton(layoutRecs[6], "SAMPLE TEXT")) Button006(); 
-                if (GuiButton(layoutRecs[7], "SAMPLE TEXT")) Button007(); 
-                if (GuiButton(layoutRecs[8], "SAMPLE TEXT")) Button008(); 
-                if (GuiButton(layoutRecs[9], "SAMPLE TEXT")) Button009(); 
+                WindowBox000Active = !GuiWindowBox(layoutRecs[0], "Tech tree");
+                if (GuiButton(layoutRecs[1], "ADVANCED COMPUTERS")) Button001(); 
+                if (GuiButton(layoutRecs[2], "ADVANCED MEDICINE")) Button002(); 
+                if (GuiButton(layoutRecs[3], "NANOTECHNOLOGY")) Button003(); 
+                if (GuiButton(layoutRecs[4], "ADVANCED MATERIALS")) Button004(); 
+                if (GuiButton(layoutRecs[5], "PATTERNS WORLD")) Button005(); 
+                if (GuiButton(layoutRecs[6], "UNDERSTAND BEING")) Button006(); 
+                if (GuiButton(layoutRecs[7], "NEURAL NETWORKS")) Button007(); 
+                if (GuiButton(layoutRecs[8], "AI")) Button008(); 
+                if (GuiButton(layoutRecs[9], "TECH SINGULARITY")) Button009(); 
             //}
             //----------------------------------------------------------------------------------
     return WindowBox000Active;

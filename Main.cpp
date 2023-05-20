@@ -52,7 +52,7 @@ int main(void)
     raylib::Window window(screenWidth, screenHeight, "Science tycoon");
 
     //Scene1();
-    
+    SetExitKey(KEY_NULL); 
 
      // Main game loop
     while (!WindowShouldClose())    // Detect window close button or ESC key
