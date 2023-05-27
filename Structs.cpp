@@ -6,8 +6,8 @@
 #include <set>
 #include<cstdio>
 #include<ctime>
-#include"techprogressHUD.cpp"
-
+//#include"techprogressHUD.cpp"
+#include"TechTree2.0.cpp"
 #pragma once
 using json = nlohmann::json;
 
@@ -73,7 +73,7 @@ class Player{
         void showHUDtech(){
           
           if (HUDtechShow) {
-            HUDtechShow = showTechTree(); 
+            HUDtechShow = ShowHUDTechTree(); 
           }
           //showTechTree(HUDtechShow); 
           /*
