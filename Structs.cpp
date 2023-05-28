@@ -8,6 +8,7 @@
 #include<ctime>
 //#include"techprogressHUD.cpp"
 #include"TechTree2.0.cpp"
+#include"selectionBtn.cpp"
 #pragma once
 using json = nlohmann::json;
 
@@ -73,7 +74,8 @@ class Player{
         void showHUDtech(){
           
           if (HUDtechShow) {
-            HUDtechShow = ShowHUDTechTree(); 
+            HUDtechShow = ShowHUDTechTree();
+            
           }
           //showTechTree(HUDtechShow); 
           /*
@@ -85,7 +87,7 @@ class Player{
             HUDtechShow = true;
 
           }
-
+          
 
         }
         void addPoints(int num){
@@ -559,7 +561,7 @@ class Player{
             }
             if (exists)
             {
-
+                selectionBtn(); 
                 //static 
                 if (!isLoadTexture) {
                   BuildObj tableReserarch("tableResearch","src/tableResearch.gif", 4.5f);

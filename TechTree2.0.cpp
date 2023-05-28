@@ -126,8 +126,8 @@ bool ShowHUDTechTree()
 
     // TechTree2.0: controls initialization
     //----------------------------------------------------------------------------------
+    //bool WindowBox000Active = true;
     bool WindowBox000Active = true;
-
     Rectangle layoutRecs[29] = {
         (Rectangle){ 240, 120, 720, 456 },
         (Rectangle){ 544, 176, 120, 24 },
@@ -163,9 +163,10 @@ bool ShowHUDTechTree()
 
             // raygui: controls drawing
             //----------------------------------------------------------------------------------
+            
             if (WindowBox000Active)
             {
-                WindowBox000Active = !GuiWindowBox(layoutRecs[0], "Tech tree");
+                WindowBox000Active = !GuiWindowBox(layoutRecs[0], "Tech tree");         
                 if (GuiButton(layoutRecs[1], "Tech 20 century")) Tech20century(); 
                 if (GuiButton(layoutRecs[2], "Transistors")) Transistors(); 
                 if (GuiButton(layoutRecs[3], "Computers")) Computers(); 
@@ -193,13 +194,13 @@ bool ShowHUDTechTree()
                 if (GuiLabelButton(layoutRecs[25], "Completed")) one(); 
                 if (GuiLabelButton(layoutRecs[26], "Completed")) LabelButton026(); 
                 if (GuiLabelButton(layoutRecs[27], "Completed")) LabelButton027(); 
-                if (GuiLabelButton(layoutRecs[28], "END GAME")) LabelButton028(); 
+                if (GuiLabelButton(layoutRecs[28], "END GAME")) LabelButton028();
+               
+
             }
             //----------------------------------------------------------------------------------
 
-       
-
-
+      
    
 
     return WindowBox000Active;
