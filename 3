@@ -72,7 +72,6 @@ class Player{
 
         }
         void setMovable(bool setData){
-
           canMove = setData;
         }
         void showHUDtech(){
@@ -592,25 +591,19 @@ class Player{
 
            
         }
-        void SelectionPopUp(Camera2D camera, Player &play){
-          Vector2 PositionClick = GetMousePosition();
-          Vector2 PositionPlayer = play.ReturnPostion();
-          int isClosed;
-          //PositionClick = GetWorldToScreen2D(PositionClick, camera);
+        void SelectionPopUp(Camera2D camera){
+          //Vector2 PositionClick = GetMousePosition();
+          //PositionClick = GetScreenToWorld2D(PositionClick, camera);
           
           //PositionClick = (Vector2){PositionClick.x,PositionClick.y + 20}; 
-          if (CheckCollisionPointRec(PositionClick, frameRec) && IsMouseButtonDown(0) && !isSect){
+          //if (CheckCollisionPointRec(PositionClick, frameRec) && IsMouseButtonDown(0) && !isSect){
             //PositionClick = GetMousePosition();
-            isSect = true; 
-          }
-          if (isSect) {
-            play.setMovable(false);
-            isClosed = selectionBtn(camera, Vector2{frameRec.x -200, frameRec.y - 200}, PositionPlayer); 
-            if (isClosed == 0) {
-              isSect = false;
-              play.setMovable(true);
-            } 
-          } 
+           // isSect = true; 
+          //}
+          //if (isSect) {
+            selectionBtn(camera,  Vector2{frameRec.x -200, frameRec.y - 200}, camera); 
+
+          //} 
         }
         void DrawRect(){
             DrawRectangle(frameRec.x, frameRec.y, frameRec.width, frameRec.height, RED);

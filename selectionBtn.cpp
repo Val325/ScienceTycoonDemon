@@ -21,13 +21,13 @@ static void TableEnd()
 //------------------------------------------------------------------------------------
 // Program main entry point
 //------------------------------------------------------------------------------------
-static void selectionBtn()
+static bool selectionBtn(Camera2D camerain, Vector2 vec, Vector2 playerpos)
 {
     
     // selectionBtn: controls initialization
     //----------------------------------------------------------------------------------
     bool WindowBoxPopUpSelectTableActive = true;
-
+    
     Rectangle layoutRecs[7] = {
         (Rectangle){ 344, 352, 256, 128 },
         (Rectangle){ 352, 384, 120, 24 },
@@ -37,12 +37,15 @@ static void selectionBtn()
         (Rectangle){ 480, 416, 120, 24 },
         (Rectangle){ 480, 448, 120, 24 },
     };
-    
-            // raygui: controls drawing
+    // raygui: controls drawing
             //----------------------------------------------------------------------------------
             if (WindowBoxPopUpSelectTableActive)
             {
+              
+
                 WindowBoxPopUpSelectTableActive = !GuiWindowBox(layoutRecs[0], "Select table");
+                std::cout << "window box coord: " << layoutRecs[0].x << " "<< layoutRecs[0].y << std::endl;
+                
                 if (GuiButton(layoutRecs[1], "Table light")) TableMin(); 
                 if (GuiButton(layoutRecs[2], "Table medium")) TableMid(); 
                 if (GuiButton(layoutRecs[3], "Table top")) TableEnd(); 
@@ -52,7 +55,7 @@ static void selectionBtn()
             }
             
 
-
+  return WindowBoxPopUpSelectTableActive; 
 }
 
 

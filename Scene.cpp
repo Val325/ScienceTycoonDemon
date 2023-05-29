@@ -125,9 +125,11 @@ void Scene1(void)
             hero.collisionDetect(computer.ReturnRect(false));
             hero.DrawHero();
             //hero.showHUDtech();
+            //buildCells.SelectionPopUp(camera);
             for (int i = 0; i < amountBuildCell; i++)
             {
-                buildCells[i].clickEventListen(camera, hero.money);
+                //buildCells[i].clickEventListen(camera, hero.money);
+                //buildCells[i].SelectionPopUp(camera, hero);
               //  buildCells[i].countPoint(0, buildCells[i].IsExist());
                 buildCells[i].Draw();
             }
@@ -148,7 +150,7 @@ void Scene1(void)
         {
             pointsCell[i] = buildCells[i].countPointRet(hero.points, buildCells[i].IsExist()); 
             hero.points += pointsCell[i];
-
+            buildCells[i].SelectionPopUp(camera, hero);
             
         }
         
