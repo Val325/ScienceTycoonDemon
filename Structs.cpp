@@ -508,11 +508,11 @@ BuildObj::BuildObj(): NameObj("buildCell"), Path("src/location/laboratory/buildi
           Vector2 PositionPlayer = play.ReturnPostion();
           int isClosed;
 	  BuildObj table;
-          //PositionClick = GetWorldToScreen2D(PositionClick, camera);
           
-          //PositionClick = (Vector2){PositionClick.x,PositionClick.y + 20}; 
           if (CheckCollisionPointRec(PositionClick, frameRec) && IsMouseButtonDown(0) && !isSect){
-            //PositionClick = GetMousePosition();
+            numCells += 1;
+                
+            money -= price * numCells; 
             isSect = true; 
           }
           if (isSect) {
@@ -522,7 +522,8 @@ BuildObj::BuildObj(): NameObj("buildCell"), Path("src/location/laboratory/buildi
               isSect = false;
               play.setMovable(true);
             } 
-          } 
+          }
+	 
         }
         void BuildObj::DrawRect(){
             DrawRectangle(frameRec.x, frameRec.y, frameRec.width, frameRec.height, RED);
