@@ -1,27 +1,29 @@
-
 #include "raygui.h"
+//#include "Structs.cpp"
+#include "buildObj.h"
 
+//class BuildObj;
 //------------------------------------------------------------------------------------
 // Controls Functions Definitions (local)
 //------------------------------------------------------------------------------------
 static void TableMin()
 {
-    // TODO: Implement control logic
+   BuildObj tableReserarch("tableResearch","src/tableResearch.gif", 4.5f); 
 }
 static void TableMid()
 {
-    // TODO: Implement control logic
+    BuildObj tableReserarch("tableResearch","src/tableResearch.gif", 4.5f);
 }
 static void TableEnd()
 {
-    // TODO: Implement control logic
+    BuildObj tableReserarch("tableResearch3","src/tableResearch3.gif", 4.5f);
 }
 
 
 //------------------------------------------------------------------------------------
 // Program main entry point
 //------------------------------------------------------------------------------------
-static bool selectionBtn(Camera2D camerain, Vector2 vec, Vector2 playerpos)
+static bool selectionBtn(Camera2D camerain, Vector2 vec, Vector2 playerpos, BuildObj &tabl, int &money, std::vector<BuildObj> obj)
 {
     
     // selectionBtn: controls initialization
@@ -57,5 +59,4 @@ static bool selectionBtn(Camera2D camerain, Vector2 vec, Vector2 playerpos)
 
   return WindowBoxPopUpSelectTableActive; 
 }
-
 

@@ -1,5 +1,12 @@
 #include "raygui.h"
 
+
+// Checks if _SELECTBTN_ IF DECLARED
+#ifndef _TECHTREE_
+  
+// Defines _SELECTBTN_ if above
+// conditions fails
+#define _TECHTREE_
 //------------------------------------------------------------------------------------
 // Controls Functions Definitions (local)
 //------------------------------------------------------------------------------------
@@ -206,4 +213,4 @@ bool ShowHUDTechTree()
     return WindowBox000Active;
 }
 
-
+#endif

@@ -332,6 +332,7 @@ CMakeFiles/Main.dir/Main.cpp.o: \
  /home/projects/Raylib4.5/ScienceTycoonDemon/TechTree2.0.cpp \
  /home/projects/Raylib4.5/ScienceTycoonDemon/include/raygui.h \
  /home/projects/Raylib4.5/ScienceTycoonDemon/include/raylib.h \
+ /home/projects/Raylib4.5/ScienceTycoonDemon/buildObj.h \
  /home/projects/Raylib4.5/ScienceTycoonDemon/selectionBtn.cpp \
  /home/projects/Raylib4.5/ScienceTycoonDemon/include/json/json.h \
  /home/projects/Raylib4.5/ScienceTycoonDemon/include/json/config.h \

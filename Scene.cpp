@@ -130,7 +130,7 @@ void Scene1(void)
             {
                 //buildCells[i].clickEventListen(camera, hero.money);
                 //buildCells[i].SelectionPopUp(camera, hero);
-              //  buildCells[i].countPoint(0, buildCells[i].IsExist());
+              	//buildCells[i].countPoint(0, buildCells[i].IsExist());
                 buildCells[i].Draw();
             }
             //fgfsdfgsdgf
@@ -150,7 +150,7 @@ void Scene1(void)
         {
             pointsCell[i] = buildCells[i].countPointRet(hero.points, buildCells[i].IsExist()); 
             hero.points += pointsCell[i];
-            buildCells[i].SelectionPopUp(camera, hero);
+            buildCells[i].SelectionPopUp(camera, hero, hero.money);
             
         }
         
