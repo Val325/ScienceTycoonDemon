@@ -503,6 +503,7 @@ BuildObj::BuildObj(): NameObj("buildCell"), Path("src/location/laboratory/buildi
 
            
         }
+	
         void BuildObj::SelectionPopUp(Camera2D camera, Player &play, int &money){
           Vector2 PositionClick = GetMousePosition();
           Vector2 PositionPlayer = play.ReturnPostion();
@@ -517,11 +518,14 @@ BuildObj::BuildObj(): NameObj("buildCell"), Path("src/location/laboratory/buildi
           }
           if (isSect) {
             play.setMovable(false);
-            isClosed = selectionBtn(camera, Vector2{frameRec.x -200, frameRec.y - 200}, PositionPlayer, table, money, ojects); 
+            isClosed = selectionBtn(camera, Vector2{frameRec.x -200, frameRec.y - 200}, PositionPlayer, table, money, ojects, numCells, frameRec);
+	    
+
             if (isClosed == 0) {
               isSect = false;
               play.setMovable(true);
-            } 
+            }
+	    
           }
 	 
         }

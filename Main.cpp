@@ -39,6 +39,7 @@ static void PlayBtn()
 
 int main(void)
 {
+    SetTraceLogLevel(0);
     // Initialization
     //--------------------------------------------------------------------------------------
     // Define controls rectangles

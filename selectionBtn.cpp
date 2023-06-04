@@ -6,30 +6,36 @@
 //------------------------------------------------------------------------------------
 // Controls Functions Definitions (local)
 //------------------------------------------------------------------------------------
-void TableMin(std::vector<BuildObj> &obj)
+//
+std::vector<BuildObj> allObj;
+
+void TableMin()
 {
-   bool isExits = true; 
+   
    BuildObj tableReserarch("tableResearch","src/tableResearch.gif", 4.5f);
-   if (isExits){
-	tableReserarch.Draw();
-   }
-   //tableReserarch.countAnim(ojects[i]);
-   //ojects[i].animation(ojects[i]); 
-	
+   //tableReserarch.Draw();
+   allObj.push_back(tableReserarch);
+   
+   //return "tableReserarch";
   
+    
                 
    
 }
 void TableMid()
 {
     BuildObj tableReserarch("tableResearch2","src/tableResearch2.gif", 4.5f);
-    
+    //tableReserarch.Draw();
+    allObj.push_back(tableReserarch);
+    //return "tableResearch2"; 
 
 }
 void TableEnd()
 {
     BuildObj tableReserarch("tableResearch3","src/tableResearch3.gif", 4.5f);
-    
+    //tableReserarch.Draw();
+    allObj.push_back(tableReserarch);
+    //return "tableResearch3"; 
 
 }
 
@@ -37,7 +43,7 @@ void TableEnd()
 //------------------------------------------------------------------------------------
 // Program main entry point
 //------------------------------------------------------------------------------------
-static bool selectionBtn(Camera2D camerain, Vector2 vec, Vector2 playerpos, BuildObj &tabl, int &money, std::vector<BuildObj> &obj)
+static bool selectionBtn(Camera2D camerain, Vector2 vec, Vector2 playerpos, BuildObj &tabl, int &money, std::vector<BuildObj> &obj, int numAmount, Rectangle rectTable)
 {
     
     // selectionBtn: controls initialization
@@ -62,9 +68,15 @@ static bool selectionBtn(Camera2D camerain, Vector2 vec, Vector2 playerpos, Buil
                 WindowBoxPopUpSelectTableActive = !GuiWindowBox(layoutRecs[0], "Select table");
                 std::cout << "window box coord: " << layoutRecs[0].x << " "<< layoutRecs[0].y << std::endl;
                 
-                if (GuiButton(layoutRecs[1], "Table light")) TableMin(obj); 
-                if (GuiButton(layoutRecs[2], "Table medium")) TableMid(); 
-                if (GuiButton(layoutRecs[3], "Table top")) TableEnd(); 
+                if (GuiButton(layoutRecs[1], "Table light")) {
+			TableMin();
+		}
+                if (GuiButton(layoutRecs[2], "Table medium")){ 
+			TableMid();
+		} 
+                if (GuiButton(layoutRecs[3], "Table top")){ 
+			TableEnd();
+		} 
                 GuiLabel(layoutRecs[4], "Know points 20");
                 GuiLabel(layoutRecs[5], "Know points 40");
                 GuiLabel(layoutRecs[6], "Know points 80");

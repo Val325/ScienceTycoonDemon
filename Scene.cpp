@@ -128,11 +128,18 @@ void Scene1(void)
             //buildCells.SelectionPopUp(camera);
             for (int i = 0; i < amountBuildCell; i++)
             {
-                //buildCells[i].clickEventListen(camera, hero.money);
+                //buildCells[i].clickEventListen(camera, hero.money, hero);
                 //buildCells[i].SelectionPopUp(camera, hero);
               	//buildCells[i].countPoint(0, buildCells[i].IsExist());
                 buildCells[i].Draw();
             }
+	    if (!allObj.empty()) {
+		for (int i = 0; i <= allObj.size(); i++){
+			allObj[i].Draw();
+	    	}
+	    }
+
+	    
             //fgfsdfgsdgf
             //buildCell.DrawRect();
             
