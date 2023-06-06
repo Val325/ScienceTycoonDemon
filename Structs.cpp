@@ -361,6 +361,7 @@ BuildObj::BuildObj(std::string name, const char *path, float size): NameObj("bui
 
             exists = false;
             isSect = false;
+	    isClickedTable = false;
             frameRec; 
             speedHero = 2.0f;
             points = 0;
@@ -387,7 +388,7 @@ BuildObj::BuildObj(): NameObj("buildCell"), Path("src/location/laboratory/buildi
             interval = 5;
             flag = false;
 
-
+	    isClickedTable = false;
             exists = false;
             frameRec; 
             speedHero = 2.0f;
@@ -441,7 +442,48 @@ BuildObj::BuildObj(): NameObj("buildCell"), Path("src/location/laboratory/buildi
         bool BuildObj::IsExist(){
             return exists;
         }
+	Rectangle BuildObj::ReturnframeRec(){
+	    return frameRec;	
+	}	
+	float BuildObj::ReturnframeRecX(){
+	    return frameRec.x;	
+	}	
+	float BuildObj::ReturnframeRecY(){
+	    return frameRec.y;	
+	}
+	int BuildObj::ReturnID(){
+	    return id;	
+	}
+	Vector2 BuildObj::ReturnPostionClick(Camera2D camera){
+	  Vector2 PositionClick = GetMousePosition();
+	  PositionClick = GetScreenToWorld2D(PositionClick, camera); 
+          if (CheckCollisionPointRec(PositionClick, frameRec) && IsMouseButtonDown(0) && !isClickedTable){
+             isClickedTable = true;
+	     PositionClickTable = PositionClick;
+	     return PositionClickTable; 
+          }
+          if (isClickedTable) {
 
+
+	     if (!allObj.empty()) {
+		for (int i = 0; i <= allObj.size(); i++){
+			//allObj[i].Draw();
+			allObj[i].SetPosObj(allObj[i].ReturnframeRec().x + 10.0f,allObj[i].ReturnframeRec().x - 60.0f);
+			allObj[i].SetPosRect(allObj[i].getPosVector().x, allObj[i].getPosVector().y);
+
+			//allObj[i].SetPosObj(buildCells[i].getPosVector().x + 10.0f, buildCells[i].getPosVector().y - 60.0f);
+
+			allObj[i].Draw();
+			allObj[i].countAnim(allObj[i]);
+			allObj[i].animation(allObj[i]);
+	    	}
+	    }
+
+	     return PositionClickTable;
+          }
+	
+	    
+	}
         void BuildObj::clickEventListen(Camera2D camera, int &money){
             
 
@@ -449,6 +491,8 @@ BuildObj::BuildObj(): NameObj("buildCell"), Path("src/location/laboratory/buildi
             Vector2 PositionClick = GetMousePosition();
             PositionClick = GetScreenToWorld2D(PositionClick, camera);
             BuildObj *table;
+
+	    int isClosed;
             //
             //DrawText(TextFormat("PositionMouseX: %04f", PositionClick.x), 30, 20, 20, WHITE);
             //DrawText(TextFormat("PositionMouseY: %04f", PositionClick.y), 30, 50, 20, WHITE);
@@ -477,7 +521,8 @@ BuildObj::BuildObj(): NameObj("buildCell"), Path("src/location/laboratory/buildi
 
             }
             if (exists)
-            {
+
+            {/*
                 //static 
                 if (!isLoadTexture) {
                   BuildObj tableReserarch("tableResearch","src/tableResearch.gif", 4.5f);
@@ -498,13 +543,27 @@ BuildObj::BuildObj(): NameObj("buildCell"), Path("src/location/laboratory/buildi
                 }
                 //ojects[i].countAnim();
                // ojects[i].animation();
+		*/
 
+		isClosed = selectionBtn();
+		if (!allObj.empty()) {
+			for (int i = 0; i <= numCells; i++) {
+                  		allObj[i].SetPosObj(frameRec.x + 10.0f, frameRec.y - 60.0f);
+                  		allObj[i].SetPosRect(allObj[i].getPosVector().x,allObj[i].getPosVector().y);
+                  		allObj[i].Draw();
+                  		allObj[i].countAnim(allObj[i]);
+                  		allObj[i].animation(allObj[i]);
+
+
+
+                }
             }
+	  }
 
            
         }
 	
-        void BuildObj::SelectionPopUp(Camera2D camera, Player &play, int &money){
+        void BuildObj::SelectionPopUp(Camera2D camera, Player &play, int &money, BuildObj cell[]){
           Vector2 PositionClick = GetMousePosition();
           Vector2 PositionPlayer = play.ReturnPostion();
           int isClosed;
@@ -518,14 +577,33 @@ BuildObj::BuildObj(): NameObj("buildCell"), Path("src/location/laboratory/buildi
           }
           if (isSect) {
             play.setMovable(false);
-            isClosed = selectionBtn(camera, Vector2{frameRec.x -200, frameRec.y - 200}, PositionPlayer, table, money, ojects, numCells, frameRec);
+            isClosed = selectionBtn();
 	    
-
+	    
             if (isClosed == 0) {
               isSect = false;
               play.setMovable(true);
-            }
-	    
+
+	      
+            }/*
+	    if (!allObj.empty()) {
+		for (int i = 0; i <= allObj.size(); i++){
+			//allObj[i].Draw();
+			//allObj[i].SetPosObj(allObj[i].ReturnframeRec().x + 10.0f,allObj[i].ReturnframeRec().x - 60.0f);
+			
+			
+		
+			allObj[i].SetPosRect(frameRec.x + 10.0f, frameRec.y - 60.0f);
+			allObj[i].SetPosObj(cell[i].frameRec.x,cell[i].frameRec.y);
+
+			
+			//allObj[i].Draw();
+			//allObj[i].countAnim(allObj[i]);
+			//allObj[i].animation(allObj[i]);
+			
+	    	}
+	    }*/
+
           }
 	 
         }

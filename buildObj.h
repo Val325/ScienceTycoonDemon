@@ -110,8 +110,11 @@ class BuildObj{
             bool collision;
             bool exists;
             bool isSect;
+	    bool isClickedTable;
             std::vector<BuildObj> ojects;
+	    Vector2 PositionClickTable;
         public:
+	    int id;
             Rectangle frameRec;
             int framesCounter;
             int price;
@@ -122,10 +125,15 @@ class BuildObj{
         void countPoint(int num, bool exist);         //
         int countPointRet(int num, bool exist);        
 	int getPoints();
+	int ReturnID();
 	bool IsExist();
         void clickEventListen(Camera2D camera, int &money);        
-	void SelectionPopUp(Camera2D camera, Player &play, int &money);
+	void SelectionPopUp(Camera2D camera, Player &play, int &money, BuildObj cell[]);
 	void DrawRect();
+	Rectangle ReturnframeRec();
+	float ReturnframeRecX();
+	float ReturnframeRecY();
+	Vector2 ReturnPostionClick(Camera2D);
         void animation(BuildObj &obj); 
 	void SetPosObj(float x, float y);
         Vector2 getPosVector();

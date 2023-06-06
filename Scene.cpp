@@ -15,6 +15,8 @@ struct EntityStruct MainHero;
 struct EntityStruct Table;
 struct RoomStruct RoomInfo;
 struct TileStruct FloorTile;
+
+
 const char* bool_cast(const bool b) {
     return b ? "true" : "false";
 }
@@ -24,7 +26,18 @@ const char* bool_cast(const bool b) {
 //------------------------------------------------------------------------------------
 void Scene1(void)
 {
-
+    int amountBuildCell = 10;
+    int amountActiveBuildCell = 0;
+    BuildObj buildCells [amountBuildCell];
+    int pointsCell [amountBuildCell];
+    for (int i = 0; i < amountBuildCell; ++i)
+    {
+        BuildObj buildCell("buildCell" + std::to_string(i),"src/location/laboratory/buildingCell.png", 1.5f);
+        buildCell.SetPosObj(200 + 100 * i, 500);
+        buildCell.SetPosRect(buildCell.getPosVector().x,buildCell.getPosVector().y);
+        buildCells[i] = buildCell;
+	buildCell.id = i;
+    }
 //------------------------------------------------------------------------------------
 // Initialization
 //---   ---------------------------------------------------------------------------------
@@ -49,17 +62,8 @@ void Scene1(void)
     Object panel("panel","src/panel.png", SizeObj);
     panel.SetPosObj(600, 230);
 
-    int amountBuildCell = 10;
-    int amountActiveBuildCell = 0;
-    BuildObj buildCells [amountBuildCell];
-    int pointsCell [amountBuildCell];
-    for (int i = 0; i < amountBuildCell; ++i)
-    {
-        BuildObj buildCell("buildCell" + std::to_string(i),"src/location/laboratory/buildingCell.png", 1.5f);
-        buildCell.SetPosObj(200 + 100 * i, 500);
-        buildCell.SetPosRect(buildCell.getPosVector().x,buildCell.getPosVector().y);
-        buildCells[i] = buildCell;
-    }
+    
+    
 
     
     //Camera
@@ -128,16 +132,30 @@ void Scene1(void)
             //buildCells.SelectionPopUp(camera);
             for (int i = 0; i < amountBuildCell; i++)
             {
-                //buildCells[i].clickEventListen(camera, hero.money, hero);
+                buildCells[i].clickEventListen(camera, hero.money);
                 //buildCells[i].SelectionPopUp(camera, hero);
               	//buildCells[i].countPoint(0, buildCells[i].IsExist());
                 buildCells[i].Draw();
+		//buildCells[i].ReturnPostionClick(camera);
             }
+	   /* 
 	    if (!allObj.empty()) {
 		for (int i = 0; i <= allObj.size(); i++){
+			//allObj[i].Draw();
+			//allObj[i].SetPosObj(allObj[i].ReturnframeRec().x + 10.0f,allObj[i].ReturnframeRec().x - 60.0f);
+			
+			
+		
+			allObj[i].SetPosRect(buildCells[i].getPosVector().x + 10.0f, buildCells[i].getPosVector().y - 60.0f);
+			allObj[i].SetPosObj(buildCells[i].getPosVector().x + 10.0f, buildCells[i].getPosVector().y - 60.0f);
+
 			allObj[i].Draw();
+
+			allObj[i].countAnim(allObj[i]);
+			allObj[i].animation(allObj[i]);
+			
 	    	}
-	    }
+	    }*/
 
 	    
             //fgfsdfgsdgf
@@ -157,7 +175,7 @@ void Scene1(void)
         {
             pointsCell[i] = buildCells[i].countPointRet(hero.points, buildCells[i].IsExist()); 
             hero.points += pointsCell[i];
-            buildCells[i].SelectionPopUp(camera, hero, hero.money);
+            buildCells[i].SelectionPopUp(camera, hero, hero.money, buildCells);
             
         }
         

@@ -43,7 +43,7 @@ void TableEnd()
 //------------------------------------------------------------------------------------
 // Program main entry point
 //------------------------------------------------------------------------------------
-static bool selectionBtn(Camera2D camerain, Vector2 vec, Vector2 playerpos, BuildObj &tabl, int &money, std::vector<BuildObj> &obj, int numAmount, Rectangle rectTable)
+static bool selectionBtn()
 {
     
     // selectionBtn: controls initialization
