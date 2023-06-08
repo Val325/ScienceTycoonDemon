@@ -492,7 +492,7 @@ BuildObj::BuildObj(): NameObj("buildCell"), Path("src/location/laboratory/buildi
             PositionClick = GetScreenToWorld2D(PositionClick, camera);
             BuildObj *table;
 
-	    int isClosed;
+	    //int isClosed;
             //
             //DrawText(TextFormat("PositionMouseX: %04f", PositionClick.x), 30, 20, 20, WHITE);
             //DrawText(TextFormat("PositionMouseY: %04f", PositionClick.y), 30, 50, 20, WHITE);
@@ -518,7 +518,7 @@ BuildObj::BuildObj(): NameObj("buildCell"), Path("src/location/laboratory/buildi
                 PositionSpawn = (Vector2){ (float)999999999.0f, (float)999999999.0f };
                 
                 exists = true;
-
+		selectionBtn();
             }
             if (exists)
 
@@ -545,7 +545,7 @@ BuildObj::BuildObj(): NameObj("buildCell"), Path("src/location/laboratory/buildi
                // ojects[i].animation();
 		*/
 
-		isClosed = selectionBtn();
+		//selectionBtn();
 		if (!allObj.empty()) {
 			for (int i = 0; i <= numCells; i++) {
                   		allObj[i].SetPosObj(frameRec.x + 10.0f, frameRec.y - 60.0f);

@@ -138,7 +138,7 @@ void Scene1(void)
                 buildCells[i].Draw();
 		//buildCells[i].ReturnPostionClick(camera);
             }
-	   /* 
+	    
 	    if (!allObj.empty()) {
 		for (int i = 0; i <= allObj.size(); i++){
 			//allObj[i].Draw();
@@ -146,16 +146,16 @@ void Scene1(void)
 			
 			
 		
-			allObj[i].SetPosRect(buildCells[i].getPosVector().x + 10.0f, buildCells[i].getPosVector().y - 60.0f);
-			allObj[i].SetPosObj(buildCells[i].getPosVector().x + 10.0f, buildCells[i].getPosVector().y - 60.0f);
+			//allObj[i].SetPosRect(buildCells[i].getPosVector().x + 10.0f, buildCells[i].getPosVector().y - 60.0f);
+			//allObj[i].SetPosObj(buildCells[i].getPosVector().x + 10.0f, buildCells[i].getPosVector().y - 60.0f);
 
-			allObj[i].Draw();
+			//allObj[i].Draw();
 
-			allObj[i].countAnim(allObj[i]);
-			allObj[i].animation(allObj[i]);
+			//allObj[i].countAnim(allObj[i]);
+			//allObj[i].animation(allObj[i]);
 			
 	    	}
-	    }*/
+	    }
 
 	    
             //fgfsdfgsdgf
