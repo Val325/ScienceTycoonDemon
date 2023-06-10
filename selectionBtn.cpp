@@ -1,6 +1,7 @@
 #include "raygui.h"
 //#include "Structs.cpp"
 #include "buildObj.h"
+//#include "Scene.cpp"
 
 //class BuildObj;
 //------------------------------------------------------------------------------------
@@ -9,46 +10,60 @@
 //
 std::vector<BuildObj> allObj;
 
-void TableMin()
+//BuildObj allObj[10];
+bool allObjIsExists[10] = {false};
+bool WindowBoxPopUpSelectTableActive = true;
+void TableMin(int id_cell, BuildObj obj)
 {
    
-   BuildObj tableReserarch("tableResearch","src/tableResearch.gif", 4.5f);
-   //tableReserarch.Draw();
-   allObj.push_back(tableReserarch);
+   //BuildObj tableReserarchMin("tableResearch","src/tableResearch.gif", 4.5f);
    
+   //tableReserarch.Draw();
+   //allObj.push_back(obj);
+   allObjIsExists[id_cell] = true;
    //return "tableReserarch";
   
-    
-                
+   allObj[id_cell] = obj;
+   //allObj.insert(allObj.begin() + id_cell, obj);
+   //return tableReserarch;
+   
    
 }
-void TableMid()
+void TableMid(int id_cell, BuildObj obj)
 {
-    BuildObj tableReserarch("tableResearch2","src/tableResearch2.gif", 4.5f);
+    //BuildObj tableReserarchMid("tableResearch2","src/tableResearch2.gif", 4.5f);
+    
     //tableReserarch.Draw();
-    allObj.push_back(tableReserarch);
-    //return "tableResearch2"; 
+    //allObj.push_back(obj);
+    allObjIsExists[id_cell] = true;
+    //return "tableResearch2";
+    allObj[id_cell] = obj;
 
+    //allObj.insert(allObj.begin() + id_cell, obj);
+    //return tableReserarch; 
 }
-void TableEnd()
+void TableEnd(int id_cell, BuildObj obj)
 {
-    BuildObj tableReserarch("tableResearch3","src/tableResearch3.gif", 4.5f);
+    //BuildObj tableReserarchTop("tableResearch3","src/tableResearch3.gif", 4.5f);
+    
     //tableReserarch.Draw();
-    allObj.push_back(tableReserarch);
+    //allObj.push_back(obj);
+    allObjIsExists[id_cell] = true;
     //return "tableResearch3"; 
-
+    //allObj.insert(allObj.begin() + id_cell, obj);
+    allObj[id_cell] = obj;
+    //return tableReserarch; 
 }
 
 
 //------------------------------------------------------------------------------------
 // Program main entry point
 //------------------------------------------------------------------------------------
-static bool selectionBtn()
-{
+bool selectionBtn(Camera2D camera,int id_cell, std::map<std::string, BuildObj> tableRes){
     
     // selectionBtn: controls initialization
     //----------------------------------------------------------------------------------
-    bool WindowBoxPopUpSelectTableActive = true;
+    //bool WindowBoxPopUpSelectTableActive = true;
     
     Rectangle layoutRecs[7] = {
         (Rectangle){ 344, 352, 256, 128 },
@@ -59,6 +74,7 @@ static bool selectionBtn()
         (Rectangle){ 480, 416, 120, 24 },
         (Rectangle){ 480, 448, 120, 24 },
     };
+    
     // raygui: controls drawing
             //----------------------------------------------------------------------------------
             if (WindowBoxPopUpSelectTableActive)
@@ -69,13 +85,15 @@ static bool selectionBtn()
                 std::cout << "window box coord: " << layoutRecs[0].x << " "<< layoutRecs[0].y << std::endl;
                 
                 if (GuiButton(layoutRecs[1], "Table light")) {
-			TableMin();
+			TableMin(id_cell, tableRes["tableResearch"]);
 		}
                 if (GuiButton(layoutRecs[2], "Table medium")){ 
-			TableMid();
+			TableMid(id_cell, tableRes["tableResearch2"]);
+      
 		} 
                 if (GuiButton(layoutRecs[3], "Table top")){ 
-			TableEnd();
+			TableEnd(id_cell, tableRes["tableResearch3"]);
+  
 		} 
                 GuiLabel(layoutRecs[4], "Know points 20");
                 GuiLabel(layoutRecs[5], "Know points 40");

@@ -6,8 +6,7 @@
 #include "Utils.cpp"
 #include <nlohmann/json.hpp>
 #include <unordered_map>
-
-
+#include <map>
 
 using json = nlohmann::json;
 const float SizeObj = 5.0f;
@@ -21,11 +20,13 @@ const char* bool_cast(const bool b) {
     return b ? "true" : "false";
 }
 
+
 //------------------------------------------------------------------------------------
 // Program main entry point
 //------------------------------------------------------------------------------------
 void Scene1(void)
 {
+    allObj.resize(10);
     int amountBuildCell = 10;
     int amountActiveBuildCell = 0;
     BuildObj buildCells [amountBuildCell];
@@ -38,6 +39,7 @@ void Scene1(void)
         buildCells[i] = buildCell;
 	buildCell.id = i;
     }
+    std::cout << "1" << std::endl; 
 //------------------------------------------------------------------------------------
 // Initialization
 //---   ---------------------------------------------------------------------------------
@@ -64,7 +66,7 @@ void Scene1(void)
 
     
     
-
+    std::cout << "2" << std::endl; 
     
     //Camera
     Camera2D camera = { 0 };
@@ -92,7 +94,16 @@ void Scene1(void)
     Texture2D VesselAnim = LoadTextureFromImage(Vessel);
     Rectangle frameRecVessel = { 0.0f, 0.0f, (float)VesselAnim.width, (float)VesselAnim.height};
     
-
+    BuildObj tableReserarchMin("tableResearch","src/tableResearch.gif", 4.5f);
+    BuildObj tableReserarchMid("tableResearch2","src/tableResearch2.gif", 4.5f);
+    BuildObj tableReserarchTop("tableResearch3","src/tableResearch3.gif", 4.5f);
+    std::cout << "3" << std::endl; 
+    std::map<std::string, BuildObj> tables = {
+        { "tableResearch", tableReserarchMin},
+        { "tableResearch2", tableReserarchMid},
+        { "tableResearch3", tableReserarchTop}
+    };
+    std::cout << "4" << std::endl; 
 
     SetTargetFPS(60);
 
@@ -132,33 +143,18 @@ void Scene1(void)
             //buildCells.SelectionPopUp(camera);
             for (int i = 0; i < amountBuildCell; i++)
             {
-                buildCells[i].clickEventListen(camera, hero.money);
+                buildCells[i].clickEventListen(camera, hero.money, i, tables);
+		
+	    	buildCells[i].Draw();
+		pointsCell[i] = buildCells[i].countPointRet(hero.points, buildCells[i].IsExist()); 
                 //buildCells[i].SelectionPopUp(camera, hero);
               	//buildCells[i].countPoint(0, buildCells[i].IsExist());
-                buildCells[i].Draw();
+                //buildCells[i].Draw();
 		//buildCells[i].ReturnPostionClick(camera);
             }
 	    
-	    if (!allObj.empty()) {
-		for (int i = 0; i <= allObj.size(); i++){
-			//allObj[i].Draw();
-			//allObj[i].SetPosObj(allObj[i].ReturnframeRec().x + 10.0f,allObj[i].ReturnframeRec().x - 60.0f);
-			
-			
-		
-			//allObj[i].SetPosRect(buildCells[i].getPosVector().x + 10.0f, buildCells[i].getPosVector().y - 60.0f);
-			//allObj[i].SetPosObj(buildCells[i].getPosVector().x + 10.0f, buildCells[i].getPosVector().y - 60.0f);
+	     
 
-			//allObj[i].Draw();
-
-			//allObj[i].countAnim(allObj[i]);
-			//allObj[i].animation(allObj[i]);
-			
-	    	}
-	    }
-
-	    
-            //fgfsdfgsdgf
             //buildCell.DrawRect();
             
         EndMode2D();
@@ -175,7 +171,9 @@ void Scene1(void)
         {
             pointsCell[i] = buildCells[i].countPointRet(hero.points, buildCells[i].IsExist()); 
             hero.points += pointsCell[i];
-            buildCells[i].SelectionPopUp(camera, hero, hero.money, buildCells);
+	    selectionBtn(camera, i, tables);
+            //buildCells[i].SelectionPopUp(camera, hero, hero.money, buildCells, i, tables);
+	    //buildCells[i].Draw();
             
         }
         

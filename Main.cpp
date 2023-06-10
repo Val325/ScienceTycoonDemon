@@ -39,6 +39,7 @@ static void PlayBtn()
 
 int main(void)
 {
+    std::cout << "start" << std::endl; 
     SetTraceLogLevel(0);
     // Initialization
     //--------------------------------------------------------------------------------------

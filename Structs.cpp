@@ -472,7 +472,7 @@ BuildObj::BuildObj(): NameObj("buildCell"), Path("src/location/laboratory/buildi
 			allObj[i].SetPosRect(allObj[i].getPosVector().x, allObj[i].getPosVector().y);
 
 			//allObj[i].SetPosObj(buildCells[i].getPosVector().x + 10.0f, buildCells[i].getPosVector().y - 60.0f);
-
+			//
 			allObj[i].Draw();
 			allObj[i].countAnim(allObj[i]);
 			allObj[i].animation(allObj[i]);
@@ -484,41 +484,28 @@ BuildObj::BuildObj(): NameObj("buildCell"), Path("src/location/laboratory/buildi
 	
 	    
 	}
-        void BuildObj::clickEventListen(Camera2D camera, int &money){
+        void BuildObj::clickEventListen(Camera2D camera, int &money, int id_cell,std::map<std::string, BuildObj> tableRes){
             
 
             bool isLoadTexture = false;
             Vector2 PositionClick = GetMousePosition();
             PositionClick = GetScreenToWorld2D(PositionClick, camera);
             BuildObj *table;
-
-	    //int isClosed;
-            //
-            //DrawText(TextFormat("PositionMouseX: %04f", PositionClick.x), 30, 20, 20, WHITE);
-            //DrawText(TextFormat("PositionMouseY: %04f", PositionClick.y), 30, 50, 20, WHITE);
-
-            
-
-            //DrawText(TextFormat("PositionframeRecX: %04f", frameRec.x), 30, 80, 20, WHITE);
-            //DrawText(TextFormat("PositionframeRecY: %04f", frameRec.y), 30, 110, 20, WHITE);
-            
-
-
-
-
+            bool isClosed;
             if (CheckCollisionPointRec(PositionClick, frameRec) && IsMouseButtonDown(0) && !exists)
             {
-                //UpdateTexture(imgAnim, NULL);
-                //UnloadTexture(imgAnim);
-                //UnloadImage(img);
+                
                 numCells += 1;
                 
                 money -= price * numCells;
+
                 //If you click on a cell to build it will teleport to the ass of the game map
                 PositionSpawn = (Vector2){ (float)999999999.0f, (float)999999999.0f };
-                
+               	WindowBoxPopUpSelectTableActive = true;
+		
                 exists = true;
-		selectionBtn();
+		//isClosed = selectionBtn(id_cell, tableRes);
+		//isClosed = selectionBtn(id_cell, tableRes);
             }
             if (exists)
 
@@ -544,40 +531,61 @@ BuildObj::BuildObj(): NameObj("buildCell"), Path("src/location/laboratory/buildi
                 //ojects[i].countAnim();
                // ojects[i].animation();
 		*/
-
+		std::cout << "id_cell: " << id_cell << std::endl;
+		std::cout << "numCells: " << numCells << std::endl;
 		//selectionBtn();
+		//allObj[i].Draw();
+
+		
+		//allObj.at(id_cell).Draw();
+		
+		//selectionBtn(id_cell, tableRes);
+			
+		//isClosed = selectionBtn(camera ,id_cell, tableRes);
+		
+		if (allObjIsExists[id_cell]){
+			allObj[id_cell].SetPosObj(frameRec.x + 10.0f, frameRec.y - 60.0f);
+			allObj[id_cell].SetPosRect(allObj[id_cell].getPosVector().x,allObj[id_cell].getPosVector().y);
+			allObj[id_cell].Draw();
+			allObj[id_cell].countAnim(allObj[id_cell]);
+			allObj[id_cell].animation(allObj[id_cell]);
+			
+		}
+	
+	/*	 
 		if (!allObj.empty()) {
 			for (int i = 0; i <= numCells; i++) {
-                  		allObj[i].SetPosObj(frameRec.x + 10.0f, frameRec.y - 60.0f);
-                  		allObj[i].SetPosRect(allObj[i].getPosVector().x,allObj[i].getPosVector().y);
-                  		allObj[i].Draw();
-                  		allObj[i].countAnim(allObj[i]);
-                  		allObj[i].animation(allObj[i]);
+				//allObj[i].id = i;
+                               if (!allObj[i].IsExist() && allObjIsExists[i]){	
+			        	allObj[i].SetPosObj(frameRec.x + 10.0f, frameRec.y - 60.0f);
+					allObj[i].SetPosRect(allObj[i].getPosVector().x,allObj[i].getPosVector().y);
+					allObj[i].Draw();
+					allObj[i].countAnim(allObj[i]);
+					allObj[i].animation(allObj[i]);
+                  		}
+			}
+	    
 
-
-
-                }
-            }
-	  }
-
-           
+	  }*/
         }
+}
 	
-        void BuildObj::SelectionPopUp(Camera2D camera, Player &play, int &money, BuildObj cell[]){
+        void BuildObj::SelectionPopUp(Camera2D camera, Player &play, int &money, BuildObj cell[], int id_cell,std::map<std::string, BuildObj> tableRes){
           Vector2 PositionClick = GetMousePosition();
           Vector2 PositionPlayer = play.ReturnPostion();
           int isClosed;
 	  BuildObj table;
           
           if (CheckCollisionPointRec(PositionClick, frameRec) && IsMouseButtonDown(0) && !isSect){
-            numCells += 1;
+            //numCells += 1;
                 
-            money -= price * numCells; 
+            //money -= price * numCells; 
             isSect = true; 
           }
           if (isSect) {
             play.setMovable(false);
-            isClosed = selectionBtn();
+            isClosed = selectionBtn(camera ,id_cell, tableRes);
+
 	    
 	    
             if (isClosed == 0) {
