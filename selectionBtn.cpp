@@ -13,45 +13,53 @@ std::vector<BuildObj> allObj;
 //BuildObj allObj[10];
 bool allObjIsExists[10] = {false};
 bool WindowBoxPopUpSelectTableActive = true;
+int chooseTable = NULL;
 void TableMin(int id_cell, BuildObj obj)
 {
-   
-   //BuildObj tableReserarchMin("tableResearch","src/tableResearch.gif", 4.5f);
+      //BuildObj tableReserarchMin("tableResearch","src/tableResearch.gif", 4.5f);
    
    //tableReserarch.Draw();
    //allObj.push_back(obj);
    allObjIsExists[id_cell] = true;
    //return "tableReserarch";
-  
+   
    allObj[id_cell] = obj;
+   //chooseTable = id_cell; 
+   //allObj.insert(allObj.begin() + id_cell, obj);
+	    
+
+}
    //allObj.insert(allObj.begin() + id_cell, obj);
    //return tableReserarch;
    
    
-}
+
 void TableMid(int id_cell, BuildObj obj)
 {
     //BuildObj tableReserarchMid("tableResearch2","src/tableResearch2.gif", 4.5f);
-    
-    //tableReserarch.Draw();
+       //tableReserarch.Draw();
     //allObj.push_back(obj);
+   
     allObjIsExists[id_cell] = true;
     //return "tableResearch2";
+    
     allObj[id_cell] = obj;
-
+    //chooseTable = id_cell; 
     //allObj.insert(allObj.begin() + id_cell, obj);
     //return tableReserarch; 
 }
 void TableEnd(int id_cell, BuildObj obj)
 {
     //BuildObj tableReserarchTop("tableResearch3","src/tableResearch3.gif", 4.5f);
-    
-    //tableReserarch.Draw();
+        //tableReserarch.Draw();
     //allObj.push_back(obj);
+   
     allObjIsExists[id_cell] = true;
     //return "tableResearch3"; 
     //allObj.insert(allObj.begin() + id_cell, obj);
+    
     allObj[id_cell] = obj;
+    //chooseTable = id_cell; 
     //return tableReserarch; 
 }
 

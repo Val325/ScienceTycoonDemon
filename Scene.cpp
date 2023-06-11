@@ -141,12 +141,17 @@ void Scene1(void)
             hero.DrawHero();
             //hero.showHUDtech();
             //buildCells.SelectionPopUp(camera);
+	    //buildCells[chooseTable].clickEventListen(camera, hero.money, chooseTable, tables);
             for (int i = 0; i < amountBuildCell; i++)
             {
-                buildCells[i].clickEventListen(camera, hero.money, i, tables);
 		
+                buildCells[i].clickEventListen(camera, hero.money, i, tables);
+
 	    	buildCells[i].Draw();
-		pointsCell[i] = buildCells[i].countPointRet(hero.points, buildCells[i].IsExist()); 
+		pointsCell[i] = buildCells[i].countPointRet(hero.points, buildCells[i].IsExist());
+
+
+
                 //buildCells[i].SelectionPopUp(camera, hero);
               	//buildCells[i].countPoint(0, buildCells[i].IsExist());
                 //buildCells[i].Draw();
@@ -162,7 +167,7 @@ void Scene1(void)
         //Log
 
 
-        
+        selectionBtn(camera, chooseTable, tables);
         //hero.DrawStatistics();
         
         DrawText(TextFormat("InBorder: %s", bool_cast(CheckCollisionRecs(hero.ReturnframeRec(), computer.ReturnRect(false)))), 30, 140, 20, WHITE);
@@ -171,7 +176,7 @@ void Scene1(void)
         {
             pointsCell[i] = buildCells[i].countPointRet(hero.points, buildCells[i].IsExist()); 
             hero.points += pointsCell[i];
-	    selectionBtn(camera, i, tables);
+	    //selectionBtn(camera, i, tables);
             //buildCells[i].SelectionPopUp(camera, hero, hero.money, buildCells, i, tables);
 	    //buildCells[i].Draw();
             
