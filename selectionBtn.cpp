@@ -9,11 +9,15 @@
 //------------------------------------------------------------------------------------
 //
 std::vector<BuildObj> allObj;
-
+int Knowledge_Point = 0;
 //BuildObj allObj[10];
 bool allObjIsExists[10] = {false};
 bool WindowBoxPopUpSelectTableActive = true;
 int chooseTable = NULL;
+
+int AmountMinTable = 0;
+int AmountMidTable = 0;
+int AmountTopTable = 0;
 void TableMin(int id_cell, BuildObj obj)
 {
       //BuildObj tableReserarchMin("tableResearch","src/tableResearch.gif", 4.5f);
@@ -22,7 +26,7 @@ void TableMin(int id_cell, BuildObj obj)
    //allObj.push_back(obj);
    allObjIsExists[id_cell] = true;
    //return "tableReserarch";
-   
+   AmountMinTable++; 
    allObj[id_cell] = obj;
    //chooseTable = id_cell; 
    //allObj.insert(allObj.begin() + id_cell, obj);
@@ -42,7 +46,7 @@ void TableMid(int id_cell, BuildObj obj)
    
     allObjIsExists[id_cell] = true;
     //return "tableResearch2";
-    
+    AmountMidTable++; 
     allObj[id_cell] = obj;
     //chooseTable = id_cell; 
     //allObj.insert(allObj.begin() + id_cell, obj);
@@ -53,7 +57,7 @@ void TableEnd(int id_cell, BuildObj obj)
     //BuildObj tableReserarchTop("tableResearch3","src/tableResearch3.gif", 4.5f);
         //tableReserarch.Draw();
     //allObj.push_back(obj);
-   
+    AmountTopTable++; 
     allObjIsExists[id_cell] = true;
     //return "tableResearch3"; 
     //allObj.insert(allObj.begin() + id_cell, obj);
@@ -90,7 +94,7 @@ bool selectionBtn(Camera2D camera,int id_cell, std::map<std::string, BuildObj> t
               
 
                 WindowBoxPopUpSelectTableActive = !GuiWindowBox(layoutRecs[0], "Select table");
-                std::cout << "window box coord: " << layoutRecs[0].x << " "<< layoutRecs[0].y << std::endl;
+                //std::cout << "window box coord: " << layoutRecs[0].x << " "<< layoutRecs[0].y << std::endl;
                 
                 if (GuiButton(layoutRecs[1], "Table light")) {
 			TableMin(id_cell, tableRes["tableResearch"]);

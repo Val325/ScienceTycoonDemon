@@ -123,7 +123,8 @@ class BuildObj{
 	BuildObj();
 
         void countPoint(int num, bool exist);         //
-        int countPointRet(int num, bool exist);        
+	void setInterval(int num);
+        int countPointRet(int num, int addPoint, bool exist);        
 	int getPoints();
 	int ReturnID();
 	bool IsExist();

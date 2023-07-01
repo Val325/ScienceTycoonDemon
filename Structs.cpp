@@ -404,8 +404,11 @@ BuildObj::BuildObj(): NameObj("buildCell"), Path("src/location/laboratory/buildi
         void BuildObj::countPoint(int num, bool exist){
             
         }
+	void BuildObj::setInterval(int num){
+	    interval = num;
+	}
          //
-        int BuildObj::countPointRet(int num, bool exist){
+        int BuildObj::countPointRet(int num, int addPoint, bool exist){
             int currentTime = static_cast<int>(GetTime());
             int elapsedTime = currentTime - startTimeTimer;
             
@@ -421,7 +424,10 @@ BuildObj::BuildObj(): NameObj("buildCell"), Path("src/location/laboratory/buildi
     
             if (flag && exist)  
             {
-                totalPoint = points + 1;
+                //totalPoint = points + addPoint;
+                //std::cout << "this need working every 5 second"<< std::endl;
+                Knowledge_Point += (AmountMinTable * 10) + (AmountMidTable * 20) + (AmountTopTable * 30);
+		std::cout << "Knowledge_Point: "<< Knowledge_Point  << std::endl;
                 flag = false;  
             }
            
@@ -511,12 +517,11 @@ BuildObj::BuildObj(): NameObj("buildCell"), Path("src/location/laboratory/buildi
             if (exists)
 
             {
-		std::cout << "id_cell: " << id_cell << std::endl;
-		std::cout << "numCells: " << numCells << std::endl;
+		//std::cout << "id_cell: " << id_cell << std::endl;
+		//std::cout << "numCells: " << numCells << std::endl;
+		//std::cout << "allObj size: " << allObj.size() << std::endl;
 		
-		std::cout << "allObj size: " << allObj.size() << std::endl;
-		
-		
+		//money = (AmountMinTable * 10) + (AmountMidTable * 20) + (AmountTopTable * 30); 	
 		
 		allObj[id_cell].SetPosObj(frameRec.x + 10.0f, frameRec.y - 60.0f);
 		allObj[id_cell].SetPosRect(allObj[id_cell].getPosVector().x,allObj[id_cell].getPosVector().y);

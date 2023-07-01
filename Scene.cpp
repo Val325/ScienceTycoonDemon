@@ -10,6 +10,7 @@
 
 using json = nlohmann::json;
 const float SizeObj = 5.0f;
+//int Knowledge_Point = 0;
 struct EntityStruct MainHero;
 struct EntityStruct Table;
 struct RoomStruct RoomInfo;
@@ -148,7 +149,7 @@ void Scene1(void)
                 buildCells[i].clickEventListen(camera, hero.money, i, tables);
 
 	    	buildCells[i].Draw();
-		pointsCell[i] = buildCells[i].countPointRet(hero.points, buildCells[i].IsExist());
+		pointsCell[i] = buildCells[i].countPointRet(hero.points,5 , buildCells[i].IsExist());
 
 
 
@@ -174,14 +175,14 @@ void Scene1(void)
         
         for (int i = 0; i < amountBuildCell; ++i)
         {
-            pointsCell[i] = buildCells[i].countPointRet(hero.points, buildCells[i].IsExist()); 
+            pointsCell[i] = buildCells[i].countPointRet(hero.points, 5, buildCells[i].IsExist()); 
             hero.points += pointsCell[i];
 	    //selectionBtn(camera, i, tables);
             //buildCells[i].SelectionPopUp(camera, hero, hero.money, buildCells, i, tables);
 	    //buildCells[i].Draw();
             
         }
-        
+        hero.points = Knowledge_Point;
         hero.showHUDtech();
        
         DrawText(TextFormat("Knowledge (Points): %04d", hero.points), 30, 80, 20, WHITE);
