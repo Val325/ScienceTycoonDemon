@@ -501,13 +501,13 @@ BuildObj::BuildObj(): NameObj("buildCell"), Path("src/location/laboratory/buildi
 	     
             if (CheckCollisionPointRec(PositionClick, frameRec) && IsMouseButtonDown(0) && !exists)
             {
-        	
+                PositionSpawn = (Vector2){ (float)999999999.0f, (float)999999999.0f };	
                 numCells += 1;
          
                 money -= price * numCells;
 		chooseTable = id_cell;	
                 //If you click on a cell to build it will teleport to the ass of the game map
-                PositionSpawn = (Vector2){ (float)999999999.0f, (float)999999999.0f };
+                //PositionSpawn = (Vector2){ (float)999999999.0f, (float)999999999.0f };
                	WindowBoxPopUpSelectTableActive = true;
 		
                 exists = true;
@@ -522,7 +522,7 @@ BuildObj::BuildObj(): NameObj("buildCell"), Path("src/location/laboratory/buildi
 		//std::cout << "allObj size: " << allObj.size() << std::endl;
 		
 		//money = (AmountMinTable * 10) + (AmountMidTable * 20) + (AmountTopTable * 30); 	
-		
+
 		allObj[id_cell].SetPosObj(frameRec.x + 10.0f, frameRec.y - 60.0f);
 		allObj[id_cell].SetPosRect(allObj[id_cell].getPosVector().x,allObj[id_cell].getPosVector().y);
 		allObj[id_cell].Draw();

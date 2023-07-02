@@ -12,7 +12,7 @@ std::vector<BuildObj> allObj;
 int Knowledge_Point = 0;
 //BuildObj allObj[10];
 bool allObjIsExists[10] = {false};
-bool WindowBoxPopUpSelectTableActive = true;
+bool WindowBoxPopUpSelectTableActive = false;
 int chooseTable = NULL;
 
 int AmountMinTable = 0;
