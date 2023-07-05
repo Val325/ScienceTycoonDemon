@@ -474,14 +474,15 @@ BuildObj::BuildObj(): NameObj("buildCell"), Path("src/location/laboratory/buildi
 	     if (!allObj.empty()) {
 		for (int i = 0; i <= allObj.size(); i++){
 			//allObj[i].Draw();
-			allObj[i].SetPosObj(allObj[i].ReturnframeRec().x + 10.0f,allObj[i].ReturnframeRec().x - 60.0f);
-			allObj[i].SetPosRect(allObj[i].getPosVector().x, allObj[i].getPosVector().y);
+			
+			//allObj[i].SetPosObj(allObj[i].ReturnframeRec().x + 10.0f,allObj[i].ReturnframeRec().x - 60.0f);
+			//allObj[i].SetPosRect(allObj[i].getPosVector().x, allObj[i].getPosVector().y);
 
 			//allObj[i].SetPosObj(buildCells[i].getPosVector().x + 10.0f, buildCells[i].getPosVector().y - 60.0f);
 			//
-			allObj[i].Draw();
-			allObj[i].countAnim(allObj[i]);
-			allObj[i].animation(allObj[i]);
+			//allObj[i].Draw();
+			//allObj[i].countAnim(allObj[i]);
+			//allObj[i].animation(allObj[i]);
 	    	}
 	    }
 
@@ -490,20 +491,22 @@ BuildObj::BuildObj(): NameObj("buildCell"), Path("src/location/laboratory/buildi
 	
 	    
 	}
-        void BuildObj::clickEventListen(Camera2D camera, int &money, int id_cell,std::map<std::string, BuildObj> tableRes){
+        void BuildObj::clickEventListen(Camera2D camera, int &money, int id_cell,std::map<std::string, BuildObj> tableRes, BuildObj cell[]){
             
 
             bool isLoadTexture = false;
-            Vector2 PositionClick = GetMousePosition();
+            Vector2 PositionClick = GetMousePosition(); 
             PositionClick = GetScreenToWorld2D(PositionClick, camera);
             BuildObj *table;
             bool isClosed;
-	     
+	    //frameRec.x = frameRec.x + 10.0f;
+	    //frameRec.y = frameRec.y - 60.0f; 
             if (CheckCollisionPointRec(PositionClick, frameRec) && IsMouseButtonDown(0) && !exists)
             {
-                PositionSpawn = (Vector2){ (float)999999999.0f, (float)999999999.0f };	
+                
+		PositionSpawn = (Vector2){ (float)999999.0f, (float)9999999.0f };	
                 numCells += 1;
-         
+                 
                 money -= price * numCells;
 		chooseTable = id_cell;	
                 //If you click on a cell to build it will teleport to the ass of the game map
@@ -511,7 +514,7 @@ BuildObj::BuildObj(): NameObj("buildCell"), Path("src/location/laboratory/buildi
                	WindowBoxPopUpSelectTableActive = true;
 		
                 exists = true;
-		
+	        allObj[id_cell].SetIsExist(false);	
 		
             }
             if (exists)
@@ -522,12 +525,30 @@ BuildObj::BuildObj(): NameObj("buildCell"), Path("src/location/laboratory/buildi
 		//std::cout << "allObj size: " << allObj.size() << std::endl;
 		
 		//money = (AmountMinTable * 10) + (AmountMidTable * 20) + (AmountTopTable * 30); 	
+                //PositionSpawn = (Vector2){ (float)999999999.0f, (float)999999999.0f };	
+                //allObj[id_cell].SetPosRect(allObj[id_cell].getPosVector().x,allObj[id_cell].getPosVector().y); 
+		//allObj[id_cell].SetPosObj(frameRec.x + 10.0f, frameRec.y - 60.0f);
+		//allObj[id_cell].SetPosRect(allObj[id_cell].getPosVector().x,allObj[id_cell].getPosVector().y);
+		//buildCell.getPosVector().x,buildCell.getPosVector().y
+		if (WindowBoxPopUpSelectTableActive){
+		  allObj[id_cell].Draw();
+		  allObj[id_cell].SetPosObj(cell[id_cell].frameRec.x + 10.0f,cell[id_cell].frameRec.y - 60.0f);
+		  allObj[id_cell].SetPosRect(cell[id_cell].frameRec.x + 10.0f, cell[id_cell].frameRec.y - 60.0f);
+		  //if (!allObj[id_cell].IsExist()) {
+		  //   cell[id_cell].Draw();
+		  //}
+		  //allObj[id_cell].Draw();
+		}else{
+		   allObj[id_cell].SetPosObj(frameRec.x + 10.0f, frameRec.y - 60.0f);
+		   //allObj[id_cell].SetPosRect(allObj[id_cell].getPosVector().x,allObj[id_cell].getPosVector().y); 
+		   allObj[id_cell].Draw();
+		   allObj[id_cell].countAnim(allObj[id_cell]);
+		   allObj[id_cell].animation(allObj[id_cell]);
+		}
 
-		allObj[id_cell].SetPosObj(frameRec.x + 10.0f, frameRec.y - 60.0f);
-		allObj[id_cell].SetPosRect(allObj[id_cell].getPosVector().x,allObj[id_cell].getPosVector().y);
-		allObj[id_cell].Draw();
-		allObj[id_cell].countAnim(allObj[id_cell]);
-		allObj[id_cell].animation(allObj[id_cell]);
+				//allObj[id_cell].Draw();
+		//allObj[id_cell].countAnim(allObj[id_cell]);
+		//allObj[id_cell].animation(allObj[id_cell]);
 			
 		
 		
@@ -613,9 +634,14 @@ BuildObj::BuildObj(): NameObj("buildCell"), Path("src/location/laboratory/buildi
         void BuildObj::countAnim(BuildObj &obj){
             obj.framesCounter++;
         }
-       
+        void BuildObj::SetIsExist(bool ex){
+            exists = ex;
+	} 
         void BuildObj::Draw(){
-            DrawTextureEx(imgAnim, PositionSpawn, 0, sizeObject, WHITE);
+	   
+             DrawTextureEx(imgAnim, PositionSpawn, 0, sizeObject, WHITE);
+
+
 
 
         }

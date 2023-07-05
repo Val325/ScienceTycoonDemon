@@ -39,6 +39,7 @@ void Scene1(void)
         buildCell.SetPosRect(buildCell.getPosVector().x,buildCell.getPosVector().y);
         buildCells[i] = buildCell;
 	buildCell.id = i;
+        
     }
     std::cout << "1" << std::endl; 
 //------------------------------------------------------------------------------------
@@ -146,12 +147,18 @@ void Scene1(void)
             for (int i = 0; i < amountBuildCell; i++)
             {
 		
-                buildCells[i].clickEventListen(camera, hero.money, i, tables);
-
-	    	buildCells[i].Draw();
-		pointsCell[i] = buildCells[i].countPointRet(hero.points,5 , buildCells[i].IsExist());
-
-
+                buildCells[i].clickEventListen(camera, hero.money, i, tables, buildCells);
+		if (!allObj[i].IsExist()) {
+		   buildCells[i].Draw();
+		}
+	    	//buildCells[i].Draw();
+		//pointsCell[i] = buildCells[i].countPointRet(hero.points,5 , buildCells[i].IsExist());
+		//buildCells[i].SetIsExist(true);
+		
+		//if (buildCells[i].IsExist() && WindowBoxPopUpSelectTableActive){}
+		//else{ buildCells[i].Draw(); }
+                 
+                
 
                 //buildCells[i].SelectionPopUp(camera, hero);
               	//buildCells[i].countPoint(0, buildCells[i].IsExist());
@@ -162,7 +169,7 @@ void Scene1(void)
 	     
 
             //buildCell.DrawRect();
-            
+     
         EndMode2D();
 
         //Log
@@ -180,6 +187,7 @@ void Scene1(void)
 	    //selectionBtn(camera, i, tables);
             //buildCells[i].SelectionPopUp(camera, hero, hero.money, buildCells, i, tables);
 	    //buildCells[i].Draw();
+	    
             
         }
         hero.points = Knowledge_Point;

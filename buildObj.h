@@ -128,7 +128,8 @@ class BuildObj{
 	int getPoints();
 	int ReturnID();
 	bool IsExist();
-        void clickEventListen(Camera2D camera, int &money, int id_cell, std::map<std::string, BuildObj> tableRes);        
+	void SetIsExist(bool ex);
+        void clickEventListen(Camera2D camera, int &money, int id_cell, std::map<std::string, BuildObj> tableRes, BuildObj cell[]);        
 	void SelectionPopUp(Camera2D camera, Player &play, int &money, BuildObj cell[], int id_cell,std::map<std::string, BuildObj> tableRes);
 	void DrawRect();
 	Rectangle ReturnframeRec();
