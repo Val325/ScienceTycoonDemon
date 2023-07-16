@@ -7,120 +7,135 @@
 // Defines _SELECTBTN_ if above
 // conditions fails
 #define _TECHTREE_
+
+bool Tech20Century = false;
+bool Transistor = false;
+bool Computer = false;
+bool material = false;
+bool Mathematics = false;
+bool Being = false;
+bool NaNtech = false;
+bool QuatumTech = false;
+bool ColdNuke = false;
+bool WarpEngine = false;
+bool NeuralNetwork = false;
+bool ArtificialIntellect = false;
+bool Robot = false;
+bool Singularit = false;
 //------------------------------------------------------------------------------------
 // Controls Functions Definitions (local)
 //------------------------------------------------------------------------------------
 static void Tech20century()
 {
-    // TODO: Implement control logic
+    Tech20Century = true; 
 }
 static void Transistors()
 {
-    // TODO: Implement control logic
+    Transistor = true;
 }
 static void Computers()
 {
-    // TODO: Implement control logic
+    Computer = true;
 }
 static void Materials()
 {
-    // TODO: Implement control logic
+    material = true;
 }
 static void Math()
 {
-    // TODO: Implement control logic
+    Mathematics = true;
 }
 static void Understand_being()
 {
-    // TODO: Implement control logic
+    Being = true;
 }
 static void Nanotech()
 {
-    // TODO: Implement control logic
+    NaNtech = true;
 }
 static void Quatum()
 {
-    // TODO: Implement control logic
+    QuatumTech = true;
 }
 static void Cold_nuke()
 {
-    // TODO: Implement control logic
+    ColdNuke = true;
 }
 static void Warp()
 {
-    // TODO: Implement control logic
+    WarpEngine = true;
 }
 static void Comp1()
 {
-    // TODO: Implement control logic
+
 }
 static void Comp2()
 {
-    // TODO: Implement control logic
+
 }
 static void Comp3()
 {
-    // TODO: Implement control logic
+
 }
 static void Comp4and1()
 {
-    // TODO: Implement control logic
+
 }
 static void Comp4and2()
 {
-    // TODO: Implement control logic
+
 }
 static void Comp4and3()
 {
-    // TODO: Implement control logic
+
 }
 static void Comp4and4()
 {
-    // TODO: Implement control logic
+
 }
 static void LabelButton018()
 {
-    // TODO: Implement control logic
+
 }
 static void LabelButton019()
 {
-    // TODO: Implement control logic
+
 }
 static void LabelButton020()
 {
-    // TODO: Implement control logic
+
 }
 static void NeuralNet()
 {
-    // TODO: Implement control logic
+    NeuralNetwork = true;
 }
 static void AI()
 {
-    // TODO: Implement control logic
+    ArtificialIntellect = true;
 }
 static void Robots()
 {
-    // TODO: Implement control logic
+    Robot = true;
 }
 static void Singularity()
 {
-    // TODO: Implement control logic
+    Singularit = true;
 }
 static void one()
 {
-    // TODO: Implement control logic
+
 }
 static void LabelButton026()
 {
-    // TODO: Implement control logic
+
 }
 static void LabelButton027()
 {
-    // TODO: Implement control logic
+
 }
 static void LabelButton028()
 {
-    // TODO: Implement control logic
+
 }
 
 
@@ -135,6 +150,7 @@ bool ShowHUDTechTree()
     //----------------------------------------------------------------------------------
     //bool WindowBox000Active = true;
     bool WindowBox000Active = true;
+    bool WindowIsOpen = false;
     Rectangle layoutRecs[29] = {
         (Rectangle){ 240, 120, 720, 456 },
         (Rectangle){ 544, 176, 120, 24 },
@@ -173,35 +189,80 @@ bool ShowHUDTechTree()
             
             if (WindowBox000Active)
             {
-                WindowBox000Active = !GuiWindowBox(layoutRecs[0], "Tech tree");         
-                if (GuiButton(layoutRecs[1], "Tech 20 century")) Tech20century(); 
-                if (GuiButton(layoutRecs[2], "Transistors")) Transistors(); 
-                if (GuiButton(layoutRecs[3], "Computers")) Computers(); 
-                if (GuiButton(layoutRecs[4], "Materials")) Materials(); 
-                if (GuiButton(layoutRecs[5], "Complex math")) Math(); 
-                if (GuiButton(layoutRecs[6], "Understand being")) Understand_being(); 
-                if (GuiButton(layoutRecs[7], "Nanomaterials")) Nanotech(); 
-                if (GuiButton(layoutRecs[8], "Quantum physics")) Quatum(); 
-                if (GuiButton(layoutRecs[9], "Cold nuke synthes")) Cold_nuke(); 
-                if (GuiButton(layoutRecs[10], "Warp drive")) Warp(); 
-                if (GuiLabelButton(layoutRecs[11], "Completed")) Comp1(); 
-                if (GuiLabelButton(layoutRecs[12], "Completed")) Comp2(); 
-                if (GuiLabelButton(layoutRecs[13], "Completed")) Comp3(); 
-                if (GuiLabelButton(layoutRecs[14], "Completed")) Comp4and1(); 
-                if (GuiLabelButton(layoutRecs[15], "Completed")) Comp4and2(); 
-                if (GuiLabelButton(layoutRecs[16], "Completed")) Comp4and3(); 
-                if (GuiLabelButton(layoutRecs[17], "Completed")) Comp4and4(); 
-                if (GuiLabelButton(layoutRecs[18], "Completed")) LabelButton018(); 
-                if (GuiLabelButton(layoutRecs[19], "Completed")) LabelButton019(); 
-                if (GuiLabelButton(layoutRecs[20], "Completed")) LabelButton020(); 
-                if (GuiButton(layoutRecs[21], "NEURAL NETWORKS")) NeuralNet(); 
-                if (GuiButton(layoutRecs[22], "AI")) AI(); 
-                if (GuiButton(layoutRecs[23], "Robots")) Robots(); 
-                if (GuiButton(layoutRecs[24], "TECH SINGULARITY")) Singularity(); 
-                if (GuiLabelButton(layoutRecs[25], "Completed")) one(); 
-                if (GuiLabelButton(layoutRecs[26], "Completed")) LabelButton026(); 
-                if (GuiLabelButton(layoutRecs[27], "Completed")) LabelButton027(); 
-                if (GuiLabelButton(layoutRecs[28], "END GAME")) LabelButton028();
+                
+                WindowBox000Active = !GuiWindowBox(layoutRecs[0], "Tech tree"); 
+           
+   
+                if (GuiButton(layoutRecs[1], "Tech 20 century")) Tech20century();
+                if (Tech20Century){
+                    if (GuiButton(layoutRecs[2], "Transistors")) Transistors();
+                    if (GuiLabelButton(layoutRecs[12], "300 credit")) Comp2(); 
+                }
+                if (Transistor){
+                    if (GuiButton(layoutRecs[3], "Computers")) Computers();
+                    if (GuiLabelButton(layoutRecs[13], "500 credit")) Comp3(); 
+                }
+                if (Computer){
+                    if (GuiButton(layoutRecs[4], "Materials")) Materials(); 
+                    if (GuiLabelButton(layoutRecs[14], "700 credit")) Comp4and1();
+                    if (GuiButton(layoutRecs[5], "Complex math")) Math();
+                    if (GuiLabelButton(layoutRecs[16], "800 credit")) Comp4and3();
+                }
+                if (material) {
+                    if (GuiButton(layoutRecs[7], "Nanomaterials")) Nanotech();
+                    if (GuiLabelButton(layoutRecs[15], "900 credit")) Comp4and2();
+                }
+                if (Mathematics) {
+                    if (GuiButton(layoutRecs[6], "Understand being")) Understand_being();
+                    if (GuiLabelButton(layoutRecs[17], "900 credit")) Comp4and4();
+                }
+                if (NaNtech && Being){
+                    if (GuiButton(layoutRecs[8], "Quantum physics")) Quatum();
+                    if (GuiLabelButton(layoutRecs[18], "2000 credit")) LabelButton018();
+                }
+                if (QuatumTech){
+                    if (GuiButton(layoutRecs[9], "Cold nuke synthes")) Cold_nuke();
+                    if (GuiLabelButton(layoutRecs[19], "4000 credit")) LabelButton019(); 
+                }
+                if (ColdNuke) {
+                    if (GuiButton(layoutRecs[10], "Warp drive")) Warp(); 
+                    if (GuiLabelButton(layoutRecs[20], "10000 credit")) LabelButton020();  
+                }
+                if (WarpEngine) {
+                    if (GuiButton(layoutRecs[21], "NEURAL NETWORKS")) NeuralNet(); 
+                    if (GuiLabelButton(layoutRecs[25], "20000 credit")) one(); 
+                }
+                if (NeuralNetwork) {
+                    if (GuiButton(layoutRecs[22], "AI")) AI(); 
+                    if (GuiButton(layoutRecs[23], "Robots")) Robots();
+                    if (GuiLabelButton(layoutRecs[26], "40000 credit")) LabelButton026(); 
+                    if (GuiLabelButton(layoutRecs[27], "70000 credit")) LabelButton027(); 
+                }
+                if (ArtificialIntellect && Robot){
+                    if (GuiButton(layoutRecs[24], "TECH SINGULARITY")) Singularity();
+                    if (GuiLabelButton(layoutRecs[28], "100000 credit")) LabelButton028();
+                }
+                //if (GuiButton(layoutRecs[6], "Understand being")) Understand_being(); 
+                //if (GuiButton(layoutRecs[7], "Nanomaterials")) Nanotech(); 
+                //if (GuiButton(layoutRecs[8], "Quantum physics")) Quatum(); 
+                //if (GuiButton(layoutRecs[9], "Cold nuke synthes")) Cold_nuke(); 
+                //if (GuiButton(layoutRecs[10], "Warp drive")) Warp(); 
+                if (GuiLabelButton(layoutRecs[11], "100 credit")) Comp1(); 
+                //if (GuiLabelButton(layoutRecs[15], "900 credit")) Comp4and2();
+    
+                //if (GuiLabelButton(layoutRecs[16], "800 credit")) Comp4and3(); 
+                //if (GuiLabelButton(layoutRecs[17], "900 credit")) Comp4and4(); 
+                //if (GuiLabelButton(layoutRecs[18], "2000 credit")) LabelButton018(); 
+                //if (GuiLabelButton(layoutRecs[19], "4000 credit")) LabelButton019(); 
+                //if (GuiLabelButton(layoutRecs[20], "10000 credit")) LabelButton020(); 
+                //if (GuiButton(layoutRecs[21], "NEURAL NETWORKS")) NeuralNet(); 
+                //if (GuiButton(layoutRecs[22], "AI")) AI(); 
+                //if (GuiButton(layoutRecs[23], "Robots")) Robots(); 
+                //if (GuiButton(layoutRecs[24], "TECH SINGULARITY")) Singularity(); 
+                //if (GuiLabelButton(layoutRecs[25], "20000 credit")) one(); 
+                //if (GuiLabelButton(layoutRecs[26], "40000 credit")) LabelButton026(); 
+                //if (GuiLabelButton(layoutRecs[27], "70000 credit")) LabelButton027(); 
+                //if (GuiLabelButton(layoutRecs[28], "100000 credit")) LabelButton028();
                
 
             }

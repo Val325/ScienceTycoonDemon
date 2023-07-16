@@ -495,60 +495,68 @@ BuildObj::BuildObj(): NameObj("buildCell"), Path("src/location/laboratory/buildi
             
 
             bool isLoadTexture = false;
-            Vector2 PositionClick = GetMousePosition(); 
+            Vector2 PositionClick = GetMousePosition();
+            Vector2 PositionBeforeClick = PositionSpawn;
             PositionClick = GetScreenToWorld2D(PositionClick, camera);
             BuildObj *table;
             bool isClosed;
+            int click_id = 0;
+            //std::cout << "PositionBeforeClick: x: " << PositionBeforeClick.x << " y: " << PositionBeforeClick.y << std::endl;
+            //std::cout << "PositionSpawn: x: " << PositionSpawn.x << " y: " << PositionSpawn.y << std::endl;
+            //std::cout << "allObj[id_cell].getPosVector(): x: " << allObj[id_cell].getPosVector().x << " y: " << allObj[id_cell].getPosVector().y << std::endl;
+
 	    //frameRec.x = frameRec.x + 10.0f;
 	    //frameRec.y = frameRec.y - 60.0f; 
             if (CheckCollisionPointRec(PositionClick, frameRec) && IsMouseButtonDown(0) && !exists)
             {
-                
-		PositionSpawn = (Vector2){ (float)999999.0f, (float)9999999.0f };	
+                //cell[id_cell].SetIsExist(true);
+                //cell[id_cell].SetPosObj(999999.0f, 9999999.0f);
+                click_id = id_cell;
                 numCells += 1;
-                 
+                //cell[id_cell].SetPosObj(99999999.0f, 9999999999.0f); 
                 money -= price * numCells;
-		chooseTable = id_cell;	
+		        chooseTable = id_cell;	
                 //If you click on a cell to build it will teleport to the ass of the game map
+ 
                 //PositionSpawn = (Vector2){ (float)999999999.0f, (float)999999999.0f };
                	WindowBoxPopUpSelectTableActive = true;
-		
+                //PositionSpawn = (Vector2){ (float)999999999.0f, (float)999999999.0f };
+
                 exists = true;
-	        allObj[id_cell].SetIsExist(false);	
+	            allObj[click_id].SetIsExist(true);	
 		
             }
-            if (exists)
-
-            {
-		//std::cout << "id_cell: " << id_cell << std::endl;
+            if (exists){
+	        std::cout << "PositionBeforeClick: x: " << PositionBeforeClick.x << " y: " << PositionBeforeClick.y << std::endl;
+            std::cout << "PositionSpawn: x: " << PositionSpawn.x << " y: " << PositionSpawn.y << std::endl;
+            std::cout << "allObj[id_cell].getPosVector(): x: " << allObj[id_cell].getPosVector().x << " y: " << allObj[id_cell].getPosVector().y << std::endl;	
 		//std::cout << "numCells: " << numCells << std::endl;
 		//std::cout << "allObj size: " << allObj.size() << std::endl;
-		
-		//money = (AmountMinTable * 10) + (AmountMidTable * 20) + (AmountTopTable * 30); 	
-                //PositionSpawn = (Vector2){ (float)999999999.0f, (float)999999999.0f };	
-                //allObj[id_cell].SetPosRect(allObj[id_cell].getPosVector().x,allObj[id_cell].getPosVector().y); 
-		//allObj[id_cell].SetPosObj(frameRec.x + 10.0f, frameRec.y - 60.0f);
-		//allObj[id_cell].SetPosRect(allObj[id_cell].getPosVector().x,allObj[id_cell].getPosVector().y);
-		//buildCell.getPosVector().x,buildCell.getPosVector().y
+	    //allObj[id_cell].SetPosObj(PositionBeforeClick.x + 10.0f,PositionBeforeClick.y - 60.0f);
+        allObj[id_cell].SetPosObj(PositionBeforeClick.x + 10.0f,PositionBeforeClick.y - 60.0f);
+        allObj[id_cell].SetPosRect(allObj[id_cell].getPosVector().x + 10.0f,allObj[id_cell].getPosVector().y - 60.0f);
+
+        //allObj[id_cell].SetPosRect(allObj[id_cell].getPosVector().x,allObj[id_cell].getPosVector().y);
+        allObj[id_cell].Draw();
+        if (!WindowBoxPopUpSelectTableActive){
+            allObj[id_cell].countAnim(allObj[id_cell]);
+		    allObj[id_cell].animation(allObj[id_cell]);
+        }
+	/*	
 		if (WindowBoxPopUpSelectTableActive){
-		  allObj[id_cell].Draw();
-		  allObj[id_cell].SetPosObj(cell[id_cell].frameRec.x + 10.0f,cell[id_cell].frameRec.y - 60.0f);
-		  allObj[id_cell].SetPosRect(cell[id_cell].frameRec.x + 10.0f, cell[id_cell].frameRec.y - 60.0f);
-		  //if (!allObj[id_cell].IsExist()) {
-		  //   cell[id_cell].Draw();
-		  //}
-		  //allObj[id_cell].Draw();
-		}else{
+		   
+           allObj[id_cell].SetPosObj(PositionSpawn.x + 10.0f,PositionSpawn.y - 60.0f);
+           allObj[id_cell].Draw();  
+        }else{
 		   allObj[id_cell].SetPosObj(frameRec.x + 10.0f, frameRec.y - 60.0f);
-		   //allObj[id_cell].SetPosRect(allObj[id_cell].getPosVector().x,allObj[id_cell].getPosVector().y); 
-		   allObj[id_cell].Draw();
+		   allObj[id_cell].SetPosRect(allObj[id_cell].getPosVector().x,allObj[id_cell].getPosVector().y);
+           allObj[id_cell].Draw(); 
+           
 		   allObj[id_cell].countAnim(allObj[id_cell]);
 		   allObj[id_cell].animation(allObj[id_cell]);
 		}
+*/
 
-				//allObj[id_cell].Draw();
-		//allObj[id_cell].countAnim(allObj[id_cell]);
-		//allObj[id_cell].animation(allObj[id_cell]);
 			
 		
 		

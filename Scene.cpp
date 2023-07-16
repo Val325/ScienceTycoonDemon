@@ -21,7 +21,7 @@ const char* bool_cast(const bool b) {
     return b ? "true" : "false";
 }
 
-
+   
 //------------------------------------------------------------------------------------
 // Program main entry point
 //------------------------------------------------------------------------------------
@@ -35,7 +35,7 @@ void Scene1(void)
     for (int i = 0; i < amountBuildCell; ++i)
     {
         BuildObj buildCell("buildCell" + std::to_string(i),"src/location/laboratory/buildingCell.png", 1.5f);
-        buildCell.SetPosObj(200 + 100 * i, 500);
+        buildCell.SetPosObj(150 + 100 * i, 500);
         buildCell.SetPosRect(buildCell.getPosVector().x,buildCell.getPosVector().y);
         buildCells[i] = buildCell;
 	buildCell.id = i;
@@ -148,7 +148,7 @@ void Scene1(void)
             {
 		
                 buildCells[i].clickEventListen(camera, hero.money, i, tables, buildCells);
-		if (!allObj[i].IsExist()) {
+		if (!buildCells[i].IsExist()) {
 		   buildCells[i].Draw();
 		}
 	    	//buildCells[i].Draw();
