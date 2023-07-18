@@ -8,6 +8,8 @@
 #include<cstdio>
 #include<ctime>
 
+int Knowledge_Point = 0;
+
 class Player{
         private:
             Vector2 PositionSpawn;

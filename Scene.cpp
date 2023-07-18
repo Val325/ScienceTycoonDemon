@@ -15,12 +15,10 @@ struct EntityStruct MainHero;
 struct EntityStruct Table;
 struct RoomStruct RoomInfo;
 struct TileStruct FloorTile;
-
-
 const char* bool_cast(const bool b) {
     return b ? "true" : "false";
 }
-
+///
    
 //------------------------------------------------------------------------------------
 // Program main entry point
@@ -57,8 +55,8 @@ void Scene1(void)
     FloorTile.CollisionRec = (Rectangle){ FloorTile.PositionSpawn.x, FloorTile.PositionSpawn.y, (float)FloorTile.TextureTile.width, (float)FloorTile.TextureTile.height};
 
 
+    //Player hero("src/image/HeroAnimation/DemonSciencer.gif");
     Player hero("src/image/HeroAnimation/DemonSciencer.gif");
-
 
     Object computer("computer","src/computer.png", 4.0f);
     computer.SetPosObj(200, 200);
@@ -192,7 +190,7 @@ void Scene1(void)
         }
         hero.points = Knowledge_Point;
         hero.showHUDtech();
-       
+         
         DrawText(TextFormat("Knowledge (Points): %04d", hero.points), 30, 80, 20, WHITE);
         DrawText(TextFormat("Money (hryvnia): %04d", hero.money), 30, 110, 20, WHITE);
 

@@ -1,5 +1,5 @@
 #include "raygui.h"
-
+#include "buildObj.h"
 
 // Checks if _SELECTBTN_ IF DECLARED
 #ifndef _TECHTREE_
@@ -27,43 +27,76 @@ bool Singularit = false;
 //------------------------------------------------------------------------------------
 static void Tech20century()
 {
-    Tech20Century = true; 
+    if (!Tech20Century && Knowledge_Point > 100){
+        Knowledge_Point -= 100;
+        Tech20Century = true;
+    }
+
 }
 static void Transistors()
 {
-    Transistor = true;
+    if (!Transistor && Knowledge_Point > 300){
+        Knowledge_Point -= 300;
+        Transistor = true; 
+    }
 }
 static void Computers()
 {
-    Computer = true;
+    if (!Computer && Knowledge_Point > 500){
+        Knowledge_Point -= 500;
+        Computer = true; 
+    }
+
 }
 static void Materials()
 {
-    material = true;
+    if (!material && Knowledge_Point > 700){
+        Knowledge_Point -= 700;
+        material = true;
+    }
 }
 static void Math()
 {
-    Mathematics = true;
+    if (!Mathematics && Knowledge_Point > 800){
+        Knowledge_Point -= 800;
+        Mathematics = true;
+    }
 }
 static void Understand_being()
 {
-    Being = true;
+    if (!Being && Knowledge_Point > 900){
+        Knowledge_Point -= 900;
+        Being = true;
+    }
+
 }
 static void Nanotech()
 {
-    NaNtech = true;
+    if (!NaNtech && Knowledge_Point > 900){
+        Knowledge_Point -= 900;
+        NaNtech = true;
+    }
 }
 static void Quatum()
 {
-    QuatumTech = true;
+    if (!QuatumTech && Knowledge_Point > 2000){
+        Knowledge_Point -= 2000;
+        QuatumTech = true;
+    }
 }
 static void Cold_nuke()
 {
-    ColdNuke = true;
+    if (!ColdNuke && Knowledge_Point > 4000){
+        Knowledge_Point -= 4000;
+        ColdNuke = true;
+    }
 }
 static void Warp()
 {
-    WarpEngine = true;
+    if (!WarpEngine && Knowledge_Point > 10000){
+        Knowledge_Point -= 10000;
+        WarpEngine = true;
+    }
 }
 static void Comp1()
 {
@@ -107,19 +140,31 @@ static void LabelButton020()
 }
 static void NeuralNet()
 {
-    NeuralNetwork = true;
+    if (!NeuralNetwork && Knowledge_Point > 20000){
+        Knowledge_Point -= 20000;
+        NeuralNetwork = true;
+    }
 }
 static void AI()
 {
-    ArtificialIntellect = true;
+    if (!ArtificialIntellect && Knowledge_Point > 40000){
+        Knowledge_Point -= 40000;
+        ArtificialIntellect = true;
+    }
 }
 static void Robots()
 {
-    Robot = true;
+    if (!Robot && Knowledge_Point > 70000){
+        Knowledge_Point -= 70000;
+        Robot = true;
+    }
 }
 static void Singularity()
 {
-    Singularit = true;
+    if (!Singularit && Knowledge_Point > 100000){
+        Knowledge_Point -= 100000;
+        Singularit = true;
+    }
 }
 static void one()
 {
