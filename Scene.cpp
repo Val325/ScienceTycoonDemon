@@ -138,17 +138,21 @@ void Scene1(void)
             computer.DrawObj();
 
             hero.collisionDetect(computer.ReturnRect(false));
-            hero.DrawHero();
-            //hero.showHUDtech();
-            //buildCells.SelectionPopUp(camera);
-	    //buildCells[chooseTable].clickEventListen(camera, hero.money, chooseTable, tables);
             for (int i = 0; i < amountBuildCell; i++)
             {
 		
                 buildCells[i].clickEventListen(camera, hero.money, i, tables, buildCells);
-		if (!buildCells[i].IsExist()) {
-		   buildCells[i].Draw();
-		}
+            if (!buildCells[i].IsExist()) {
+		        buildCells[i].Draw();
+		    }
+            }
+            hero.DrawHero();
+            
+            //hero.showHUDtech();
+            //buildCells.SelectionPopUp(camera);
+	    //buildCells[chooseTable].clickEventListen(camera, hero.money, chooseTable, tables);
+            
+
 	    	//buildCells[i].Draw();
 		//pointsCell[i] = buildCells[i].countPointRet(hero.points,5 , buildCells[i].IsExist());
 		//buildCells[i].SetIsExist(true);
@@ -162,7 +166,7 @@ void Scene1(void)
               	//buildCells[i].countPoint(0, buildCells[i].IsExist());
                 //buildCells[i].Draw();
 		//buildCells[i].ReturnPostionClick(camera);
-            }
+            
 	    
 	     
 
