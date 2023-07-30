@@ -30,15 +30,14 @@ void Scene1(void)
     int amountActiveBuildCell = 0;
     BuildObj buildCells [amountBuildCell];
     int pointsCell [amountBuildCell];
-    for (int i = 0; i < amountBuildCell; ++i)
-    {
+    for (int i = 0; i < amountBuildCell; ++i){
         BuildObj buildCell("buildCell" + std::to_string(i),"src/location/laboratory/buildingCell.png", 1.5f);
+        allObj[i].SetPosObj(150 + 100 * i, 500);
         buildCell.SetPosObj(150 + 100 * i, 500);
-        buildCell.SetPosRect(buildCell.getPosVector().x,buildCell.getPosVector().y);
+        buildCell.SetPosRect(150 + 100 * i, 500);
         buildCells[i] = buildCell;
-	buildCell.id = i;
-        
-    }
+	    buildCell.id = i;
+    } 
     std::cout << "1" << std::endl; 
 //------------------------------------------------------------------------------------
 // Initialization
@@ -97,13 +96,11 @@ void Scene1(void)
     BuildObj tableReserarchMin("tableResearch","src/tableResearch.gif", 4.5f);
     BuildObj tableReserarchMid("tableResearch2","src/tableResearch2.gif", 4.5f);
     BuildObj tableReserarchTop("tableResearch3","src/tableResearch3.gif", 4.5f);
-    std::cout << "3" << std::endl; 
     std::map<std::string, BuildObj> tables = {
         { "tableResearch", tableReserarchMin},
         { "tableResearch2", tableReserarchMid},
         { "tableResearch3", tableReserarchTop}
     };
-    std::cout << "4" << std::endl; 
 
     SetTargetFPS(60);
 
@@ -138,46 +135,25 @@ void Scene1(void)
             computer.DrawObj();
 
             hero.collisionDetect(computer.ReturnRect(false));
+       
             for (int i = 0; i < amountBuildCell; i++)
             {
-		
+                allObj[i].Draw();
+               
+	            clickEvent(camera, hero.money, i, tables, buildCells);
                 buildCells[i].clickEventListen(camera, hero.money, i, tables, buildCells);
-            if (!buildCells[i].IsExist()) {
-		        buildCells[i].Draw();
-		    }
+
             }
             hero.DrawHero();
             
-            //hero.showHUDtech();
-            //buildCells.SelectionPopUp(camera);
-	    //buildCells[chooseTable].clickEventListen(camera, hero.money, chooseTable, tables);
             
-
-	    	//buildCells[i].Draw();
-		//pointsCell[i] = buildCells[i].countPointRet(hero.points,5 , buildCells[i].IsExist());
-		//buildCells[i].SetIsExist(true);
-		
-		//if (buildCells[i].IsExist() && WindowBoxPopUpSelectTableActive){}
-		//else{ buildCells[i].Draw(); }
-                 
-                
-
-                //buildCells[i].SelectionPopUp(camera, hero);
-              	//buildCells[i].countPoint(0, buildCells[i].IsExist());
-                //buildCells[i].Draw();
-		//buildCells[i].ReturnPostionClick(camera);
-            
-	    
-	     
-
-            //buildCell.DrawRect();
      
         EndMode2D();
 
         //Log
 
-
-        selectionBtn(camera, chooseTable, tables);
+        
+        selectionBtn(camera, chooseTable, tables, buildCells);
         //hero.DrawStatistics();
         
         DrawText(TextFormat("InBorder: %s", bool_cast(CheckCollisionRecs(hero.ReturnframeRec(), computer.ReturnRect(false)))), 30, 140, 20, WHITE);
@@ -186,6 +162,9 @@ void Scene1(void)
         {
             pointsCell[i] = buildCells[i].countPointRet(hero.points, 5, buildCells[i].IsExist()); 
             hero.points += pointsCell[i];
+            //allObj[i].SetPosObj(150 + 100 * i, 500);
+
+            //allObj[i].SetPosRect(150 + 100 * i, 500);  
 	    //selectionBtn(camera, i, tables);
             //buildCells[i].SelectionPopUp(camera, hero, hero.money, buildCells, i, tables);
 	    //buildCells[i].Draw();
