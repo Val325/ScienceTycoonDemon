@@ -424,21 +424,14 @@ BuildObj::BuildObj(): NameObj("buildCell"), Path("src/location/laboratory/buildi
     
             if (flag && exist)  
             {
-                //totalPoint = points + addPoint;
-                //std::cout << "this need working every 5 second"<< std::endl;
+
                 Knowledge_Point += (AmountMinTable * 10) + (AmountMidTable * 20) + (AmountTopTable * 30);
 		std::cout << "Knowledge_Point: "<< Knowledge_Point  << std::endl;
                 flag = false;  
             }
            
 
-            //std::cout << "----" << std::endl;
-            //std::cout << "total number every 5 second +1: " << points << std::endl;
-            //std::cout << "beginNum: " << beginNum << std::endl;
-            //std::cout << "interval: " << intervalNum << std::endl;
-            //std::cout << "this need working every 5 second"<< std::endl;
-            //std::cout << "----" << std::endl;
-            //()
+
             
             return totalPoint;
         }
@@ -501,44 +494,25 @@ BuildObj::BuildObj(): NameObj("buildCell"), Path("src/location/laboratory/buildi
             BuildObj *table;
             bool isClosed;
             int click_id = 0;
-            //std::cout << "PositionBeforeClick: x: " << PositionBeforeClick.x << " y: " << PositionBeforeClick.y << std::endl;
-            //std::cout << "PositionSpawn: x: " << PositionSpawn.x << " y: " << PositionSpawn.y << std::endl;
-            //std::cout << "allObj[id_cell].getPosVector(): x: " << allObj[id_cell].getPosVector().x << " y: " << allObj[id_cell].getPosVector().y << std::endl;
-
-	    //frameRec.x = frameRec.x + 10.0f;
-	    //frameRec.y = frameRec.y - 60.0f; 
+            //!exists
             if (CheckCollisionPointRec(PositionClick, frameRec) && IsMouseButtonDown(0) && !exists)
             {
-                //PositionSpawn = (Vector2){ (float)999999999.0f, (float)999999999.0f };
-                //allObj[id_cell].SetPosObj(cell[id_cell].PositionSpawn.x - 10, cell[id_cell].PositionSpawn.y - 60);
-                //cell[id_cell].SetIsExist(true);
-                //cell[id_cell].SetPosObj(999999.0f, 9999999.0f);
                 click_id = id_cell;
                 numCells += 1;
-                //cell[id_cell].SetPosObj(99999999.0f, 9999999999.0f); 
                 money -= price * numCells;
 		        chooseTable = id_cell;	
-                //If you click on a cell to build it will teleport to the ass of the game map
- 
                	WindowBoxPopUpSelectTableActive = true;
-                //PositionSpawn = (Vector2){ (float)999999999.0f, (float)999999999.0f };
-           
                 exists = true;
-	            //allObj[click_id].SetIsExist(true);	
-
             }
-            if (exists){
+
+//if (exists){
+         if (exists){   
 	        std::cout << "PositionBeforeClick: x: " << PositionBeforeClick.x << " y: " << PositionBeforeClick.y << std::endl;
             std::cout << "PositionSpawn: x: " << PositionSpawn.x << " y: " << PositionSpawn.y << std::endl;
             std::cout << "allObj[id_cell].getPosVector(): x: " << allObj[id_cell].getPosVector().x << " y: " << allObj[id_cell].getPosVector().y << std::endl;
 
+        if (!WindowBoxPopUpSelectTableActive && allObjIsExists[id_cell]){
             
-    
-        //allObj[id_cell].SetPosObj(150 + 100 * id_cell, 440);
-        //allObj[id_cell].SetPosRect(150 + 100 * id_cell, 440);  
-        //allObj[id_cell].Draw(); 
-        if (!WindowBoxPopUpSelectTableActive){
-              
             allObj[id_cell].countAnim(allObj[id_cell]);
 		    allObj[id_cell].animation(allObj[id_cell]);
         }
