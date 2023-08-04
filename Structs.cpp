@@ -495,7 +495,7 @@ BuildObj::BuildObj(): NameObj("buildCell"), Path("src/location/laboratory/buildi
             bool isClosed;
             int click_id = 0;
             //!exists
-            if (CheckCollisionPointRec(PositionClick, frameRec) && IsMouseButtonDown(0) && !exists)
+            if (CheckCollisionPointRec(PositionClick, frameRec) && IsMouseButtonDown(0) && !allObjIsExists[id_cell] && !allObjIsSelected[id_cell])
             {
                 click_id = id_cell;
                 numCells += 1;
@@ -503,6 +503,7 @@ BuildObj::BuildObj(): NameObj("buildCell"), Path("src/location/laboratory/buildi
 		        chooseTable = id_cell;	
                	WindowBoxPopUpSelectTableActive = true;
                 exists = true;
+                allObjIsExists[id_cell] = true;
             }
 
 //if (exists){
@@ -511,7 +512,7 @@ BuildObj::BuildObj(): NameObj("buildCell"), Path("src/location/laboratory/buildi
             std::cout << "PositionSpawn: x: " << PositionSpawn.x << " y: " << PositionSpawn.y << std::endl;
             std::cout << "allObj[id_cell].getPosVector(): x: " << allObj[id_cell].getPosVector().x << " y: " << allObj[id_cell].getPosVector().y << std::endl;
 
-        if (!WindowBoxPopUpSelectTableActive && allObjIsExists[id_cell]){
+        if (!WindowBoxPopUpSelectTableActive && !allObjIsExists[id_cell] && allObjIsSelected[id_cell]){
             
             allObj[id_cell].countAnim(allObj[id_cell]);
 		    allObj[id_cell].animation(allObj[id_cell]);

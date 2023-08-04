@@ -12,6 +12,7 @@ std::vector<BuildObj> allObj;
 //int Knowledge_Point = 0;
 //BuildObj allObj[10];
 bool allObjIsExists[10] = {false};
+bool allObjIsSelected[10] = {false};
 bool WindowBoxPopUpSelectTableActive = false;
 bool isSelectedTable = false;
 int chooseTable = NULL;
@@ -33,6 +34,7 @@ void TableMin(int id_cell, BuildObj obj)
    allObj[id_cell].SetPosObj(150 + 100 * id_cell, 440);
    allObj[id_cell].SetPosRect(150 + 100 * id_cell, 440);
    isSelectedTable = true;
+   allObjIsSelected[id_cell] = true;
    //chooseTable = id_cell; 
    //allObj.insert(allObj.begin() + id_cell, obj);
   	    
@@ -56,6 +58,7 @@ void TableMid(int id_cell, BuildObj obj)
     allObj[id_cell].SetPosObj(150 + 100 * id_cell, 440);
     allObj[id_cell].SetPosRect(150 + 100 * id_cell, 440);
     isSelectedTable = true;
+    allObjIsSelected[id_cell] = true;
     //chooseTable = id_cell; 
     //allObj.insert(allObj.begin() + id_cell, obj);
     //return tableReserarch; 
@@ -74,6 +77,7 @@ void TableEnd(int id_cell, BuildObj obj)
     allObj[id_cell].SetPosObj(150 + 100 * id_cell, 440);
     allObj[id_cell].SetPosRect(150 + 100 * id_cell, 440);  
     isSelectedTable = true;
+    allObjIsSelected[id_cell] = true;
     //chooseTable = id_cell; 
     //return tableReserarch; 
 }
