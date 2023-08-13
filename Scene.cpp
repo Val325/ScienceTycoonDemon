@@ -43,6 +43,7 @@ void Scene1(void)
 // Initialization
 //---   ---------------------------------------------------------------------------------
 
+    Player hero("src/image/HeroAnimation/DemonSciencer.gif");
     
     int points = 0;
 
@@ -55,7 +56,7 @@ void Scene1(void)
 
 
     //Player hero("src/image/HeroAnimation/DemonSciencer.gif");
-    Player hero("src/image/HeroAnimation/DemonSciencer.gif");
+
 
     Object computer("computer","src/computer.png", 4.0f);
     computer.SetPosObj(200, 200);

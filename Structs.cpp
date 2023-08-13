@@ -488,6 +488,7 @@ BuildObj::BuildObj(): NameObj("buildCell"), Path("src/location/laboratory/buildi
             
 
             bool isLoadTexture = false;
+            money = PlayerMoney;
             Vector2 PositionClick = GetMousePosition();
             Vector2 PositionBeforeClick = PositionSpawn;
             PositionClick = GetScreenToWorld2D(PositionClick, camera);
@@ -495,11 +496,16 @@ BuildObj::BuildObj(): NameObj("buildCell"), Path("src/location/laboratory/buildi
             bool isClosed;
             int click_id = 0;
             //!exists
-            if (CheckCollisionPointRec(PositionClick, frameRec) && IsMouseButtonDown(0) && !allObjIsExists[id_cell] && !allObjIsSelected[id_cell])
+            if (CheckCollisionPointRec(PositionClick, frameRec) 
+                    && IsMouseButtonDown(0) 
+                    && !allObjIsExists[id_cell] 
+                    && !allObjIsSelected[id_cell]
+                    && money > 0)
             {
                 click_id = id_cell;
                 numCells += 1;
-                money -= price * numCells;
+                //money -= price * numCells;
+                //money -= price;
 		        chooseTable = id_cell;	
                	WindowBoxPopUpSelectTableActive = true;
                 exists = true;

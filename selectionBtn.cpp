@@ -16,6 +16,8 @@ bool allObjIsSelected[10] = {false};
 bool WindowBoxPopUpSelectTableActive = false;
 bool isSelectedTable = false;
 int chooseTable = NULL;
+int PlayerMoney = 500;
+
 
 int AmountMinTable = 0;
 int AmountMidTable = 0;
@@ -23,7 +25,11 @@ int AmountTopTable = 0;
 void TableMin(int id_cell, BuildObj obj)
 {
       //BuildObj tableReserarchMin("tableResearch","src/tableResearch.gif", 4.5f);
-   
+   int tempMoney;
+   tempMoney = PlayerMoney - 50;
+   if (tempMoney >= 0){
+      PlayerMoney = PlayerMoney - 50; 
+   }
    //tableReserarch.Draw();
    //allObj.push_back(obj);
    allObjIsExists[id_cell] = true;
@@ -37,8 +43,8 @@ void TableMin(int id_cell, BuildObj obj)
    allObjIsSelected[id_cell] = true;
    //chooseTable = id_cell; 
    //allObj.insert(allObj.begin() + id_cell, obj);
-  	    
-
+   
+   
 }
    //allObj.insert(allObj.begin() + id_cell, obj);
    //return tableReserarch;
@@ -50,7 +56,11 @@ void TableMid(int id_cell, BuildObj obj)
     //BuildObj tableReserarchMid("tableResearch2","src/tableResearch2.gif", 4.5f);
        //tableReserarch.Draw();
     //allObj.push_back(obj);
-   
+    int tempMoney;
+    tempMoney = PlayerMoney - 150;
+    if (tempMoney >= 0){
+      PlayerMoney = PlayerMoney - 150; 
+    }
     allObjIsExists[id_cell] = true;
     //return "tableResearch2";
     AmountMidTable++; 
@@ -61,13 +71,19 @@ void TableMid(int id_cell, BuildObj obj)
     allObjIsSelected[id_cell] = true;
     //chooseTable = id_cell; 
     //allObj.insert(allObj.begin() + id_cell, obj);
-    //return tableReserarch; 
+    //return tableReserarch;
+    
 }
 void TableEnd(int id_cell, BuildObj obj)
 {
     //BuildObj tableReserarchTop("tableResearch3","src/tableResearch3.gif", 4.5f);
         //tableReserarch.Draw();
     //allObj.push_back(obj);
+    int tempMoney;
+    tempMoney = PlayerMoney - 450;
+    if (tempMoney >= 0){
+        PlayerMoney = PlayerMoney - 450; 
+    }
     AmountTopTable++; 
     allObjIsExists[id_cell] = true;
     //return "tableResearch3"; 
@@ -79,7 +95,8 @@ void TableEnd(int id_cell, BuildObj obj)
     isSelectedTable = true;
     allObjIsSelected[id_cell] = true;
     //chooseTable = id_cell; 
-    //return tableReserarch; 
+    //return tableReserarch;
+
 }
 
 
