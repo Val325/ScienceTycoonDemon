@@ -2,7 +2,7 @@
 //#include "D:/Program/raylib/Sourse/include/raylib-cpp.hpp"
 #include "Scene.cpp"
 #pragma comment(lib, "winmm.lib")
-
+#include "raylib.h"
 #include <json/json.h>
 #include <nlohmann/json.hpp>
 #include <unordered_map>
@@ -39,8 +39,9 @@ static void PlayBtn()
 
 int main(void)
 {
-    std::cout << "start" << std::endl; 
     SetTraceLogLevel(0);
+    
+
     // Initialization
     //--------------------------------------------------------------------------------------
     // Define controls rectangles
@@ -52,10 +53,13 @@ int main(void)
     };
     
     raylib::Window window(screenWidth, screenHeight, "Science tycoon");
+    Image image = LoadImage("GUI/NameGame/TitleCrop.png");     
+    Texture2D texture = LoadTextureFromImage(image);          
+                                                              
 
+    UnloadImage(image);   // Once image has been converted to texture and uploaded to VRAM, it can be unloaded from RAM 
     //Scene1();
     SetExitKey(KEY_NULL); 
-
      // Main game loop
     while (!WindowShouldClose())    // Detect window close button or ESC key
     {
@@ -68,20 +72,22 @@ int main(void)
         //----------------------------------------------------------------------------------
         BeginDrawing();
 
-            ClearBackground(GetColor(GuiGetStyle(DEFAULT, BACKGROUND_COLOR))); 
-
-            // raygui: controls drawing
+            ClearBackground(BLACK);
+            DrawTexture(texture, 500, 288, WHITE);
             //----------------------------------------------------------------------------------
             // Draw controls
             if (GuiButton(layoutRecs[0], "EXIT")) ExitBtn(); 
             if (GuiButton(layoutRecs[1], "OPTIONS")) OptionsBtn(); 
-            if (GuiButton(layoutRecs[2], "PLAY")) PlayBtn(); 
-            GuiLabel(layoutRecs[3], "Science tycoon");
+            if (GuiButton(layoutRecs[2], "PLAY")) PlayBtn();
+            
+            //GuiLabel(layoutRecs[3], "Science tycoon");
             //----------------------------------------------------------------------------------
 
         EndDrawing();
         //----------------------------------------------------------------------------------
     }
+
+
 
    // 
 

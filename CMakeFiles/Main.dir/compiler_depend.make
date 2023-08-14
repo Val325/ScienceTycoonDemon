@@ -402,6 +402,7 @@ CMakeFiles/Main.dir/Main.cpp.o: Main.cpp \
   include/raylib.h \
   buildObj.h \
   selectionBtn.cpp \
+  include/raylib.h \
   include/json/json.h \
   include/json/config.h \
   include/json/allocator.h \
