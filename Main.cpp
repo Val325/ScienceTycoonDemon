@@ -45,11 +45,15 @@ int main(void)
     // Initialization
     //--------------------------------------------------------------------------------------
     // Define controls rectangles
+    int offsetXmainMenu = -300;
+    int offsetYmainMenu = 0;
+    
+    int scienceTycoonNameOffset = -250;
     Rectangle layoutRecs[4] = {
-        (Rectangle){ 464, 448, 224, 48 },    // Button: Exit_btn
-        (Rectangle){ 464, 392, 224, 48 },    // Button: Options_btn
-        (Rectangle){ 464, 336, 224, 48 },    // Button: Play_btn
-        (Rectangle){ 520, 288, 112, 24 },    // Label: Science tycooN
+        (Rectangle){ 464 + offsetXmainMenu, 448 + offsetYmainMenu, 224, 48 },    // Button: Exit_btn
+        (Rectangle){ 464 + offsetXmainMenu, 392 + offsetYmainMenu, 224, 48 },    // Button: Options_btn
+        (Rectangle){ 464 + offsetXmainMenu, 336 + offsetYmainMenu, 224, 48 },    // Button: Play_btn
+        (Rectangle){ 520, 288, 112, 24 },    // Label: Science tycoon
     };
     
     raylib::Window window(screenWidth, screenHeight, "Science tycoon");
@@ -73,7 +77,7 @@ int main(void)
         BeginDrawing();
 
             ClearBackground(BLACK);
-            DrawTexture(texture, 500, 288, WHITE);
+            DrawTexture(texture, 500 + offsetXmainMenu, 288, WHITE);
             //----------------------------------------------------------------------------------
             // Draw controls
             if (GuiButton(layoutRecs[0], "EXIT")) ExitBtn(); 
