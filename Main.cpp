@@ -57,9 +57,11 @@ int main(void)
     };
     
     raylib::Window window(screenWidth, screenHeight, "Science tycoon");
-    Image image = LoadImage("GUI/NameGame/TitleCrop.png");     
+    Image image = LoadImage("GUI/NameGame/TitleCrop.png");
+    Image atom = LoadImage("GUI/background/Atom_menu.png");
+    //ImageResize(&atom, 200, 200);  
     Texture2D texture = LoadTextureFromImage(image);          
-                                                              
+    Texture2D textureAtom = LoadTextureFromImage(atom);                                                                 
 
     UnloadImage(image);   // Once image has been converted to texture and uploaded to VRAM, it can be unloaded from RAM 
     //Scene1();
@@ -78,6 +80,7 @@ int main(void)
 
             ClearBackground(BLACK);
             DrawTexture(texture, 500 + offsetXmainMenu, 288, WHITE);
+            DrawTexture(textureAtom, 500, 288 - 70, WHITE);
             //----------------------------------------------------------------------------------
             // Draw controls
             if (GuiButton(layoutRecs[0], "EXIT")) ExitBtn(); 
