@@ -45,18 +45,19 @@ using json = nlohmann::json;
           canMove = setData;
         }
         void Player::showHUDtech(){
+           
           
           if (HUDtechShow) {
-            HUDtechShow = ShowHUDTechTree();
+            HUDtechShow = ShowHUDTechTree(HUDtechShow);  
             
           }
 	
           
           if (IsKeyPressed(KEY_TAB)) {
+            WindowBox000Active = true;
             HUDtechShow = true;
-
           }
-          
+
 
         }
         void Player::addPoints(int num){
@@ -76,7 +77,19 @@ using json = nlohmann::json;
         void Player::UpCantMove(){
             CantMoveTop = true;
         }
+        void Player::SpeedUp(){
+            const float maxSpeed = 3.0f;
+            if (IsKeyDown(KEY_LEFT_SHIFT)){
+                if (speedHero <= maxSpeed) {
+                    speedHero += 1;
+                }else {
+                    speedHero = maxSpeed;
+                }
+            }else{
+                speedHero = 2.0f;
+            }
 
+        }
         Texture2D Player::ReturnImg(){
             return imgAnim;
         }
@@ -246,41 +259,41 @@ using json = nlohmann::json;
     // Move
     //------------------------------------------------------------------------------------
     void Player::Up(){
-        if (IsKeyDown(KEY_UP)){
+        if (IsKeyDown(KEY_UP) || IsKeyDown(KEY_W)){
             PositionSpawn.y -= speedHero;
             animationHero();
         }
 
     }
     void Player::Down(){
-        if (IsKeyDown(KEY_DOWN)){
+        if (IsKeyDown(KEY_DOWN) || IsKeyDown(KEY_S)){
             PositionSpawn.y += speedHero;
             animationHero();
         }
 
         }
     void Player::Right(){
-        if (IsKeyPressed(KEY_RIGHT)){
+        if (IsKeyPressed(KEY_RIGHT) || IsKeyDown(KEY_D)){
             flipRight();
             flipsCounterLeft = 0;
 
         }
 
 
-        if (IsKeyDown(KEY_RIGHT)){
+        if (IsKeyDown(KEY_RIGHT) || IsKeyDown(KEY_D)){
             PositionSpawn.x += speedHero;
             animationHero();
         }
 
     }
     void Player::Left(){
-        if (IsKeyPressed(KEY_LEFT)){
+        if (IsKeyPressed(KEY_LEFT)  || IsKeyDown(KEY_A)){
 
             flipLeft();
             flipsCounterRight = 0;
 
         }
-        if (IsKeyDown(KEY_LEFT)){
+        if (IsKeyDown(KEY_LEFT)  || IsKeyDown(KEY_A)){
             animationHero();
             PositionSpawn.x -= speedHero;
 

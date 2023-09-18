@@ -54,7 +54,7 @@ bool showTechTree(){
    // layout_tech_tree: controls initialization
     //----------------------------------------------------------------------------------
     // Define controls variables
-    bool WindowBox000Active;            // WindowBox: WindowBox000
+
 
     // Define controls rectangles
     Rectangle layoutRecs[10] = {

@@ -146,7 +146,7 @@ void Scene1(void)
 
             }
             hero.DrawHero();
-            
+            hero.SpeedUp();
             
      
         EndMode2D();

@@ -8,6 +8,7 @@
 // conditions fails
 #define _TECHTREE_
 
+bool WindowBox000Active = false;
 bool Tech20Century = false;
 bool Transistor = false;
 bool Computer = false;
@@ -187,15 +188,16 @@ static void LabelButton028()
 //------------------------------------------------------------------------------------
 // Program main entry point
 //------------------------------------------------------------------------------------
-bool ShowHUDTechTree()
+bool ShowHUDTechTree(bool HUDShow)
 {
-        
+
+    bool WindowIsOpen = false; 
 
     // TechTree2.0: controls initialization
     //----------------------------------------------------------------------------------
     //bool WindowBox000Active = true;
-    bool WindowBox000Active = true;
-    bool WindowIsOpen = false;
+    //bool WindowBox000Active = true;
+    
     Rectangle layoutRecs[29] = {
         (Rectangle){ 240, 120, 720, 456 },
         (Rectangle){ 544, 176, 120, 24 },
@@ -234,10 +236,12 @@ bool ShowHUDTechTree()
             
             if (WindowBox000Active)
             {
-                
-                WindowBox000Active = !GuiWindowBox(layoutRecs[0], "Tech tree"); 
-           
-   
+                if (!IsKeyPressed(KEY_TAB)){
+                    WindowBox000Active = !GuiWindowBox(layoutRecs[0], "Tech tree"); 
+                }else{
+                    WindowBox000Active = false;
+                }
+
                 if (GuiButton(layoutRecs[1], "Tech 20 century")) Tech20century();
                 if (Tech20Century){
                     if (GuiButton(layoutRecs[2], "Transistors")) Transistors();
@@ -313,10 +317,12 @@ bool ShowHUDTechTree()
             }
             //----------------------------------------------------------------------------------
 
-      
-   
 
-    return WindowBox000Active;
-}
+
+    
+        return WindowBox000Active;
+    } 
+
+
 
 #endif
