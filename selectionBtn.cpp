@@ -1,6 +1,6 @@
 #include "raygui.h"
 //#include "Structs.cpp"
-#include "buildObj.h"
+#include "buildObj.hpp"
 //#include "Scene.cpp"
 
 //class BuildObj;

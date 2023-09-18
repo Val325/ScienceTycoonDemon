@@ -1,4 +1,5 @@
 cmake_minimum_required(VERSION 3.25)
+set(CMAKE_CXX_COMPILER "/bin/clang++")
 project(Game LANGUAGES C CXX)
 
 set(CMAKE_CXX_STANDARD 14)
@@ -26,4 +27,5 @@ elseif(UNIX)
     option(BUILD_OBJECT_LIBS OFF)
     #  add_subdirectory("${PROJECT_SOURCE_DIR}/deps/jsoncpp")
     target_link_libraries(Main ${JSONCPP_LIBRARIES})
+    target_compile_options(Main PRIVATE -Wno-c++11-narrowing)
 endif()

@@ -1,5 +1,5 @@
 #include "raygui.h"
-#include "buildObj.h"
+#include "buildObj.hpp"
 
 // Checks if _SELECTBTN_ IF DECLARED
 #ifndef _TECHTREE_

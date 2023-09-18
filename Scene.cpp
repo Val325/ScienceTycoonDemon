@@ -10,6 +10,7 @@
 
 using json = nlohmann::json;
 const float SizeObj = 5.0f;
+const float SizeMenu = 2.0f;
 //int Knowledge_Point = 0;
 struct EntityStruct MainHero;
 struct EntityStruct Table;
@@ -65,7 +66,6 @@ void Scene1(void)
     panel.SetPosObj(600, 230);
 
     
-    
     std::cout << "2" << std::endl; 
     
     //Camera
@@ -75,6 +75,9 @@ void Scene1(void)
     camera.rotation = 0.0f;
     camera.zoom = 1.0f;
 
+    Vector2 dataPoint = GetScreenToWorld2D((Vector2){40,200}, camera);
+    Object buttonTree("buttonTree","GUI/buttonSci/ButtonSci.png", SizeMenu);
+    buttonTree.SetPosObj(dataPoint.x,dataPoint.y);
 
     //RoomInit
     RoomInfo.PositionSpawn = (Vector2){ 0, 0 };
@@ -134,7 +137,7 @@ void Scene1(void)
             panel.DrawObj();
 
             computer.DrawObj();
-
+            buttonTree.DrawObj(); 
             hero.collisionDetect(computer.ReturnRect(false));
        
             for (int i = 0; i < amountBuildCell; i++)

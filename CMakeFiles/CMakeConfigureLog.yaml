@@ -493,3 +493,1417 @@ events:
       
       
 ...
+
+---
+events:
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeDetermineSystem.cmake:204 (message)"
+      - "CMakeLists.txt:3 (project)"
+    message: |
+      The system is: Linux - 6.4.3-arch1-2 - x86_64
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCCompiler.cmake:123 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:3 (project)"
+    message: |
+      Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
+      Compiler: /usr/bin/cc 
+      Build flags: 
+      Id flags:  
+      
+      The output was:
+      0
+      
+      
+      Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "a.out"
+      
+      The C compiler identification is GNU, found in:
+        /home/projects/Raylib4.5/ScienceTycoonDemon/CMakeFiles/3.26.4/CompilerIdC/a.out
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCXXCompiler.cmake:126 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:3 (project)"
+    message: |
+      Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+      Compiler: /usr/bin/clang++ 
+      Build flags: 
+      Id flags:  
+      
+      The output was:
+      127
+      /usr/bin/clang++: error while loading shared libraries: libLLVM-16.so: cannot open shared object file: No such file or directory
+      
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCXXCompiler.cmake:126 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:3 (project)"
+    message: |
+      Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+      Compiler: /usr/bin/clang++ 
+      Build flags: 
+      Id flags: -c 
+      
+      The output was:
+      127
+      /usr/bin/clang++: error while loading shared libraries: libLLVM-16.so: cannot open shared object file: No such file or directory
+      
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCXXCompiler.cmake:126 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:3 (project)"
+    message: |
+      Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+      Compiler: /usr/bin/clang++ 
+      Build flags: 
+      Id flags: --c++ 
+      
+      The output was:
+      127
+      /usr/bin/clang++: error while loading shared libraries: libLLVM-16.so: cannot open shared object file: No such file or directory
+      
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCXXCompiler.cmake:126 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:3 (project)"
+    message: |
+      Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+      Compiler: /usr/bin/clang++ 
+      Build flags: 
+      Id flags: --ec++ 
+      
+      The output was:
+      127
+      /usr/bin/clang++: error while loading shared libraries: libLLVM-16.so: cannot open shared object file: No such file or directory
+      
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCXXCompiler.cmake:126 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:3 (project)"
+    message: |
+      Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+      Compiler: /usr/bin/clang++ 
+      Build flags: 
+      Id flags: --target=arm-arm-none-eabi;-mcpu=cortex-m3 
+      
+      The output was:
+      127
+      /usr/bin/clang++: error while loading shared libraries: libLLVM-16.so: cannot open shared object file: No such file or directory
+      
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCXXCompiler.cmake:126 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:3 (project)"
+    message: |
+      Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+      Compiler: /usr/bin/clang++ 
+      Build flags: 
+      Id flags: -c;-I__does_not_exist__ 
+      
+      The output was:
+      127
+      /usr/bin/clang++: error while loading shared libraries: libLLVM-16.so: cannot open shared object file: No such file or directory
+      
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCXXCompiler.cmake:126 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:3 (project)"
+    message: |
+      Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+      Compiler: /usr/bin/clang++ 
+      Build flags: 
+      Id flags:  
+      
+      The output was:
+      127
+      /usr/bin/clang++: error while loading shared libraries: libLLVM-16.so: cannot open shared object file: No such file or directory
+      
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCXXCompiler.cmake:126 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:3 (project)"
+    message: |
+      Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+      Compiler: /usr/bin/clang++ 
+      Build flags: 
+      Id flags: -c 
+      
+      The output was:
+      127
+      /usr/bin/clang++: error while loading shared libraries: libLLVM-16.so: cannot open shared object file: No such file or directory
+      
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCXXCompiler.cmake:126 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:3 (project)"
+    message: |
+      Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+      Compiler: /usr/bin/clang++ 
+      Build flags: 
+      Id flags: --c++ 
+      
+      The output was:
+      127
+      /usr/bin/clang++: error while loading shared libraries: libLLVM-16.so: cannot open shared object file: No such file or directory
+      
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCXXCompiler.cmake:126 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:3 (project)"
+    message: |
+      Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+      Compiler: /usr/bin/clang++ 
+      Build flags: 
+      Id flags: --ec++ 
+      
+      The output was:
+      127
+      /usr/bin/clang++: error while loading shared libraries: libLLVM-16.so: cannot open shared object file: No such file or directory
+      
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCXXCompiler.cmake:126 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:3 (project)"
+    message: |
+      Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+      Compiler: /usr/bin/clang++ 
+      Build flags: 
+      Id flags: --target=arm-arm-none-eabi;-mcpu=cortex-m3 
+      
+      The output was:
+      127
+      /usr/bin/clang++: error while loading shared libraries: libLLVM-16.so: cannot open shared object file: No such file or directory
+      
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCXXCompiler.cmake:126 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:3 (project)"
+    message: |
+      Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+      Compiler: /usr/bin/clang++ 
+      Build flags: 
+      Id flags: -c;-I__does_not_exist__ 
+      
+      The output was:
+      127
+      /usr/bin/clang++: error while loading shared libraries: libLLVM-16.so: cannot open shared object file: No such file or directory
+      
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:1115 (message)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:86 (CMAKE_DETERMINE_COMPILER_ID_VENDOR)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCXXCompiler.cmake:126 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:3 (project)"
+    message: |
+      Checking whether the CXX compiler is IAR using "" did not match "IAR .+ Compiler":
+      /usr/bin/clang++: error while loading shared libraries: libLLVM-16.so: cannot open shared object file: No such file or directory
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:1115 (message)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:86 (CMAKE_DETERMINE_COMPILER_ID_VENDOR)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCXXCompiler.cmake:126 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:3 (project)"
+    message: |
+      Checking whether the CXX compiler is IAR using "" did not match "IAR .+ Compiler":
+      /usr/bin/clang++: error while loading shared libraries: libLLVM-16.so: cannot open shared object file: No such file or directory
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerABI.cmake:57 (try_compile)"
+      - "/usr/share/cmake/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:3 (project)"
+    checks:
+      - "Detecting C compiler ABI info"
+    directories:
+      source: "/home/projects/Raylib4.5/ScienceTycoonDemon/CMakeFiles/CMakeScratch/TryCompile-Lo4nmd"
+      binary: "/home/projects/Raylib4.5/ScienceTycoonDemon/CMakeFiles/CMakeScratch/TryCompile-Lo4nmd"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+    buildResult:
+      variable: "CMAKE_C_ABI_COMPILED"
+      cached: true
+      stdout: |
+        Change Dir: /home/projects/Raylib4.5/ScienceTycoonDemon/CMakeFiles/CMakeScratch/TryCompile-Lo4nmd
+        
+        Run Build Command(s):/usr/bin/cmake -E env VERBOSE=1 /usr/bin/make -f Makefile cmTC_a0d5b/fast && make[1]: Entering directory '/home/projects/Raylib4.5/ScienceTycoonDemon/CMakeFiles/CMakeScratch/TryCompile-Lo4nmd'
+        /usr/bin/make  -f CMakeFiles/cmTC_a0d5b.dir/build.make CMakeFiles/cmTC_a0d5b.dir/build
+        make[2]: Entering directory '/home/projects/Raylib4.5/ScienceTycoonDemon/CMakeFiles/CMakeScratch/TryCompile-Lo4nmd'
+        Building C object CMakeFiles/cmTC_a0d5b.dir/CMakeCCompilerABI.c.o
+        /usr/bin/cc   -v -o CMakeFiles/cmTC_a0d5b.dir/CMakeCCompilerABI.c.o -c /usr/share/cmake/Modules/CMakeCCompilerABI.c
+        Using built-in specs.
+        COLLECT_GCC=/usr/bin/cc
+        Target: x86_64-pc-linux-gnu
+        Configured with: /build/gcc/src/gcc/configure --enable-languages=ada,c,c++,d,fortran,go,lto,objc,obj-c++ --enable-bootstrap --prefix=/usr --libdir=/usr/lib --libexecdir=/usr/lib --mandir=/usr/share/man --infodir=/usr/share/info --with-bugurl=https://bugs.archlinux.org/ --with-build-config=bootstrap-lto --with-linker-hash-style=gnu --with-system-zlib --enable-__cxa_atexit --enable-cet=auto --enable-checking=release --enable-clocale=gnu --enable-default-pie --enable-default-ssp --enable-gnu-indirect-function --enable-gnu-unique-object --enable-libstdcxx-backtrace --enable-link-serialization=1 --enable-linker-build-id --enable-lto --enable-multilib --enable-plugin --enable-shared --enable-threads=posix --disable-libssp --disable-libstdcxx-pch --disable-werror
+        Thread model: posix
+        Supported LTO compression algorithms: zlib zstd
+        gcc version 13.1.1 20230714 (GCC) 
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_a0d5b.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_a0d5b.dir/'
+         /usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/cc1 -quiet -v /usr/share/cmake/Modules/CMakeCCompilerABI.c -quiet -dumpdir CMakeFiles/cmTC_a0d5b.dir/ -dumpbase CMakeCCompilerABI.c.c -dumpbase-ext .c -mtune=generic -march=x86-64 -version -o /tmp/cccfAf6B.s
+        GNU C17 (GCC) version 13.1.1 20230714 (x86_64-pc-linux-gnu)
+        	compiled by GNU C version 13.1.1 20230714, GMP version 6.2.1, MPFR version 4.2.0-p9, MPC version 1.3.1, isl version isl-0.26-GMP
+        
+        GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
+        ignoring nonexistent directory "/usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/../../../../x86_64-pc-linux-gnu/include"
+        #include "..." search starts here:
+        #include <...> search starts here:
+         /usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/include
+         /usr/local/include
+         /usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/include-fixed
+         /usr/include
+        End of search list.
+        Compiler executable checksum: f2257771e8265a58806ed3d081ad07f3
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_a0d5b.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_a0d5b.dir/'
+         as -v --64 -o CMakeFiles/cmTC_a0d5b.dir/CMakeCCompilerABI.c.o /tmp/cccfAf6B.s
+        GNU assembler version 2.40.0 (x86_64-pc-linux-gnu) using BFD version (GNU Binutils) 2.40.0
+        COMPILER_PATH=/usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/:/usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/
+        LIBRARY_PATH=/usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/../../../../lib/:/lib/../lib/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/../../../:/lib/:/usr/lib/
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_a0d5b.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_a0d5b.dir/CMakeCCompilerABI.c.'
+        Linking C executable cmTC_a0d5b
+        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_a0d5b.dir/link.txt --verbose=1
+        /usr/bin/cc  -v CMakeFiles/cmTC_a0d5b.dir/CMakeCCompilerABI.c.o -o cmTC_a0d5b 
+        Using built-in specs.
+        COLLECT_GCC=/usr/bin/cc
+        COLLECT_LTO_WRAPPER=/usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/lto-wrapper
+        Target: x86_64-pc-linux-gnu
+        Configured with: /build/gcc/src/gcc/configure --enable-languages=ada,c,c++,d,fortran,go,lto,objc,obj-c++ --enable-bootstrap --prefix=/usr --libdir=/usr/lib --libexecdir=/usr/lib --mandir=/usr/share/man --infodir=/usr/share/info --with-bugurl=https://bugs.archlinux.org/ --with-build-config=bootstrap-lto --with-linker-hash-style=gnu --with-system-zlib --enable-__cxa_atexit --enable-cet=auto --enable-checking=release --enable-clocale=gnu --enable-default-pie --enable-default-ssp --enable-gnu-indirect-function --enable-gnu-unique-object --enable-libstdcxx-backtrace --enable-link-serialization=1 --enable-linker-build-id --enable-lto --enable-multilib --enable-plugin --enable-shared --enable-threads=posix --disable-libssp --disable-libstdcxx-pch --disable-werror
+        Thread model: posix
+        Supported LTO compression algorithms: zlib zstd
+        gcc version 13.1.1 20230714 (GCC) 
+        COMPILER_PATH=/usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/:/usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/
+        LIBRARY_PATH=/usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/../../../../lib/:/lib/../lib/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/../../../:/lib/:/usr/lib/
+        COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_a0d5b' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_a0d5b.'
+         /usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/collect2 -plugin /usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/lto-wrapper -plugin-opt=-fresolution=/tmp/ccdNlH03.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --build-id --eh-frame-hdr --hash-style=gnu -m elf_x86_64 -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -o cmTC_a0d5b /usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/../../../../lib/Scrt1.o /usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/../../../../lib/crti.o /usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/crtbeginS.o -L/usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1 -L/usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/../../../../lib -L/lib/../lib -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/../../.. CMakeFiles/cmTC_a0d5b.dir/CMakeCCompilerABI.c.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/crtendS.o /usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/../../../../lib/crtn.o
+        COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_a0d5b' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_a0d5b.'
+        make[2]: Leaving directory '/home/projects/Raylib4.5/ScienceTycoonDemon/CMakeFiles/CMakeScratch/TryCompile-Lo4nmd'
+        make[1]: Leaving directory '/home/projects/Raylib4.5/ScienceTycoonDemon/CMakeFiles/CMakeScratch/TryCompile-Lo4nmd'
+        
+      exitCode: 0
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerABI.cmake:127 (message)"
+      - "/usr/share/cmake/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:3 (project)"
+    message: |
+      Parsed C implicit include dir info: rv=done
+        found start of include info
+        found start of implicit include info
+          add: [/usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/include]
+          add: [/usr/local/include]
+          add: [/usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/include-fixed]
+          add: [/usr/include]
+        end of search list found
+        collapse include dir [/usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/include] ==> [/usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/include]
+        collapse include dir [/usr/local/include] ==> [/usr/local/include]
+        collapse include dir [/usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/include-fixed] ==> [/usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/include-fixed]
+        collapse include dir [/usr/include] ==> [/usr/include]
+        implicit include dirs: [/usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/include;/usr/local/include;/usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/include-fixed;/usr/include]
+      
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerABI.cmake:152 (message)"
+      - "/usr/share/cmake/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:3 (project)"
+    message: |
+      Parsed C implicit link information:
+        link line regex: [^( *|.*[/\\])(ld|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
+        ignore line: [Change Dir: /home/projects/Raylib4.5/ScienceTycoonDemon/CMakeFiles/CMakeScratch/TryCompile-Lo4nmd]
+        ignore line: []
+        ignore line: [Run Build Command(s):/usr/bin/cmake -E env VERBOSE=1 /usr/bin/make -f Makefile cmTC_a0d5b/fast && make[1]: Entering directory '/home/projects/Raylib4.5/ScienceTycoonDemon/CMakeFiles/CMakeScratch/TryCompile-Lo4nmd']
+        ignore line: [/usr/bin/make  -f CMakeFiles/cmTC_a0d5b.dir/build.make CMakeFiles/cmTC_a0d5b.dir/build]
+        ignore line: [make[2]: Entering directory '/home/projects/Raylib4.5/ScienceTycoonDemon/CMakeFiles/CMakeScratch/TryCompile-Lo4nmd']
+        ignore line: [Building C object CMakeFiles/cmTC_a0d5b.dir/CMakeCCompilerABI.c.o]
+        ignore line: [/usr/bin/cc   -v -o CMakeFiles/cmTC_a0d5b.dir/CMakeCCompilerABI.c.o -c /usr/share/cmake/Modules/CMakeCCompilerABI.c]
+        ignore line: [Using built-in specs.]
+        ignore line: [COLLECT_GCC=/usr/bin/cc]
+        ignore line: [Target: x86_64-pc-linux-gnu]
+        ignore line: [Configured with: /build/gcc/src/gcc/configure --enable-languages=ada c c++ d fortran go lto objc obj-c++ --enable-bootstrap --prefix=/usr --libdir=/usr/lib --libexecdir=/usr/lib --mandir=/usr/share/man --infodir=/usr/share/info --with-bugurl=https://bugs.archlinux.org/ --with-build-config=bootstrap-lto --with-linker-hash-style=gnu --with-system-zlib --enable-__cxa_atexit --enable-cet=auto --enable-checking=release --enable-clocale=gnu --enable-default-pie --enable-default-ssp --enable-gnu-indirect-function --enable-gnu-unique-object --enable-libstdcxx-backtrace --enable-link-serialization=1 --enable-linker-build-id --enable-lto --enable-multilib --enable-plugin --enable-shared --enable-threads=posix --disable-libssp --disable-libstdcxx-pch --disable-werror]
+        ignore line: [Thread model: posix]
+        ignore line: [Supported LTO compression algorithms: zlib zstd]
+        ignore line: [gcc version 13.1.1 20230714 (GCC) ]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_a0d5b.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_a0d5b.dir/']
+        ignore line: [ /usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/cc1 -quiet -v /usr/share/cmake/Modules/CMakeCCompilerABI.c -quiet -dumpdir CMakeFiles/cmTC_a0d5b.dir/ -dumpbase CMakeCCompilerABI.c.c -dumpbase-ext .c -mtune=generic -march=x86-64 -version -o /tmp/cccfAf6B.s]
+        ignore line: [GNU C17 (GCC) version 13.1.1 20230714 (x86_64-pc-linux-gnu)]
+        ignore line: [	compiled by GNU C version 13.1.1 20230714  GMP version 6.2.1  MPFR version 4.2.0-p9  MPC version 1.3.1  isl version isl-0.26-GMP]
+        ignore line: []
+        ignore line: [GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072]
+        ignore line: [ignoring nonexistent directory "/usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/../../../../x86_64-pc-linux-gnu/include"]
+        ignore line: [#include "..." search starts here:]
+        ignore line: [#include <...> search starts here:]
+        ignore line: [ /usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/include]
+        ignore line: [ /usr/local/include]
+        ignore line: [ /usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/include-fixed]
+        ignore line: [ /usr/include]
+        ignore line: [End of search list.]
+        ignore line: [Compiler executable checksum: f2257771e8265a58806ed3d081ad07f3]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_a0d5b.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_a0d5b.dir/']
+        ignore line: [ as -v --64 -o CMakeFiles/cmTC_a0d5b.dir/CMakeCCompilerABI.c.o /tmp/cccfAf6B.s]
+        ignore line: [GNU assembler version 2.40.0 (x86_64-pc-linux-gnu) using BFD version (GNU Binutils) 2.40.0]
+        ignore line: [COMPILER_PATH=/usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/:/usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/]
+        ignore line: [LIBRARY_PATH=/usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/../../../../lib/:/lib/../lib/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/../../../:/lib/:/usr/lib/]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_a0d5b.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_a0d5b.dir/CMakeCCompilerABI.c.']
+        ignore line: [Linking C executable cmTC_a0d5b]
+        ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_a0d5b.dir/link.txt --verbose=1]
+        ignore line: [/usr/bin/cc  -v CMakeFiles/cmTC_a0d5b.dir/CMakeCCompilerABI.c.o -o cmTC_a0d5b ]
+        ignore line: [Using built-in specs.]
+        ignore line: [COLLECT_GCC=/usr/bin/cc]
+        ignore line: [COLLECT_LTO_WRAPPER=/usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/lto-wrapper]
+        ignore line: [Target: x86_64-pc-linux-gnu]
+        ignore line: [Configured with: /build/gcc/src/gcc/configure --enable-languages=ada c c++ d fortran go lto objc obj-c++ --enable-bootstrap --prefix=/usr --libdir=/usr/lib --libexecdir=/usr/lib --mandir=/usr/share/man --infodir=/usr/share/info --with-bugurl=https://bugs.archlinux.org/ --with-build-config=bootstrap-lto --with-linker-hash-style=gnu --with-system-zlib --enable-__cxa_atexit --enable-cet=auto --enable-checking=release --enable-clocale=gnu --enable-default-pie --enable-default-ssp --enable-gnu-indirect-function --enable-gnu-unique-object --enable-libstdcxx-backtrace --enable-link-serialization=1 --enable-linker-build-id --enable-lto --enable-multilib --enable-plugin --enable-shared --enable-threads=posix --disable-libssp --disable-libstdcxx-pch --disable-werror]
+        ignore line: [Thread model: posix]
+        ignore line: [Supported LTO compression algorithms: zlib zstd]
+        ignore line: [gcc version 13.1.1 20230714 (GCC) ]
+        ignore line: [COMPILER_PATH=/usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/:/usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/]
+        ignore line: [LIBRARY_PATH=/usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/../../../../lib/:/lib/../lib/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/../../../:/lib/:/usr/lib/]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_a0d5b' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_a0d5b.']
+        link line: [ /usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/collect2 -plugin /usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/lto-wrapper -plugin-opt=-fresolution=/tmp/ccdNlH03.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --build-id --eh-frame-hdr --hash-style=gnu -m elf_x86_64 -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -o cmTC_a0d5b /usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/../../../../lib/Scrt1.o /usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/../../../../lib/crti.o /usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/crtbeginS.o -L/usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1 -L/usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/../../../../lib -L/lib/../lib -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/../../.. CMakeFiles/cmTC_a0d5b.dir/CMakeCCompilerABI.c.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/crtendS.o /usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/../../../../lib/crtn.o]
+          arg [/usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/collect2] ==> ignore
+          arg [-plugin] ==> ignore
+          arg [/usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/liblto_plugin.so] ==> ignore
+          arg [-plugin-opt=/usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/lto-wrapper] ==> ignore
+          arg [-plugin-opt=-fresolution=/tmp/ccdNlH03.res] ==> ignore
+          arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
+          arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
+          arg [-plugin-opt=-pass-through=-lc] ==> ignore
+          arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
+          arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
+          arg [--build-id] ==> ignore
+          arg [--eh-frame-hdr] ==> ignore
+          arg [--hash-style=gnu] ==> ignore
+          arg [-m] ==> ignore
+          arg [elf_x86_64] ==> ignore
+          arg [-dynamic-linker] ==> ignore
+          arg [/lib64/ld-linux-x86-64.so.2] ==> ignore
+          arg [-pie] ==> ignore
+          arg [-o] ==> ignore
+          arg [cmTC_a0d5b] ==> ignore
+          arg [/usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/../../../../lib/Scrt1.o] ==> obj [/usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/../../../../lib/Scrt1.o]
+          arg [/usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/../../../../lib/crti.o] ==> obj [/usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/../../../../lib/crti.o]
+          arg [/usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/crtbeginS.o] ==> obj [/usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/crtbeginS.o]
+          arg [-L/usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1] ==> dir [/usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1]
+          arg [-L/usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/../../../../lib] ==> dir [/usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/../../../../lib]
+          arg [-L/lib/../lib] ==> dir [/lib/../lib]
+          arg [-L/usr/lib/../lib] ==> dir [/usr/lib/../lib]
+          arg [-L/usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/../../..] ==> dir [/usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/../../..]
+          arg [CMakeFiles/cmTC_a0d5b.dir/CMakeCCompilerABI.c.o] ==> ignore
+          arg [-lgcc] ==> lib [gcc]
+          arg [--push-state] ==> ignore
+          arg [--as-needed] ==> ignore
+          arg [-lgcc_s] ==> lib [gcc_s]
+          arg [--pop-state] ==> ignore
+          arg [-lc] ==> lib [c]
+          arg [-lgcc] ==> lib [gcc]
+          arg [--push-state] ==> ignore
+          arg [--as-needed] ==> ignore
+          arg [-lgcc_s] ==> lib [gcc_s]
+          arg [--pop-state] ==> ignore
+          arg [/usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/crtendS.o] ==> obj [/usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/crtendS.o]
+          arg [/usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/../../../../lib/crtn.o] ==> obj [/usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/../../../../lib/crtn.o]
+        collapse obj [/usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/../../../../lib/Scrt1.o] ==> [/usr/lib/Scrt1.o]
+        collapse obj [/usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/../../../../lib/crti.o] ==> [/usr/lib/crti.o]
+        collapse obj [/usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/../../../../lib/crtn.o] ==> [/usr/lib/crtn.o]
+        collapse library dir [/usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1] ==> [/usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1]
+        collapse library dir [/usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/../../../../lib] ==> [/usr/lib]
+        collapse library dir [/lib/../lib] ==> [/lib]
+        collapse library dir [/usr/lib/../lib] ==> [/usr/lib]
+        collapse library dir [/usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/../../..] ==> [/usr/lib]
+        implicit libs: [gcc;gcc_s;c;gcc;gcc_s]
+        implicit objs: [/usr/lib/Scrt1.o;/usr/lib/crti.o;/usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/crtbeginS.o;/usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/crtendS.o;/usr/lib/crtn.o]
+        implicit dirs: [/usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1;/usr/lib;/lib]
+        implicit fwks: []
+      
+      
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerABI.cmake:57 (try_compile)"
+      - "/usr/share/cmake/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:3 (project)"
+    checks:
+      - "Detecting CXX compiler ABI info"
+    directories:
+      source: "/home/projects/Raylib4.5/ScienceTycoonDemon/CMakeFiles/CMakeScratch/TryCompile-F0P6wr"
+      binary: "/home/projects/Raylib4.5/ScienceTycoonDemon/CMakeFiles/CMakeScratch/TryCompile-F0P6wr"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: ""
+      CMAKE_CXX_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+    buildResult:
+      variable: "CMAKE_CXX_ABI_COMPILED"
+      cached: true
+      stdout: |
+        Change Dir: /home/projects/Raylib4.5/ScienceTycoonDemon/CMakeFiles/CMakeScratch/TryCompile-F0P6wr
+        
+        Run Build Command(s):/usr/bin/cmake -E env VERBOSE=1 /usr/bin/make -f Makefile cmTC_efcdb/fast && make[1]: Entering directory '/home/projects/Raylib4.5/ScienceTycoonDemon/CMakeFiles/CMakeScratch/TryCompile-F0P6wr'
+        /usr/bin/make  -f CMakeFiles/cmTC_efcdb.dir/build.make CMakeFiles/cmTC_efcdb.dir/build
+        make[2]: Entering directory '/home/projects/Raylib4.5/ScienceTycoonDemon/CMakeFiles/CMakeScratch/TryCompile-F0P6wr'
+        Building CXX object CMakeFiles/cmTC_efcdb.dir/CMakeCXXCompilerABI.cpp.o
+        /usr/bin/clang++    -o CMakeFiles/cmTC_efcdb.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake/Modules/CMakeCXXCompilerABI.cpp
+        /usr/bin/clang++: error while loading shared libraries: libLLVM-16.so: cannot open shared object file: No such file or directory
+        make[2]: *** [CMakeFiles/cmTC_efcdb.dir/build.make:78: CMakeFiles/cmTC_efcdb.dir/CMakeCXXCompilerABI.cpp.o] Error 127
+        make[2]: Leaving directory '/home/projects/Raylib4.5/ScienceTycoonDemon/CMakeFiles/CMakeScratch/TryCompile-F0P6wr'
+        make[1]: *** [Makefile:127: cmTC_efcdb/fast] Error 2
+        make[1]: Leaving directory '/home/projects/Raylib4.5/ScienceTycoonDemon/CMakeFiles/CMakeScratch/TryCompile-F0P6wr'
+        
+      exitCode: 2
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeTestCXXCompiler.cmake:49 (try_compile)"
+      - "CMakeLists.txt:3 (project)"
+    checks:
+      - "Check for working CXX compiler: /usr/bin/clang++"
+    directories:
+      source: "/home/projects/Raylib4.5/ScienceTycoonDemon/CMakeFiles/CMakeScratch/TryCompile-fkoOwu"
+      binary: "/home/projects/Raylib4.5/ScienceTycoonDemon/CMakeFiles/CMakeScratch/TryCompile-fkoOwu"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: ""
+      CMAKE_CXX_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+    buildResult:
+      variable: "CMAKE_CXX_COMPILER_WORKS"
+      cached: true
+      stdout: |
+        Change Dir: /home/projects/Raylib4.5/ScienceTycoonDemon/CMakeFiles/CMakeScratch/TryCompile-fkoOwu
+        
+        Run Build Command(s):/usr/bin/cmake -E env VERBOSE=1 /usr/bin/make -f Makefile cmTC_ac456/fast && make[1]: Entering directory '/home/projects/Raylib4.5/ScienceTycoonDemon/CMakeFiles/CMakeScratch/TryCompile-fkoOwu'
+        /usr/bin/make  -f CMakeFiles/cmTC_ac456.dir/build.make CMakeFiles/cmTC_ac456.dir/build
+        make[2]: Entering directory '/home/projects/Raylib4.5/ScienceTycoonDemon/CMakeFiles/CMakeScratch/TryCompile-fkoOwu'
+        Building CXX object CMakeFiles/cmTC_ac456.dir/testCXXCompiler.cxx.o
+        /usr/bin/clang++    -o CMakeFiles/cmTC_ac456.dir/testCXXCompiler.cxx.o -c /home/projects/Raylib4.5/ScienceTycoonDemon/CMakeFiles/CMakeScratch/TryCompile-fkoOwu/testCXXCompiler.cxx
+        /usr/bin/clang++: error while loading shared libraries: libLLVM-16.so: cannot open shared object file: No such file or directory
+        make[2]: *** [CMakeFiles/cmTC_ac456.dir/build.make:78: CMakeFiles/cmTC_ac456.dir/testCXXCompiler.cxx.o] Error 127
+        make[2]: Leaving directory '/home/projects/Raylib4.5/ScienceTycoonDemon/CMakeFiles/CMakeScratch/TryCompile-fkoOwu'
+        make[1]: *** [Makefile:127: cmTC_ac456/fast] Error 2
+        make[1]: Leaving directory '/home/projects/Raylib4.5/ScienceTycoonDemon/CMakeFiles/CMakeScratch/TryCompile-fkoOwu'
+        
+      exitCode: 2
+...
+
+---
+events:
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCXXCompiler.cmake:126 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:3 (project)"
+    message: |
+      Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+      Compiler: /bin/clang++ 
+      Build flags: 
+      Id flags:  
+      
+      The output was:
+      127
+      /bin/clang++: error while loading shared libraries: libLLVM-16.so: cannot open shared object file: No such file or directory
+      
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCXXCompiler.cmake:126 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:3 (project)"
+    message: |
+      Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+      Compiler: /bin/clang++ 
+      Build flags: 
+      Id flags: -c 
+      
+      The output was:
+      127
+      /bin/clang++: error while loading shared libraries: libLLVM-16.so: cannot open shared object file: No such file or directory
+      
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCXXCompiler.cmake:126 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:3 (project)"
+    message: |
+      Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+      Compiler: /bin/clang++ 
+      Build flags: 
+      Id flags: --c++ 
+      
+      The output was:
+      127
+      /bin/clang++: error while loading shared libraries: libLLVM-16.so: cannot open shared object file: No such file or directory
+      
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCXXCompiler.cmake:126 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:3 (project)"
+    message: |
+      Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+      Compiler: /bin/clang++ 
+      Build flags: 
+      Id flags: --ec++ 
+      
+      The output was:
+      127
+      /bin/clang++: error while loading shared libraries: libLLVM-16.so: cannot open shared object file: No such file or directory
+      
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCXXCompiler.cmake:126 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:3 (project)"
+    message: |
+      Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+      Compiler: /bin/clang++ 
+      Build flags: 
+      Id flags: --target=arm-arm-none-eabi;-mcpu=cortex-m3 
+      
+      The output was:
+      127
+      /bin/clang++: error while loading shared libraries: libLLVM-16.so: cannot open shared object file: No such file or directory
+      
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCXXCompiler.cmake:126 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:3 (project)"
+    message: |
+      Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+      Compiler: /bin/clang++ 
+      Build flags: 
+      Id flags: -c;-I__does_not_exist__ 
+      
+      The output was:
+      127
+      /bin/clang++: error while loading shared libraries: libLLVM-16.so: cannot open shared object file: No such file or directory
+      
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCXXCompiler.cmake:126 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:3 (project)"
+    message: |
+      Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+      Compiler: /bin/clang++ 
+      Build flags: 
+      Id flags:  
+      
+      The output was:
+      127
+      /bin/clang++: error while loading shared libraries: libLLVM-16.so: cannot open shared object file: No such file or directory
+      
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCXXCompiler.cmake:126 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:3 (project)"
+    message: |
+      Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+      Compiler: /bin/clang++ 
+      Build flags: 
+      Id flags: -c 
+      
+      The output was:
+      127
+      /bin/clang++: error while loading shared libraries: libLLVM-16.so: cannot open shared object file: No such file or directory
+      
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCXXCompiler.cmake:126 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:3 (project)"
+    message: |
+      Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+      Compiler: /bin/clang++ 
+      Build flags: 
+      Id flags: --c++ 
+      
+      The output was:
+      127
+      /bin/clang++: error while loading shared libraries: libLLVM-16.so: cannot open shared object file: No such file or directory
+      
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCXXCompiler.cmake:126 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:3 (project)"
+    message: |
+      Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+      Compiler: /bin/clang++ 
+      Build flags: 
+      Id flags: --ec++ 
+      
+      The output was:
+      127
+      /bin/clang++: error while loading shared libraries: libLLVM-16.so: cannot open shared object file: No such file or directory
+      
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCXXCompiler.cmake:126 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:3 (project)"
+    message: |
+      Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+      Compiler: /bin/clang++ 
+      Build flags: 
+      Id flags: --target=arm-arm-none-eabi;-mcpu=cortex-m3 
+      
+      The output was:
+      127
+      /bin/clang++: error while loading shared libraries: libLLVM-16.so: cannot open shared object file: No such file or directory
+      
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCXXCompiler.cmake:126 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:3 (project)"
+    message: |
+      Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+      Compiler: /bin/clang++ 
+      Build flags: 
+      Id flags: -c;-I__does_not_exist__ 
+      
+      The output was:
+      127
+      /bin/clang++: error while loading shared libraries: libLLVM-16.so: cannot open shared object file: No such file or directory
+      
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:1115 (message)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:86 (CMAKE_DETERMINE_COMPILER_ID_VENDOR)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCXXCompiler.cmake:126 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:3 (project)"
+    message: |
+      Checking whether the CXX compiler is IAR using "" did not match "IAR .+ Compiler":
+      /bin/clang++: error while loading shared libraries: libLLVM-16.so: cannot open shared object file: No such file or directory
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:1115 (message)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:86 (CMAKE_DETERMINE_COMPILER_ID_VENDOR)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCXXCompiler.cmake:126 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:3 (project)"
+    message: |
+      Checking whether the CXX compiler is IAR using "" did not match "IAR .+ Compiler":
+      /bin/clang++: error while loading shared libraries: libLLVM-16.so: cannot open shared object file: No such file or directory
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerABI.cmake:57 (try_compile)"
+      - "/usr/share/cmake/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:3 (project)"
+    checks:
+      - "Detecting CXX compiler ABI info"
+    directories:
+      source: "/home/projects/Raylib4.5/ScienceTycoonDemon/CMakeFiles/CMakeScratch/TryCompile-AWthP0"
+      binary: "/home/projects/Raylib4.5/ScienceTycoonDemon/CMakeFiles/CMakeScratch/TryCompile-AWthP0"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: ""
+      CMAKE_CXX_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+    buildResult:
+      variable: "CMAKE_CXX_ABI_COMPILED"
+      cached: true
+      stdout: |
+        Change Dir: /home/projects/Raylib4.5/ScienceTycoonDemon/CMakeFiles/CMakeScratch/TryCompile-AWthP0
+        
+        Run Build Command(s):/usr/bin/cmake -E env VERBOSE=1 /usr/bin/make -f Makefile cmTC_c3da4/fast && make[1]: Entering directory '/home/projects/Raylib4.5/ScienceTycoonDemon/CMakeFiles/CMakeScratch/TryCompile-AWthP0'
+        /usr/bin/make  -f CMakeFiles/cmTC_c3da4.dir/build.make CMakeFiles/cmTC_c3da4.dir/build
+        make[2]: Entering directory '/home/projects/Raylib4.5/ScienceTycoonDemon/CMakeFiles/CMakeScratch/TryCompile-AWthP0'
+        Building CXX object CMakeFiles/cmTC_c3da4.dir/CMakeCXXCompilerABI.cpp.o
+        /bin/clang++    -o CMakeFiles/cmTC_c3da4.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake/Modules/CMakeCXXCompilerABI.cpp
+        /bin/clang++: error while loading shared libraries: libLLVM-16.so: cannot open shared object file: No such file or directory
+        make[2]: *** [CMakeFiles/cmTC_c3da4.dir/build.make:78: CMakeFiles/cmTC_c3da4.dir/CMakeCXXCompilerABI.cpp.o] Error 127
+        make[2]: Leaving directory '/home/projects/Raylib4.5/ScienceTycoonDemon/CMakeFiles/CMakeScratch/TryCompile-AWthP0'
+        make[1]: *** [Makefile:127: cmTC_c3da4/fast] Error 2
+        make[1]: Leaving directory '/home/projects/Raylib4.5/ScienceTycoonDemon/CMakeFiles/CMakeScratch/TryCompile-AWthP0'
+        
+      exitCode: 2
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeTestCXXCompiler.cmake:49 (try_compile)"
+      - "CMakeLists.txt:3 (project)"
+    checks:
+      - "Check for working CXX compiler: /bin/clang++"
+    directories:
+      source: "/home/projects/Raylib4.5/ScienceTycoonDemon/CMakeFiles/CMakeScratch/TryCompile-SWRBA2"
+      binary: "/home/projects/Raylib4.5/ScienceTycoonDemon/CMakeFiles/CMakeScratch/TryCompile-SWRBA2"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: ""
+      CMAKE_CXX_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+    buildResult:
+      variable: "CMAKE_CXX_COMPILER_WORKS"
+      cached: true
+      stdout: |
+        Change Dir: /home/projects/Raylib4.5/ScienceTycoonDemon/CMakeFiles/CMakeScratch/TryCompile-SWRBA2
+        
+        Run Build Command(s):/usr/bin/cmake -E env VERBOSE=1 /usr/bin/make -f Makefile cmTC_b0163/fast && make[1]: Entering directory '/home/projects/Raylib4.5/ScienceTycoonDemon/CMakeFiles/CMakeScratch/TryCompile-SWRBA2'
+        /usr/bin/make  -f CMakeFiles/cmTC_b0163.dir/build.make CMakeFiles/cmTC_b0163.dir/build
+        make[2]: Entering directory '/home/projects/Raylib4.5/ScienceTycoonDemon/CMakeFiles/CMakeScratch/TryCompile-SWRBA2'
+        Building CXX object CMakeFiles/cmTC_b0163.dir/testCXXCompiler.cxx.o
+        /bin/clang++    -o CMakeFiles/cmTC_b0163.dir/testCXXCompiler.cxx.o -c /home/projects/Raylib4.5/ScienceTycoonDemon/CMakeFiles/CMakeScratch/TryCompile-SWRBA2/testCXXCompiler.cxx
+        /bin/clang++: error while loading shared libraries: libLLVM-16.so: cannot open shared object file: No such file or directory
+        make[2]: *** [CMakeFiles/cmTC_b0163.dir/build.make:78: CMakeFiles/cmTC_b0163.dir/testCXXCompiler.cxx.o] Error 127
+        make[2]: Leaving directory '/home/projects/Raylib4.5/ScienceTycoonDemon/CMakeFiles/CMakeScratch/TryCompile-SWRBA2'
+        make[1]: *** [Makefile:127: cmTC_b0163/fast] Error 2
+        make[1]: Leaving directory '/home/projects/Raylib4.5/ScienceTycoonDemon/CMakeFiles/CMakeScratch/TryCompile-SWRBA2'
+        
+      exitCode: 2
+...
+
+---
+events:
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCXXCompiler.cmake:126 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:3 (project)"
+    message: |
+      Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+      Compiler: /bin/clang++ 
+      Build flags: 
+      Id flags:  
+      
+      The output was:
+      1
+      /bin/clang++: /usr/lib/libc.so.6: version `GLIBC_2.38' not found (required by /usr/lib/libclang-cpp.so.16)
+      /bin/clang++: /usr/lib/libm.so.6: version `GLIBC_2.38' not found (required by /usr/lib/libLLVM-16.so)
+      /bin/clang++: /usr/lib/libc.so.6: version `GLIBC_2.38' not found (required by /usr/lib/libLLVM-16.so)
+      
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCXXCompiler.cmake:126 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:3 (project)"
+    message: |
+      Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+      Compiler: /bin/clang++ 
+      Build flags: 
+      Id flags: -c 
+      
+      The output was:
+      1
+      /bin/clang++: /usr/lib/libc.so.6: version `GLIBC_2.38' not found (required by /usr/lib/libclang-cpp.so.16)
+      /bin/clang++: /usr/lib/libm.so.6: version `GLIBC_2.38' not found (required by /usr/lib/libLLVM-16.so)
+      /bin/clang++: /usr/lib/libc.so.6: version `GLIBC_2.38' not found (required by /usr/lib/libLLVM-16.so)
+      
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCXXCompiler.cmake:126 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:3 (project)"
+    message: |
+      Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+      Compiler: /bin/clang++ 
+      Build flags: 
+      Id flags: --c++ 
+      
+      The output was:
+      1
+      /bin/clang++: /usr/lib/libc.so.6: version `GLIBC_2.38' not found (required by /usr/lib/libclang-cpp.so.16)
+      /bin/clang++: /usr/lib/libm.so.6: version `GLIBC_2.38' not found (required by /usr/lib/libLLVM-16.so)
+      /bin/clang++: /usr/lib/libc.so.6: version `GLIBC_2.38' not found (required by /usr/lib/libLLVM-16.so)
+      
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCXXCompiler.cmake:126 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:3 (project)"
+    message: |
+      Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+      Compiler: /bin/clang++ 
+      Build flags: 
+      Id flags: --ec++ 
+      
+      The output was:
+      1
+      /bin/clang++: /usr/lib/libc.so.6: version `GLIBC_2.38' not found (required by /usr/lib/libclang-cpp.so.16)
+      /bin/clang++: /usr/lib/libm.so.6: version `GLIBC_2.38' not found (required by /usr/lib/libLLVM-16.so)
+      /bin/clang++: /usr/lib/libc.so.6: version `GLIBC_2.38' not found (required by /usr/lib/libLLVM-16.so)
+      
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCXXCompiler.cmake:126 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:3 (project)"
+    message: |
+      Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+      Compiler: /bin/clang++ 
+      Build flags: 
+      Id flags: --target=arm-arm-none-eabi;-mcpu=cortex-m3 
+      
+      The output was:
+      1
+      /bin/clang++: /usr/lib/libc.so.6: version `GLIBC_2.38' not found (required by /usr/lib/libclang-cpp.so.16)
+      /bin/clang++: /usr/lib/libm.so.6: version `GLIBC_2.38' not found (required by /usr/lib/libLLVM-16.so)
+      /bin/clang++: /usr/lib/libc.so.6: version `GLIBC_2.38' not found (required by /usr/lib/libLLVM-16.so)
+      
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCXXCompiler.cmake:126 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:3 (project)"
+    message: |
+      Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+      Compiler: /bin/clang++ 
+      Build flags: 
+      Id flags: -c;-I__does_not_exist__ 
+      
+      The output was:
+      1
+      /bin/clang++: /usr/lib/libc.so.6: version `GLIBC_2.38' not found (required by /usr/lib/libclang-cpp.so.16)
+      /bin/clang++: /usr/lib/libm.so.6: version `GLIBC_2.38' not found (required by /usr/lib/libLLVM-16.so)
+      /bin/clang++: /usr/lib/libc.so.6: version `GLIBC_2.38' not found (required by /usr/lib/libLLVM-16.so)
+      
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCXXCompiler.cmake:126 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:3 (project)"
+    message: |
+      Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+      Compiler: /bin/clang++ 
+      Build flags: 
+      Id flags:  
+      
+      The output was:
+      1
+      /bin/clang++: /usr/lib/libc.so.6: version `GLIBC_2.38' not found (required by /usr/lib/libclang-cpp.so.16)
+      /bin/clang++: /usr/lib/libm.so.6: version `GLIBC_2.38' not found (required by /usr/lib/libLLVM-16.so)
+      /bin/clang++: /usr/lib/libc.so.6: version `GLIBC_2.38' not found (required by /usr/lib/libLLVM-16.so)
+      
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCXXCompiler.cmake:126 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:3 (project)"
+    message: |
+      Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+      Compiler: /bin/clang++ 
+      Build flags: 
+      Id flags: -c 
+      
+      The output was:
+      1
+      /bin/clang++: /usr/lib/libc.so.6: version `GLIBC_2.38' not found (required by /usr/lib/libclang-cpp.so.16)
+      /bin/clang++: /usr/lib/libm.so.6: version `GLIBC_2.38' not found (required by /usr/lib/libLLVM-16.so)
+      /bin/clang++: /usr/lib/libc.so.6: version `GLIBC_2.38' not found (required by /usr/lib/libLLVM-16.so)
+      
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCXXCompiler.cmake:126 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:3 (project)"
+    message: |
+      Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+      Compiler: /bin/clang++ 
+      Build flags: 
+      Id flags: --c++ 
+      
+      The output was:
+      1
+      /bin/clang++: /usr/lib/libc.so.6: version `GLIBC_2.38' not found (required by /usr/lib/libclang-cpp.so.16)
+      /bin/clang++: /usr/lib/libm.so.6: version `GLIBC_2.38' not found (required by /usr/lib/libLLVM-16.so)
+      /bin/clang++: /usr/lib/libc.so.6: version `GLIBC_2.38' not found (required by /usr/lib/libLLVM-16.so)
+      
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCXXCompiler.cmake:126 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:3 (project)"
+    message: |
+      Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+      Compiler: /bin/clang++ 
+      Build flags: 
+      Id flags: --ec++ 
+      
+      The output was:
+      1
+      /bin/clang++: /usr/lib/libc.so.6: version `GLIBC_2.38' not found (required by /usr/lib/libclang-cpp.so.16)
+      /bin/clang++: /usr/lib/libm.so.6: version `GLIBC_2.38' not found (required by /usr/lib/libLLVM-16.so)
+      /bin/clang++: /usr/lib/libc.so.6: version `GLIBC_2.38' not found (required by /usr/lib/libLLVM-16.so)
+      
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCXXCompiler.cmake:126 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:3 (project)"
+    message: |
+      Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+      Compiler: /bin/clang++ 
+      Build flags: 
+      Id flags: --target=arm-arm-none-eabi;-mcpu=cortex-m3 
+      
+      The output was:
+      1
+      /bin/clang++: /usr/lib/libc.so.6: version `GLIBC_2.38' not found (required by /usr/lib/libclang-cpp.so.16)
+      /bin/clang++: /usr/lib/libm.so.6: version `GLIBC_2.38' not found (required by /usr/lib/libLLVM-16.so)
+      /bin/clang++: /usr/lib/libc.so.6: version `GLIBC_2.38' not found (required by /usr/lib/libLLVM-16.so)
+      
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCXXCompiler.cmake:126 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:3 (project)"
+    message: |
+      Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+      Compiler: /bin/clang++ 
+      Build flags: 
+      Id flags: -c;-I__does_not_exist__ 
+      
+      The output was:
+      1
+      /bin/clang++: /usr/lib/libc.so.6: version `GLIBC_2.38' not found (required by /usr/lib/libclang-cpp.so.16)
+      /bin/clang++: /usr/lib/libm.so.6: version `GLIBC_2.38' not found (required by /usr/lib/libLLVM-16.so)
+      /bin/clang++: /usr/lib/libc.so.6: version `GLIBC_2.38' not found (required by /usr/lib/libLLVM-16.so)
+      
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:1115 (message)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:86 (CMAKE_DETERMINE_COMPILER_ID_VENDOR)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCXXCompiler.cmake:126 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:3 (project)"
+    message: |
+      Checking whether the CXX compiler is IAR using "" did not match "IAR .+ Compiler":
+      /bin/clang++: /usr/lib/libc.so.6: version `GLIBC_2.38' not found (required by /usr/lib/libclang-cpp.so.16)
+      /bin/clang++: /usr/lib/libm.so.6: version `GLIBC_2.38' not found (required by /usr/lib/libLLVM-16.so)
+      /bin/clang++: /usr/lib/libc.so.6: version `GLIBC_2.38' not found (required by /usr/lib/libLLVM-16.so)
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:1115 (message)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:86 (CMAKE_DETERMINE_COMPILER_ID_VENDOR)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCXXCompiler.cmake:126 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:3 (project)"
+    message: |
+      Checking whether the CXX compiler is IAR using "" did not match "IAR .+ Compiler":
+      /bin/clang++: /usr/lib/libc.so.6: version `GLIBC_2.38' not found (required by /usr/lib/libclang-cpp.so.16)
+      /bin/clang++: /usr/lib/libm.so.6: version `GLIBC_2.38' not found (required by /usr/lib/libLLVM-16.so)
+      /bin/clang++: /usr/lib/libc.so.6: version `GLIBC_2.38' not found (required by /usr/lib/libLLVM-16.so)
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerABI.cmake:57 (try_compile)"
+      - "/usr/share/cmake/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:3 (project)"
+    checks:
+      - "Detecting CXX compiler ABI info"
+    directories:
+      source: "/home/projects/Raylib4.5/ScienceTycoonDemon/CMakeFiles/CMakeScratch/TryCompile-cl4f10"
+      binary: "/home/projects/Raylib4.5/ScienceTycoonDemon/CMakeFiles/CMakeScratch/TryCompile-cl4f10"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: ""
+      CMAKE_CXX_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+    buildResult:
+      variable: "CMAKE_CXX_ABI_COMPILED"
+      cached: true
+      stdout: |
+        Change Dir: /home/projects/Raylib4.5/ScienceTycoonDemon/CMakeFiles/CMakeScratch/TryCompile-cl4f10
+        
+        Run Build Command(s):/usr/bin/cmake -E env VERBOSE=1 /usr/bin/make -f Makefile cmTC_a6692/fast && make[1]: Entering directory '/home/projects/Raylib4.5/ScienceTycoonDemon/CMakeFiles/CMakeScratch/TryCompile-cl4f10'
+        /usr/bin/make  -f CMakeFiles/cmTC_a6692.dir/build.make CMakeFiles/cmTC_a6692.dir/build
+        make[2]: Entering directory '/home/projects/Raylib4.5/ScienceTycoonDemon/CMakeFiles/CMakeScratch/TryCompile-cl4f10'
+        Building CXX object CMakeFiles/cmTC_a6692.dir/CMakeCXXCompilerABI.cpp.o
+        /bin/clang++    -o CMakeFiles/cmTC_a6692.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake/Modules/CMakeCXXCompilerABI.cpp
+        /bin/clang++: /usr/lib/libc.so.6: version `GLIBC_2.38' not found (required by /usr/lib/libclang-cpp.so.16)
+        /bin/clang++: /usr/lib/libm.so.6: version `GLIBC_2.38' not found (required by /usr/lib/libLLVM-16.so)
+        /bin/clang++: /usr/lib/libc.so.6: version `GLIBC_2.38' not found (required by /usr/lib/libLLVM-16.so)
+        make[2]: *** [CMakeFiles/cmTC_a6692.dir/build.make:78: CMakeFiles/cmTC_a6692.dir/CMakeCXXCompilerABI.cpp.o] Error 1
+        make[2]: Leaving directory '/home/projects/Raylib4.5/ScienceTycoonDemon/CMakeFiles/CMakeScratch/TryCompile-cl4f10'
+        make[1]: *** [Makefile:127: cmTC_a6692/fast] Error 2
+        make[1]: Leaving directory '/home/projects/Raylib4.5/ScienceTycoonDemon/CMakeFiles/CMakeScratch/TryCompile-cl4f10'
+        
+      exitCode: 2
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeTestCXXCompiler.cmake:49 (try_compile)"
+      - "CMakeLists.txt:3 (project)"
+    checks:
+      - "Check for working CXX compiler: /bin/clang++"
+    directories:
+      source: "/home/projects/Raylib4.5/ScienceTycoonDemon/CMakeFiles/CMakeScratch/TryCompile-cn899L"
+      binary: "/home/projects/Raylib4.5/ScienceTycoonDemon/CMakeFiles/CMakeScratch/TryCompile-cn899L"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: ""
+      CMAKE_CXX_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+    buildResult:
+      variable: "CMAKE_CXX_COMPILER_WORKS"
+      cached: true
+      stdout: |
+        Change Dir: /home/projects/Raylib4.5/ScienceTycoonDemon/CMakeFiles/CMakeScratch/TryCompile-cn899L
+        
+        Run Build Command(s):/usr/bin/cmake -E env VERBOSE=1 /usr/bin/make -f Makefile cmTC_da38c/fast && make[1]: Entering directory '/home/projects/Raylib4.5/ScienceTycoonDemon/CMakeFiles/CMakeScratch/TryCompile-cn899L'
+        /usr/bin/make  -f CMakeFiles/cmTC_da38c.dir/build.make CMakeFiles/cmTC_da38c.dir/build
+        make[2]: Entering directory '/home/projects/Raylib4.5/ScienceTycoonDemon/CMakeFiles/CMakeScratch/TryCompile-cn899L'
+        Building CXX object CMakeFiles/cmTC_da38c.dir/testCXXCompiler.cxx.o
+        /bin/clang++    -o CMakeFiles/cmTC_da38c.dir/testCXXCompiler.cxx.o -c /home/projects/Raylib4.5/ScienceTycoonDemon/CMakeFiles/CMakeScratch/TryCompile-cn899L/testCXXCompiler.cxx
+        /bin/clang++: /usr/lib/libc.so.6: version `GLIBC_2.38' not found (required by /usr/lib/libclang-cpp.so.16)
+        /bin/clang++: /usr/lib/libm.so.6: version `GLIBC_2.38' not found (required by /usr/lib/libLLVM-16.so)
+        /bin/clang++: /usr/lib/libc.so.6: version `GLIBC_2.38' not found (required by /usr/lib/libLLVM-16.so)
+        make[2]: *** [CMakeFiles/cmTC_da38c.dir/build.make:78: CMakeFiles/cmTC_da38c.dir/testCXXCompiler.cxx.o] Error 1
+        make[2]: Leaving directory '/home/projects/Raylib4.5/ScienceTycoonDemon/CMakeFiles/CMakeScratch/TryCompile-cn899L'
+        make[1]: *** [Makefile:127: cmTC_da38c/fast] Error 2
+        make[1]: Leaving directory '/home/projects/Raylib4.5/ScienceTycoonDemon/CMakeFiles/CMakeScratch/TryCompile-cn899L'
+        
+      exitCode: 2
+...
+
+---
+events:
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCXXCompiler.cmake:126 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:3 (project)"
+    message: |
+      Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
+      Compiler: /bin/clang++ 
+      Build flags: 
+      Id flags:  
+      
+      The output was:
+      0
+      
+      
+      Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "a.out"
+      
+      The CXX compiler identification is Clang, found in:
+        /home/projects/Raylib4.5/ScienceTycoonDemon/CMakeFiles/3.26.4/CompilerIdCXX/a.out
+      
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerABI.cmake:57 (try_compile)"
+      - "/usr/share/cmake/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:3 (project)"
+    checks:
+      - "Detecting CXX compiler ABI info"
+    directories:
+      source: "/home/projects/Raylib4.5/ScienceTycoonDemon/CMakeFiles/CMakeScratch/TryCompile-IhSf8g"
+      binary: "/home/projects/Raylib4.5/ScienceTycoonDemon/CMakeFiles/CMakeScratch/TryCompile-IhSf8g"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: ""
+      CMAKE_CXX_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+    buildResult:
+      variable: "CMAKE_CXX_ABI_COMPILED"
+      cached: true
+      stdout: |
+        Change Dir: /home/projects/Raylib4.5/ScienceTycoonDemon/CMakeFiles/CMakeScratch/TryCompile-IhSf8g
+        
+        Run Build Command(s):/usr/bin/cmake -E env VERBOSE=1 /usr/bin/make -f Makefile cmTC_532ee/fast && make[1]: Entering directory '/home/projects/Raylib4.5/ScienceTycoonDemon/CMakeFiles/CMakeScratch/TryCompile-IhSf8g'
+        /usr/bin/make  -f CMakeFiles/cmTC_532ee.dir/build.make CMakeFiles/cmTC_532ee.dir/build
+        make[2]: Entering directory '/home/projects/Raylib4.5/ScienceTycoonDemon/CMakeFiles/CMakeScratch/TryCompile-IhSf8g'
+        Building CXX object CMakeFiles/cmTC_532ee.dir/CMakeCXXCompilerABI.cpp.o
+        /bin/clang++   -v -MD -MT CMakeFiles/cmTC_532ee.dir/CMakeCXXCompilerABI.cpp.o -MF CMakeFiles/cmTC_532ee.dir/CMakeCXXCompilerABI.cpp.o.d -o CMakeFiles/cmTC_532ee.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake/Modules/CMakeCXXCompilerABI.cpp
+        clang version 16.0.6
+        Target: x86_64-pc-linux-gnu
+        Thread model: posix
+        InstalledDir: /bin
+        Found candidate GCC installation: /bin/../lib/gcc/x86_64-pc-linux-gnu/13.1.1
+        Found candidate GCC installation: /bin/../lib64/gcc/x86_64-pc-linux-gnu/13.1.1
+        Selected GCC installation: /bin/../lib64/gcc/x86_64-pc-linux-gnu/13.1.1
+        Candidate multilib: .;@m64
+        Candidate multilib: 32;@m32
+        Selected multilib: .;@m64
+         (in-process)
+         "/usr/bin/clang-16" -cc1 -triple x86_64-pc-linux-gnu -emit-obj -mrelax-all -disable-free -clear-ast-before-backend -disable-llvm-verifier -discard-value-names -main-file-name CMakeCXXCompilerABI.cpp -mrelocation-model pic -pic-level 2 -pic-is-pie -mframe-pointer=all -fmath-errno -ffp-contract=on -fno-rounding-math -mconstructor-aliases -funwind-tables=2 -target-cpu x86-64 -tune-cpu generic -mllvm -treat-scalable-fixed-error-as-warning -debugger-tuning=gdb -v -fcoverage-compilation-dir=/home/projects/Raylib4.5/ScienceTycoonDemon/CMakeFiles/CMakeScratch/TryCompile-IhSf8g -resource-dir /usr/lib/clang/16 -dependency-file CMakeFiles/cmTC_532ee.dir/CMakeCXXCompilerABI.cpp.o.d -MT CMakeFiles/cmTC_532ee.dir/CMakeCXXCompilerABI.cpp.o -sys-header-deps -internal-isystem /bin/../lib64/gcc/x86_64-pc-linux-gnu/13.1.1/../../../../include/c++/13.1.1 -internal-isystem /bin/../lib64/gcc/x86_64-pc-linux-gnu/13.1.1/../../../../include/c++/13.1.1/x86_64-pc-linux-gnu -internal-isystem /bin/../lib64/gcc/x86_64-pc-linux-gnu/13.1.1/../../../../include/c++/13.1.1/backward -internal-isystem /usr/lib/clang/16/include -internal-isystem /usr/local/include -internal-isystem /bin/../lib64/gcc/x86_64-pc-linux-gnu/13.1.1/../../../../x86_64-pc-linux-gnu/include -internal-externc-isystem /include -internal-externc-isystem /usr/include -fdeprecated-macro -fdebug-compilation-dir=/home/projects/Raylib4.5/ScienceTycoonDemon/CMakeFiles/CMakeScratch/TryCompile-IhSf8g -ferror-limit 19 -stack-protector 2 -fgnuc-version=4.2.1 -fcxx-exceptions -fexceptions -faddrsig -D__GCC_HAVE_DWARF2_CFI_ASM=1 -o CMakeFiles/cmTC_532ee.dir/CMakeCXXCompilerABI.cpp.o -x c++ /usr/share/cmake/Modules/CMakeCXXCompilerABI.cpp
+        clang -cc1 version 16.0.6 based upon LLVM 16.0.6 default target x86_64-pc-linux-gnu
+        ignoring nonexistent directory "/bin/../lib64/gcc/x86_64-pc-linux-gnu/13.1.1/../../../../x86_64-pc-linux-gnu/include"
+        ignoring nonexistent directory "/include"
+        #include "..." search starts here:
+        #include <...> search starts here:
+         /bin/../lib64/gcc/x86_64-pc-linux-gnu/13.1.1/../../../../include/c++/13.1.1
+         /bin/../lib64/gcc/x86_64-pc-linux-gnu/13.1.1/../../../../include/c++/13.1.1/x86_64-pc-linux-gnu
+         /bin/../lib64/gcc/x86_64-pc-linux-gnu/13.1.1/../../../../include/c++/13.1.1/backward
+         /usr/lib/clang/16/include
+         /usr/local/include
+         /usr/include
+        End of search list.
+        Linking CXX executable cmTC_532ee
+        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_532ee.dir/link.txt --verbose=1
+        /bin/clang++  -v CMakeFiles/cmTC_532ee.dir/CMakeCXXCompilerABI.cpp.o -o cmTC_532ee 
+        clang version 16.0.6
+        Target: x86_64-pc-linux-gnu
+        Thread model: posix
+        InstalledDir: /bin
+        Found candidate GCC installation: /bin/../lib/gcc/x86_64-pc-linux-gnu/13.1.1
+        Found candidate GCC installation: /bin/../lib64/gcc/x86_64-pc-linux-gnu/13.1.1
+        Selected GCC installation: /bin/../lib64/gcc/x86_64-pc-linux-gnu/13.1.1
+        Candidate multilib: .;@m64
+        Candidate multilib: 32;@m32
+        Selected multilib: .;@m64
+         "/bin/ld" -pie --hash-style=gnu --build-id --eh-frame-hdr -m elf_x86_64 -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_532ee /bin/../lib64/gcc/x86_64-pc-linux-gnu/13.1.1/../../../../lib64/Scrt1.o /bin/../lib64/gcc/x86_64-pc-linux-gnu/13.1.1/../../../../lib64/crti.o /bin/../lib64/gcc/x86_64-pc-linux-gnu/13.1.1/crtbeginS.o -L/bin/../lib64/gcc/x86_64-pc-linux-gnu/13.1.1 -L/bin/../lib64/gcc/x86_64-pc-linux-gnu/13.1.1/../../../../lib64 -L/lib/../lib64 -L/usr/lib/../lib64 -L/lib -L/usr/lib CMakeFiles/cmTC_532ee.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /bin/../lib64/gcc/x86_64-pc-linux-gnu/13.1.1/crtendS.o /bin/../lib64/gcc/x86_64-pc-linux-gnu/13.1.1/../../../../lib64/crtn.o
+        make[2]: Leaving directory '/home/projects/Raylib4.5/ScienceTycoonDemon/CMakeFiles/CMakeScratch/TryCompile-IhSf8g'
+        make[1]: Leaving directory '/home/projects/Raylib4.5/ScienceTycoonDemon/CMakeFiles/CMakeScratch/TryCompile-IhSf8g'
+        
+      exitCode: 0
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerABI.cmake:127 (message)"
+      - "/usr/share/cmake/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:3 (project)"
+    message: |
+      Parsed CXX implicit include dir info: rv=done
+        found start of include info
+        found start of implicit include info
+          add: [/bin/../lib64/gcc/x86_64-pc-linux-gnu/13.1.1/../../../../include/c++/13.1.1]
+          add: [/bin/../lib64/gcc/x86_64-pc-linux-gnu/13.1.1/../../../../include/c++/13.1.1/x86_64-pc-linux-gnu]
+          add: [/bin/../lib64/gcc/x86_64-pc-linux-gnu/13.1.1/../../../../include/c++/13.1.1/backward]
+          add: [/usr/lib/clang/16/include]
+          add: [/usr/local/include]
+          add: [/usr/include]
+        end of search list found
+        collapse include dir [/bin/../lib64/gcc/x86_64-pc-linux-gnu/13.1.1/../../../../include/c++/13.1.1] ==> [/include/c++/13.1.1]
+        collapse include dir [/bin/../lib64/gcc/x86_64-pc-linux-gnu/13.1.1/../../../../include/c++/13.1.1/x86_64-pc-linux-gnu] ==> [/include/c++/13.1.1/x86_64-pc-linux-gnu]
+        collapse include dir [/bin/../lib64/gcc/x86_64-pc-linux-gnu/13.1.1/../../../../include/c++/13.1.1/backward] ==> [/include/c++/13.1.1/backward]
+        collapse include dir [/usr/lib/clang/16/include] ==> [/usr/lib/clang/16/include]
+        collapse include dir [/usr/local/include] ==> [/usr/local/include]
+        collapse include dir [/usr/include] ==> [/usr/include]
+        implicit include dirs: [/include/c++/13.1.1;/include/c++/13.1.1/x86_64-pc-linux-gnu;/include/c++/13.1.1/backward;/usr/lib/clang/16/include;/usr/local/include;/usr/include]
+      
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerABI.cmake:152 (message)"
+      - "/usr/share/cmake/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:3 (project)"
+    message: |
+      Parsed CXX implicit link information:
+        link line regex: [^( *|.*[/\\])(ld|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
+        ignore line: [Change Dir: /home/projects/Raylib4.5/ScienceTycoonDemon/CMakeFiles/CMakeScratch/TryCompile-IhSf8g]
+        ignore line: []
+        ignore line: [Run Build Command(s):/usr/bin/cmake -E env VERBOSE=1 /usr/bin/make -f Makefile cmTC_532ee/fast && make[1]: Entering directory '/home/projects/Raylib4.5/ScienceTycoonDemon/CMakeFiles/CMakeScratch/TryCompile-IhSf8g']
+        ignore line: [/usr/bin/make  -f CMakeFiles/cmTC_532ee.dir/build.make CMakeFiles/cmTC_532ee.dir/build]
+        ignore line: [make[2]: Entering directory '/home/projects/Raylib4.5/ScienceTycoonDemon/CMakeFiles/CMakeScratch/TryCompile-IhSf8g']
+        ignore line: [Building CXX object CMakeFiles/cmTC_532ee.dir/CMakeCXXCompilerABI.cpp.o]
+        ignore line: [/bin/clang++   -v -MD -MT CMakeFiles/cmTC_532ee.dir/CMakeCXXCompilerABI.cpp.o -MF CMakeFiles/cmTC_532ee.dir/CMakeCXXCompilerABI.cpp.o.d -o CMakeFiles/cmTC_532ee.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake/Modules/CMakeCXXCompilerABI.cpp]
+        ignore line: [clang version 16.0.6]
+        ignore line: [Target: x86_64-pc-linux-gnu]
+        ignore line: [Thread model: posix]
+        ignore line: [InstalledDir: /bin]
+        ignore line: [Found candidate GCC installation: /bin/../lib/gcc/x86_64-pc-linux-gnu/13.1.1]
+        ignore line: [Found candidate GCC installation: /bin/../lib64/gcc/x86_64-pc-linux-gnu/13.1.1]
+        ignore line: [Selected GCC installation: /bin/../lib64/gcc/x86_64-pc-linux-gnu/13.1.1]
+        ignore line: [Candidate multilib: .]
+        ignore line: [@m64]
+        ignore line: [Candidate multilib: 32]
+        ignore line: [@m32]
+        ignore line: [Selected multilib: .]
+        ignore line: [@m64]
+        ignore line: [ (in-process)]
+        ignore line: [ "/usr/bin/clang-16" -cc1 -triple x86_64-pc-linux-gnu -emit-obj -mrelax-all -disable-free -clear-ast-before-backend -disable-llvm-verifier -discard-value-names -main-file-name CMakeCXXCompilerABI.cpp -mrelocation-model pic -pic-level 2 -pic-is-pie -mframe-pointer=all -fmath-errno -ffp-contract=on -fno-rounding-math -mconstructor-aliases -funwind-tables=2 -target-cpu x86-64 -tune-cpu generic -mllvm -treat-scalable-fixed-error-as-warning -debugger-tuning=gdb -v -fcoverage-compilation-dir=/home/projects/Raylib4.5/ScienceTycoonDemon/CMakeFiles/CMakeScratch/TryCompile-IhSf8g -resource-dir /usr/lib/clang/16 -dependency-file CMakeFiles/cmTC_532ee.dir/CMakeCXXCompilerABI.cpp.o.d -MT CMakeFiles/cmTC_532ee.dir/CMakeCXXCompilerABI.cpp.o -sys-header-deps -internal-isystem /bin/../lib64/gcc/x86_64-pc-linux-gnu/13.1.1/../../../../include/c++/13.1.1 -internal-isystem /bin/../lib64/gcc/x86_64-pc-linux-gnu/13.1.1/../../../../include/c++/13.1.1/x86_64-pc-linux-gnu -internal-isystem /bin/../lib64/gcc/x86_64-pc-linux-gnu/13.1.1/../../../../include/c++/13.1.1/backward -internal-isystem /usr/lib/clang/16/include -internal-isystem /usr/local/include -internal-isystem /bin/../lib64/gcc/x86_64-pc-linux-gnu/13.1.1/../../../../x86_64-pc-linux-gnu/include -internal-externc-isystem /include -internal-externc-isystem /usr/include -fdeprecated-macro -fdebug-compilation-dir=/home/projects/Raylib4.5/ScienceTycoonDemon/CMakeFiles/CMakeScratch/TryCompile-IhSf8g -ferror-limit 19 -stack-protector 2 -fgnuc-version=4.2.1 -fcxx-exceptions -fexceptions -faddrsig -D__GCC_HAVE_DWARF2_CFI_ASM=1 -o CMakeFiles/cmTC_532ee.dir/CMakeCXXCompilerABI.cpp.o -x c++ /usr/share/cmake/Modules/CMakeCXXCompilerABI.cpp]
+        ignore line: [clang -cc1 version 16.0.6 based upon LLVM 16.0.6 default target x86_64-pc-linux-gnu]
+        ignore line: [ignoring nonexistent directory "/bin/../lib64/gcc/x86_64-pc-linux-gnu/13.1.1/../../../../x86_64-pc-linux-gnu/include"]
+        ignore line: [ignoring nonexistent directory "/include"]
+        ignore line: [#include "..." search starts here:]
+        ignore line: [#include <...> search starts here:]
+        ignore line: [ /bin/../lib64/gcc/x86_64-pc-linux-gnu/13.1.1/../../../../include/c++/13.1.1]
+        ignore line: [ /bin/../lib64/gcc/x86_64-pc-linux-gnu/13.1.1/../../../../include/c++/13.1.1/x86_64-pc-linux-gnu]
+        ignore line: [ /bin/../lib64/gcc/x86_64-pc-linux-gnu/13.1.1/../../../../include/c++/13.1.1/backward]
+        ignore line: [ /usr/lib/clang/16/include]
+        ignore line: [ /usr/local/include]
+        ignore line: [ /usr/include]
+        ignore line: [End of search list.]
+        ignore line: [Linking CXX executable cmTC_532ee]
+        ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_532ee.dir/link.txt --verbose=1]
+        ignore line: [/bin/clang++  -v CMakeFiles/cmTC_532ee.dir/CMakeCXXCompilerABI.cpp.o -o cmTC_532ee ]
+        ignore line: [clang version 16.0.6]
+        ignore line: [Target: x86_64-pc-linux-gnu]
+        ignore line: [Thread model: posix]
+        ignore line: [InstalledDir: /bin]
+        ignore line: [Found candidate GCC installation: /bin/../lib/gcc/x86_64-pc-linux-gnu/13.1.1]
+        ignore line: [Found candidate GCC installation: /bin/../lib64/gcc/x86_64-pc-linux-gnu/13.1.1]
+        ignore line: [Selected GCC installation: /bin/../lib64/gcc/x86_64-pc-linux-gnu/13.1.1]
+        ignore line: [Candidate multilib: .]
+        ignore line: [@m64]
+        ignore line: [Candidate multilib: 32]
+        ignore line: [@m32]
+        ignore line: [Selected multilib: .]
+        ignore line: [@m64]
+        link line: [ "/bin/ld" -pie --hash-style=gnu --build-id --eh-frame-hdr -m elf_x86_64 -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_532ee /bin/../lib64/gcc/x86_64-pc-linux-gnu/13.1.1/../../../../lib64/Scrt1.o /bin/../lib64/gcc/x86_64-pc-linux-gnu/13.1.1/../../../../lib64/crti.o /bin/../lib64/gcc/x86_64-pc-linux-gnu/13.1.1/crtbeginS.o -L/bin/../lib64/gcc/x86_64-pc-linux-gnu/13.1.1 -L/bin/../lib64/gcc/x86_64-pc-linux-gnu/13.1.1/../../../../lib64 -L/lib/../lib64 -L/usr/lib/../lib64 -L/lib -L/usr/lib CMakeFiles/cmTC_532ee.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /bin/../lib64/gcc/x86_64-pc-linux-gnu/13.1.1/crtendS.o /bin/../lib64/gcc/x86_64-pc-linux-gnu/13.1.1/../../../../lib64/crtn.o]
+          arg [/bin/ld] ==> ignore
+          arg [-pie] ==> ignore
+          arg [--hash-style=gnu] ==> ignore
+          arg [--build-id] ==> ignore
+          arg [--eh-frame-hdr] ==> ignore
+          arg [-m] ==> ignore
+          arg [elf_x86_64] ==> ignore
+          arg [-dynamic-linker] ==> ignore
+          arg [/lib64/ld-linux-x86-64.so.2] ==> ignore
+          arg [-o] ==> ignore
+          arg [cmTC_532ee] ==> ignore
+          arg [/bin/../lib64/gcc/x86_64-pc-linux-gnu/13.1.1/../../../../lib64/Scrt1.o] ==> obj [/bin/../lib64/gcc/x86_64-pc-linux-gnu/13.1.1/../../../../lib64/Scrt1.o]
+          arg [/bin/../lib64/gcc/x86_64-pc-linux-gnu/13.1.1/../../../../lib64/crti.o] ==> obj [/bin/../lib64/gcc/x86_64-pc-linux-gnu/13.1.1/../../../../lib64/crti.o]
+          arg [/bin/../lib64/gcc/x86_64-pc-linux-gnu/13.1.1/crtbeginS.o] ==> obj [/bin/../lib64/gcc/x86_64-pc-linux-gnu/13.1.1/crtbeginS.o]
+          arg [-L/bin/../lib64/gcc/x86_64-pc-linux-gnu/13.1.1] ==> dir [/bin/../lib64/gcc/x86_64-pc-linux-gnu/13.1.1]
+          arg [-L/bin/../lib64/gcc/x86_64-pc-linux-gnu/13.1.1/../../../../lib64] ==> dir [/bin/../lib64/gcc/x86_64-pc-linux-gnu/13.1.1/../../../../lib64]
+          arg [-L/lib/../lib64] ==> dir [/lib/../lib64]
+          arg [-L/usr/lib/../lib64] ==> dir [/usr/lib/../lib64]
+          arg [-L/lib] ==> dir [/lib]
+          arg [-L/usr/lib] ==> dir [/usr/lib]
+          arg [CMakeFiles/cmTC_532ee.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
+          arg [-lstdc++] ==> lib [stdc++]
+          arg [-lm] ==> lib [m]
+          arg [-lgcc_s] ==> lib [gcc_s]
+          arg [-lgcc] ==> lib [gcc]
+          arg [-lc] ==> lib [c]
+          arg [-lgcc_s] ==> lib [gcc_s]
+          arg [-lgcc] ==> lib [gcc]
+          arg [/bin/../lib64/gcc/x86_64-pc-linux-gnu/13.1.1/crtendS.o] ==> obj [/bin/../lib64/gcc/x86_64-pc-linux-gnu/13.1.1/crtendS.o]
+          arg [/bin/../lib64/gcc/x86_64-pc-linux-gnu/13.1.1/../../../../lib64/crtn.o] ==> obj [/bin/../lib64/gcc/x86_64-pc-linux-gnu/13.1.1/../../../../lib64/crtn.o]
+        collapse obj [/bin/../lib64/gcc/x86_64-pc-linux-gnu/13.1.1/../../../../lib64/Scrt1.o] ==> [/lib64/Scrt1.o]
+        collapse obj [/bin/../lib64/gcc/x86_64-pc-linux-gnu/13.1.1/../../../../lib64/crti.o] ==> [/lib64/crti.o]
+        collapse obj [/bin/../lib64/gcc/x86_64-pc-linux-gnu/13.1.1/crtbeginS.o] ==> [/lib64/gcc/x86_64-pc-linux-gnu/13.1.1/crtbeginS.o]
+        collapse obj [/bin/../lib64/gcc/x86_64-pc-linux-gnu/13.1.1/crtendS.o] ==> [/lib64/gcc/x86_64-pc-linux-gnu/13.1.1/crtendS.o]
+        collapse obj [/bin/../lib64/gcc/x86_64-pc-linux-gnu/13.1.1/../../../../lib64/crtn.o] ==> [/lib64/crtn.o]
+        collapse library dir [/bin/../lib64/gcc/x86_64-pc-linux-gnu/13.1.1] ==> [/lib64/gcc/x86_64-pc-linux-gnu/13.1.1]
+        collapse library dir [/bin/../lib64/gcc/x86_64-pc-linux-gnu/13.1.1/../../../../lib64] ==> [/lib64]
+        collapse library dir [/lib/../lib64] ==> [/lib64]
+        collapse library dir [/usr/lib/../lib64] ==> [/usr/lib64]
+        collapse library dir [/lib] ==> [/lib]
+        collapse library dir [/usr/lib] ==> [/usr/lib]
+        implicit libs: [stdc++;m;gcc_s;gcc;c;gcc_s;gcc]
+        implicit objs: [/lib64/Scrt1.o;/lib64/crti.o;/lib64/gcc/x86_64-pc-linux-gnu/13.1.1/crtbeginS.o;/lib64/gcc/x86_64-pc-linux-gnu/13.1.1/crtendS.o;/lib64/crtn.o]
+        implicit dirs: [/lib64/gcc/x86_64-pc-linux-gnu/13.1.1;/lib64;/usr/lib64;/lib;/usr/lib]
+        implicit fwks: []
+      
+      
+...
