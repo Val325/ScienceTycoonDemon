@@ -77,7 +77,7 @@ void Scene1(void)
 
     Vector2 dataPoint = GetScreenToWorld2D((Vector2){40,200}, camera);
     Object buttonTree("buttonTree","GUI/buttonSci/ButtonSci.png", SizeMenu);
-    buttonTree.SetPosObj(dataPoint.x,dataPoint.y);
+    buttonTree.SetPosObj(20,170);
 
     //RoomInit
     RoomInfo.PositionSpawn = (Vector2){ 0, 0 };
@@ -122,8 +122,7 @@ void Scene1(void)
 
 
         camera.target = (Vector2){ hero.ReturnPositionX() + 20, hero.ReturnPositionY() + 20};
-
-
+     
 
 
         BeginDrawing();
@@ -137,7 +136,7 @@ void Scene1(void)
             panel.DrawObj();
 
             computer.DrawObj();
-            buttonTree.DrawObj(); 
+            
             hero.collisionDetect(computer.ReturnRect(false));
        
             for (int i = 0; i < amountBuildCell; i++)
@@ -177,7 +176,7 @@ void Scene1(void)
         }
         hero.points = Knowledge_Point;
         hero.showHUDtech();
-         
+        buttonTree.DrawObj();  
         DrawText(TextFormat("Knowledge (Points): %04d", hero.points), 30, 80, 20, WHITE);
         DrawText(TextFormat("Money (hryvnia): %04d", hero.money), 30, 110, 20, WHITE);
 
