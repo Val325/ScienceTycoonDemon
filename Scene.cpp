@@ -176,8 +176,9 @@ void Scene1(void)
         }
         hero.points = Knowledge_Point;
         hero.showHUDtech();
+        buttonTree.DrawOutline(buttonTree.IsHoverObj());
         buttonTree.DrawObj();
-        //buttonTree.DrawRect();
+
         DrawText(TextFormat("Knowledge (Points): %04d", hero.points), 30, 80, 20, WHITE);
         DrawText(TextFormat("Money (hryvnia): %04d", hero.money), 30, 110, 20, WHITE);
 

@@ -657,6 +657,7 @@ BuildObj::BuildObj(): NameObj("buildCell"), Path("src/location/laboratory/buildi
         float WidthTile;
         float HeigthTile;
         bool Permeable;
+        bool drawOutline;
         Image image;
         Texture2D TextureGame;
         Rectangle frameRec;
@@ -671,7 +672,7 @@ BuildObj::BuildObj(): NameObj("buildCell"), Path("src/location/laboratory/buildi
 
             WidthTile = (float)image.width * sizeObject;
             HeigthTile = (float)image.height * sizeObject;
-
+            drawOutline = false;
 
             CollisionRec = (Rectangle){ PositionSpawn.x, PositionSpawn.y, (float)WidthTile, (float)HeigthTile};
             frameRec; 
@@ -701,11 +702,18 @@ BuildObj::BuildObj(): NameObj("buildCell"), Path("src/location/laboratory/buildi
         }
 
         void DrawRect(){
-            DrawRectangle(frameRec.x, frameRec.y, (float)WidthTile, (float)HeigthTile, GREEN);
+            if (drawOutline){
+                DrawRectangle(frameRec.x, frameRec.y, (float)WidthTile, (float)HeigthTile, GREEN);
+            }
         }
 
         void DrawObj(){
             DrawTextureEx(TextureGame, PositionSpawn, 0, sizeObject, WHITE);
+        }
+        void DrawOutline(bool isDraw){
+            if (isDraw){
+                DrawRectangle(frameRec.x, frameRec.y, (float)WidthTile, (float)HeigthTile, BLACK);
+            }
         }
         void clickEventListenSimple(Camera2D camera){
            Vector2 PositionClick = GetMousePosition();
@@ -713,8 +721,19 @@ BuildObj::BuildObj(): NameObj("buildCell"), Path("src/location/laboratory/buildi
            frameRec = (Rectangle){ PositionSpawn.x, PositionSpawn.y, (float)WidthTile, (float)HeigthTile}; 
            if (CheckCollisionPointRec(PositionClick, frameRec) && IsMouseButtonDown(0)){
                 std::cout << "you click here!" << std::endl;
-            } 
-        }    
+           }
+
+        }
+        bool IsHoverObj(){
+           Vector2 PositionClick = GetMousePosition();
+           //PositionClick = GetScreenToWorld2D(PositionClick, camera);
+           frameRec = (Rectangle){ PositionSpawn.x, PositionSpawn.y, (float)WidthTile, (float)HeigthTile}; 
+           if (CheckCollisionPointRec(PositionClick, frameRec)){
+                std::cout << "you hover here!" << std::endl;
+                return true; 
+           }
+           return false;
+        }
     };
 
     struct TileStruct{
