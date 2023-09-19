@@ -75,7 +75,7 @@ void Scene1(void)
     camera.rotation = 0.0f;
     camera.zoom = 1.0f;
 
-    Vector2 dataPoint = GetScreenToWorld2D((Vector2){40,200}, camera);
+    //Vector2 dataPoint = GetScreenToWorld2D((Vector2){40,200}, camera);
     Object buttonTree("buttonTree","GUI/buttonSci/ButtonSci.png", SizeMenu);
     buttonTree.SetPosObj(20,170);
 
@@ -116,7 +116,7 @@ void Scene1(void)
         hero.MoveHero();
 
         hero.FramesIncrement();
-
+        buttonTree.clickEventListenSimple(camera);
         
         
 
@@ -176,7 +176,8 @@ void Scene1(void)
         }
         hero.points = Knowledge_Point;
         hero.showHUDtech();
-        buttonTree.DrawObj();  
+        buttonTree.DrawObj();
+        //buttonTree.DrawRect();
         DrawText(TextFormat("Knowledge (Points): %04d", hero.points), 30, 80, 20, WHITE);
         DrawText(TextFormat("Money (hryvnia): %04d", hero.money), 30, 110, 20, WHITE);
 

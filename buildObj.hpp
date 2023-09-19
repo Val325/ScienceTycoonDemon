@@ -125,13 +125,14 @@ class BuildObj{
         BuildObj(std::string name, const char *path, float size);   
 	BuildObj();
 
-        void countPoint(int num, bool exist);         //
+    void countPoint(int num, bool exist);         //
 	void setInterval(int num);
-        int countPointRet(int num, int addPoint, bool exist);        
+    int countPointRet(int num, int addPoint, bool exist);        
 	int getPoints();
 	int ReturnID();
 	bool IsExist();
 	void SetIsExist(bool ex);
+    void clickEventListenSimple(Camera2D camera);
     void clickEventListen(Camera2D camera, int &money, int id_cell, std::map<std::string, BuildObj> tableRes, BuildObj cell[]);
     void clickEventListenV2(Camera2D camera, int &money, int id_cell, std::map<std::string, BuildObj> tableRes, BuildObj cell[]);  
 	void SelectionPopUp(Camera2D camera, Player &play, int &money, BuildObj cell[], int id_cell,std::map<std::string, BuildObj> tableRes);
@@ -140,11 +141,11 @@ class BuildObj{
 	float ReturnframeRecX();
 	float ReturnframeRecY();
 	Vector2 ReturnPostionClick(Camera2D);
-        void animation(BuildObj &obj); 
+    void animation(BuildObj &obj); 
 	void SetPosObj(float x, float y);
-        Vector2 getPosVector();
-        void SetPosRect(float x, float y);
+    Vector2 getPosVector();
+    void SetPosRect(float x, float y);
 	void countAnim(BuildObj &obj);         
-        void Draw();    
+    void Draw();    
  };
 
