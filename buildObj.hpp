@@ -46,7 +46,7 @@ class Player{
             int framesCounter;
         Player(const char *path);
 	void setMovable(bool setData);
-	void showHUDtech();
+	void showHUDtech(bool isShow);
         void addPoints(int num);
 	void resetAnimation();
 	void DrawRect();

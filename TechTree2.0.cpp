@@ -236,11 +236,9 @@ bool ShowHUDTechTree(bool HUDShow)
             
             if (WindowBox000Active)
             {
-                if (!IsKeyPressed(KEY_TAB)){
+                
                     WindowBox000Active = !GuiWindowBox(layoutRecs[0], "Tech tree"); 
-                }else{
-                    WindowBox000Active = false;
-                }
+            
 
                 if (GuiButton(layoutRecs[1], "Tech 20 century")) Tech20century();
                 if (Tech20Century){

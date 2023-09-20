@@ -44,7 +44,7 @@ using json = nlohmann::json;
 
           canMove = setData;
         }
-        void Player::showHUDtech(){
+        void Player::showHUDtech(bool isShow){
            
           
           if (HUDtechShow) {
@@ -53,7 +53,7 @@ using json = nlohmann::json;
           }
 	
           
-          if (IsKeyPressed(KEY_TAB)) {
+          if (IsKeyPressed(KEY_TAB) || isShow) {
             WindowBox000Active = true;
             HUDtechShow = true;
           }
@@ -715,14 +715,22 @@ BuildObj::BuildObj(): NameObj("buildCell"), Path("src/location/laboratory/buildi
                 DrawRectangle(frameRec.x, frameRec.y, (float)WidthTile, (float)HeigthTile, BLACK);
             }
         }
-        void clickEventListenSimple(Camera2D camera){
+        bool clickEventListenSimple(Camera2D camera){
            Vector2 PositionClick = GetMousePosition();
            //PositionClick = GetScreenToWorld2D(PositionClick, camera);
            frameRec = (Rectangle){ PositionSpawn.x, PositionSpawn.y, (float)WidthTile, (float)HeigthTile}; 
            if (CheckCollisionPointRec(PositionClick, frameRec) && IsMouseButtonDown(0)){
                 std::cout << "you click here!" << std::endl;
+   
+                //temporaly
+                //hardcoding
+                
+              return true; 
+	
+          
+            
            }
-
+            return false;
         }
         bool IsHoverObj(){
            Vector2 PositionClick = GetMousePosition();

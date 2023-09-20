@@ -47,7 +47,7 @@ void Scene1(void)
     Player hero("src/image/HeroAnimation/DemonSciencer.gif");
     
     int points = 0;
-
+    bool Show_HUD = false;
 
     //Floor
     FloorTile.PositionSpawn = (Vector2){0, 0};
@@ -116,8 +116,6 @@ void Scene1(void)
         hero.MoveHero();
 
         hero.FramesIncrement();
-        buttonTree.clickEventListenSimple(camera);
-        
         
 
 
@@ -175,8 +173,15 @@ void Scene1(void)
             
         }
         hero.points = Knowledge_Point;
-        hero.showHUDtech();
+        //hero.showHUDtech();
+
         buttonTree.DrawOutline(buttonTree.IsHoverObj());
+        bool Show_HUD = buttonTree.clickEventListenSimple(camera);
+        if (Show_HUD){ 
+            hero.showHUDtech(Show_HUD);
+        }else {
+            hero.showHUDtech(false); 
+        } 
         buttonTree.DrawObj();
 
         DrawText(TextFormat("Knowledge (Points): %04d", hero.points), 30, 80, 20, WHITE);
