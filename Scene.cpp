@@ -115,9 +115,14 @@ void Scene1(void)
     while (!WindowShouldClose())
     {
         if (IsKeyPressed(KEY_F2)){
+            dataGame[0].Knowledge = hero.points;
+            dataGame[0].money = hero.money; 
             SaveData("save/", "save_1");
         }
 
+        if (IsKeyPressed(KEY_F3)){
+           LoadData("save/", "save_1"); 
+        }        
         hero.MoveHero();
 
         hero.FramesIncrement();

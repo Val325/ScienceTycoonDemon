@@ -1,5 +1,6 @@
 #include<iostream>
 #include<fstream>
+#include <valarray>
 
 struct Saving {
     float Knowledge;
@@ -57,6 +58,25 @@ void SaveData(std::string path, std::string name){
        std::cout << "Error occurred at writing time!" << std::endl;
    }
 }
-void LoadData(std::string name){
+void LoadData(std::string path, std::string name){
+    std::string extension = ".dat";
+    std::string fullNameFile = path + name + extension;
+    std::ifstream file(fullNameFile, std::ios::out | std::ios::binary);
+    if(!file) {
+        std::cout << "Cannot open file!" << std::endl;
+    }
 
+    for(int i = 0; i < 3; i++) file.read((char *) &dataGame[i], sizeof(dataGame));
+    file.close();
+    if(!file.good()) {
+        std::cout << "Error occurred at reading time!" << std::endl;
+    }
+
+    std::cout<<" Details:"<<std::endl;
+    for(int i=0; i < 3; i++) {
+        std::cout << "Knowledge: " << dataGame[i].Knowledge << std::endl;
+        std::cout << "Money: " << dataGame[i].money << std::endl;
+      
+    }
+   
 }
