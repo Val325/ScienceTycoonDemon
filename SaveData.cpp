@@ -2,6 +2,8 @@
 #include<fstream>
 
 struct Saving {
+    float Knowledge;
+    float money;
     bool Tech20Century;
     bool Transistor;
     bool Computer;
@@ -31,5 +33,30 @@ struct Saving {
         bool ArtificialIntellect = false;
         bool Robot = false;
         bool Singularit = false;
+        float Knowledge = 0.0;
+        float money = 0.0;
     }
 };
+
+//amount savings
+Saving dataGame[3];
+
+void SaveData(std::string path, std::string name){
+    std::string extension = ".dat";
+    std::string fullNameFile = path + name + extension; 
+    std::ofstream file(fullNameFile, std::ios::out | std::ios::binary);
+    
+    if(!file) {
+        std::cout << "Cannot open file!" << std::endl;
+    }
+
+    for(int i = 0; i < 3; i++) file.write((char *)&dataGame[i], sizeof(dataGame));
+    file.close();
+
+    if(!file.good()) {
+       std::cout << "Error occurred at writing time!" << std::endl;
+   }
+}
+void LoadData(std::string name){
+
+}

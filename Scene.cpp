@@ -3,6 +3,7 @@
 #include <string>
 #include "raylib-cpp.hpp"
 #include "Structs.cpp"
+#include "SaveData.cpp"
 #include "Utils.cpp"
 #include <nlohmann/json.hpp>
 #include <unordered_map>
@@ -16,6 +17,8 @@ struct EntityStruct MainHero;
 struct EntityStruct Table;
 struct RoomStruct RoomInfo;
 struct TileStruct FloorTile;
+float know_point = 0.0;
+float money_point = 0.0;
 const char* bool_cast(const bool b) {
     return b ? "true" : "false";
 }
@@ -111,20 +114,17 @@ void Scene1(void)
 
     while (!WindowShouldClose())
     {
-
+        if (IsKeyPressed(KEY_F2)){
+            SaveData("save/", "save_1");
+        }
 
         hero.MoveHero();
 
         hero.FramesIncrement();
         
-
-
         camera.target = (Vector2){ hero.ReturnPositionX() + 20, hero.ReturnPositionY() + 20};
      
-
-
         BeginDrawing();
-
 
         ClearBackground(BLACK);
 
@@ -183,7 +183,8 @@ void Scene1(void)
             hero.showHUDtech(false); 
         } 
         buttonTree.DrawObj();
-
+        know_point = hero.points;
+        money_point = hero.money;
         DrawText(TextFormat("Knowledge (Points): %04d", hero.points), 30, 80, 20, WHITE);
         DrawText(TextFormat("Money (hryvnia): %04d", hero.money), 30, 110, 20, WHITE);
 
