@@ -8,10 +8,11 @@
 #include <unordered_map>
 #define RAYGUI_IMPLEMENTATION
 #include "raygui.h"
-
+#include "Savings.cpp"
 const int screenWidth = 1280;
 const int screenHeight = 720;
-
+enum selectBtn {menu ,save, options, exitB };
+selectBtn selectBt; 
 //------------------------------------------------------------------------------------
 // Controls Functions Definitions (local)
 //------------------------------------------------------------------------------------
@@ -29,8 +30,9 @@ static void OptionsBtn()
 // Button: Play_btn logic
 static void PlayBtn()
 {
-  Scene1();
-
+   selectBt = save;
+  //Scene1();
+  //SaveDataBtn();
 }
 
 //------------------------------------------------------------------------------------
@@ -40,7 +42,8 @@ static void PlayBtn()
 int main(void)
 {
     SetTraceLogLevel(0);
-    
+
+    selectBt = menu;
 
     // Initialization
     //--------------------------------------------------------------------------------------
@@ -83,10 +86,21 @@ int main(void)
             DrawTexture(textureAtom, 500, 288 - 70, WHITE);
             //----------------------------------------------------------------------------------
             // Draw controls
-            if (GuiButton(layoutRecs[0], "EXIT")) ExitBtn(); 
-            if (GuiButton(layoutRecs[1], "OPTIONS")) OptionsBtn(); 
-            if (GuiButton(layoutRecs[2], "PLAY")) PlayBtn();
+            if (selectBt == save){
+                //savings
+                // 448 392 336
+                if (GuiButton((Rectangle){ 164, 336, 224, 48 }, "SAVE 1")) Button0(); 
+                if (GuiButton((Rectangle){ 164, 392, 224, 48 }, "SAVE 2")) Button1(); 
+                if (GuiButton((Rectangle){ 164, 448, 224, 48 }, "SAVE 3")) Button2();  
+            }else{
+                if (GuiButton(layoutRecs[0], "EXIT")) ExitBtn(); 
+                if (GuiButton(layoutRecs[1], "OPTIONS")) OptionsBtn(); 
+                if (GuiButton(layoutRecs[2], "PLAY")) PlayBtn();
+            }
+
             
+
+
             //GuiLabel(layoutRecs[3], "Science tycoon");
             //----------------------------------------------------------------------------------
 

@@ -356,4 +356,5 @@ CMakeFiles/Main.dir/Main.cpp.o: \
   /bin/../lib64/gcc/x86_64-pc-linux-gnu/13.1.1/../../../../include/c++/13.1.1/bits/deque.tcc \
   /bin/../lib64/gcc/x86_64-pc-linux-gnu/13.1.1/../../../../include/c++/13.1.1/stack \
   /bin/../lib64/gcc/x86_64-pc-linux-gnu/13.1.1/../../../../include/c++/13.1.1/bits/stl_stack.h \
-  /home/projects/Raylib4.5/ScienceTycoonDemon/include/json/writer.h
+  /home/projects/Raylib4.5/ScienceTycoonDemon/include/json/writer.h \
+  /home/projects/Raylib4.5/ScienceTycoonDemon/Savings.cpp
