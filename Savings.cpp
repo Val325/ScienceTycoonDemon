@@ -31,13 +31,5 @@ void SaveDataBtn(void)
 
 }
 
-static void Button0()
-{
-}
-static void Button1()
-{
-}
-static void Button2()
-{
-}
+
 

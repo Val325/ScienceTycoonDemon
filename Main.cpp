@@ -35,6 +35,18 @@ static void PlayBtn()
   //SaveDataBtn();
 }
 
+static void Button0()
+{
+    Scene1();
+}
+static void Button1()
+{
+    Scene1();
+}
+static void Button2()
+{
+    Scene1();
+}
 //------------------------------------------------------------------------------------
 // Program main entry point
 //------------------------------------------------------------------------------------
@@ -68,7 +80,7 @@ int main(void)
 
     UnloadImage(image);   // Once image has been converted to texture and uploaded to VRAM, it can be unloaded from RAM 
     //Scene1();
-    SetExitKey(KEY_NULL); 
+    //SetExitKey(KEY_NULL); 
      // Main game loop
     while (!WindowShouldClose())    // Detect window close button or ESC key
     {
@@ -87,11 +99,25 @@ int main(void)
             //----------------------------------------------------------------------------------
             // Draw controls
             if (selectBt == save){
-                //savings
-                // 448 392 336
-                if (GuiButton((Rectangle){ 164, 336, 224, 48 }, "SAVE 1")) Button0(); 
-                if (GuiButton((Rectangle){ 164, 392, 224, 48 }, "SAVE 2")) Button1(); 
-                if (GuiButton((Rectangle){ 164, 448, 224, 48 }, "SAVE 3")) Button2();  
+                if (!CheckExistsFile("save/save_1.dat")){
+                   if (GuiButton((Rectangle){ 164, 336, 224, 48 }, "New game 1")) Button0(); 
+                } else {
+                   if (GuiButton((Rectangle){ 164, 336, 224, 48 }, "SAVE 1")) Button0();
+                }
+
+                if (!CheckExistsFile("save/save_2.dat")){
+                   if (GuiButton((Rectangle){164, 392, 224, 48}, "New game 2")) Button0(); 
+                } else {
+                   if (GuiButton((Rectangle){164, 392, 224, 48}, "SAVE 2")) Button0();
+                } 
+
+                if (!CheckExistsFile("save/save_3.dat")){
+                   if (GuiButton((Rectangle){164, 448, 224, 48}, "New game 3")) Button0(); 
+                } else {
+                   if (GuiButton((Rectangle){164, 448, 224, 48}, "SAVE 3")) Button0();
+                }
+                //if (CheckExistsFile("save/save_2.dat")) if (GuiButton((Rectangle){ 164, 392, 224, 48 }, "SAVE 2")) Button1(); 
+                //if (CheckExistsFile("save/save_3.dat")) if (GuiButton((Rectangle){ 164, 448, 224, 48 }, "SAVE 3")) Button2();  
             }else{
                 if (GuiButton(layoutRecs[0], "EXIT")) ExitBtn(); 
                 if (GuiButton(layoutRecs[1], "OPTIONS")) OptionsBtn(); 

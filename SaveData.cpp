@@ -80,3 +80,7 @@ void LoadData(std::string path, std::string name){
     }
    
 }
+bool CheckExistsFile(const std::string& name){
+    std::ifstream f(name.c_str());
+    return f.good();
+}
