@@ -38,20 +38,20 @@ static void PlayBtn()
 static void ButtonLoad0()
 {
     save_num = 0;
-    LoadData("save/", "save_1");
-    Scene1();
+    Saving* dat = LoadData("save/", "save_1");
+    Scene1(dat);
 }
 static void ButtonLoad1()
 {
     save_num = 1;
-    LoadData("save/", "save_2");
-    Scene1();
+    Saving* dat = LoadData("save/", "save_2");
+    Scene1(dat);
 }
 static void ButtonLoad2()
 {
     save_num = 2;
-    LoadData("save/", "save_2");
-    Scene1();
+    Saving* dat = LoadData("save/", "save_2");
+    Scene1(dat);
 }
 
 static void ButtonNew0()

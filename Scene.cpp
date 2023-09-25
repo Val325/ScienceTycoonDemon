@@ -27,8 +27,9 @@ const char* bool_cast(const bool b) {
 //------------------------------------------------------------------------------------
 // Program main entry point
 //------------------------------------------------------------------------------------
-void Scene1(void)
+void Scene1(Saving * data = nullptr)
 {
+
     allObj.resize(10);
     int amountBuildCell = 10;
     int amountActiveBuildCell = 0;
@@ -113,7 +114,8 @@ void Scene1(void)
 
     SetTargetFPS(60);
 
-
+    hero.points = know_point;
+    hero.money = money_point;
     while (!WindowShouldClose())
     {
         if (IsKeyPressed(KEY_F2)){
@@ -121,10 +123,9 @@ void Scene1(void)
             dataGame[0].money = hero.money; 
             SaveData("save/", "save_1");
         }
-
         if (IsKeyPressed(KEY_F3)){
-           LoadData("save/", "save_1"); 
-        }        
+            LoadData("save/", "save_1"); 
+        }
         hero.MoveHero();
 
         hero.FramesIncrement();
@@ -198,10 +199,16 @@ void Scene1(void)
             hero.showHUDtech(false); 
         } 
         buttonTree.DrawObj();
+        
         //know_point = hero.points;
         //money_point = hero.money;
-        hero.points = know_point;
-        hero.money = money_point;
+        //hero.points = know_point;
+        //hero.money = money_point;
+        //
+        if (data != nullptr){
+            hero.points = data->Knowledge;
+            hero.money = data->money; 
+        }
         DrawText(TextFormat("Knowledge (Points): %04d", hero.points), 30, 80, 20, WHITE);
         DrawText(TextFormat("Money (hryvnia): %04d", hero.money), 30, 110, 20, WHITE);
 

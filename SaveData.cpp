@@ -42,8 +42,8 @@ struct Saving {
 
 //amount savings
 Saving dataGame[3];
-float know_point = 0.0;
-float money_point = 0.0;
+float know_point;
+float money_point;
 
 void SaveData(std::string path, std::string name){
     std::string extension = ".dat";
@@ -61,7 +61,8 @@ void SaveData(std::string path, std::string name){
        std::cout << "Error occurred at writing time!" << std::endl;
    }
 }
-void LoadData(std::string path, std::string name){
+
+Saving * LoadData(std::string path, std::string name){
     std::string extension = ".dat";
     std::string fullNameFile = path + name + extension;
     std::ifstream file(fullNameFile, std::ios::out | std::ios::binary);
@@ -81,10 +82,14 @@ void LoadData(std::string path, std::string name){
         std::cout << "Money: " << dataGame[i].money << std::endl;
       
     }
-        know_point = dataGame[0].Knowledge;
-        money_point = dataGame[0].money;
-    //here need update for return data 
+    //here need update for return data
+    return dataGame; 
 }
+
+float getKnowledge(){
+    return dataGame[0].Knowledge; 
+} 
+
 bool CheckExistsFile(const std::string& name){
     std::ifstream f(name.c_str());
     return f.good();
