@@ -1,6 +1,7 @@
 #include<iostream>
 #include<fstream>
-#include <valarray>
+#include<valarray>
+
 
 struct Saving {
     float Knowledge;
@@ -41,6 +42,8 @@ struct Saving {
 
 //amount savings
 Saving dataGame[3];
+float know_point = 0.0;
+float money_point = 0.0;
 
 void SaveData(std::string path, std::string name){
     std::string extension = ".dat";
@@ -78,7 +81,9 @@ void LoadData(std::string path, std::string name){
         std::cout << "Money: " << dataGame[i].money << std::endl;
       
     }
-   
+        know_point = dataGame[0].Knowledge;
+        money_point = dataGame[0].money;
+    //here need update for return data 
 }
 bool CheckExistsFile(const std::string& name){
     std::ifstream f(name.c_str());

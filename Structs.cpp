@@ -443,8 +443,8 @@ BuildObj::BuildObj(): NameObj("buildCell"), Path("src/location/laboratory/buildi
                 flag = false;  
             }
            
-
-
+            //std::cout << "currentTime: " << currentTime << std::endl;
+            //std::cout << "elapsedTime: " << elapsedTime << std::endl;
             
             return totalPoint;
         }

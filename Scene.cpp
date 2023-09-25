@@ -17,8 +17,8 @@ struct EntityStruct MainHero;
 struct EntityStruct Table;
 struct RoomStruct RoomInfo;
 struct TileStruct FloorTile;
-float know_point = 0.0;
-float money_point = 0.0;
+
+int save_num; 
 const char* bool_cast(const bool b) {
     return b ? "true" : "false";
 }
@@ -36,16 +36,18 @@ void Scene1(void)
     int pointsCell [amountBuildCell];
     for (int i = 0; i < amountBuildCell; ++i){
         BuildObj buildCell("buildCell" + std::to_string(i),"src/location/laboratory/buildingCell.png", 1.5f);
+        //allObj[i].SetPosObj(150 + 100 * i, 500);
         allObj[i].SetPosObj(150 + 100 * i, 500);
-        buildCell.SetPosObj(150 + 100 * i, 500);
+        //buildCell.SetPosObj(150 + 100 * i, 500);
         buildCell.SetPosRect(150 + 100 * i, 500);
         buildCells[i] = buildCell;
 	    buildCell.id = i;
     } 
-    std::cout << "1" << std::endl; 
-//------------------------------------------------------------------------------------
-// Initialization
-//---   ---------------------------------------------------------------------------------
+    std::cout << "1" << std::endl;
+
+    //------------------------------------------------------------------------------------
+    // Initialization
+    //------------------------------------------------------------------------------------
 
     Player hero("src/image/HeroAnimation/DemonSciencer.gif");
     
@@ -148,7 +150,8 @@ void Scene1(void)
                
 	            clickEvent(camera, hero.money, i, tables, buildCells);
                 buildCells[i].clickEventListen(camera, hero.money, i, tables, buildCells);
-
+                pointsCell[i] = buildCells[i].countPointRet(hero.points, 5, buildCells[i].IsExist()); 
+                hero.points += pointsCell[i];
             }
             hero.DrawHero();
             hero.SpeedUp();
@@ -166,8 +169,15 @@ void Scene1(void)
         
         for (int i = 0; i < amountBuildCell; ++i)
         {
+
+            /*
             pointsCell[i] = buildCells[i].countPointRet(hero.points, 5, buildCells[i].IsExist()); 
             hero.points += pointsCell[i];
+            */
+
+
+
+
             //allObj[i].SetPosObj(150 + 100 * i, 500);
 
             //allObj[i].SetPosRect(150 + 100 * i, 500);  
@@ -188,8 +198,10 @@ void Scene1(void)
             hero.showHUDtech(false); 
         } 
         buttonTree.DrawObj();
-        know_point = hero.points;
-        money_point = hero.money;
+        //know_point = hero.points;
+        //money_point = hero.money;
+        hero.points = know_point;
+        hero.money = money_point;
         DrawText(TextFormat("Knowledge (Points): %04d", hero.points), 30, 80, 20, WHITE);
         DrawText(TextFormat("Money (hryvnia): %04d", hero.money), 30, 110, 20, WHITE);
 

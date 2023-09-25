@@ -35,16 +35,47 @@ static void PlayBtn()
   //SaveDataBtn();
 }
 
-static void Button0()
+static void ButtonLoad0()
 {
+    save_num = 0;
+    LoadData("save/", "save_1");
     Scene1();
 }
-static void Button1()
+static void ButtonLoad1()
 {
+    save_num = 1;
+    LoadData("save/", "save_2");
     Scene1();
 }
-static void Button2()
+static void ButtonLoad2()
 {
+    save_num = 2;
+    LoadData("save/", "save_2");
+    Scene1();
+}
+
+static void ButtonNew0()
+{
+    //dataGame[0].Knowledge = know_point;
+    //dataGame[0].money = money_point;
+    save_num = 0;
+    SaveData("save/", "save_1");
+    Scene1();
+}
+static void ButtonNew1()
+{
+    //dataGame[0].Knowledge = know_point;
+    //dataGame[0].money = money_point;
+    save_num = 1;
+    SaveData("save/", "save_2");
+    Scene1();
+}
+static void ButtonNew2()
+{
+    //dataGame[0].Knowledge = know_point;
+    //dataGame[0].money = money_point; 
+    save_num = 2;
+    SaveData("save/", "save_3");
     Scene1();
 }
 //------------------------------------------------------------------------------------
@@ -100,21 +131,21 @@ int main(void)
             // Draw controls
             if (selectBt == save){
                 if (!CheckExistsFile("save/save_1.dat")){
-                   if (GuiButton((Rectangle){ 164, 336, 224, 48 }, "New game 1")) Button0(); 
+                   if (GuiButton((Rectangle){ 164, 336, 224, 48 }, "New game 1")) ButtonNew0(); 
                 } else {
-                   if (GuiButton((Rectangle){ 164, 336, 224, 48 }, "SAVE 1")) Button0();
+                   if (GuiButton((Rectangle){ 164, 336, 224, 48 }, "SAVE 1")) ButtonLoad0();
                 }
 
                 if (!CheckExistsFile("save/save_2.dat")){
-                   if (GuiButton((Rectangle){164, 392, 224, 48}, "New game 2")) Button0(); 
+                   if (GuiButton((Rectangle){164, 392, 224, 48}, "New game 2")) ButtonNew1(); 
                 } else {
-                   if (GuiButton((Rectangle){164, 392, 224, 48}, "SAVE 2")) Button0();
+                   if (GuiButton((Rectangle){164, 392, 224, 48}, "SAVE 2")) ButtonLoad1();
                 } 
 
                 if (!CheckExistsFile("save/save_3.dat")){
-                   if (GuiButton((Rectangle){164, 448, 224, 48}, "New game 3")) Button0(); 
+                   if (GuiButton((Rectangle){164, 448, 224, 48}, "New game 3")) ButtonNew2(); 
                 } else {
-                   if (GuiButton((Rectangle){164, 448, 224, 48}, "SAVE 3")) Button0();
+                   if (GuiButton((Rectangle){164, 448, 224, 48}, "SAVE 3")) ButtonLoad2();
                 }
                 //if (CheckExistsFile("save/save_2.dat")) if (GuiButton((Rectangle){ 164, 392, 224, 48 }, "SAVE 2")) Button1(); 
                 //if (CheckExistsFile("save/save_3.dat")) if (GuiButton((Rectangle){ 164, 448, 224, 48 }, "SAVE 3")) Button2();  
