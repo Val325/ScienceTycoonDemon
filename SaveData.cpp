@@ -1,7 +1,7 @@
 #include<iostream>
 #include<fstream>
 #include<valarray>
-
+#include"buildObj.hpp"
 
 struct Saving {
     float Knowledge;
@@ -42,8 +42,6 @@ struct Saving {
 
 //amount savings
 Saving dataGame[3];
-float know_point;
-float money_point;
 
 void SaveData(std::string path, std::string name){
     std::string extension = ".dat";

@@ -21,17 +21,17 @@ using json = nlohmann::json;
 //
 //
 
-	Player::Player(const char *path){
+	Player::Player(const char *path, int knowledgeData, int moneyData){
             PositionSpawn = (Vector2){ (float)GetScreenWidth()/2.0f, (float)GetScreenHeight()/2.0f };
             animFrames = 0;
             img = LoadImageAnim(path, &animFrames);
             imgAnim = LoadTextureFromImage(img);
-            money = 500;
+            money = moneyData;
             canMove = true;
 
             frameRec = (Rectangle){ PositionSpawn.x - 15.0f, PositionSpawn.y + 24.0f, (float)imgAnim.width, (float)imgAnim.height};
-            speedHero = 2.0f;
-            points = 0;
+            speedHero = 3.5f;
+            points = knowledgeData;
             nextFrameDataOffset = 0;
             currentFrame = 0;
             framesCounter = 0;

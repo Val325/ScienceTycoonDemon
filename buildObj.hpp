@@ -7,7 +7,6 @@
 #include <set>
 #include<cstdio>
 #include<ctime>
-
 int Knowledge_Point = 0;
 
 class Player{
@@ -44,7 +43,7 @@ class Player{
             int money;
             Rectangle frameRec;
             int framesCounter;
-        Player(const char *path);
+        Player(const char *path, int knowledgeData, int moneyData);
 	void setMovable(bool setData);
 	void showHUDtech(bool isShow);
         void addPoints(int num);

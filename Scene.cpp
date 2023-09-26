@@ -50,7 +50,15 @@ void Scene1(Saving * data = nullptr)
     // Initialization
     //------------------------------------------------------------------------------------
 
-    Player hero("src/image/HeroAnimation/DemonSciencer.gif");
+    Player *hero; 
+    if (data != nullptr){
+      Player her("src/image/HeroAnimation/DemonSciencer.gif",data->Knowledge, data->money);
+      hero = &her;
+    }else{
+      Player her("src/image/HeroAnimation/DemonSciencer.gif",0, 700);
+      hero = &her;
+    }
+    Knowledge_Point += hero->points; 
     
     int points = 0;
     bool Show_HUD = false;
@@ -76,7 +84,7 @@ void Scene1(Saving * data = nullptr)
     
     //Camera
     Camera2D camera = { 0 };
-    camera.target = (Vector2){ hero.ReturnPositionX() + 20.0f, hero.ReturnPositionY() + 20.0f };
+    camera.target = (Vector2){ hero->ReturnPositionX() + 20.0f, hero->ReturnPositionY() + 20.0f };
     camera.offset = (Vector2){ GetScreenWidth()/2.0f, GetScreenHeight()/2.0f };
     camera.rotation = 0.0f;
     camera.zoom = 1.0f;
@@ -114,23 +122,24 @@ void Scene1(Saving * data = nullptr)
 
     SetTargetFPS(60);
 
-    hero.points = know_point;
-    hero.money = money_point;
+    //hero.points = know_point;
+    //hero.money = money_point;
+
     while (!WindowShouldClose())
     {
         if (IsKeyPressed(KEY_F2)){
-            dataGame[0].Knowledge = hero.points;
-            dataGame[0].money = hero.money; 
+            dataGame[0].Knowledge = hero->points;
+            dataGame[0].money = hero->money; 
             SaveData("save/", "save_1");
         }
         if (IsKeyPressed(KEY_F3)){
             LoadData("save/", "save_1"); 
         }
-        hero.MoveHero();
+        hero->MoveHero();
 
-        hero.FramesIncrement();
+        hero->FramesIncrement();
         
-        camera.target = (Vector2){ hero.ReturnPositionX() + 20, hero.ReturnPositionY() + 20};
+        camera.target = (Vector2){ hero->ReturnPositionX() + 20, hero->ReturnPositionY() + 20};
      
         BeginDrawing();
 
@@ -143,30 +152,31 @@ void Scene1(Saving * data = nullptr)
 
             computer.DrawObj();
             
-            hero.collisionDetect(computer.ReturnRect(false));
+            hero->collisionDetect(computer.ReturnRect(false));
        
             for (int i = 0; i < amountBuildCell; i++)
             {
                 allObj[i].Draw();
                
-	            clickEvent(camera, hero.money, i, tables, buildCells);
-                buildCells[i].clickEventListen(camera, hero.money, i, tables, buildCells);
-                pointsCell[i] = buildCells[i].countPointRet(hero.points, 5, buildCells[i].IsExist()); 
-                hero.points += pointsCell[i];
+	            clickEvent(camera, hero->money, i, tables, buildCells);
+                buildCells[i].clickEventListen(camera, hero->money, i, tables, buildCells);
+                pointsCell[i] = buildCells[i].countPointRet(hero->points, 5, buildCells[i].IsExist());
+                hero->points += pointsCell[i];
             }
-            hero.DrawHero();
-            hero.SpeedUp();
+            
+            hero->DrawHero();
+            hero->SpeedUp();
             
      
         EndMode2D();
 
         //Log
 
-        
+
         selectionBtn(camera, chooseTable, tables, buildCells);
         //hero.DrawStatistics();
         
-        DrawText(TextFormat("InBorder: %s", bool_cast(CheckCollisionRecs(hero.ReturnframeRec(), computer.ReturnRect(false)))), 30, 140, 20, WHITE);
+        DrawText(TextFormat("InBorder: %s", bool_cast(CheckCollisionRecs(hero->ReturnframeRec(), computer.ReturnRect(false)))), 30, 140, 20, WHITE);
         
         for (int i = 0; i < amountBuildCell; ++i)
         {
@@ -188,15 +198,16 @@ void Scene1(Saving * data = nullptr)
 	    
             
         }
-        hero.points = Knowledge_Point;
+        //hero->points = Knowledge_Point;
         //hero.showHUDtech();
-
+        //hero->points = Knowledge_Point;
+       // hero->points = Knowledge_Point; 
         buttonTree.DrawOutline(buttonTree.IsHoverObj());
         bool Show_HUD = buttonTree.clickEventListenSimple(camera);
         if (Show_HUD){ 
-            hero.showHUDtech(Show_HUD);
+            hero->showHUDtech(Show_HUD);
         }else {
-            hero.showHUDtech(false); 
+            hero->showHUDtech(false); 
         } 
         buttonTree.DrawObj();
         
@@ -205,12 +216,10 @@ void Scene1(Saving * data = nullptr)
         //hero.points = know_point;
         //hero.money = money_point;
         //
-        if (data != nullptr){
-            hero.points = data->Knowledge;
-            hero.money = data->money; 
-        }
-        DrawText(TextFormat("Knowledge (Points): %04d", hero.points), 30, 80, 20, WHITE);
-        DrawText(TextFormat("Money (hryvnia): %04d", hero.money), 30, 110, 20, WHITE);
+        //Knowledge_Point += hero->points;
+        hero->points = Knowledge_Point; 
+        DrawText(TextFormat("Knowledge (Points): %04d", hero->points), 30, 80, 20, WHITE);
+        DrawText(TextFormat("Money (hryvnia): %04d", hero->money), 30, 110, 20, WHITE);
 
 
         EndDrawing();
