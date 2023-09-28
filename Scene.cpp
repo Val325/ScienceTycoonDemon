@@ -18,6 +18,10 @@ struct EntityStruct Table;
 struct RoomStruct RoomInfo;
 struct TileStruct FloorTile;
 
+bool ButtonPlayPressed = false;
+bool ButtonExitPressed = false;
+bool ShowMenu = false;
+
 int save_num; 
 const char* bool_cast(const bool b) {
     return b ? "true" : "false";
@@ -152,6 +156,7 @@ void Scene1(Saving * data = nullptr)
 
             computer.DrawObj();
             
+
             hero->collisionDetect(computer.ReturnRect(false));
        
             for (int i = 0; i < amountBuildCell; i++)
@@ -217,6 +222,21 @@ void Scene1(Saving * data = nullptr)
         //hero.money = money_point;
         //
         //Knowledge_Point += hero->points;
+        if (IsKeyPressed(KEY_ESCAPE)){
+            std::cout << "pressed KEY_ESCAPE!" << std::endl;
+            ShowMenu = !ShowMenu;
+        }
+        if (ShowMenu || ButtonPlayPressed){
+            ButtonPlayPressed = GuiButton((Rectangle){ 552, 288, 120, 48 }, "Play"); 
+            ButtonExitPressed = GuiButton((Rectangle){ 552, 360, 120, 48 }, "Save and exit"); 
+        }
+        if (ButtonPlayPressed){
+            ShowMenu = !ShowMenu;
+        }
+        if (ButtonExitPressed){
+          CloseWindow(); 
+        }
+
         hero->points = Knowledge_Point; 
         DrawText(TextFormat("Knowledge (Points): %04d", hero->points), 30, 80, 20, WHITE);
         DrawText(TextFormat("Money (hryvnia): %04d", hero->money), 30, 110, 20, WHITE);

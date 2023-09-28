@@ -111,7 +111,7 @@ int main(void)
 
     UnloadImage(image);   // Once image has been converted to texture and uploaded to VRAM, it can be unloaded from RAM 
     //Scene1();
-    //SetExitKey(KEY_NULL); 
+    SetExitKey(KEY_NULL); 
      // Main game loop
     while (!WindowShouldClose())    // Detect window close button or ESC key
     {
