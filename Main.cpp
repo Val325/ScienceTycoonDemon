@@ -39,19 +39,20 @@ static void ButtonLoad0()
 {
     save_num = 0;
     Saving* dat = LoadData("save/", "save_1");
-    Scene1(dat);
+    
+    Scene1(save_num, dat);
 }
 static void ButtonLoad1()
 {
     save_num = 1;
     Saving* dat = LoadData("save/", "save_2");
-    Scene1(dat);
+    Scene1(save_num,dat);
 }
 static void ButtonLoad2()
 {
     save_num = 2;
-    Saving* dat = LoadData("save/", "save_2");
-    Scene1(dat);
+    Saving* dat = LoadData("save/", "save_3");
+    Scene1(save_num,dat);
 }
 
 static void ButtonNew0()
@@ -60,7 +61,7 @@ static void ButtonNew0()
     //dataGame[0].money = money_point;
     save_num = 0;
     SaveData("save/", "save_1");
-    Scene1();
+    Scene1(save_num);
 }
 static void ButtonNew1()
 {
@@ -68,7 +69,7 @@ static void ButtonNew1()
     //dataGame[0].money = money_point;
     save_num = 1;
     SaveData("save/", "save_2");
-    Scene1();
+    Scene1(save_num);
 }
 static void ButtonNew2()
 {
@@ -76,7 +77,7 @@ static void ButtonNew2()
     //dataGame[0].money = money_point; 
     save_num = 2;
     SaveData("save/", "save_3");
-    Scene1();
+    Scene1(save_num);
 }
 //------------------------------------------------------------------------------------
 // Program main entry point

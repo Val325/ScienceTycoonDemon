@@ -31,7 +31,7 @@ const char* bool_cast(const bool b) {
 //------------------------------------------------------------------------------------
 // Program main entry point
 //------------------------------------------------------------------------------------
-void Scene1(Saving * data = nullptr)
+void Scene1(int saveNumber, Saving * data = nullptr)
 {
 
     allObj.resize(10);
@@ -132,9 +132,7 @@ void Scene1(Saving * data = nullptr)
     while (!WindowShouldClose())
     {
         if (IsKeyPressed(KEY_F2)){
-            dataGame[0].Knowledge = hero->points;
-            dataGame[0].money = hero->money; 
-            SaveData("save/", "save_1");
+
         }
         if (IsKeyPressed(KEY_F3)){
             LoadData("save/", "save_1"); 
@@ -234,6 +232,14 @@ void Scene1(Saving * data = nullptr)
             ShowMenu = !ShowMenu;
         }
         if (ButtonExitPressed){
+          dataGame[saveNumber].Knowledge = hero->points;
+          dataGame[saveNumber].money = hero->money;
+          saveNumber = saveNumber + 1;
+          std::string numberSaveStr = std::to_string(saveNumber);
+          std::string savePath = "save/";
+          std::string saveName = "save_";
+          saveName = saveName + numberSaveStr;
+          SaveData("save/", saveName);
           CloseWindow(); 
         }
 

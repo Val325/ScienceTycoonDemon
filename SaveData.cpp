@@ -4,6 +4,8 @@
 #include"buildObj.hpp"
 
 struct Saving {
+    std::string savePath;
+    std::string saveName;
     float Knowledge;
     float money;
     bool Tech20Century;
@@ -37,6 +39,8 @@ struct Saving {
         bool Singularit = false;
         float Knowledge = 0.0;
         float money = 0.0;
+        std::string savePath = "";
+        std::string saveName = "";
     }
 };
 
