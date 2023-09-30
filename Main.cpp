@@ -121,9 +121,9 @@ int main(void)
     Texture2D textureExitBtn3 = LoadTextureFromImage(exitBtn3);
 
     Rectangle exitRecs[3] = {
-        (Rectangle){ 164 + 230, 336 + 10, (float)textureExitBtn1.width, (float)textureExitBtn1.height },    
-        (Rectangle){ 164 + 230, 392 + 10, (float)textureExitBtn2.width, (float)textureExitBtn2.height },    
-        (Rectangle){ 164 + 230, 448 + 10, (float)textureExitBtn3.width, (float)textureExitBtn3.height },    
+        (Rectangle){ 164 + 230, 336 + 10, (float)textureExitBtn1.width * 2, (float)textureExitBtn1.height * 2 },    
+        (Rectangle){ 164 + 230, 392 + 10, (float)textureExitBtn2.width * 2, (float)textureExitBtn2.height * 2 },    
+        (Rectangle){ 164 + 230, 448 + 10, (float)textureExitBtn3.width * 2, (float)textureExitBtn3.height * 2 },    
     };
 
     UnloadImage(image);   // Once image has been converted to texture and uploaded to VRAM, it can be unloaded from RAM 
@@ -152,6 +152,11 @@ int main(void)
                 } else {
                    if (GuiButton((Rectangle){ 164, 336, 224, 48 }, "SAVE 1")) ButtonLoad0();
                    DrawTextureEx(textureExitBtn1, {164 + 230, 336 + 10},0,2.0f, WHITE);
+                   DrawRectangleRec(exitRecs[0], RED);
+                   Vector2 PositionClick = GetMousePosition();
+                   if (CheckCollisionPointRec(PositionClick, exitRecs[0]) && IsMouseButtonDown(0)){
+                        std::cout << "save_1" << std::endl;
+                   }
                 }
 
                 if (!CheckExistsFile("save/save_2.dat")){
@@ -159,6 +164,11 @@ int main(void)
                 } else {
                    if (GuiButton((Rectangle){164, 392, 224, 48}, "SAVE 2")) ButtonLoad1();
                    DrawTextureEx(textureExitBtn2,{ 164 + 230, 392 + 10},0,2.0f, WHITE);
+                   DrawRectangleRec(exitRecs[1], GREEN);
+                   Vector2 PositionClick = GetMousePosition();
+                   if (CheckCollisionPointRec(PositionClick, exitRecs[1]) && IsMouseButtonDown(0)){
+                        std::cout << "save_2" << std::endl;
+                   }
                 } 
 
                 if (!CheckExistsFile("save/save_3.dat")){
@@ -166,6 +176,11 @@ int main(void)
                 } else {
                    if (GuiButton((Rectangle){164, 448, 224, 48}, "SAVE 3")) ButtonLoad2();
                    DrawTextureEx(textureExitBtn3, {164 + 230, 448 + 10},0,2.0f, WHITE);
+                   DrawRectangleRec(exitRecs[2], BLUE);
+                   Vector2 PositionClick = GetMousePosition();
+                   if (CheckCollisionPointRec(PositionClick, exitRecs[2]) && IsMouseButtonDown(0)){
+                        std::cout << "save_3" << std::endl;
+                   }
                 }
                 //if (CheckExistsFile("save/save_2.dat")) if (GuiButton((Rectangle){ 164, 392, 224, 48 }, "SAVE 2")) Button1(); 
                 //if (CheckExistsFile("save/save_3.dat")) if (GuiButton((Rectangle){ 164, 448, 224, 48 }, "SAVE 3")) Button2();  
