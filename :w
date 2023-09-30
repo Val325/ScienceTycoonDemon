@@ -102,8 +102,7 @@ int main(void)
         (Rectangle){ 464 + offsetXmainMenu, 336 + offsetYmainMenu, 224, 48 },    // Button: Play_btn
         (Rectangle){ 520, 288, 112, 24 },    // Label: Science tycoon
     };
-
-
+    
     raylib::Window window(screenWidth, screenHeight, "Science tycoon");
     Image image = LoadImage("GUI/NameGame/TitleCrop.png");
     Image atom = LoadImage("GUI/background/Atom_menu.png");
@@ -119,12 +118,6 @@ int main(void)
     Texture2D textureExitBtn1 = LoadTextureFromImage(exitBtn1);
     Texture2D textureExitBtn2 = LoadTextureFromImage(exitBtn2);
     Texture2D textureExitBtn3 = LoadTextureFromImage(exitBtn3);
-
-    Rectangle exitRecs[3] = {
-        (Rectangle){ 164 + 230, 336 + 10, (float)textureExitBtn1.width, (float)textureExitBtn1.height },    
-        (Rectangle){ 164 + 230, 392 + 10, (float)textureExitBtn2.width, (float)textureExitBtn2.height },    
-        (Rectangle){ 164 + 230, 448 + 10, (float)textureExitBtn3.width, (float)textureExitBtn3.height },    
-    };
 
     UnloadImage(image);   // Once image has been converted to texture and uploaded to VRAM, it can be unloaded from RAM 
     //Scene1();
@@ -151,21 +144,21 @@ int main(void)
                    if (GuiButton((Rectangle){ 164, 336, 224, 48 }, "New game 1")) ButtonNew0(); 
                 } else {
                    if (GuiButton((Rectangle){ 164, 336, 224, 48 }, "SAVE 1")) ButtonLoad0();
-                   DrawTextureEx(textureExitBtn1, {164 + 230, 336 + 10},0,2.0f, WHITE);
+                   DrawTextureEx(textureExitBtn1, {164 + 250, 336 + 15},0,2.0f, WHITE);
                 }
 
                 if (!CheckExistsFile("save/save_2.dat")){
                    if (GuiButton((Rectangle){164, 392, 224, 48}, "New game 2")) ButtonNew1(); 
                 } else {
                    if (GuiButton((Rectangle){164, 392, 224, 48}, "SAVE 2")) ButtonLoad1();
-                   DrawTextureEx(textureExitBtn2,{ 164 + 230, 392 + 10},0,2.0f, WHITE);
+                   DrawTextureEx(textureExitBtn2,{ 164 + 250, 392 + 15},0,2.0f, WHITE);
                 } 
 
                 if (!CheckExistsFile("save/save_3.dat")){
                    if (GuiButton((Rectangle){164, 448, 224, 48}, "New game 3")) ButtonNew2(); 
                 } else {
                    if (GuiButton((Rectangle){164, 448, 224, 48}, "SAVE 3")) ButtonLoad2();
-                   DrawTextureEx(textureExitBtn3, {164 + 230, 448 + 10},0,2.0f, WHITE);
+                   DrawTextureEx(textureExitBtn3, {164 + 250, 448 + 15},0,2.0f, WHITE);
                 }
                 //if (CheckExistsFile("save/save_2.dat")) if (GuiButton((Rectangle){ 164, 392, 224, 48 }, "SAVE 2")) Button1(); 
                 //if (CheckExistsFile("save/save_3.dat")) if (GuiButton((Rectangle){ 164, 448, 224, 48 }, "SAVE 3")) Button2();  

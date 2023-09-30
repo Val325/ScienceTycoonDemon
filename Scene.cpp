@@ -39,15 +39,20 @@ void Scene1(int saveNumber, Saving * data = nullptr)
     int amountActiveBuildCell = 0;
     BuildObj buildCells [amountBuildCell];
     int pointsCell [amountBuildCell];
-    for (int i = 0; i < amountBuildCell; ++i){
+    for (int i = 0; i < amountBuildCell; ++i){ 
+        
+         
         BuildObj buildCell("buildCell" + std::to_string(i),"src/location/laboratory/buildingCell.png", 1.5f);
-        //allObj[i].SetPosObj(150 + 100 * i, 500);
-        allObj[i].SetPosObj(150 + 100 * i, 500);
-        //buildCell.SetPosObj(150 + 100 * i, 500);
+            //allObj[i].SetPosObj(150 + 100 * i, 500);
+        allObj[i].SetPosObj(150 + 100 * i, 500 );
+            //buildCell.SetPosObj(150 + 100 * i, 500);
         buildCell.SetPosRect(150 + 100 * i, 500);
         buildCells[i] = buildCell;
 	    buildCell.id = i;
-    } 
+        
+
+    }
+
     std::cout << "1" << std::endl;
 
     //------------------------------------------------------------------------------------
@@ -159,12 +164,14 @@ void Scene1(int saveNumber, Saving * data = nullptr)
        
             for (int i = 0; i < amountBuildCell; i++)
             {
+                
                 allObj[i].Draw();
                
 	            clickEvent(camera, hero->money, i, tables, buildCells);
                 buildCells[i].clickEventListen(camera, hero->money, i, tables, buildCells);
                 pointsCell[i] = buildCells[i].countPointRet(hero->points, 5, buildCells[i].IsExist());
                 hero->points += pointsCell[i];
+                
             }
             
             hero->DrawHero();
