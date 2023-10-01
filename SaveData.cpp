@@ -2,6 +2,7 @@
 #include<fstream>
 #include<valarray>
 #include"buildObj.hpp"
+#include <cstdio>
 
 struct Saving {
     std::string savePath;
@@ -95,4 +96,8 @@ float getKnowledge(){
 bool CheckExistsFile(const std::string& name){
     std::ifstream f(name.c_str());
     return f.good();
+}
+
+void DeleteFile(const char * namefile){
+    std::remove(namefile);
 }

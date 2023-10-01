@@ -152,9 +152,10 @@ int main(void)
                 } else {
                    if (GuiButton((Rectangle){ 164, 336, 224, 48 }, "SAVE 1")) ButtonLoad0();
                    DrawTextureEx(textureExitBtn1, {164 + 230, 336 + 10},0,2.0f, WHITE);
-                   DrawRectangleRec(exitRecs[0], RED);
+                   //DrawRectangleRec(exitRecs[0], RED);
                    Vector2 PositionClick = GetMousePosition();
                    if (CheckCollisionPointRec(PositionClick, exitRecs[0]) && IsMouseButtonDown(0)){
+                        DeleteFile("save/save_1.dat");
                         std::cout << "save_1" << std::endl;
                    }
                 }
@@ -164,9 +165,10 @@ int main(void)
                 } else {
                    if (GuiButton((Rectangle){164, 392, 224, 48}, "SAVE 2")) ButtonLoad1();
                    DrawTextureEx(textureExitBtn2,{ 164 + 230, 392 + 10},0,2.0f, WHITE);
-                   DrawRectangleRec(exitRecs[1], GREEN);
+                   //DrawRectangleRec(exitRecs[1], GREEN);
                    Vector2 PositionClick = GetMousePosition();
                    if (CheckCollisionPointRec(PositionClick, exitRecs[1]) && IsMouseButtonDown(0)){
+                        DeleteFile("save/save_2.dat");
                         std::cout << "save_2" << std::endl;
                    }
                 } 
@@ -176,9 +178,10 @@ int main(void)
                 } else {
                    if (GuiButton((Rectangle){164, 448, 224, 48}, "SAVE 3")) ButtonLoad2();
                    DrawTextureEx(textureExitBtn3, {164 + 230, 448 + 10},0,2.0f, WHITE);
-                   DrawRectangleRec(exitRecs[2], BLUE);
+                   //DrawRectangleRec(exitRecs[2], BLUE);
                    Vector2 PositionClick = GetMousePosition();
                    if (CheckCollisionPointRec(PositionClick, exitRecs[2]) && IsMouseButtonDown(0)){
+                        DeleteFile("save/save_3.dat");
                         std::cout << "save_3" << std::endl;
                    }
                 }
