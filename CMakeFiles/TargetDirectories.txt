@@ -1,3 +1,3 @@
-/home/projects/Raylib4.5/ScienceTycoonDemon/CMakeFiles/Main.dir
-/home/projects/Raylib4.5/ScienceTycoonDemon/CMakeFiles/edit_cache.dir
-/home/projects/Raylib4.5/ScienceTycoonDemon/CMakeFiles/rebuild_cache.dir
+/home/ghost/progects/ScienceTycoon/ScienceTycoonDemon/CMakeFiles/Main.dir
+/home/ghost/progects/ScienceTycoon/ScienceTycoonDemon/CMakeFiles/edit_cache.dir
+/home/ghost/progects/ScienceTycoon/ScienceTycoonDemon/CMakeFiles/rebuild_cache.dir

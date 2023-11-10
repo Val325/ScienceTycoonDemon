@@ -120,10 +120,11 @@ int main(void)
     Texture2D textureExitBtn2 = LoadTextureFromImage(exitBtn2);
     Texture2D textureExitBtn3 = LoadTextureFromImage(exitBtn3);
 
-    Rectangle exitRecs[3] = {
+    Rectangle exitRecs[4] = {
         (Rectangle){ 164 + 230, 336 + 10, (float)textureExitBtn1.width * 2, (float)textureExitBtn1.height * 2 },    
         (Rectangle){ 164 + 230, 392 + 10, (float)textureExitBtn2.width * 2, (float)textureExitBtn2.height * 2 },    
-        (Rectangle){ 164 + 230, 448 + 10, (float)textureExitBtn3.width * 2, (float)textureExitBtn3.height * 2 },    
+        (Rectangle){ 164 + 230, 448 + 10, (float)textureExitBtn3.width * 2, (float)textureExitBtn3.height * 2 },
+	(Rectangle){ 464 + offsetXmainMenu, 504 + offsetYmainMenu, 224, 48 }
     };
 
     UnloadImage(image);   // Once image has been converted to texture and uploaded to VRAM, it can be unloaded from RAM 
@@ -185,6 +186,7 @@ int main(void)
                         std::cout << "save_3" << std::endl;
                    }
                 }
+		if (GuiButton(exitRecs[3], "BACK")) selectBt = menu;
                 //if (CheckExistsFile("save/save_2.dat")) if (GuiButton((Rectangle){ 164, 392, 224, 48 }, "SAVE 2")) Button1(); 
                 //if (CheckExistsFile("save/save_3.dat")) if (GuiButton((Rectangle){ 164, 448, 224, 48 }, "SAVE 3")) Button2();  
             }else{
