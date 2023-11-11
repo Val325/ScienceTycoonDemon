@@ -6,5 +6,5 @@ CXX_DEFINES =
 
 CXX_INCLUDES = -I/home/ghost/progects/ScienceTycoon/ScienceTycoonDemon/include -I/home/ghost/progects/ScienceTycoon/ScienceTycoonDemon/lib/external/glfw/include/GLFW
 
-CXX_FLAGS = -std=gnu++14 -Wno-c++11-narrowing -Wunused-value -Wuninitialized -Wreturn-type -Wnull-conversion -Wcomment
+CXX_FLAGS = -std=gnu++14 -Wno-c++11-narrowing -Wunused-value -Wuninitialized -Wreturn-type -Wnull-conversion -Wcomment -Wl,-rpath=shared
 

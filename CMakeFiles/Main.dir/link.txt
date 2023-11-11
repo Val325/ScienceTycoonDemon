@@ -1,1 +1,1 @@
-/bin/clang++ CMakeFiles/Main.dir/Main.cpp.o -o Main  -lraylib 
+/bin/clang++ CMakeFiles/Main.dir/Main.cpp.o -o Main  liblinux/libraylib.a 
