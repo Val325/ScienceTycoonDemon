@@ -59,6 +59,22 @@ void Scene1(int saveNumber, Saving * data = nullptr)
     // Initialization
     //------------------------------------------------------------------------------------
 
+
+	  Tech20Century = data->Tech20Century;
+	  Transistor = data->Transistor;
+	  Computer = data->Computer;
+	  material = data->material;
+	  Mathematics = data->Mathematics;
+	  Being = data->Being;
+	  NaNtech = data->NaNtech;
+	  QuatumTech = data->QuatumTech;	  
+	  ColdNuke = data->ColdNuke;	  
+	  WarpEngine = data->WarpEngine;	  
+	  NeuralNetwork = data->NeuralNetwork;
+	  ArtificialIntellect = data->ArtificialIntellect;
+	  Robot = data->Robot;
+	  Singularit = data->Singularit;
+    
     Player *hero; 
     if (data != nullptr){
       Player her("src/image/HeroAnimation/DemonSciencer.gif",data->Knowledge, data->money);
@@ -241,6 +257,21 @@ void Scene1(int saveNumber, Saving * data = nullptr)
         if (ButtonExitPressed){
           dataGame[saveNumber].Knowledge = hero->points;
           dataGame[saveNumber].money = hero->money;
+          dataGame[saveNumber].Tech20Century = Tech20Century;
+          dataGame[saveNumber].Transistor = Transistor;
+          dataGame[saveNumber].Computer = Computer;
+          dataGame[saveNumber].material = material;
+          dataGame[saveNumber].Mathematics = Mathematics;
+          dataGame[saveNumber].Being = Being;
+          dataGame[saveNumber].NaNtech = NaNtech;
+          dataGame[saveNumber].QuatumTech = QuatumTech;
+          dataGame[saveNumber].ColdNuke = ColdNuke;
+          dataGame[saveNumber].WarpEngine = WarpEngine;
+	  dataGame[saveNumber].NeuralNetwork = NeuralNetwork;
+          dataGame[saveNumber].ArtificialIntellect = ArtificialIntellect;
+          dataGame[saveNumber].Robot = Robot;
+          dataGame[saveNumber].Singularit = Singularit;
+	  
           saveNumber = saveNumber + 1;
           std::string numberSaveStr = std::to_string(saveNumber);
           std::string savePath = "save/";
