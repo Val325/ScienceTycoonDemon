@@ -23,7 +23,10 @@ struct Saving {
     bool ArtificialIntellect;
     bool Robot;
     bool Singularit;
+
     Saving(){
+
+
         bool Tech20Century = false;
         bool Transistor = false;
         bool Computer = false;

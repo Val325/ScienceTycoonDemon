@@ -38,17 +38,19 @@ void Scene1(int saveNumber, Saving * data = nullptr)
     int amountBuildCell = 10;
     int amountActiveBuildCell = 0;
     BuildObj buildCells [amountBuildCell];
+    //data->buildCells = &buildCells;
     int pointsCell [amountBuildCell];
     for (int i = 0; i < amountBuildCell; ++i){ 
         
          
         BuildObj buildCell("buildCell" + std::to_string(i),"src/location/laboratory/buildingCell.png", 1.5f);
+
             //allObj[i].SetPosObj(150 + 100 * i, 500);
         allObj[i].SetPosObj(150 + 100 * i, 500 );
             //buildCell.SetPosObj(150 + 100 * i, 500);
         buildCell.SetPosRect(150 + 100 * i, 500);
         buildCells[i] = buildCell;
-	    buildCell.id = i;
+	buildCell.id = i;
         
 
     }
@@ -60,25 +62,27 @@ void Scene1(int saveNumber, Saving * data = nullptr)
     //------------------------------------------------------------------------------------
 
 
-	  Tech20Century = data->Tech20Century;
-	  Transistor = data->Transistor;
-	  Computer = data->Computer;
-	  material = data->material;
-	  Mathematics = data->Mathematics;
-	  Being = data->Being;
-	  NaNtech = data->NaNtech;
-	  QuatumTech = data->QuatumTech;	  
-	  ColdNuke = data->ColdNuke;	  
-	  WarpEngine = data->WarpEngine;	  
-	  NeuralNetwork = data->NeuralNetwork;
-	  ArtificialIntellect = data->ArtificialIntellect;
-	  Robot = data->Robot;
-	  Singularit = data->Singularit;
+
     
     Player *hero; 
     if (data != nullptr){
       Player her("src/image/HeroAnimation/DemonSciencer.gif",data->Knowledge, data->money);
       hero = &her;
+      Tech20Century = data->Tech20Century;
+      Transistor = data->Transistor;
+      Computer = data->Computer;
+      material = data->material;
+      Mathematics = data->Mathematics;
+      Being = data->Being;
+      NaNtech = data->NaNtech;
+      QuatumTech = data->QuatumTech;	  
+      ColdNuke = data->ColdNuke;	  
+      WarpEngine = data->WarpEngine;	  
+      NeuralNetwork = data->NeuralNetwork;
+      ArtificialIntellect = data->ArtificialIntellect;
+      Robot = data->Robot;
+      Singularit = data->Singularit;
+      
     }else{
       Player her("src/image/HeroAnimation/DemonSciencer.gif",0, 700);
       hero = &her;
