@@ -40,20 +40,21 @@ void Scene1(int saveNumber, Saving * data = nullptr)
     BuildObj buildCells [amountBuildCell];
     //data->buildCells = &buildCells;
     int pointsCell [amountBuildCell];
+    
     for (int i = 0; i < amountBuildCell; ++i){ 
         
-         
-        BuildObj buildCell("buildCell" + std::to_string(i),"src/location/laboratory/buildingCell.png", 1.5f);
+      BuildObj buildCell("buildCell" + std::to_string(i),"src/location/laboratory/buildingCell.png", 1.5f);
+  
+      allObj[i].SetPosObj(150 + 100 * i, 500 );
+      buildCell.SetPosRect(150 + 100 * i, 500);
+      buildCells[i] = buildCell;
+      buildCell.id = i;
+      if (data != nullptr){
 
-            //allObj[i].SetPosObj(150 + 100 * i, 500);
-        allObj[i].SetPosObj(150 + 100 * i, 500 );
-            //buildCell.SetPosObj(150 + 100 * i, 500);
-        buildCell.SetPosRect(150 + 100 * i, 500);
-        buildCells[i] = buildCell;
-	buildCell.id = i;
-        
-
+      }
     }
+    
+
 
     std::cout << "1" << std::endl;
 

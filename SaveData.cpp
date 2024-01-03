@@ -23,9 +23,8 @@ struct Saving {
     bool ArtificialIntellect;
     bool Robot;
     bool Singularit;
-
+    std::vector<BuildObj> tables;
     Saving(){
-
 
         bool Tech20Century = false;
         bool Transistor = false;

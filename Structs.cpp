@@ -109,21 +109,24 @@ using json = nlohmann::json;
             if (collision){
 
                 if (CheckCollisionRecs(ReturnframeRec(), leftRect)){
-                    DrawText("Collision and key left is detected!", 100, 100, 60, RED);
+                    //DrawText("Collision and key left is detected!", 100, 100, 60, RED);
                     resetAnimation();
                     Down();
                     Left();
 
 
                 }else if (CheckCollisionRecs(ReturnframeRec(), rightRect)){
-                    DrawText("Collision and key right is detected!", 100, 100, 60, RED);
+                    //DrawText("Collision and key right is detected!", 100, 100, 60, RED);
                     resetAnimation();
                     Down();
                     Right();
 
                 }else{
-                    resetAnimation();
-                    CantTopMove();
+                    //resetAnimation();
+                    //Left();
+                    //Right();
+                    //CantTopMove();
+                    CantTopMoveTable();
                 }
 
 
@@ -215,6 +218,12 @@ using json = nlohmann::json;
             Right();
             Left();
         }
+    }
+    void Player::CantTopMoveTable(){
+        Down();
+        Left();
+        Right();
+
     }
     void Player::CantDownMove(){
     if (CantMoveLeft) {
@@ -720,7 +729,7 @@ BuildObj::BuildObj(): NameObj("buildCell"), Path("src/location/laboratory/buildi
            //PositionClick = GetScreenToWorld2D(PositionClick, camera);
            frameRec = (Rectangle){ PositionSpawn.x, PositionSpawn.y, (float)WidthTile, (float)HeigthTile}; 
            if (CheckCollisionPointRec(PositionClick, frameRec) && IsMouseButtonDown(0)){
-                std::cout << "you click here!" << std::endl;
+                //std::cout << "you click here!" << std::endl;
    
                 //temporaly
                 //hardcoding
@@ -737,7 +746,7 @@ BuildObj::BuildObj(): NameObj("buildCell"), Path("src/location/laboratory/buildi
            //PositionClick = GetScreenToWorld2D(PositionClick, camera);
            frameRec = (Rectangle){ PositionSpawn.x, PositionSpawn.y, (float)WidthTile, (float)HeigthTile}; 
            if (CheckCollisionPointRec(PositionClick, frameRec)){
-                std::cout << "you hover here!" << std::endl;
+                //std::cout << "you hover here!" << std::endl;
                 return true; 
            }
            return false;
