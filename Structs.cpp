@@ -238,6 +238,11 @@ using json = nlohmann::json;
             Left();
         }
     }
+    void Player::CantDownMoveTable(){
+        Up();
+        Right();
+        Left();
+    }
     void Player::CantRightMove(){
     if (CantMoveTop){
             Down();
@@ -251,6 +256,11 @@ using json = nlohmann::json;
             Left();
         }
     }
+    void Player::CantRightMoveTable(){
+        Up();
+        Down();
+        Left();
+    }
     void Player::CantleftMove(){
         if (CantMoveTop){
             Down();
@@ -263,6 +273,11 @@ using json = nlohmann::json;
             Down();
             Right();
         }
+    }
+    void Player::CantleftMoveTable(){
+        Up();
+        Down();
+        Right();
     }
     //------------------------------------------------------------------------------------
     // Move

@@ -66,6 +66,9 @@ class Player{
     // Constrain Move table
     //------------------------------------------------------------------------------------
     void CantTopMoveTable();
+    void CantDownMoveTable();
+    void CantRightMoveTable();
+    void CantleftMoveTable();
     //------------------------------------------------------------------------------------
     // Constrain Move
     //------------------------------------------------------------------------------------
