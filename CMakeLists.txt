@@ -1,4 +1,5 @@
 cmake_minimum_required(VERSION 3.25)
+#for linux
 set(CMAKE_CXX_COMPILER "/bin/clang++")
 project(Game LANGUAGES C CXX)
 
@@ -21,6 +22,7 @@ elseif(UNIX)
     option(BUILD_OBJECT_LIBS OFF)
     target_link_libraries(Main ${JSONCPP_LIBRARIES})
     target_compile_options(Main PRIVATE -Wno-c++11-narrowing -Wunused-value -Wuninitialized -Wreturn-type -Wnull-conversion -Wcomment)
+    #target_compile_options(Main PRIVATE -Wno-c++11-narrowing -Wunused-value -Wuninitialized -Wreturn-type -Wcomment) 
     target_compile_options(Main PRIVATE -Wl,-rpath=shared)
     message("Succesful compile")
 endif()

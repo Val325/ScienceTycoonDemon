@@ -101,7 +101,9 @@ void Scene1(int saveNumber, Saving * data = nullptr)
 
 
     //Player hero("src/image/HeroAnimation/DemonSciencer.gif");
-
+    
+    Object dispenser("dispenser","src/dispenser.png", SizeObj);
+    dispenser.SetPosObj(950, 250);
 
     Object computer("computer","src/computer.png", 4.0f);
     computer.SetPosObj(200, 200);
@@ -109,7 +111,9 @@ void Scene1(int saveNumber, Saving * data = nullptr)
     Object panel("panel","src/panel.png", SizeObj);
     panel.SetPosObj(600, 230);
 
-    
+
+
+
     std::cout << "2" << std::endl; 
     
     //Camera
@@ -179,7 +183,8 @@ void Scene1(int saveNumber, Saving * data = nullptr)
             panel.DrawObj();
 
             computer.DrawObj();
-            
+            dispenser.DrawObj();
+
 
             hero->collisionDetect(computer.ReturnRect(false));
        
