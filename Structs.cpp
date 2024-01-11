@@ -739,6 +739,7 @@ BuildObj::BuildObj(): NameObj("buildCell"), Path("src/location/laboratory/buildi
                 DrawRectangle(frameRec.x, frameRec.y, (float)WidthTile, (float)HeigthTile, BLACK);
             }
         }
+
         bool clickEventListenSimple(Camera2D camera){
            Vector2 PositionClick = GetMousePosition();
            //PositionClick = GetScreenToWorld2D(PositionClick, camera);

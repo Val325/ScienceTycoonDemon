@@ -187,7 +187,7 @@ void Scene1(int saveNumber, Saving * data = nullptr)
 
 
             hero->collisionDetect(computer.ReturnRect(false));
-       
+            hero->collisionDetect(dispenser.ReturnRect(false));
             for (int i = 0; i < amountBuildCell; i++)
             {
                 
