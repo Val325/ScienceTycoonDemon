@@ -4,7 +4,7 @@
 A game about scientific and technological progress. The main character is a demon. Developed using the library raylib https://github.com/raysan5/raylib
 
 ## Small man
-TAB – technology tree
+TAB – technology tree <br>
 Black and yellow building cells for knowledge generation
 
 Has many bugs and is unfinished
