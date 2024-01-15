@@ -73,15 +73,15 @@ CMakeFiles/Main.dir/Main.cpp.o: CMakeFiles/Main.dir/flags.make
 CMakeFiles/Main.dir/Main.cpp.o: Main.cpp
 CMakeFiles/Main.dir/Main.cpp.o: CMakeFiles/Main.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/ghost/progects/ScienceTycoon/ScienceTycoonDemon/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/Main.dir/Main.cpp.o"
-	/usr/bin/x86_64-w64-mingw32-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Main.dir/Main.cpp.o -MF CMakeFiles/Main.dir/Main.cpp.o.d -o CMakeFiles/Main.dir/Main.cpp.o -c /home/ghost/progects/ScienceTycoon/ScienceTycoonDemon/Main.cpp
+	/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Main.dir/Main.cpp.o -MF CMakeFiles/Main.dir/Main.cpp.o.d -o CMakeFiles/Main.dir/Main.cpp.o -c /home/ghost/progects/ScienceTycoon/ScienceTycoonDemon/Main.cpp
 
 CMakeFiles/Main.dir/Main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/Main.dir/Main.cpp.i"
-	/usr/bin/x86_64-w64-mingw32-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ghost/progects/ScienceTycoon/ScienceTycoonDemon/Main.cpp > CMakeFiles/Main.dir/Main.cpp.i
+	/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ghost/progects/ScienceTycoon/ScienceTycoonDemon/Main.cpp > CMakeFiles/Main.dir/Main.cpp.i
 
 CMakeFiles/Main.dir/Main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/Main.dir/Main.cpp.s"
-	/usr/bin/x86_64-w64-mingw32-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ghost/progects/ScienceTycoon/ScienceTycoonDemon/Main.cpp -o CMakeFiles/Main.dir/Main.cpp.s
+	/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ghost/progects/ScienceTycoon/ScienceTycoonDemon/Main.cpp -o CMakeFiles/Main.dir/Main.cpp.s
 
 # Object files for target Main
 Main_OBJECTS = \
@@ -92,7 +92,7 @@ Main_EXTERNAL_OBJECTS =
 
 Main: CMakeFiles/Main.dir/Main.cpp.o
 Main: CMakeFiles/Main.dir/build.make
-Main: shared/windows/raylib.dll
+Main: liblinux/libraylib.a
 Main: CMakeFiles/Main.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/ghost/progects/ScienceTycoon/ScienceTycoonDemon/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable Main"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/Main.dir/link.txt --verbose=$(VERBOSE)

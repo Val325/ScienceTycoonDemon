@@ -185,9 +185,10 @@ void Scene1(int saveNumber, Saving * data = nullptr)
             computer.DrawObj();
             dispenser.DrawObj();
 
-
             hero->collisionDetect(computer.ReturnRect(false));
             hero->collisionDetect(dispenser.ReturnRect(false));
+            DrawText(TextFormat("Time for get money: %02i", dispenser.countTimer(true)), 950, 250, 20, BLUE);            
+            
             for (int i = 0; i < amountBuildCell; i++)
             {
                 
@@ -213,7 +214,7 @@ void Scene1(int saveNumber, Saving * data = nullptr)
         //hero.DrawStatistics();
         
         DrawText(TextFormat("InBorder: %s", bool_cast(CheckCollisionRecs(hero->ReturnframeRec(), computer.ReturnRect(false)))), 30, 140, 20, WHITE);
-        
+
         for (int i = 0; i < amountBuildCell; ++i)
         {
 
@@ -291,7 +292,8 @@ void Scene1(int saveNumber, Saving * data = nullptr)
           CloseWindow(); 
         }
 
-        hero->points = Knowledge_Point; 
+        hero->points = Knowledge_Point;
+        
         DrawText(TextFormat("Knowledge (Points): %04d", hero->points), 30, 80, 20, WHITE);
         DrawText(TextFormat("Money (hryvnia): %04d", hero->money), 30, 110, 20, WHITE);
 

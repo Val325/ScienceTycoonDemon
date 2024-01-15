@@ -677,14 +677,21 @@ BuildObj::BuildObj(): NameObj("buildCell"), Path("src/location/laboratory/buildi
         Vector2 PositionSpawn;
         std::string NameObj;
         std::string Path;
+
         float sizeObject;
         float WidthTile;
         float HeigthTile;
         bool Permeable;
         bool drawOutline;
+        
         Image image;
         Texture2D TextureGame;
         Rectangle frameRec;
+
+        double startTime;
+        int startTimeTimer;
+        int interval;
+        bool flag; 
         public:
             Rectangle CollisionRec;
         Object(std::string name, std::string path, float size){
@@ -701,8 +708,40 @@ BuildObj::BuildObj(): NameObj("buildCell"), Path("src/location/laboratory/buildi
             CollisionRec = (Rectangle){ PositionSpawn.x, PositionSpawn.y, (float)WidthTile, (float)HeigthTile};
             frameRec; 
             TextureGame = LoadTextureFromImage(image);
+            
 
+            startTime = GetTime(); // сохраняем текущее время
+            startTimeTimer = static_cast<int>(GetTime()) - 5;
+            interval = 20; 
+            flag = false;
         }
+        void setInterval(int num){
+	        interval = num;
+	    }
+         //
+        int countTimer(bool exist){
+            int currentTime = static_cast<int>(GetTime());
+            int elapsedTime = currentTime - startTimeTimer;
+             
+            int totalPoint = 0;
+           
+            if (elapsedTime >= interval) 
+            {
+                flag = true;  
+                startTimeTimer = currentTime;  
+            }
+    
+            if (flag && exist)  
+            {
+                flag = false;  
+            }
+           
+            //std::cout << "currentTime: " << currentTime << std::endl;
+            //std::cout << "elapsedTime: " << elapsedTime << std::endl;
+            
+            return elapsedTime;
+        }
+
         Rectangle ReturnRect(bool draw){
 
             Rectangle checkRect = (Rectangle){ PositionSpawn.x, PositionSpawn.y, (float)WidthTile, (float)HeigthTile/2.0f};
