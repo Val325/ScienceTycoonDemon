@@ -1,1 +1,1 @@
-/bin/clang++ CMakeFiles/Main.dir/Main.cpp.o -o Main  liblinux/libraylib.a 
+/usr/bin/x86_64-w64-mingw32-g++ CMakeFiles/Main.dir/Main.cpp.o -o Main  -Wl,-rpath,/home/ghost/progects/ScienceTycoon/ScienceTycoonDemon/shared/windows shared/windows/raylib.dll 
