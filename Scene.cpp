@@ -102,8 +102,7 @@ void Scene1(int saveNumber, Saving * data = nullptr)
 
     //Player hero("src/image/HeroAnimation/DemonSciencer.gif");
     
-    Object dispenser("dispenser","src/dispenser.png", SizeObj);
-    dispenser.SetPosObj(950, 250);
+
 
     Object computer("computer","src/computer.png", 4.0f);
     computer.SetPosObj(200, 200);
@@ -122,6 +121,11 @@ void Scene1(int saveNumber, Saving * data = nullptr)
     camera.offset = (Vector2){ GetScreenWidth()/2.0f, GetScreenHeight()/2.0f };
     camera.rotation = 0.0f;
     camera.zoom = 1.0f;
+
+    Object dispenser("dispenser","src/dispenser.png", SizeObj);
+    dispenser.SetPosObj(950, 250);
+    float increaseSizeCollisionArea = 1.5f;
+
 
     //Vector2 dataPoint = GetScreenToWorld2D((Vector2){40,200}, camera);
     Object buttonTree("buttonTree","GUI/buttonSci/ButtonSci.png", SizeMenu);
@@ -187,8 +191,12 @@ void Scene1(int saveNumber, Saving * data = nullptr)
 
             hero->collisionDetect(computer.ReturnRect(false));
             hero->collisionDetect(dispenser.ReturnRect(false));
+
             DrawText(TextFormat("Time for get money: %02i", dispenser.countTimer(true)), 950, 250, 20, BLUE);            
-            
+            if (CheckCollisionRecs(hero->ReturnframeRec(), dispenser.ReturnRect(false, camera)) && IsKeyPressed(KEY_F3)){
+                std::cout << "get money" << std::endl;
+                hero->money = hero->money + 50;
+            }
             for (int i = 0; i < amountBuildCell; i++)
             {
                 
@@ -293,7 +301,8 @@ void Scene1(int saveNumber, Saving * data = nullptr)
         }
 
         hero->points = Knowledge_Point;
-        
+        DrawRectangleRec(dispenser.ReturnRect(false, camera), RED);
+        DrawRectangleRec(hero->ReturnframeRec(), RED);    
         DrawText(TextFormat("Knowledge (Points): %04d", hero->points), 30, 80, 20, WHITE);
         DrawText(TextFormat("Money (hryvnia): %04d", hero->money), 30, 110, 20, WHITE);
 
