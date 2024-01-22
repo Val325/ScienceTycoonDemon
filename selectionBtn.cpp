@@ -16,7 +16,7 @@ bool allObjIsSelected[10] = {false};
 bool WindowBoxPopUpSelectTableActive = false;
 bool isSelectedTable = false;
 int chooseTable = NULL;
-int PlayerMoney = 500;
+int PlayerMoney = Money_Point;
 
 
 int AmountMinTable = 0;
@@ -26,9 +26,12 @@ void TableMin(int id_cell, BuildObj obj)
 {
       //BuildObj tableReserarchMin("tableResearch","src/tableResearch.gif", 4.5f);
    int tempMoney;
-   tempMoney = PlayerMoney - 50;
+   tempMoney = Money_Point - 50;
    if (tempMoney >= 0){
-      PlayerMoney = PlayerMoney - 50;
+   //if (Money_Point >= 0){
+   //   PlayerMoney = PlayerMoney - 50;
+      //PlayerMoney = Money_Point - 50;
+      Money_Point = Money_Point - 50;
       //tableReserarch.Draw();
       //allObj.push_back(obj);
       allObjIsExists[id_cell] = true;
@@ -58,11 +61,14 @@ void TableMid(int id_cell, BuildObj obj)
        //tableReserarch.Draw();
     //allObj.push_back(obj);
     int tempMoney;
-    tempMoney = PlayerMoney - 150;
+    tempMoney = Money_Point - 150;
     if (tempMoney >= 0){
-      PlayerMoney = PlayerMoney - 150;
+    //if (Money_Point >= 0){
+      //PlayerMoney = PlayerMoney - 150;
       allObjIsExists[id_cell] = true;
         //return "tableResearch2";
+        //
+      Money_Point = Money_Point - 150;
       AmountMidTable++; 
       allObj[id_cell] = obj;
       allObj[id_cell].SetPosObj(150 + 100 * id_cell, 440);
@@ -82,14 +88,15 @@ void TableEnd(int id_cell, BuildObj obj)
         //tableReserarch.Draw();
     //allObj.push_back(obj);
     int tempMoney;
-    tempMoney = PlayerMoney - 450;
+    tempMoney = Money_Point - 450;
     if (tempMoney >= 0){
-        PlayerMoney = PlayerMoney - 450;
+    //if (Money_Point >= 0){
+        //PlayerMoney = PlayerMoney - 450;
         AmountTopTable++; 
         allObjIsExists[id_cell] = true;
         //return "tableResearch3"; 
         //allObj.insert(allObj.begin() + id_cell, obj);
-    
+        Money_Point = Money_Point - 450;
         allObj[id_cell] = obj;
         allObj[id_cell].SetPosObj(150 + 100 * id_cell, 440);
         allObj[id_cell].SetPosRect(150 + 100 * id_cell, 440);  

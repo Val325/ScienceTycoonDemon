@@ -13,6 +13,7 @@ using json = nlohmann::json;
 const float SizeObj = 5.0f;
 const float SizeMenu = 2.0f;
 //int Knowledge_Point = 0;
+
 struct EntityStruct MainHero;
 struct EntityStruct Table;
 struct RoomStruct RoomInfo;
@@ -89,7 +90,8 @@ void Scene1(int saveNumber, Saving * data = nullptr)
       hero = &her;
     }
     Knowledge_Point += hero->points; 
-    
+    Money_Point += hero->money; 
+
     int points = 0;
     bool Show_HUD = false;
 
@@ -195,7 +197,7 @@ void Scene1(int saveNumber, Saving * data = nullptr)
             DrawText(TextFormat("Time for get money: %02i", dispenser.countTimer(true)), 950, 250, 20, BLUE);            
             if (CheckCollisionRecs(hero->ReturnframeRec(), dispenser.ReturnRect(false, camera)) && IsKeyPressed(KEY_F3)){
                 std::cout << "get money" << std::endl;
-                hero->money = hero->money + 50;
+                Money_Point = hero->money + 50;
             }
             for (int i = 0; i < amountBuildCell; i++)
             {
@@ -204,6 +206,8 @@ void Scene1(int saveNumber, Saving * data = nullptr)
                
 	            clickEvent(camera, hero->money, i, tables, buildCells);
                 buildCells[i].clickEventListen(camera, hero->money, i, tables, buildCells);
+                //clickEvent(camera, Money_Point, i, tables, buildCells);
+                //buildCells[i].clickEventListen(camera, Money_Point, i, tables, buildCells);
                 pointsCell[i] = buildCells[i].countPointRet(hero->points, 5, buildCells[i].IsExist());
                 hero->points += pointsCell[i];
                 
@@ -286,7 +290,7 @@ void Scene1(int saveNumber, Saving * data = nullptr)
           dataGame[saveNumber].QuatumTech = QuatumTech;
           dataGame[saveNumber].ColdNuke = ColdNuke;
           dataGame[saveNumber].WarpEngine = WarpEngine;
-	  dataGame[saveNumber].NeuralNetwork = NeuralNetwork;
+	      dataGame[saveNumber].NeuralNetwork = NeuralNetwork;
           dataGame[saveNumber].ArtificialIntellect = ArtificialIntellect;
           dataGame[saveNumber].Robot = Robot;
           dataGame[saveNumber].Singularit = Singularit;
@@ -301,6 +305,7 @@ void Scene1(int saveNumber, Saving * data = nullptr)
         }
 
         hero->points = Knowledge_Point;
+        hero->money = Money_Point;
         DrawRectangleRec(dispenser.ReturnRect(false, camera), RED);
         DrawRectangleRec(hero->ReturnframeRec(), RED);    
         DrawText(TextFormat("Knowledge (Points): %04d", hero->points), 30, 80, 20, WHITE);

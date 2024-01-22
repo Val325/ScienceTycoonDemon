@@ -63,6 +63,9 @@ using json = nlohmann::json;
         void Player::addPoints(int num){
             points += num;
         }
+        void Player::addMoney(int num){
+            money += num;
+        }
         void Player::resetAnimation(){
             currentFrame = 0;
         }

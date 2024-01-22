@@ -7,7 +7,9 @@
 #include <set>
 #include<cstdio>
 #include<ctime>
+
 int Knowledge_Point = 0;
+int Money_Point = 500;
 
 class Player{
         private:
@@ -52,6 +54,7 @@ class Player{
         void UpCanMove();
         void UpCantMove();
         Texture2D ReturnImg();
+    void addMoney(int num);
 	Rectangle ReturnframeRec();
 	void collisionDetect(Rectangle recCollide);
         Vector2 ReturnPostion();
