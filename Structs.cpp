@@ -756,8 +756,8 @@ BuildObj::BuildObj(): NameObj("buildCell"), Path("src/location/laboratory/buildi
             return checkRect;
         }
         Rectangle ReturnRect(bool draw, Camera2D camera){
-            Vector2 PositionRect = GetWorldToScreen2D({PositionSpawn.x, PositionSpawn.y}, camera);
-            Rectangle checkRect = (Rectangle){PositionRect.x, PositionRect.y, (float)WidthTile, (float)HeigthTile/2.0f};
+            Vector2 PositionRect = GetScreenToWorld2D({PositionSpawn.x, PositionSpawn.y}, camera);
+            Rectangle checkRect = (Rectangle){PositionSpawn.x, PositionSpawn.y, (float)WidthTile, (float)HeigthTile/2.0f};
             
             if (draw)
             {

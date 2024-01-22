@@ -306,8 +306,8 @@ void Scene1(int saveNumber, Saving * data = nullptr)
 
         hero->points = Knowledge_Point;
         hero->money = Money_Point;
-        DrawRectangleRec(dispenser.ReturnRect(false, camera), RED);
-        DrawRectangleRec(hero->ReturnframeRec(), RED);    
+        //DrawRectangleRec(dispenser.ReturnRect(false, camera), RED);
+        //DrawRectangleRec(hero->ReturnframeRec(), RED);    
         DrawText(TextFormat("Knowledge (Points): %04d", hero->points), 30, 80, 20, WHITE);
         DrawText(TextFormat("Money (hryvnia): %04d", hero->money), 30, 110, 20, WHITE);
 
