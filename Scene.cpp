@@ -115,7 +115,7 @@ void Scene1(int saveNumber, Saving * data = nullptr)
 
 
 
-    std::cout << "2" << std::endl; 
+    //std::cout << "2" << std::endl; 
     
     //Camera
     Camera2D camera = { 0 };
@@ -128,6 +128,8 @@ void Scene1(int saveNumber, Saving * data = nullptr)
     dispenser.SetPosObj(950, 250);
     float increaseSizeCollisionArea = 1.5f;
 
+    Object epress("Epress","src/epress.gif", SizeObj);
+    epress.SetPosObj(950, 180);
 
     //Vector2 dataPoint = GetScreenToWorld2D((Vector2){40,200}, camera);
     Object buttonTree("buttonTree","GUI/buttonSci/ButtonSci.png", SizeMenu);
@@ -190,15 +192,23 @@ void Scene1(int saveNumber, Saving * data = nullptr)
 
             computer.DrawObj();
             dispenser.DrawObj();
+            
 
             hero->collisionDetect(computer.ReturnRect(false));
             hero->collisionDetect(dispenser.ReturnRect(false));
 
             DrawText(TextFormat("Time for get money: %02i", dispenser.countTimer(true)), 950, 250, 20, BLUE);            
-            if (CheckCollisionRecs(hero->ReturnframeRec(), dispenser.ReturnRect(false, camera)) && IsKeyPressed(KEY_F3)){
+            
+            if (CheckCollisionRecs(hero->ReturnframeRec(), dispenser.ReturnRect(false, camera)) && IsKeyPressed(KEY_E)){
                 std::cout << "get money" << std::endl;
                 Money_Point = hero->money + 50;
+                epress.DrawObj();
             }
+
+            if (CheckCollisionRecs(hero->ReturnframeRec(), dispenser.ReturnRect(false, camera))){
+                epress.DrawObj();
+            }
+
             for (int i = 0; i < amountBuildCell; i++)
             {
                 
