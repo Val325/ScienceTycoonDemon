@@ -196,12 +196,22 @@ void Scene1(int saveNumber, Saving * data = nullptr)
 
             hero->collisionDetect(computer.ReturnRect(false));
             hero->collisionDetect(dispenser.ReturnRect(false));
-
-            DrawText(TextFormat("Time for get money: %02i", dispenser.countTimer(true)), 950, 250, 20, BLUE);            
             
-            if (CheckCollisionRecs(hero->ReturnframeRec(), dispenser.ReturnRect(false, camera)) && IsKeyPressed(KEY_E)){
+            if (dispenser.countTimer(true) == 0 || IsCanGetMoney){
+                DrawText(TextFormat("You can get money"), 950, 250, 20, BLUE);
+                
+                IsCanGetMoney = true;
+                dispenser.countTimer(false); 
+ 
+            }else {
+                DrawText(TextFormat("Time for get money: %02i", dispenser.countTimer(true)), 950, 250, 20, BLUE);            
+            }
+
+            if (CheckCollisionRecs(hero->ReturnframeRec(), dispenser.ReturnRect(false, camera)) && IsKeyPressed(KEY_E) && IsCanGetMoney){
                 std::cout << "get money" << std::endl;
                 Money_Point = hero->money + 50;
+                IsCanGetMoney = false;
+
                 epress.DrawObj();
             }
 

@@ -714,13 +714,19 @@ BuildObj::BuildObj(): NameObj("buildCell"), Path("src/location/laboratory/buildi
             
 
             startTime = GetTime(); // сохраняем текущее время
-            startTimeTimer = static_cast<int>(GetTime()) - 5;
+            startTimeTimer = static_cast<int>(GetTime());
             interval = 20; 
             flag = false;
         }
         void setInterval(int num){
 	        interval = num;
 	    }
+        void setStartTime(int num){
+            startTimeTimer = num;
+        }
+        void reset(){
+            startTimeTimer = static_cast<int>(GetTime());
+        }
          //
         int countTimer(bool exist){
             int currentTime = static_cast<int>(GetTime());

@@ -10,6 +10,7 @@
 
 int Knowledge_Point = 0;
 int Money_Point = 500;
+bool IsCanGetMoney = false;
 
 class Player{
         private:
