@@ -77,6 +77,7 @@ CMakeFiles/Main.dir/Main.cpp.o
  /include/c++/13.2.1/bits/sstream.tcc
  /include/c++/13.2.1/bits/std_abs.h
  /include/c++/13.2.1/bits/std_function.h
+ /include/c++/13.2.1/bits/std_thread.h
  /include/c++/13.2.1/bits/stl_algo.h
  /include/c++/13.2.1/bits/stl_algobase.h
  /include/c++/13.2.1/bits/stl_bvector.h
@@ -104,6 +105,7 @@ CMakeFiles/Main.dir/Main.cpp.o
  /include/c++/13.2.1/bits/streambuf.tcc
  /include/c++/13.2.1/bits/streambuf_iterator.h
  /include/c++/13.2.1/bits/stringfwd.h
+ /include/c++/13.2.1/bits/this_thread_sleep.h
  /include/c++/13.2.1/bits/uniform_int_dist.h
  /include/c++/13.2.1/bits/unique_ptr.h
  /include/c++/13.2.1/bits/unordered_map.h
@@ -167,6 +169,7 @@ CMakeFiles/Main.dir/Main.cpp.o
  /include/c++/13.2.1/streambuf
  /include/c++/13.2.1/string
  /include/c++/13.2.1/system_error
+ /include/c++/13.2.1/thread
  /include/c++/13.2.1/tuple
  /include/c++/13.2.1/type_traits
  /include/c++/13.2.1/typeinfo
@@ -293,7 +296,12 @@ CMakeFiles/Main.dir/Main.cpp.o
  /home/ghost/progects/ScienceTycoon/ScienceTycoonDemon/include/raylib-cpp.hpp
  /home/ghost/progects/ScienceTycoon/ScienceTycoonDemon/include/raylib.h
  /home/ghost/progects/ScienceTycoon/ScienceTycoonDemon/include/raymath.h
+ /home/ghost/progects/ScienceTycoon/ScienceTycoonDemon/include/stopwatch/Stopwatch.hpp
  /home/ghost/progects/ScienceTycoon/ScienceTycoonDemon/selectionBtn.cpp
+ /usr/include/GL/gl.h
+ /usr/include/GL/glext.h
+ /usr/include/GLFW/glfw3.h
+ /usr/include/KHR/khrplatform.h
  /usr/include/alloca.h
  /usr/include/asm-generic/errno-base.h
  /usr/include/asm-generic/errno.h

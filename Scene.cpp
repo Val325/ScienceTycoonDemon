@@ -6,10 +6,16 @@
 #include "SaveData.cpp"
 #include "Utils.cpp"
 #include <nlohmann/json.hpp>
+#include <stopwatch/Stopwatch.hpp>
 #include <unordered_map>
+#include <GLFW/glfw3.h>
 #include <map>
+#include <ctime>
+#include <thread>         // std::thread
 
 using json = nlohmann::json;
+namespace sw = stopwatch;
+
 const float SizeObj = 5.0f;
 const float SizeMenu = 2.0f;
 //int Knowledge_Point = 0;
@@ -27,6 +33,7 @@ int save_num;
 const char* bool_cast(const bool b) {
     return b ? "true" : "false";
 }
+
 ///
   /// 
 //------------------------------------------------------------------------------------
@@ -54,15 +61,16 @@ void Scene1(int saveNumber, Saving * data = nullptr)
 
       }
     }
-    
-
+  
+    sw::Stopwatch* my_watch;
+    bool ExitstTimer = false;
+    //Take the time
 
     std::cout << "1" << std::endl;
 
     //------------------------------------------------------------------------------------
     // Initialization
     //------------------------------------------------------------------------------------
-
 
 
     
@@ -168,8 +176,25 @@ void Scene1(int saveNumber, Saving * data = nullptr)
     //hero.money = money_point;
 
     while (!WindowShouldClose())
-    {
-        if (IsKeyPressed(KEY_F2)){
+    { 
+        
+        if (ExitstTimer){
+            auto duration_ms = my_watch->elapsed<sw::s>();
+            std::cout << "Elapsed: " << duration_ms << " milliseconds." << std::endl;
+        }
+        if (IsKeyPressed(KEY_F4)){
+            if (ExitstTimer){
+                ExitstTimer = false;
+                delete my_watch;
+            }
+            //my_watch.stop();
+            //my_watch.reset();
+        }
+        if (IsKeyPressed(KEY_F5)){
+            my_watch = new sw::Stopwatch;
+            my_watch->start();
+            my_watch->reset();           
+            ExitstTimer = true;
 
         }
         if (IsKeyPressed(KEY_F3)){
@@ -196,25 +221,41 @@ void Scene1(int saveNumber, Saving * data = nullptr)
 
             hero->collisionDetect(computer.ReturnRect(false));
             hero->collisionDetect(dispenser.ReturnRect(false));
-            
-            if (dispenser.countTimer(true) == 0 || IsCanGetMoney){
+            //int time = 0;
+            //bool IsCanGetMoney = true;
+            //
+
+            /*
+            if (dispenser.countTimer(20)){
+                //dispenser.pause(); 
                 DrawText(TextFormat("You can get money"), 950, 250, 20, BLUE);
-                
                 IsCanGetMoney = true;
-                dispenser.countTimer(false); 
- 
+                //dispenser.countTimer(false);
+                //glfwSetTime(1.0f); 
+                //dispenser.setCurrentTime(1);
             }else {
-                DrawText(TextFormat("Time for get money: %02i", dispenser.countTimer(true)), 950, 250, 20, BLUE);            
+                //dispenser.countTimer(true);
+                //dispenser.play();
+                
+                //dispenser.setCurrentTime(1);
+               
+                //IsCanGetMoney = false;
+                DrawText(TextFormat("Time for get money: %02i", dispenser.returnElapsedTime()), 950, 250, 20, BLUE); 
+                //dispenser.setElapsedTime(0); 
             }
 
             if (CheckCollisionRecs(hero->ReturnframeRec(), dispenser.ReturnRect(false, camera)) && IsKeyPressed(KEY_E) && IsCanGetMoney){
                 std::cout << "get money" << std::endl;
                 Money_Point = hero->money + 50;
+                WaitForGet.join();
                 IsCanGetMoney = false;
-
-                epress.DrawObj();
+                //dispenser.setElapsedTime(0);
+                
+                //dispenser.play(); 
+                //dispenser.countTimer(true); 
+                //epress.DrawObj();
             }
-
+            */
             if (CheckCollisionRecs(hero->ReturnframeRec(), dispenser.ReturnRect(false, camera))){
                 epress.DrawObj();
             }

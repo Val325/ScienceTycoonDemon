@@ -694,7 +694,12 @@ BuildObj::BuildObj(): NameObj("buildCell"), Path("src/location/laboratory/buildi
         double startTime;
         int startTimeTimer;
         int interval;
-        bool flag; 
+        bool flag;
+        int currentTime;
+        int elapsedTime;
+
+        bool pause_obj;
+        bool isStopTimer;
         public:
             Rectangle CollisionRec;
         Object(std::string name, std::string path, float size){
@@ -717,6 +722,7 @@ BuildObj::BuildObj(): NameObj("buildCell"), Path("src/location/laboratory/buildi
             startTimeTimer = static_cast<int>(GetTime());
             interval = 20; 
             flag = false;
+            pause_obj = false;
         }
         void setInterval(int num){
 	        interval = num;
@@ -724,32 +730,37 @@ BuildObj::BuildObj(): NameObj("buildCell"), Path("src/location/laboratory/buildi
         void setStartTime(int num){
             startTimeTimer = num;
         }
-        void reset(){
-            startTimeTimer = static_cast<int>(GetTime());
+        void pause(){
+            pause_obj = true;
+            currentTime = 0;
+            elapsedTime = 0;
         }
-         //
-        int countTimer(bool exist){
-            int currentTime = static_cast<int>(GetTime());
-            int elapsedTime = currentTime - startTimeTimer;
-             
-            int totalPoint = 0;
-           
-            if (elapsedTime >= interval) 
-            {
-                flag = true;  
-                startTimeTimer = currentTime;  
-            }
-    
-            if (flag && exist)  
-            {
-                flag = false;  
-            }
-           
-            //std::cout << "currentTime: " << currentTime << std::endl;
-            //std::cout << "elapsedTime: " << elapsedTime << std::endl;
-            
+        void play(){
+            pause_obj = false;
+        }
+        bool returnIsPause(){
+            return pause_obj;
+        }
+        int returnElapsedTime(){
             return elapsedTime;
         }
+        void setElapsedTime(int num){
+            elapsedTime = num;
+        }
+        int returnCurrentTime(){
+            return currentTime;
+        }
+        void setCurrentTime(int num){
+            currentTime = num;
+        }
+        int countTimer(bool exist){
+
+            
+        }
+        void countTimer(int time){
+
+        }
+
         Rectangle ReturnRect(bool draw){
             //Vector2 PositionRect = GetScreenToWorld2D({PositionSpawn.x, PositionSpawn.y}, camera);
             Rectangle checkRect = (Rectangle){PositionSpawn.x, PositionSpawn.y, (float)WidthTile, (float)HeigthTile/2.0f};

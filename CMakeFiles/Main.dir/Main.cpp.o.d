@@ -343,6 +343,12 @@ CMakeFiles/Main.dir/Main.cpp.o: \
   /home/ghost/progects/ScienceTycoon/ScienceTycoonDemon/buildObj.hpp \
   /home/ghost/progects/ScienceTycoon/ScienceTycoonDemon/selectionBtn.cpp \
   /home/ghost/progects/ScienceTycoon/ScienceTycoonDemon/SaveData.cpp \
+  /home/ghost/progects/ScienceTycoon/ScienceTycoonDemon/include/stopwatch/Stopwatch.hpp \
+  /usr/include/GLFW/glfw3.h /usr/include/GL/gl.h /usr/include/GL/glext.h \
+  /usr/include/KHR/khrplatform.h \
+  /bin/../lib64/gcc/x86_64-pc-linux-gnu/13.2.1/../../../../include/c++/13.2.1/thread \
+  /bin/../lib64/gcc/x86_64-pc-linux-gnu/13.2.1/../../../../include/c++/13.2.1/bits/std_thread.h \
+  /bin/../lib64/gcc/x86_64-pc-linux-gnu/13.2.1/../../../../include/c++/13.2.1/bits/this_thread_sleep.h \
   /home/ghost/progects/ScienceTycoon/ScienceTycoonDemon/include/json/json.h \
   /home/ghost/progects/ScienceTycoon/ScienceTycoonDemon/include/json/config.h \
   /home/ghost/progects/ScienceTycoon/ScienceTycoonDemon/include/json/allocator.h \
