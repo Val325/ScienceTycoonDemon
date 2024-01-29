@@ -180,9 +180,6 @@ void Scene1(int saveNumber, Saving * data = nullptr)
     ExitstTimer = true; 
     while (!WindowShouldClose())
     { 
-        
-
-
         if (IsKeyPressed(KEY_F4)){
             if (ExitstTimer){
                 ExitstTimer = false;
@@ -201,8 +198,9 @@ void Scene1(int saveNumber, Saving * data = nullptr)
         if (IsKeyPressed(KEY_F3)){
             LoadData("save/", "save_1"); 
         }
-        hero->MoveHero();
-
+        if (!IsPause){
+            hero->MoveHero();
+        }
         hero->FramesIncrement();
         
         camera.target = (Vector2){ hero->ReturnPositionX() + 20, hero->ReturnPositionY() + 20};
@@ -212,6 +210,7 @@ void Scene1(int saveNumber, Saving * data = nullptr)
         ClearBackground(BLACK);
 
         BeginMode2D(camera);
+            
             DrawTextureEx(RoomInfo.RoomTex, RoomInfo.PositionSpawn, 0, 7.5, WHITE);
 
             panel.DrawObj();
@@ -300,7 +299,7 @@ void Scene1(int saveNumber, Saving * data = nullptr)
             hero->DrawHero();
             hero->SpeedUp();
             
-     
+        
         EndMode2D();
 
         //Log
@@ -353,12 +352,14 @@ void Scene1(int saveNumber, Saving * data = nullptr)
         if (IsKeyPressed(KEY_ESCAPE)){
             std::cout << "pressed KEY_ESCAPE!" << std::endl;
             ShowMenu = !ShowMenu;
+            IsPause = !IsPause;
         }
         if (ShowMenu || ButtonPlayPressed){
             ButtonPlayPressed = GuiButton((Rectangle){ 552, 288, 120, 48 }, "Play"); 
             ButtonExitPressed = GuiButton((Rectangle){ 552, 360, 120, 48 }, "Save and exit"); 
         }
         if (ButtonPlayPressed){
+            IsPause = !IsPause;
             ShowMenu = !ShowMenu;
         }
         if (ButtonExitPressed){
