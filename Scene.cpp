@@ -174,14 +174,15 @@ void Scene1(int saveNumber, Saving * data = nullptr)
 
     //hero.points = know_point;
     //hero.money = money_point;
-
+    my_watch = new sw::Stopwatch;
+    my_watch->start();
+    my_watch->reset();           
+    ExitstTimer = true; 
     while (!WindowShouldClose())
     { 
         
-        if (ExitstTimer){
-            auto duration_ms = my_watch->elapsed<sw::s>();
-            std::cout << "Elapsed: " << duration_ms << " milliseconds." << std::endl;
-        }
+
+
         if (IsKeyPressed(KEY_F4)){
             if (ExitstTimer){
                 ExitstTimer = false;
@@ -243,19 +244,41 @@ void Scene1(int saveNumber, Saving * data = nullptr)
                 DrawText(TextFormat("Time for get money: %02i", dispenser.returnElapsedTime()), 950, 250, 20, BLUE); 
                 //dispenser.setElapsedTime(0); 
             }
+            */
 
+            
+            if (ExitstTimer){
+                auto duration_ms = my_watch->elapsed<sw::s>();
+                std::cout << "Elapsed: " << duration_ms << " seconds." << std::endl;
+                if (duration_ms >= 20){
+                    DrawText(TextFormat("You can get money"), 950, 250, 20, BLUE);
+                    IsCanGetMoney = true;
+                }else{
+                    DrawText(TextFormat("Time for get money: %02i", duration_ms), 950, 250, 20, BLUE); 
+                    IsCanGetMoney = false;
+                } 
+            }
             if (CheckCollisionRecs(hero->ReturnframeRec(), dispenser.ReturnRect(false, camera)) && IsKeyPressed(KEY_E) && IsCanGetMoney){
                 std::cout << "get money" << std::endl;
                 Money_Point = hero->money + 50;
-                WaitForGet.join();
                 IsCanGetMoney = false;
                 //dispenser.setElapsedTime(0);
                 
                 //dispenser.play(); 
                 //dispenser.countTimer(true); 
-                //epress.DrawObj();
+                epress.DrawObj();
+
+                if (ExitstTimer){
+                    ExitstTimer = false;
+                    delete my_watch;
+                }
+                
+                my_watch = new sw::Stopwatch;
+                my_watch->start();
+                my_watch->reset();           
+                ExitstTimer = true;
             }
-            */
+
             if (CheckCollisionRecs(hero->ReturnframeRec(), dispenser.ReturnRect(false, camera))){
                 epress.DrawObj();
             }
