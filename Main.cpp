@@ -105,7 +105,7 @@ int main(void)
 
 
     raylib::Window window(screenWidth, screenHeight, "Science tycoon");
-    SetTargetFPS(30);
+    SetTargetFPS(60);
     Image image = LoadImage("GUI/NameGame/TitleCrop.png");
     Image atom = LoadImage("GUI/background/Atom_menu.png");
 

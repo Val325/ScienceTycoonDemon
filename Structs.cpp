@@ -103,10 +103,10 @@ using json = nlohmann::json;
             return heroRect;
         }
         void Player::collisionDetect(Rectangle recCollide){
-            Rectangle leftRect = (Rectangle){ recCollide.x - 25.0f, recCollide.y, (float)imgAnim.width/7.0f, (float)imgAnim.height * 0.75f};
+            Rectangle leftRect = (Rectangle){ recCollide.x - 30.0f, recCollide.y, (float)imgAnim.width/7.0f, (float)imgAnim.height * 0.75f};
             //DrawRectangle(leftRect.x, leftRect.y, (float)leftRect.width, (float)leftRect.height, BLUE);
 
-            Rectangle rightRect = (Rectangle){ recCollide.x + 193.0f, recCollide.y, (float)imgAnim.width/7.0f, (float)imgAnim.height * 0.75f};
+            Rectangle rightRect = (Rectangle){ recCollide.x + 160.0f, recCollide.y, (float)imgAnim.width/7.0f, (float)imgAnim.height * 0.75f};
             //DrawRectangle(rightRect.x, rightRect.y, (float)rightRect.width, (float)rightRect.height, YELLOW);
             collision = CheckCollisionRecs(ReturnframeRec(), recCollide);
             if (collision){
@@ -125,13 +125,15 @@ using json = nlohmann::json;
                     Right();
 
                 }else{
+                    //DrawText("Cant top move!", 100, 100, 60, RED);
                     //resetAnimation();
                     //Left();
                     //Right();
+                    //UpCantMove();
                     //CantTopMove();
                     CantTopMoveTable();
-                }
 
+                }
 
             }
         }
@@ -724,6 +726,9 @@ BuildObj::BuildObj(): NameObj("buildCell"), Path("src/location/laboratory/buildi
             flag = false;
             pause_obj = false;
         }
+        void setSize(float size){
+            sizeObject = size; 
+        }
         void setInterval(int num){
 	        interval = num;
 	    }
@@ -762,7 +767,7 @@ BuildObj::BuildObj(): NameObj("buildCell"), Path("src/location/laboratory/buildi
         }
 
         Rectangle ReturnRect(bool draw){
-            //Vector2 PositionRect = GetScreenToWorld2D({PositionSpawn.x, PositionSpawn.y}, camera);
+            //Vector2 PositionRect = GetScreenToWorld2D({PositionSpawn.x, PositionSpawn.y});
             Rectangle checkRect = (Rectangle){PositionSpawn.x, PositionSpawn.y, (float)WidthTile, (float)HeigthTile/2.0f};
             
             if (draw)
@@ -773,8 +778,9 @@ BuildObj::BuildObj(): NameObj("buildCell"), Path("src/location/laboratory/buildi
             return checkRect;
         }
         Rectangle ReturnRect(bool draw, Camera2D camera){
-            Vector2 PositionRect = GetScreenToWorld2D({PositionSpawn.x, PositionSpawn.y}, camera);
+            Vector2 PositionRect = GetWorldToScreen2D(PositionSpawn, camera);
             Rectangle checkRect = (Rectangle){PositionSpawn.x, PositionSpawn.y, (float)WidthTile, (float)HeigthTile/2.0f};
+            //Rectangle checkRect = (Rectangle){PositionRect.x, PositionRect.y, (float)WidthTile, (float)HeigthTile/2.0f}; 
             
             if (draw)
             {

@@ -71,9 +71,7 @@ void Scene1(int saveNumber, Saving * data = nullptr)
     //------------------------------------------------------------------------------------
     // Initialization
     //------------------------------------------------------------------------------------
-
-
-    
+ 
     Player *hero; 
     if (data != nullptr){
       Player her("src/image/HeroAnimation/DemonSciencer.gif",data->Knowledge, data->money);
@@ -109,21 +107,11 @@ void Scene1(int saveNumber, Saving * data = nullptr)
     FloorTile.TextureTile = LoadTextureFromImage(FloorTile.ImageTile);
     FloorTile.CollisionRec = (Rectangle){ FloorTile.PositionSpawn.x, FloorTile.PositionSpawn.y, (float)FloorTile.TextureTile.width, (float)FloorTile.TextureTile.height};
 
-
-    //Player hero("src/image/HeroAnimation/DemonSciencer.gif");
-    
-
-
     Object computer("computer","src/computer.png", 4.0f);
     computer.SetPosObj(200, 200);
 
     Object panel("panel","src/panel.png", SizeObj);
     panel.SetPosObj(600, 230);
-
-
-
-
-    //std::cout << "2" << std::endl; 
     
     //Camera
     Camera2D camera = { 0 };
@@ -133,11 +121,16 @@ void Scene1(int saveNumber, Saving * data = nullptr)
     camera.zoom = 1.0f;
 
     Object dispenser("dispenser","src/dispenser.png", SizeObj);
-    dispenser.SetPosObj(950, 250);
+    dispenser.SetPosObj(1000, 300);
+    dispenser.setSize(2.5f);
     float increaseSizeCollisionArea = 1.5f;
 
     Object epress("Epress","src/epress.gif", SizeObj);
     epress.SetPosObj(950, 180);
+    
+    std::vector<Object> game_obj_collide;
+    game_obj_collide.push_back(computer);
+    game_obj_collide.push_back(epress);
 
     //Vector2 dataPoint = GetScreenToWorld2D((Vector2){40,200}, camera);
     Object buttonTree("buttonTree","GUI/buttonSci/ButtonSci.png", SizeMenu);
@@ -170,16 +163,18 @@ void Scene1(int saveNumber, Saving * data = nullptr)
         { "tableResearch3", tableReserarchTop}
     };
 
-    SetTargetFPS(60);
+    //SetTargetFPS(60);
 
     //hero.points = know_point;
     //hero.money = money_point;
     my_watch = new sw::Stopwatch;
     my_watch->start();
     my_watch->reset();           
-    ExitstTimer = true; 
+    ExitstTimer = true;
+
     while (!WindowShouldClose())
-    { 
+    {
+
         if (IsKeyPressed(KEY_F4)){
             if (ExitstTimer){
                 ExitstTimer = false;
@@ -217,35 +212,18 @@ void Scene1(int saveNumber, Saving * data = nullptr)
 
             computer.DrawObj();
             dispenser.DrawObj();
-            
-
-            hero->collisionDetect(computer.ReturnRect(false));
+        
+            hero->collisionDetect(computer.ReturnRect(false, camera));
+            //hero->collisionDetect(dispenser.ReturnRect(true, camera));
+        /*
+        if (bool_cast(CheckCollisionRecs(hero->ReturnframeRec(), dispenser.ReturnRect(false)))){
             hero->collisionDetect(dispenser.ReturnRect(false));
-            //int time = 0;
-            //bool IsCanGetMoney = true;
-            //
+        }
+        if (bool_cast(CheckCollisionRecs(hero->ReturnframeRec(), computer.ReturnRect(false)))){
+            hero->collisionDetect(computer.ReturnRect(false));
+        }*/
 
-            /*
-            if (dispenser.countTimer(20)){
-                //dispenser.pause(); 
-                DrawText(TextFormat("You can get money"), 950, 250, 20, BLUE);
-                IsCanGetMoney = true;
-                //dispenser.countTimer(false);
-                //glfwSetTime(1.0f); 
-                //dispenser.setCurrentTime(1);
-            }else {
-                //dispenser.countTimer(true);
-                //dispenser.play();
-                
-                //dispenser.setCurrentTime(1);
-               
-                //IsCanGetMoney = false;
-                DrawText(TextFormat("Time for get money: %02i", dispenser.returnElapsedTime()), 950, 250, 20, BLUE); 
-                //dispenser.setElapsedTime(0); 
-            }
-            */
 
-            
             if (ExitstTimer){
                 auto duration_ms = my_watch->elapsed<sw::s>();
                 std::cout << "Elapsed: " << duration_ms << " seconds." << std::endl;
@@ -261,10 +239,7 @@ void Scene1(int saveNumber, Saving * data = nullptr)
                 std::cout << "get money" << std::endl;
                 Money_Point = hero->money + 50;
                 IsCanGetMoney = false;
-                //dispenser.setElapsedTime(0);
-                
-                //dispenser.play(); 
-                //dispenser.countTimer(true); 
+
                 epress.DrawObj();
 
                 if (ExitstTimer){
@@ -289,8 +264,6 @@ void Scene1(int saveNumber, Saving * data = nullptr)
                
 	            clickEvent(camera, hero->money, i, tables, buildCells);
                 buildCells[i].clickEventListen(camera, hero->money, i, tables, buildCells);
-                //clickEvent(camera, Money_Point, i, tables, buildCells);
-                //buildCells[i].clickEventListen(camera, Money_Point, i, tables, buildCells);
                 pointsCell[i] = buildCells[i].countPointRet(hero->points, 5, buildCells[i].IsExist());
                 hero->points += pointsCell[i];
                 
@@ -391,6 +364,7 @@ void Scene1(int saveNumber, Saving * data = nullptr)
 
         hero->points = Knowledge_Point;
         hero->money = Money_Point;
+        //DrawRectangleRec(computer.ReturnRect(false), RED);
         //DrawRectangleRec(dispenser.ReturnRect(false, camera), RED);
         //DrawRectangleRec(hero->ReturnframeRec(), RED);    
         DrawText(TextFormat("Knowledge (Points): %04d", hero->points), 30, 80, 20, WHITE);
