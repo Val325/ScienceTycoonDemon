@@ -8,8 +8,8 @@
 #include<cstdio>
 #include<ctime>
 
-int Knowledge_Point = 0;
-int Money_Point = 500;
+int Knowledge_Point;
+int Money_Point;
 bool IsCanGetMoney = false;
 bool IsPause = false;
 

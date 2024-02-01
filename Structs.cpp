@@ -550,7 +550,7 @@ BuildObj::BuildObj(): NameObj("buildCell"), Path("src/location/laboratory/buildi
                     && IsMouseButtonDown(0) 
                     && !allObjIsExists[id_cell] 
                     && !allObjIsSelected[id_cell]
-                    && money > 0)
+                    && money >= 0)
             {
                 click_id = id_cell;
                 numCells += 1;

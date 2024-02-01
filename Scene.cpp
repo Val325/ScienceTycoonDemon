@@ -20,6 +20,8 @@ const float SizeObj = 5.0f;
 const float SizeMenu = 2.0f;
 //int Knowledge_Point = 0;
 
+
+
 struct EntityStruct MainHero;
 struct EntityStruct Table;
 struct RoomStruct RoomInfo;
@@ -90,13 +92,16 @@ void Scene1(int saveNumber, Saving * data = nullptr)
       ArtificialIntellect = data->ArtificialIntellect;
       Robot = data->Robot;
       Singularit = data->Singularit;
-      
+      Knowledge_Point = hero->points; 
+      Money_Point = hero->money;        
     }else{
       Player her("src/image/HeroAnimation/DemonSciencer.gif",0, 700);
       hero = &her;
+      Knowledge_Point = 0; 
+      Money_Point = 500;   
     }
-    Knowledge_Point += hero->points; 
-    Money_Point += hero->money; 
+    //Knowledge_Point += hero->points; 
+    //Money_Point += hero->money; 
 
     int points = 0;
     bool Show_HUD = false;
@@ -163,10 +168,6 @@ void Scene1(int saveNumber, Saving * data = nullptr)
         { "tableResearch3", tableReserarchTop}
     };
 
-    //SetTargetFPS(60);
-
-    //hero.points = know_point;
-    //hero.money = money_point;
     my_watch = new sw::Stopwatch;
     my_watch->start();
     my_watch->reset();           
@@ -180,8 +181,6 @@ void Scene1(int saveNumber, Saving * data = nullptr)
                 ExitstTimer = false;
                 delete my_watch;
             }
-            //my_watch.stop();
-            //my_watch.reset();
         }
         if (IsKeyPressed(KEY_F5)){
             my_watch = new sw::Stopwatch;
@@ -215,14 +214,6 @@ void Scene1(int saveNumber, Saving * data = nullptr)
         
             hero->collisionDetect(computer.ReturnRect(false, camera));
             //hero->collisionDetect(dispenser.ReturnRect(true, camera));
-        /*
-        if (bool_cast(CheckCollisionRecs(hero->ReturnframeRec(), dispenser.ReturnRect(false)))){
-            hero->collisionDetect(dispenser.ReturnRect(false));
-        }
-        if (bool_cast(CheckCollisionRecs(hero->ReturnframeRec(), computer.ReturnRect(false)))){
-            hero->collisionDetect(computer.ReturnRect(false));
-        }*/
-
 
             if (ExitstTimer){
                 auto duration_ms = my_watch->elapsed<sw::s>();
@@ -336,8 +327,11 @@ void Scene1(int saveNumber, Saving * data = nullptr)
             ShowMenu = !ShowMenu;
         }
         if (ButtonExitPressed){
-          dataGame[saveNumber].Knowledge = hero->points;
-          dataGame[saveNumber].money = hero->money;
+          // data->Knowledge, data->money
+          // Knowledge_Point = 0; 
+          // Money_Point = 500;   
+          dataGame[saveNumber].Knowledge = Knowledge_Point;
+          dataGame[saveNumber].money = Money_Point;
           dataGame[saveNumber].Tech20Century = Tech20Century;
           dataGame[saveNumber].Transistor = Transistor;
           dataGame[saveNumber].Computer = Computer;
