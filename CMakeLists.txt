@@ -1,5 +1,6 @@
 cmake_minimum_required(VERSION 3.25)
 #for linux
+#change your compiler
 set(CMAKE_CXX_COMPILER "/bin/clang++")
 project(Game LANGUAGES C CXX)
 
@@ -15,6 +16,7 @@ if (WIN32)
     target_link_libraries(Main PUBLIC libraylib.a)
     target_link_libraries(Main PUBLIC libjsoncpp.a)
     target_link_libraries(Main PUBLIC winmm.dll)
+    message("Succesful compile windows")
 elseif(UNIX)
     target_link_libraries(Main ${CMAKE_SOURCE_DIR}/liblinux/libraylib.a)
     option(JSONCPP_WITH_TESTS OFF)
@@ -23,5 +25,5 @@ elseif(UNIX)
     target_link_libraries(Main ${JSONCPP_LIBRARIES})
     target_compile_options(Main PRIVATE -Wno-c++11-narrowing -Wunused-value -Wuninitialized -Wreturn-type -Wnull-conversion -Wcomment)
     target_compile_options(Main PRIVATE -Wl,-rpath=shared)
-    message("Succesful compile")
+    message("Succesful compile unixlike system")
 endif()

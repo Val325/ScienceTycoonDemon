@@ -8,7 +8,8 @@
 #include <unordered_map>
 #define RAYGUI_IMPLEMENTATION
 #include "raygui.h"
-#include "Savings.cpp"
+//#include "Savings.cpp"
+#include "Utils.cpp"
 const int screenWidth = 1280;
 const int screenHeight = 720;
 enum selectBtn {menu ,save, options, exitB };
@@ -130,7 +131,10 @@ int main(void)
 
     UnloadImage(image);   // Once image has been converted to texture and uploaded to VRAM, it can be unloaded from RAM 
     //Scene1();
-    SetExitKey(KEY_NULL); 
+    SetExitKey(KEY_NULL);
+    nlohmann::json data = json::parse(DownloadJson("text/helptext.json"));
+    std::cout << "json data: " << data["help"] << std::endl;
+    
      // Main game loop
     while (!WindowShouldClose())    // Detect window close button or ESC key
     {

@@ -56,9 +56,9 @@ std::string DownloadJson(std::string pathJson){
 
     file.close();
 }
-/*
+
 //Return from JSON first to end subString
-std::string JsonToArraySubStr(std::string JsonData, int first, int end){
+std::string JsonToArraySubStrSquare(std::string JsonData, int first, int end){
 
     JsonData = DownloadJson(JsonData);
 
@@ -96,12 +96,11 @@ std::vector<int> JsonToArrayNumber(std::string JsonData, std::string NameData, i
     ArrayId.resize(num);
     data[NameData].get_to(ArrayId);
 
-    /*
+    
     for (int i = 0; i < num; i++){
         std::cout << ArrayId[i];
     }
-    */
-/*
+
     for (auto i : ArrayId)
     {
         std::cout << i << '\n';
@@ -135,4 +134,4 @@ void JsonToArray(std::string JsonData){
 
 
 
-*/
+

@@ -24,50 +24,37 @@ int AmountMidTable = 0;
 int AmountTopTable = 0;
 void TableMin(int id_cell, BuildObj obj)
 {
-      //BuildObj tableReserarchMin("tableResearch","src/tableResearch.gif", 4.5f);
+
    int tempMoney;
    tempMoney = Money_Point - 50;
    if (tempMoney >= 0){
-   //if (Money_Point >= 0){
-   //   PlayerMoney = PlayerMoney - 50;
-      //PlayerMoney = Money_Point - 50;
+
       Money_Point = Money_Point - 50;
-      //tableReserarch.Draw();
-      //allObj.push_back(obj);
       allObjIsExists[id_cell] = true;
-      //return "tableReserarch";
       AmountMinTable++; 
-  
       allObj[id_cell] = obj;
       allObj[id_cell].SetPosObj(150 + 100 * id_cell, 440);
       allObj[id_cell].SetPosRect(150 + 100 * id_cell, 440);
       isSelectedTable = true;
       allObjIsSelected[id_cell] = true;
-      //chooseTable = id_cell; 
-      //allObj.insert(allObj.begin() + id_cell, obj);
 
    }
    
    
 }
-   //allObj.insert(allObj.begin() + id_cell, obj);
-   //return tableReserarch;
+
    
    
 
 void TableMid(int id_cell, BuildObj obj)
 {
-    //BuildObj tableReserarchMid("tableResearch2","src/tableResearch2.gif", 4.5f);
-       //tableReserarch.Draw();
-    //allObj.push_back(obj);
+
     int tempMoney;
     tempMoney = Money_Point - 150;
     if (tempMoney >= 0){
-    //if (Money_Point >= 0){
-      //PlayerMoney = PlayerMoney - 150;
+
       allObjIsExists[id_cell] = true;
-        //return "tableResearch2";
-        //
+
       Money_Point = Money_Point - 150;
       AmountMidTable++; 
       allObj[id_cell] = obj;
@@ -75,35 +62,28 @@ void TableMid(int id_cell, BuildObj obj)
       allObj[id_cell].SetPosRect(150 + 100 * id_cell, 440);
       isSelectedTable = true;
       allObjIsSelected[id_cell] = true;
-      //chooseTable = id_cell; 
-      //allObj.insert(allObj.begin() + id_cell, obj);
-      //return tableReserarch;
+
     }
     
     
 }
 void TableEnd(int id_cell, BuildObj obj)
 {
-    //BuildObj tableReserarchTop("tableResearch3","src/tableResearch3.gif", 4.5f);
-        //tableReserarch.Draw();
-    //allObj.push_back(obj);
+
     int tempMoney;
     tempMoney = Money_Point - 450;
     if (tempMoney >= 0){
-    //if (Money_Point >= 0){
-        //PlayerMoney = PlayerMoney - 450;
+
         AmountTopTable++; 
         allObjIsExists[id_cell] = true;
-        //return "tableResearch3"; 
-        //allObj.insert(allObj.begin() + id_cell, obj);
+
         Money_Point = Money_Point - 450;
         allObj[id_cell] = obj;
         allObj[id_cell].SetPosObj(150 + 100 * id_cell, 440);
         allObj[id_cell].SetPosRect(150 + 100 * id_cell, 440);  
         isSelectedTable = true;
         allObjIsSelected[id_cell] = true;
-        //chooseTable = id_cell; 
-        //return tableReserarch;
+
 
     }
     

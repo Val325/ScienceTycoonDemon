@@ -18,10 +18,6 @@ namespace sw = stopwatch;
 
 const float SizeObj = 5.0f;
 const float SizeMenu = 2.0f;
-//int Knowledge_Point = 0;
-
-
-
 struct EntityStruct MainHero;
 struct EntityStruct Table;
 struct RoomStruct RoomInfo;
@@ -48,7 +44,6 @@ void Scene1(int saveNumber, Saving * data = nullptr)
     int amountBuildCell = 10;
     int amountActiveBuildCell = 0;
     BuildObj buildCells [amountBuildCell];
-    //data->buildCells = &buildCells;
     int pointsCell [amountBuildCell];
     
     for (int i = 0; i < amountBuildCell; ++i){ 
@@ -100,8 +95,7 @@ void Scene1(int saveNumber, Saving * data = nullptr)
       Knowledge_Point = 0; 
       Money_Point = 500;   
     }
-    //Knowledge_Point += hero->points; 
-    //Money_Point += hero->money; 
+
 
     int points = 0;
     bool Show_HUD = false;
@@ -172,9 +166,16 @@ void Scene1(int saveNumber, Saving * data = nullptr)
     my_watch->start();
     my_watch->reset();           
     ExitstTimer = true;
+    
+    bool isHelpOpen = false;
 
     while (!WindowShouldClose())
     {
+        
+        if (IsKeyPressed(KEY_F1)){
+            isHelpOpen = !isHelpOpen;
+        }
+
 
         if (IsKeyPressed(KEY_F4)){
             if (ExitstTimer){
@@ -265,39 +266,10 @@ void Scene1(int saveNumber, Saving * data = nullptr)
             
         
         EndMode2D();
-
-        //Log
-
-
         selectionBtn(camera, chooseTable, tables, buildCells);
-        //hero.DrawStatistics();
         
         DrawText(TextFormat("InBorder: %s", bool_cast(CheckCollisionRecs(hero->ReturnframeRec(), computer.ReturnRect(false)))), 30, 140, 20, WHITE);
 
-        for (int i = 0; i < amountBuildCell; ++i)
-        {
-
-            /*
-            pointsCell[i] = buildCells[i].countPointRet(hero.points, 5, buildCells[i].IsExist()); 
-            hero.points += pointsCell[i];
-            */
-
-
-
-
-            //allObj[i].SetPosObj(150 + 100 * i, 500);
-
-            //allObj[i].SetPosRect(150 + 100 * i, 500);  
-	    //selectionBtn(camera, i, tables);
-            //buildCells[i].SelectionPopUp(camera, hero, hero.money, buildCells, i, tables);
-	    //buildCells[i].Draw();
-	    
-            
-        }
-        //hero->points = Knowledge_Point;
-        //hero.showHUDtech();
-        //hero->points = Knowledge_Point;
-       // hero->points = Knowledge_Point; 
         buttonTree.DrawOutline(buttonTree.IsHoverObj());
         bool Show_HUD = buttonTree.clickEventListenSimple(camera);
         if (Show_HUD){ 
@@ -307,12 +279,6 @@ void Scene1(int saveNumber, Saving * data = nullptr)
         } 
         buttonTree.DrawObj();
         
-        //know_point = hero.points;
-        //money_point = hero.money;
-        //hero.points = know_point;
-        //hero.money = money_point;
-        //
-        //Knowledge_Point += hero->points;
         if (IsKeyPressed(KEY_ESCAPE)){
             std::cout << "pressed KEY_ESCAPE!" << std::endl;
             ShowMenu = !ShowMenu;
@@ -326,10 +292,7 @@ void Scene1(int saveNumber, Saving * data = nullptr)
             IsPause = !IsPause;
             ShowMenu = !ShowMenu;
         }
-        if (ButtonExitPressed){
-          // data->Knowledge, data->money
-          // Knowledge_Point = 0; 
-          // Money_Point = 500;   
+        if (ButtonExitPressed){ 
           dataGame[saveNumber].Knowledge = Knowledge_Point;
           dataGame[saveNumber].money = Money_Point;
           dataGame[saveNumber].Tech20Century = Tech20Century;
@@ -357,18 +320,19 @@ void Scene1(int saveNumber, Saving * data = nullptr)
         }
 
         hero->points = Knowledge_Point;
-        hero->money = Money_Point;
-        //DrawRectangleRec(computer.ReturnRect(false), RED);
-        //DrawRectangleRec(dispenser.ReturnRect(false, camera), RED);
-        //DrawRectangleRec(hero->ReturnframeRec(), RED);    
+        hero->money = Money_Point;  
         DrawText(TextFormat("Knowledge (Points): %04d", hero->points), 30, 80, 20, WHITE);
         DrawText(TextFormat("Money (hryvnia): %04d", hero->money), 30, 110, 20, WHITE);
+        
+        if (isHelpOpen){
+            Rectangle layoutHelp = { 344, 352, 224, 96 };
+            Rectangle HelpText = { 344, 352, 224, 96 };
 
+            nlohmann::json data = json::parse(DownloadJson("text/helptext.json"));
+            DrawText(TextFormat(std::string(data["help"]).c_str()), 30, 240, 20, WHITE);
+        }
 
         EndDrawing();
 
     }
-
-
-
 }

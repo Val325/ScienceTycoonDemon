@@ -362,5 +362,4 @@ CMakeFiles/Main.dir/Main.cpp.o: \
   /bin/../lib64/gcc/x86_64-pc-linux-gnu/13.2.1/../../../../include/c++/13.2.1/bits/deque.tcc \
   /bin/../lib64/gcc/x86_64-pc-linux-gnu/13.2.1/../../../../include/c++/13.2.1/stack \
   /bin/../lib64/gcc/x86_64-pc-linux-gnu/13.2.1/../../../../include/c++/13.2.1/bits/stl_stack.h \
-  /home/ghost/progects/ScienceTycoon/ScienceTycoonDemon/include/json/writer.h \
-  /home/ghost/progects/ScienceTycoon/ScienceTycoonDemon/Savings.cpp
+  /home/ghost/progects/ScienceTycoon/ScienceTycoonDemon/include/json/writer.h

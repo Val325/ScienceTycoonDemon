@@ -193,7 +193,6 @@ CMakeFiles/Main.dir/Main.cpp.o: Main.cpp \
   /include/c++/13.2.1/x86_64-pc-linux-gnu/bits/os_defines.h \
   /include/c++/13.2.1/x86_64-pc-linux-gnu/bits/time_members.h \
   SaveData.cpp \
-  Savings.cpp \
   Scene.cpp \
   Structs.cpp \
   TechTree2.0.cpp \
@@ -602,8 +601,6 @@ include/nlohmann/detail/iterators/iterator_traits.hpp:
 
 include/nlohmann/detail/iterators/iter_impl.hpp:
 
-include/nlohmann/detail/input/position_t.hpp:
-
 /include/c++/13.2.1/cstring:
 
 /usr/include/bits/types/__fpos64_t.h:
@@ -1010,6 +1007,8 @@ include/nlohmann/detail/input/lexer.hpp:
 
 include/nlohmann/detail/conversions/from_json.hpp:
 
+include/nlohmann/detail/input/position_t.hpp:
+
 /usr/include/bits/wchar.h:
 
 /usr/include/bits/waitstatus.h:
@@ -1091,8 +1090,6 @@ include/Camera2D.hpp:
 /include/c++/13.2.1/ios:
 
 /include/c++/13.2.1/x86_64-pc-linux-gnu/bits/gthr-default.h:
-
-Savings.cpp:
 
 include/nlohmann/detail/json_pointer.hpp:
 
