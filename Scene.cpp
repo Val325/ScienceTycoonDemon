@@ -112,6 +112,9 @@ void Scene1(int saveNumber, Saving * data = nullptr)
     Object panel("panel","src/panel.png", SizeObj);
     panel.SetPosObj(600, 230);
     
+    Object panelHelp("panel","GUI/panelHelp/panelHelp.png", SizeObj);
+    panelHelp.SetPosObj(540, 190);
+
     //Camera
     Camera2D camera = { 0 };
     camera.target = (Vector2){ hero->ReturnPositionX() + 20.0f, hero->ReturnPositionY() + 20.0f };
@@ -278,9 +281,8 @@ void Scene1(int saveNumber, Saving * data = nullptr)
             hero->showHUDtech(false); 
         } 
         buttonTree.DrawObj();
-        
+        if (isHelpOpen) panelHelp.DrawObj();
         if (IsKeyPressed(KEY_ESCAPE)){
-            std::cout << "pressed KEY_ESCAPE!" << std::endl;
             ShowMenu = !ShowMenu;
             IsPause = !IsPause;
         }
@@ -327,9 +329,11 @@ void Scene1(int saveNumber, Saving * data = nullptr)
         if (isHelpOpen){
             Rectangle layoutHelp = { 344, 352, 224, 96 };
             Rectangle HelpText = { 344, 352, 224, 96 };
-
+            IsPause = true;
             nlohmann::json data = json::parse(DownloadJson("text/helptext.json"));
-            DrawText(TextFormat(std::string(data["help"]).c_str()), 30, 240, 20, WHITE);
+            DrawText(TextFormat(std::string(data["help"]).c_str()), 550, 200, 20, WHITE);
+        }else{
+            IsPause = false;
         }
 
         EndDrawing();
