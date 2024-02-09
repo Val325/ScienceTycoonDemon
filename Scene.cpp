@@ -323,8 +323,8 @@ void Scene1(int saveNumber, Saving * data = nullptr)
 
         hero->points = Knowledge_Point;
         hero->money = Money_Point;  
-        DrawText(TextFormat("Knowledge (Points): %04d", hero->points), 30, 80, 20, WHITE);
-        DrawText(TextFormat("Money (hryvnia): %04d", hero->money), 30, 110, 20, WHITE);
+        DrawText(TextFormat("Knowledge : %04d", hero->points), 30, 80, 20, WHITE);
+        DrawText(TextFormat("Money : %04d", hero->money), 30, 110, 20, WHITE);
         
         if (isHelpOpen){
             Rectangle layoutHelp = { 344, 352, 224, 96 };

@@ -13,34 +13,34 @@
 const int screenWidth = 1280;
 const int screenHeight = 720;
 enum selectBtn {menu ,save, options, exitB };
-selectBtn selectBt; 
-//------------------------------------------------------------------------------------
-// Controls Functions Definitions (local)
-//------------------------------------------------------------------------------------
-// Button: Exit_btn logic
+selectBtn selectBt;
+bool isHelpMenu = false;
+
 static void ExitBtn()
 {
-  CloseWindow();        // Close window and OpenGL context
+  CloseWindow();       
 
 }
-// Button: Options_btn logic
+
 static void OptionsBtn()
 {
-    // TODO: Implement control logic
+    
 }
-// Button: Play_btn logic
+
+void HelpOptions(){
+    isHelpMenu != isHelpMenu;
+
+}
+
 static void PlayBtn()
 {
    selectBt = save;
-  //Scene1();
-  //SaveDataBtn();
 }
 
 static void ButtonLoad0()
 {
     save_num = 0;
-    Saving* dat = LoadData("save/", "save_1");
-    
+    Saving* dat = LoadData("save/", "save_1"); 
     Scene1(save_num, dat);
 }
 static void ButtonLoad1()
@@ -58,24 +58,18 @@ static void ButtonLoad2()
 
 static void ButtonNew0()
 {
-    //dataGame[0].Knowledge = know_point;
-    //dataGame[0].money = money_point;
     save_num = 0;
     SaveData("save/", "save_1");
     Scene1(save_num);
 }
 static void ButtonNew1()
 {
-    //dataGame[0].Knowledge = know_point;
-    //dataGame[0].money = money_point;
     save_num = 1;
     SaveData("save/", "save_2");
     Scene1(save_num);
 }
 static void ButtonNew2()
 {
-    //dataGame[0].Knowledge = know_point;
-    //dataGame[0].money = money_point; 
     save_num = 2;
     SaveData("save/", "save_3");
     Scene1(save_num);
@@ -101,7 +95,7 @@ int main(void)
         (Rectangle){ 464 + offsetXmainMenu, 448 + offsetYmainMenu, 224, 48 },    // Button: Exit_btn
         (Rectangle){ 464 + offsetXmainMenu, 392 + offsetYmainMenu, 224, 48 },    // Button: Options_btn
         (Rectangle){ 464 + offsetXmainMenu, 336 + offsetYmainMenu, 224, 48 },    // Button: Play_btn
-        (Rectangle){ 520, 288, 112, 24 },    // Label: Science tycoon
+        (Rectangle){ 520, 540, 112, 24 },    // Label: Help
     };
 
 
@@ -132,8 +126,8 @@ int main(void)
     UnloadImage(image);   // Once image has been converted to texture and uploaded to VRAM, it can be unloaded from RAM 
     //Scene1();
     SetExitKey(KEY_NULL);
-    nlohmann::json data = json::parse(DownloadJson("text/helptext.json"));
-    std::cout << "json data: " << data["help"] << std::endl;
+    //nlohmann::json data = json::parse(DownloadJson("text/helptext.json"));
+    //std::cout << "json data: " << data["help"] << std::endl;
     
      // Main game loop
     while (!WindowShouldClose())    // Detect window close button or ESC key
@@ -198,9 +192,17 @@ int main(void)
                 if (GuiButton(layoutRecs[0], "EXIT")) ExitBtn(); 
                 if (GuiButton(layoutRecs[1], "OPTIONS")) OptionsBtn(); 
                 if (GuiButton(layoutRecs[2], "PLAY")) PlayBtn();
+                if (GuiButton(layoutRecs[3], "HELP")) OptionsBtn();
             }
-
-            
+            Vector2 PositionClick = GetMousePosition();
+            if (CheckCollisionPointRec(PositionClick, layoutRecs[3]) && IsMouseButtonPressed(0)){
+               isHelpMenu =! isHelpMenu; 
+            }
+            if (isHelpMenu){
+                nlohmann::json data = json::parse(DownloadJson("text/helptext.json"));
+                DrawText(TextFormat(std::string(data["help"]).c_str()), 550, 200, 20, WHITE);
+            } 
+            //DrawText(TextFormat(std::string(data["help"]).c_str()), 550, 200, 20, WHITE);
 
 
             //GuiLabel(layoutRecs[3], "Science tycoon");
