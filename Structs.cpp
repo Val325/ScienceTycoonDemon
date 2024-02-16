@@ -412,8 +412,7 @@ BuildObj::BuildObj(std::string name, const char *path, float size): NameObj("bui
             framesCounter = 0;
             flipsCounterLeft = 0;
             flipsCounterRight = 1;
-
-        }
+            }
 BuildObj::BuildObj(): NameObj("buildCell"), Path("src/location/laboratory/buildingCell.png"), sizeObject(1.5f){
             NameObj = "buildCell";
             sizeObject = 1.5f;
@@ -669,10 +668,10 @@ BuildObj::BuildObj(): NameObj("buildCell"), Path("src/location/laboratory/buildi
         void BuildObj::Draw(){
 	   
              DrawTextureEx(imgAnim, PositionSpawn, 0, sizeObject, WHITE);
+        }
 
-
-
-
+        bool BuildObj::isNull() const {
+            return this == nullptr;  
         }
 
 

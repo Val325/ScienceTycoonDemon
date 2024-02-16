@@ -3,8 +3,24 @@
 #include<valarray>
 #include"buildObj.hpp"
 #include <cstdio>
+#pragma once
+
+struct Table {
+    int idTables;
+    char typesTables[3];
+    int xpos;
+    int ypos;
+
+    Table(){
+        int idTables = 0;
+        char typesTables[3] = "";
+        int xpos = 0;
+        int ypos = 0;
+    }
+};
 
 struct Saving {
+    Table tables[10];
     std::string savePath;
     std::string saveName;
     float Knowledge;
@@ -23,7 +39,7 @@ struct Saving {
     bool ArtificialIntellect;
     bool Robot;
     bool Singularit;
-    std::vector<BuildObj> tables;
+
     Saving(){
 
         bool Tech20Century = false;

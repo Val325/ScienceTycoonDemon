@@ -27,13 +27,12 @@ bool ButtonPlayPressed = false;
 bool ButtonExitPressed = false;
 bool ShowMenu = false;
 
-int save_num; 
+
 const char* bool_cast(const bool b) {
     return b ? "true" : "false";
 }
 
-///
-  /// 
+
 //------------------------------------------------------------------------------------
 // Program main entry point
 //------------------------------------------------------------------------------------
@@ -45,19 +44,10 @@ void Scene1(int saveNumber, Saving * data = nullptr)
     int amountActiveBuildCell = 0;
     BuildObj buildCells [amountBuildCell];
     int pointsCell [amountBuildCell];
-    
-    for (int i = 0; i < amountBuildCell; ++i){ 
-        
-      BuildObj buildCell("buildCell" + std::to_string(i),"src/location/laboratory/buildingCell.png", 1.5f);
-  
-      allObj[i].SetPosObj(150 + 100 * i, 500 );
-      buildCell.SetPosRect(150 + 100 * i, 500);
-      buildCells[i] = buildCell;
-      buildCell.id = i;
-      if (data != nullptr){
 
-      }
-    }
+
+
+
   
     sw::Stopwatch* my_watch;
     bool ExitstTimer = false;
@@ -88,12 +78,34 @@ void Scene1(int saveNumber, Saving * data = nullptr)
       Robot = data->Robot;
       Singularit = data->Singularit;
       Knowledge_Point = hero->points; 
-      Money_Point = hero->money;        
+      Money_Point = hero->money;
+
+      for (int i = 0; i < amountBuildCell; ++i){
+      //for (int i = 0; i < allObj.size(); ++i){ 
+        if (allObj[i].isNull()){
+            BuildObj buildCell("buildCell" + std::to_string(i),"src/location/laboratory/buildingCell.png", 1.5f);
+            allObj[i].SetPosObj(150 + 100 * i, 500 );
+            buildCell.SetPosRect(150 + 100 * i, 500);
+            buildCells[i] = buildCell;
+            buildCell.id = i;
+        }
+
+        //if (data != nullptr){}
+        };
     }else{
       Player her("src/image/HeroAnimation/DemonSciencer.gif",0, 700);
       hero = &her;
       Knowledge_Point = 0; 
-      Money_Point = 500;   
+      Money_Point = 500;
+      for (int i = 0; i < amountBuildCell; ++i){
+            BuildObj buildCell("buildCell" + std::to_string(i),"src/location/laboratory/buildingCell.png", 1.5f);
+            allObj[i].SetPosObj(150 + 100 * i, 500 );
+            buildCell.SetPosRect(150 + 100 * i, 500);
+            buildCells[i] = buildCell;
+            buildCell.id = i;
+
+
+        };
     }
 
 
@@ -174,7 +186,9 @@ void Scene1(int saveNumber, Saving * data = nullptr)
 
     while (!WindowShouldClose())
     {
-        
+        if (data == nullptr){
+            TableMinSetFromSave(3, tableReserarchMin);
+        }
         if (IsKeyPressed(KEY_F1)){
             isHelpOpen = !isHelpOpen;
         }
@@ -251,19 +265,20 @@ void Scene1(int saveNumber, Saving * data = nullptr)
             if (CheckCollisionRecs(hero->ReturnframeRec(), dispenser.ReturnRect(false, camera))){
                 epress.DrawObj();
             }
+            if (data == nullptr){
+                
 
             for (int i = 0; i < amountBuildCell; i++)
             {
                 
                 allObj[i].Draw();
-               
 	            clickEvent(camera, hero->money, i, tables, buildCells);
                 buildCells[i].clickEventListen(camera, hero->money, i, tables, buildCells);
                 pointsCell[i] = buildCells[i].countPointRet(hero->points, 5, buildCells[i].IsExist());
                 hero->points += pointsCell[i];
-                
+                             
             }
-            
+            }
             hero->DrawHero();
             hero->SpeedUp();
             
@@ -311,7 +326,13 @@ void Scene1(int saveNumber, Saving * data = nullptr)
           dataGame[saveNumber].ArtificialIntellect = ArtificialIntellect;
           dataGame[saveNumber].Robot = Robot;
           dataGame[saveNumber].Singularit = Singularit;
-	  
+	      
+          /*
+          if (){
+
+          }
+          */
+
           saveNumber = saveNumber + 1;
           std::string numberSaveStr = std::to_string(saveNumber);
           std::string savePath = "save/";

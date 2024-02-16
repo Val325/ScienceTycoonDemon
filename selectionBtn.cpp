@@ -2,7 +2,8 @@
 //#include "Structs.cpp"
 #include "buildObj.hpp"
 //#include "Scene.cpp"
-
+#include "SaveData.cpp"
+#pragma once
 //class BuildObj;
 //------------------------------------------------------------------------------------
 // Controls Functions Definitions (local)
@@ -13,15 +14,17 @@ std::vector<BuildObj> allObj;
 //BuildObj allObj[10];
 bool allObjIsExists[10] = {false};
 bool allObjIsSelected[10] = {false};
+std::string typesTablesArray[10] = {""};
 bool WindowBoxPopUpSelectTableActive = false;
 bool isSelectedTable = false;
 int chooseTable = NULL;
 int PlayerMoney = Money_Point;
-
+int save_num; 
 
 int AmountMinTable = 0;
 int AmountMidTable = 0;
 int AmountTopTable = 0;
+/*
 void TableMin(int id_cell, BuildObj obj)
 {
 
@@ -88,6 +91,129 @@ void TableEnd(int id_cell, BuildObj obj)
     }
     
 }
+*/
+
+void TableMin(int id_cell, BuildObj obj)
+{
+   int tempMoney;
+   tempMoney = Money_Point - 50;
+   if (tempMoney >= 0){
+
+      Money_Point = Money_Point - 50;
+      allObjIsExists[id_cell] = true;
+      typesTablesArray[id_cell] = "Min";
+      AmountMinTable++; 
+      allObj[id_cell] = obj;
+      allObj[id_cell].SetPosObj(150 + 100 * id_cell, 440);
+      allObj[id_cell].SetPosRect(150 + 100 * id_cell, 440);
+      isSelectedTable = true;
+      allObjIsSelected[id_cell] = true;
+      dataGame[save_num].tables[id_cell].idTables = id_cell;
+      strcpy(dataGame[save_num].tables[id_cell].typesTables, "Min");
+      dataGame[save_num].tables[id_cell].xpos = 150 + 100 * id_cell;
+      dataGame[save_num].tables[id_cell].ypos = 440;
+   }
+   
+   
+}
+
+void TableMinSetFromSave(int id_cell, BuildObj obj)
+{
+   allObjIsExists[id_cell] = true;
+   typesTablesArray[id_cell] = "Min";
+   AmountMinTable++; 
+   allObj[id_cell] = obj;
+   allObj[id_cell].SetPosObj(150 + 100 * id_cell, 440);
+   allObj[id_cell].SetPosRect(150 + 100 * id_cell, 440);
+   isSelectedTable = true;
+   allObjIsSelected[id_cell] = true;
+      dataGame[save_num].tables[id_cell].idTables = id_cell;
+      strcpy(dataGame[save_num].tables[id_cell].typesTables, "Min");
+      dataGame[save_num].tables[id_cell].xpos = 150 + 100 * id_cell;
+      dataGame[save_num].tables[id_cell].ypos = 440;
+}  
+   
+
+void TableMid(int id_cell, BuildObj obj)
+{
+
+    int tempMoney;
+    tempMoney = Money_Point - 150;
+    if (tempMoney >= 0){
+
+      allObjIsExists[id_cell] = true;
+      typesTablesArray[id_cell] = "Mid";
+      Money_Point = Money_Point - 150;
+      AmountMidTable++; 
+      allObj[id_cell] = obj;
+      allObj[id_cell].SetPosObj(150 + 100 * id_cell, 440);
+      allObj[id_cell].SetPosRect(150 + 100 * id_cell, 440);
+      isSelectedTable = true;
+      allObjIsSelected[id_cell] = true;
+      dataGame[save_num].tables[id_cell].idTables = id_cell;
+      strcpy(dataGame[save_num].tables[id_cell].typesTables, "Mid");
+      dataGame[save_num].tables[id_cell].xpos = 150 + 100 * id_cell;
+      dataGame[save_num].tables[id_cell].ypos = 440;
+    }
+    
+    
+}
+
+void TableMidSetFromSave(int id_cell, BuildObj obj)
+{
+   allObjIsExists[id_cell] = true;
+   typesTablesArray[id_cell] = "Mid";
+   AmountMidTable++; 
+   allObj[id_cell] = obj;
+   allObj[id_cell].SetPosObj(150 + 100 * id_cell, 440);
+   allObj[id_cell].SetPosRect(150 + 100 * id_cell, 440);
+   isSelectedTable = true;
+   allObjIsSelected[id_cell] = true;
+      dataGame[save_num].tables[id_cell].idTables = id_cell;
+      strcpy(dataGame[save_num].tables[id_cell].typesTables, "Mid");
+      dataGame[save_num].tables[id_cell].xpos = 150 + 100 * id_cell;
+      dataGame[save_num].tables[id_cell].ypos = 440;
+}  
+
+void TableEnd(int id_cell, BuildObj obj)
+{
+
+    int tempMoney;
+    tempMoney = Money_Point - 450;
+    if (tempMoney >= 0){
+
+        AmountTopTable++; 
+        allObjIsExists[id_cell] = true;
+        typesTablesArray[id_cell] = "End";
+        Money_Point = Money_Point - 450;
+        allObj[id_cell] = obj;
+        allObj[id_cell].SetPosObj(150 + 100 * id_cell, 440);
+        allObj[id_cell].SetPosRect(150 + 100 * id_cell, 440);  
+        isSelectedTable = true;
+        allObjIsSelected[id_cell] = true;
+      dataGame[save_num].tables[id_cell].idTables = id_cell;
+      strcpy(dataGame[save_num].tables[id_cell].typesTables, "End");
+      dataGame[save_num].tables[id_cell].xpos = 150 + 100 * id_cell;
+      dataGame[save_num].tables[id_cell].ypos = 440;
+    }
+    
+}
+
+void TableEndSetFromSave(int id_cell, BuildObj obj)
+{
+   allObjIsExists[id_cell] = true;
+   typesTablesArray[id_cell] = "End";
+   AmountTopTable++; 
+   allObj[id_cell] = obj;
+   allObj[id_cell].SetPosObj(150 + 100 * id_cell, 440);
+   allObj[id_cell].SetPosRect(150 + 100 * id_cell, 440);
+   isSelectedTable = true;
+   allObjIsSelected[id_cell] = true;
+      dataGame[save_num].tables[id_cell].idTables = id_cell;
+      strcpy(dataGame[save_num].tables[id_cell].typesTables, "End"); 
+      dataGame[save_num].tables[id_cell].xpos = 150 + 100 * id_cell;
+      dataGame[save_num].tables[id_cell].ypos = 440;
+}  
 
 
 //------------------------------------------------------------------------------------

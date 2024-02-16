@@ -157,6 +157,7 @@ class BuildObj{
     Vector2 getPosVector();
     void SetPosRect(float x, float y);
 	void countAnim(BuildObj &obj);         
-    void Draw();    
+    void Draw();
+    bool isNull() const;
  };
 
