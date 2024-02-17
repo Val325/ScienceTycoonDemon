@@ -7,20 +7,24 @@
 
 struct Table {
     int idTables;
-    char typesTables[3];
+    int type;
     int xpos;
     int ypos;
 
     Table(){
-        int idTables = 0;
-        char typesTables[3] = "";
-        int xpos = 0;
-        int ypos = 0;
+        idTables = 0;
+        // 1 - min table
+        // 2 - mid table
+        // 3 - top table
+        type = 0;
+        xpos = 0;
+        ypos = 0;
+
     }
 };
 
 struct Saving {
-    Table tables[10];
+//    Table tables[10];
     std::string savePath;
     std::string saveName;
     float Knowledge;
@@ -41,7 +45,7 @@ struct Saving {
     bool Singularit;
 
     Saving(){
-
+        //Table tables[10];
         bool Tech20Century = false;
         bool Transistor = false;
         bool Computer = false;

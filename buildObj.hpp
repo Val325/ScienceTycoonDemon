@@ -142,6 +142,7 @@ class BuildObj{
 	int getPoints();
 	int ReturnID();
 	bool IsExist();
+    void setPath(std::string path_img);
 	void SetIsExist(bool ex);
     void clickEventListenSimple(Camera2D camera);
     void clickEventListen(Camera2D camera, int &money, int id_cell, std::map<std::string, BuildObj> tableRes, BuildObj cell[]);
@@ -158,6 +159,6 @@ class BuildObj{
     void SetPosRect(float x, float y);
 	void countAnim(BuildObj &obj);         
     void Draw();
-    bool isNull() const;
+    //bool isNull() const;
  };
 

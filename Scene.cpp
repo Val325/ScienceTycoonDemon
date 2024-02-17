@@ -44,16 +44,34 @@ void Scene1(int saveNumber, Saving * data = nullptr)
     int amountActiveBuildCell = 0;
     BuildObj buildCells [amountBuildCell];
     int pointsCell [amountBuildCell];
+    Board cellsTable;
+    //save_num = saveNumber + 1;
+/*
+      for (int i = 0; i < amountBuildCell; ++i){
+            BuildObj buildCell("buildCell" + std::to_string(i),"src/location/laboratory/buildingCell.png", 1.5f);
+            allObj[i].SetPosObj(150 + 100 * i, 500 );
+            buildCell.SetPosRect(150 + 100 * i, 500);
+            buildCells[i] = buildCell;
+            buildCell.id = i;
 
 
-
-
+        };
+*/
   
     sw::Stopwatch* my_watch;
     bool ExitstTimer = false;
     //Take the time
 
     std::cout << "1" << std::endl;
+    
+    BuildObj tableReserarchMin("tableResearch","src/tableResearch.gif", 4.5f);
+    BuildObj tableReserarchMid("tableResearch2","src/tableResearch2.gif", 4.5f);
+    BuildObj tableReserarchTop("tableResearch3","src/tableResearch3.gif", 4.5f);
+    std::map<std::string, BuildObj> tables = {
+        { "tableResearch", tableReserarchMin},
+        { "tableResearch2", tableReserarchMid},
+        { "tableResearch3", tableReserarchTop}
+    };
 
     //------------------------------------------------------------------------------------
     // Initialization
@@ -80,32 +98,13 @@ void Scene1(int saveNumber, Saving * data = nullptr)
       Knowledge_Point = hero->points; 
       Money_Point = hero->money;
 
-      for (int i = 0; i < amountBuildCell; ++i){
-      //for (int i = 0; i < allObj.size(); ++i){ 
-        if (allObj[i].isNull()){
-            BuildObj buildCell("buildCell" + std::to_string(i),"src/location/laboratory/buildingCell.png", 1.5f);
-            allObj[i].SetPosObj(150 + 100 * i, 500 );
-            buildCell.SetPosRect(150 + 100 * i, 500);
-            buildCells[i] = buildCell;
-            buildCell.id = i;
-        }
 
-        //if (data != nullptr){}
-        };
     }else{
       Player her("src/image/HeroAnimation/DemonSciencer.gif",0, 700);
       hero = &her;
       Knowledge_Point = 0; 
       Money_Point = 500;
-      for (int i = 0; i < amountBuildCell; ++i){
-            BuildObj buildCell("buildCell" + std::to_string(i),"src/location/laboratory/buildingCell.png", 1.5f);
-            allObj[i].SetPosObj(150 + 100 * i, 500 );
-            buildCell.SetPosRect(150 + 100 * i, 500);
-            buildCells[i] = buildCell;
-            buildCell.id = i;
 
-
-        };
     }
 
 
@@ -168,27 +167,21 @@ void Scene1(int saveNumber, Saving * data = nullptr)
     Texture2D VesselAnim = LoadTextureFromImage(Vessel);
     Rectangle frameRecVessel = { 0.0f, 0.0f, (float)VesselAnim.width, (float)VesselAnim.height};
     
-    BuildObj tableReserarchMin("tableResearch","src/tableResearch.gif", 4.5f);
-    BuildObj tableReserarchMid("tableResearch2","src/tableResearch2.gif", 4.5f);
-    BuildObj tableReserarchTop("tableResearch3","src/tableResearch3.gif", 4.5f);
-    std::map<std::string, BuildObj> tables = {
-        { "tableResearch", tableReserarchMin},
-        { "tableResearch2", tableReserarchMid},
-        { "tableResearch3", tableReserarchTop}
-    };
+
 
     my_watch = new sw::Stopwatch;
     my_watch->start();
     my_watch->reset();           
     ExitstTimer = true;
     
+            cellsTable.setCamera(camera);
     bool isHelpOpen = false;
-
     while (!WindowShouldClose())
     {
-        if (data == nullptr){
-            TableMinSetFromSave(3, tableReserarchMin);
-        }
+        //TableMinSetFromSave(3, tableReserarchMin);
+        //if (data != nullptr){
+        
+        //}
         if (IsKeyPressed(KEY_F1)){
             isHelpOpen = !isHelpOpen;
         }
@@ -229,13 +222,13 @@ void Scene1(int saveNumber, Saving * data = nullptr)
 
             computer.DrawObj();
             dispenser.DrawObj();
-        
+
             hero->collisionDetect(computer.ReturnRect(false, camera));
             //hero->collisionDetect(dispenser.ReturnRect(true, camera));
 
             if (ExitstTimer){
                 auto duration_ms = my_watch->elapsed<sw::s>();
-                std::cout << "Elapsed: " << duration_ms << " seconds." << std::endl;
+                //std::cout << "Elapsed: " << duration_ms << " seconds." << std::endl;
                 if (duration_ms >= 20){
                     DrawText(TextFormat("You can get money"), 950, 250, 20, BLUE);
                     IsCanGetMoney = true;
@@ -245,7 +238,7 @@ void Scene1(int saveNumber, Saving * data = nullptr)
                 } 
             }
             if (CheckCollisionRecs(hero->ReturnframeRec(), dispenser.ReturnRect(false, camera)) && IsKeyPressed(KEY_E) && IsCanGetMoney){
-                std::cout << "get money" << std::endl;
+                //std::cout << "get money" << std::endl;
                 Money_Point = hero->money + 50;
                 IsCanGetMoney = false;
 
@@ -265,20 +258,22 @@ void Scene1(int saveNumber, Saving * data = nullptr)
             if (CheckCollisionRecs(hero->ReturnframeRec(), dispenser.ReturnRect(false, camera))){
                 epress.DrawObj();
             }
-            if (data == nullptr){
+            
                 
 
             for (int i = 0; i < amountBuildCell; i++)
             {
-                
+                if (false){ 
                 allObj[i].Draw();
 	            clickEvent(camera, hero->money, i, tables, buildCells);
                 buildCells[i].clickEventListen(camera, hero->money, i, tables, buildCells);
                 pointsCell[i] = buildCells[i].countPointRet(hero->points, 5, buildCells[i].IsExist());
                 hero->points += pointsCell[i];
-                             
+                }
+
             }
-            }
+
+            cellsTable.Draw();     
             hero->DrawHero();
             hero->SpeedUp();
             
@@ -286,6 +281,7 @@ void Scene1(int saveNumber, Saving * data = nullptr)
         EndMode2D();
         selectionBtn(camera, chooseTable, tables, buildCells);
         
+               
         DrawText(TextFormat("InBorder: %s", bool_cast(CheckCollisionRecs(hero->ReturnframeRec(), computer.ReturnRect(false)))), 30, 140, 20, WHITE);
 
         buttonTree.DrawOutline(buttonTree.IsHoverObj());
@@ -327,11 +323,6 @@ void Scene1(int saveNumber, Saving * data = nullptr)
           dataGame[saveNumber].Robot = Robot;
           dataGame[saveNumber].Singularit = Singularit;
 	      
-          /*
-          if (){
-
-          }
-          */
 
           saveNumber = saveNumber + 1;
           std::string numberSaveStr = std::to_string(saveNumber);

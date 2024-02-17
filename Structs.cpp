@@ -442,6 +442,9 @@ BuildObj::BuildObj(): NameObj("buildCell"), Path("src/location/laboratory/buildi
 
         }
 
+        void BuildObj::setPath(std::string path_img){
+           Path = path_img; 
+        }
         void BuildObj::countPoint(int num, bool exist){
             
         }
@@ -527,8 +530,9 @@ BuildObj::BuildObj(): NameObj("buildCell"), Path("src/location/laboratory/buildi
 	    
 	}
         void BuildObj::clickEventListenSimple(Camera2D camera){
-           Vector2 PositionClick = GetScreenToWorld2D(PositionClick, camera); 
-           if (CheckCollisionPointRec(PositionClick, frameRec)){
+           Vector2 PositionClick = GetMousePosition();
+           PositionClick = GetScreenToWorld2D(PositionClick, camera); 
+           if (CheckCollisionPointRec(PositionClick, frameRec) && IsMouseButtonDown(0)){
                 std::cout << "you click here!" << std::endl;
             } 
         }
@@ -669,11 +673,11 @@ BuildObj::BuildObj(): NameObj("buildCell"), Path("src/location/laboratory/buildi
 	   
              DrawTextureEx(imgAnim, PositionSpawn, 0, sizeObject, WHITE);
         }
-
+/*
         bool BuildObj::isNull() const {
             return this == nullptr;  
         }
-
+*/
 
 
     class Object{
@@ -842,6 +846,46 @@ BuildObj::BuildObj(): NameObj("buildCell"), Path("src/location/laboratory/buildi
            }
            return false;
         }
+    };
+
+    class Board{
+        private:
+            int sizeCells;
+            std::vector<BuildObj> cells;
+            Camera2D camera;
+        public:
+            Board(){
+                sizeCells = 10;
+                cells.resize(sizeCells);
+            }
+            void setCamera(Camera2D cam){
+                camera = cam;
+            }
+            void setPos(){
+                int row = 1;
+                for (int j = 0; j < 5; j++){
+                    for (int i = 0; i < cells.size(); i++){
+                        cells[i].setPath("src/location/laboratory/buildingCell.png");
+                        Vector2 positionPlace = {170 + 100 * i, 500 + 100 * j}; 
+                        positionPlace = GetWorldToScreen2D(positionPlace, camera);
+                        cells[i].SetPosObj(positionPlace.x, positionPlace.y);
+                        cells[i].SetPosRect(positionPlace.x, positionPlace.y);
+                        cells[i].Draw();
+                        //for debug
+                        //cells[i].DrawRect();
+                        cells[i].clickEventListenSimple(camera);
+                    }
+                }
+                row++;
+            }
+            void clicked(){
+
+                setPos();
+            }
+            void Draw(){
+
+                clicked();
+            }
     };
 
     struct TileStruct{
