@@ -57,7 +57,7 @@ void Scene1(int saveNumber, Saving * data = nullptr)
 
         };
 */
-  
+    GeneratorKnowledge tim;
     sw::Stopwatch* my_watch;
     bool ExitstTimer = false;
     //Take the time
@@ -179,6 +179,7 @@ void Scene1(int saveNumber, Saving * data = nullptr)
     while (!WindowShouldClose())
     {
         cellsTable.setCamera(camera);
+        tim.StartTimer();
         //TableMinSetFromSave(3, tableReserarchMin);
         //if (data != nullptr){
         

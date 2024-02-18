@@ -338,12 +338,12 @@ CMakeFiles/Main.dir/Main.cpp.o: \
   /bin/../lib64/gcc/x86_64-pc-linux-gnu/13.2.1/../../../../include/c++/13.2.1/set \
   /bin/../lib64/gcc/x86_64-pc-linux-gnu/13.2.1/../../../../include/c++/13.2.1/bits/stl_set.h \
   /bin/../lib64/gcc/x86_64-pc-linux-gnu/13.2.1/../../../../include/c++/13.2.1/bits/stl_multiset.h \
+  /home/ghost/progects/ScienceTycoon/ScienceTycoonDemon/include/stopwatch/Stopwatch.hpp \
   /home/ghost/progects/ScienceTycoon/ScienceTycoonDemon/TechTree2.0.cpp \
   /home/ghost/progects/ScienceTycoon/ScienceTycoonDemon/include/raygui.h \
   /home/ghost/progects/ScienceTycoon/ScienceTycoonDemon/buildObj.hpp \
   /home/ghost/progects/ScienceTycoon/ScienceTycoonDemon/selectionBtn.cpp \
   /home/ghost/progects/ScienceTycoon/ScienceTycoonDemon/SaveData.cpp \
-  /home/ghost/progects/ScienceTycoon/ScienceTycoonDemon/include/stopwatch/Stopwatch.hpp \
   /usr/include/GLFW/glfw3.h /usr/include/GL/gl.h /usr/include/GL/glext.h \
   /usr/include/KHR/khrplatform.h \
   /bin/../lib64/gcc/x86_64-pc-linux-gnu/13.2.1/../../../../include/c++/13.2.1/thread \

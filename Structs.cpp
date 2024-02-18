@@ -7,12 +7,13 @@
 #include <set>
 #include<cstdio>
 #include<ctime>
+#include <stopwatch/Stopwatch.hpp>
 //#include"techprogressHUD.cpp"
 #include"TechTree2.0.cpp"
 #include"buildObj.hpp"
 #include"selectionBtn.cpp"
 using json = nlohmann::json;
-
+namespace sw = stopwatch;
 // for times
 
 //------------------------------------------------------------------------------------
@@ -853,12 +854,80 @@ BuildObj::BuildObj(): NameObj("buildCell"), Path("src/location/laboratory/buildi
            return false;
         }
     };
+
     //building, which something generate
-    class Generator{
+    class GeneratorKnowledge{
         private:
             int id;
-            int money;
-            int knowledgePoint;
+            int money; //withdraw money
+            int point; //get points
+            std::string NameObj;
+            std::string Path;
+            Vector2 Position;
+            
+            sw::Stopwatch* watch_time;
+            int timeElapse;
+            bool isExistTimer;
+        public:
+            GeneratorKnowledge(){
+                //timer
+                timeElapse = 5;
+                watch_time = new sw::Stopwatch;
+                watch_time->start();
+                watch_time->reset();           
+                isExistTimer = true;
+            }
+            void setId(int num){
+                id = num;
+            }
+            void setMoney(int num){
+                money = num;
+            }
+            void setPoint(int num){
+                point = num;
+            }
+            void setName(std::string name){
+                NameObj = name;
+            }
+            void setPath(std::string path){
+                Path = path;
+            }
+            void setPosition(Vector2 pos){
+                Position = pos;
+            }
+            void StartTimer(){
+                if (isExistTimer){
+                    auto timer = watch_time->elapsed<sw::s>();
+                    if (timer >= timeElapse){
+                        isExistTimer = false;
+                    }else{
+                        std::cout << "Time: " << timer << std::endl;
+                    } 
+                }
+                if (!isExistTimer){
+                    delete watch_time;
+                    watch_time = new sw::Stopwatch;
+                    watch_time->start();
+                    watch_time->reset();           
+                    isExistTimer = true;
+                }
+            }
+            ~GeneratorKnowledge(){
+                isExistTimer = false;
+                delete watch_time;
+            }
+    };
+
+    //generation money 
+    /*class GeneratorMoney{
+        private:
+            int id;
+            int money; //withdraw money
+            int genmoney; //get money
+            std::string NameObj;
+            std::string Path;
+            Vector2 Position;
+            auto timer;
         public:
             Generator(){
 
@@ -866,13 +935,28 @@ BuildObj::BuildObj(): NameObj("buildCell"), Path("src/location/laboratory/buildi
             void setId(int num){
                 id = num;
             }
-    };
-
+            void setMoney(int num){
+                money = num;
+            }
+            void setPoint(int num){
+                point = num;
+            }
+            void setName(std::string name){
+                NameObj = name;
+            }
+            void setPath(std::string path){
+                Path = path;
+            }
+            void setPosition(Vector2 pos){
+                Position = pos;
+            }
+    };*/
+    
     class Board{
         private:
             int sizeCells;
             std::vector<BuildObj> cells;
-            std::vector<Generator> cellsBuild;
+            std::vector<BuildObj> cellsBuild;
             Camera2D camera;
         public:
             Board(){
