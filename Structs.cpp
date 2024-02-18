@@ -439,7 +439,7 @@ BuildObj::BuildObj(): NameObj("buildCell"), Path("src/location/laboratory/buildi
             framesCounter = 0;
             flipsCounterLeft = 0;
             flipsCounterRight = 1;
-
+            isDraw = true;
         }
 
         void BuildObj::setPath(std::string path_img){
@@ -529,12 +529,17 @@ BuildObj::BuildObj(): NameObj("buildCell"), Path("src/location/laboratory/buildi
 	
 	    
 	}
-        void BuildObj::clickEventListenSimple(Camera2D camera){
+        void BuildObj::clickEventListenSimple(Camera2D camera, BuildObj &obj){
            Vector2 PositionClick = GetMousePosition();
-           PositionClick = GetScreenToWorld2D(PositionClick, camera); 
+           PositionClick = GetScreenToWorld2D(PositionClick, camera);
+
            if (CheckCollisionPointRec(PositionClick, frameRec) && IsMouseButtonDown(0)){
-                std::cout << "you click here!" << std::endl;
-            } 
+                std::cout << "x: " << PositionClick.x << " y:" << PositionClick.y << std::endl;
+                std::cout << "numCells: " << numCells << std::endl;
+                //isClicked = false;
+                obj.isDraw = false;
+            }
+
         }
 
         void BuildObj::clickEventListen(Camera2D camera, int &money, int id_cell,std::map<std::string, BuildObj> tableRes, BuildObj cell[]){
@@ -670,8 +675,9 @@ BuildObj::BuildObj(): NameObj("buildCell"), Path("src/location/laboratory/buildi
             exists = ex;
 	} 
         void BuildObj::Draw(){
-	   
+	        if (isDraw){ 
              DrawTextureEx(imgAnim, PositionSpawn, 0, sizeObject, WHITE);
+            }
         }
 /*
         bool BuildObj::isNull() const {
@@ -847,36 +853,63 @@ BuildObj::BuildObj(): NameObj("buildCell"), Path("src/location/laboratory/buildi
            return false;
         }
     };
+    //building, which something generate
+    class Generator{
+        private:
+            int id;
+            int money;
+            int knowledgePoint;
+        public:
+            Generator(){
+
+            }
+            void setId(int num){
+                id = num;
+            }
+    };
 
     class Board{
         private:
             int sizeCells;
             std::vector<BuildObj> cells;
+            std::vector<Generator> cellsBuild;
             Camera2D camera;
         public:
             Board(){
-                sizeCells = 10;
+                sizeCells = 50;
                 cells.resize(sizeCells);
+                cellsBuild.resize(sizeCells);
+                for (int i = 0; i < cells.size(); i++){
+                    cells[i].numCells = i; // from 0 + 1 ... 
+                    cellsBuild[i].numCells = i;
+                }
             }
-            void setCamera(Camera2D cam){
+            void setCamera(Camera2D &cam){
                 camera = cam;
             }
             void setPos(){
-                int row = 1;
-                for (int j = 0; j < 5; j++){
+                int j = 0;
+                int q = 0; 
                     for (int i = 0; i < cells.size(); i++){
                         cells[i].setPath("src/location/laboratory/buildingCell.png");
-                        Vector2 positionPlace = {170 + 100 * i, 500 + 100 * j}; 
-                        positionPlace = GetWorldToScreen2D(positionPlace, camera);
+                        Vector2 positionPlace = {170 + 100 * q, 500 + 100 * j}; 
+                        //positionPlace = GetWorldToScreen2D(positionPlace, camera);
                         cells[i].SetPosObj(positionPlace.x, positionPlace.y);
                         cells[i].SetPosRect(positionPlace.x, positionPlace.y);
                         cells[i].Draw();
                         //for debug
                         //cells[i].DrawRect();
-                        cells[i].clickEventListenSimple(camera);
-                    }
+                        cells[i].clickEventListenSimple(camera, cells[i]);
+                        q++;
+                        // if i is 10, 20, 30 ...
+                        if ((i + 1) % 10 == 0){
+                            j++;
+                            q = 0;
+                        }                       
                 }
-                row++;
+                    
+
+                
             }
             void clicked(){
 
@@ -887,6 +920,8 @@ BuildObj::BuildObj(): NameObj("buildCell"), Path("src/location/laboratory/buildi
                 clicked();
             }
     };
+
+
 
     struct TileStruct{
         Vector2 PositionSpawn;

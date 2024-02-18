@@ -128,7 +128,8 @@ class BuildObj{
             std::vector<BuildObj> ojects;
 	    Vector2 PositionClickTable;
         public:
-	    int id;
+            bool isDraw;
+	        int id;
             Rectangle frameRec;
             int framesCounter;
             int price;
@@ -144,7 +145,7 @@ class BuildObj{
 	bool IsExist();
     void setPath(std::string path_img);
 	void SetIsExist(bool ex);
-    void clickEventListenSimple(Camera2D camera);
+    void clickEventListenSimple(Camera2D camera, BuildObj &obj);
     void clickEventListen(Camera2D camera, int &money, int id_cell, std::map<std::string, BuildObj> tableRes, BuildObj cell[]);
     void clickEventListenV2(Camera2D camera, int &money, int id_cell, std::map<std::string, BuildObj> tableRes, BuildObj cell[]);  
 	void SelectionPopUp(Camera2D camera, Player &play, int &money, BuildObj cell[], int id_cell,std::map<std::string, BuildObj> tableRes);

@@ -174,10 +174,11 @@ void Scene1(int saveNumber, Saving * data = nullptr)
     my_watch->reset();           
     ExitstTimer = true;
     
-            cellsTable.setCamera(camera);
+            
     bool isHelpOpen = false;
     while (!WindowShouldClose())
     {
+        cellsTable.setCamera(camera);
         //TableMinSetFromSave(3, tableReserarchMin);
         //if (data != nullptr){
         
