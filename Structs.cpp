@@ -14,6 +14,8 @@
 #include"selectionBtn.cpp"
 using json = nlohmann::json;
 namespace sw = stopwatch;
+
+float sizeBuild = 1.5f;
 // for times
 
 //------------------------------------------------------------------------------------
@@ -429,7 +431,14 @@ BuildObj::BuildObj(): NameObj("buildCell"), Path("src/location/laboratory/buildi
             startTimeTimer = static_cast<int>(GetTime()) - 5;
             interval = 5;
             flag = false;
-
+            /*
+            Image img;
+            Texture2D imgAnim;
+            int animFrames;
+            int framesCounter;
+            int currentFrame;
+            int nextFrameDataOffset;
+            */
 	    isClickedTable = false;
             exists = false;
             frameRec; 
@@ -854,22 +863,67 @@ BuildObj::BuildObj(): NameObj("buildCell"), Path("src/location/laboratory/buildi
            return false;
         }
     };
-
-    //building, which something generate
-    class GeneratorKnowledge{
+    
+    class GuiElem{
         private:
             int id;
-            int money; //withdraw money
-            int point; //get points
+            bool isDraw;
+            Vector2 Position;
+        public:
+            GuiElem(){} 
+    }
+
+    class ItemMenuSelection : public GuiElem{
+        private:
+            Rectangle menuRec;
+        public:
+            ItemMenuSelection(){}
+    }
+
+    class MenuSelection : public GuiElem{
+        private:
+            int id;
+            bool isDraw;
+            Vector2 Position;
+            Rectangle buttonRec;
+        public:
+            MenuSelection(){}
+    }
+    
+    //building, which something generate
+    class Generator{
+        private:
+            //Main data
+            int id;
+            int moneyWithdraw;
+            int moneyGetPerTimer;
+            int pointsGetPerTimer; 
             std::string NameObj;
             std::string Path;
+            std::string Type; 
             Vector2 Position;
+            bool isDraw;
             
+            //Timer
             sw::Stopwatch* watch_time;
             int timeElapse;
             bool isExistTimer;
+
+            //Animation
+            Image img;
+            Texture2D imgAnim;
+            int animFrames;
+            int framesCounter;
+            int currentFrame;
+            int nextFrameDataOffset;
         public:
             GeneratorKnowledge(){
+                nextFrameDataOffset = 0;
+                currentFrame = 0;
+                framesCounter = 0;
+                animFrames = 0;
+                isDraw = true;
+
                 //timer
                 timeElapse = 5;
                 watch_time = new sw::Stopwatch;
@@ -880,20 +934,59 @@ BuildObj::BuildObj(): NameObj("buildCell"), Path("src/location/laboratory/buildi
             void setId(int num){
                 id = num;
             }
-            void setMoney(int num){
-                money = num;
-            }
-            void setPoint(int num){
-                point = num;
-            }
             void setName(std::string name){
                 NameObj = name;
             }
             void setPath(std::string path){
                 Path = path;
             }
+            void setMoney(int num){
+                money = num;
+            }
+            // Prive build
+            void setMoneyWithdraw(int num){
+                moneyWithdraw = num;
+            }
+            // Money per time
+            void setMoneyPerTimer(int num){
+                moneyGetPerTimer = num;
+            }
+            // Knowledge point per time
+            void setPointsPerTimer(int num){
+                moneyGetPerTimer = num;
+            }
             void setPosition(Vector2 pos){
                 Position = pos;
+            }
+            void setPosition(int x, int y){
+                Position.x = x;
+                Position.y = y;
+            }
+            void setDraw(bool isDrawing){
+                isDraw = isDrawing;
+            }
+            void SetElapseTime(int time){
+                timeElapse = time;
+            }
+            // need call it for animation
+            void setAnimation(){
+                img = LoadImageAnim(Path, &animFrames);
+                imgAnim = LoadTextureFromImage(img);
+            }
+            void Animation(){
+                if (this.framesCounter >= animFrames){
+                    currentFrame++;
+
+                    if (currentFrame >= 4) currentFrame = 0;
+                        nextFrameDataOffset = img.height*img.height*4*currentFrame;
+                        UpdateTexture(imgAnim, reinterpret_cast<uint8_t*>(img.data) + nextFrameDataOffset);
+                        framesCounter = 0;
+                    }
+            }
+            void Draw(){
+	            if (isDraw){ 
+                    DrawTextureEx(imgAnim, Position, 0, sizeBuild, WHITE);
+                }
             }
             void StartTimer(){
                 if (isExistTimer){
@@ -918,39 +1011,7 @@ BuildObj::BuildObj(): NameObj("buildCell"), Path("src/location/laboratory/buildi
             }
     };
 
-    //generation money 
-    /*class GeneratorMoney{
-        private:
-            int id;
-            int money; //withdraw money
-            int genmoney; //get money
-            std::string NameObj;
-            std::string Path;
-            Vector2 Position;
-            auto timer;
-        public:
-            Generator(){
 
-            }
-            void setId(int num){
-                id = num;
-            }
-            void setMoney(int num){
-                money = num;
-            }
-            void setPoint(int num){
-                point = num;
-            }
-            void setName(std::string name){
-                NameObj = name;
-            }
-            void setPath(std::string path){
-                Path = path;
-            }
-            void setPosition(Vector2 pos){
-                Position = pos;
-            }
-    };*/
     
     class Board{
         private:

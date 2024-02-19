@@ -57,7 +57,7 @@ void Scene1(int saveNumber, Saving * data = nullptr)
 
         };
 */
-    GeneratorKnowledge tim;
+    Generator tim;
     sw::Stopwatch* my_watch;
     bool ExitstTimer = false;
     //Take the time
