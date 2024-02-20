@@ -3,24 +3,20 @@
 #include<valarray>
 #include"buildObj.hpp"
 #include <cstdio>
+
+#include <cereal/types/vector.hpp>
+#include <cereal/types/string.hpp>
+#include <cereal/archives/json.hpp>
+#include <cereal/types/memory.hpp>
+#include <sstream>
 #pragma once
 
-struct Table {
+struct TableDat {
+    std::string type;
+    bool isExists;
     int idTables;
-    int type;
     int xpos;
     int ypos;
-
-    Table(){
-        idTables = 0;
-        // 1 - min table
-        // 2 - mid table
-        // 3 - top table
-        type = 0;
-        xpos = 0;
-        ypos = 0;
-
-    }
 };
 
 struct Saving {

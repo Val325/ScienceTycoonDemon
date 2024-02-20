@@ -57,7 +57,15 @@ void Scene1(int saveNumber, Saving * data = nullptr)
 
         };
 */
+    /*
     Generator tim;
+    tim.setId(0);
+    tim.setName("Table test");
+    tim.setPath("src/tableResearch.gif");
+    tim.setPosition(400, 400);
+    tim.setAnimation();
+    */
+
     sw::Stopwatch* my_watch;
     bool ExitstTimer = false;
     //Take the time
@@ -97,7 +105,7 @@ void Scene1(int saveNumber, Saving * data = nullptr)
       Singularit = data->Singularit;
       Knowledge_Point = hero->points; 
       Money_Point = hero->money;
-
+      cellsTable.LoadFromFile("save/", "tables.dat");
 
     }else{
       Player her("src/image/HeroAnimation/DemonSciencer.gif",0, 700);
@@ -179,7 +187,7 @@ void Scene1(int saveNumber, Saving * data = nullptr)
     while (!WindowShouldClose())
     {
         cellsTable.setCamera(camera);
-        tim.StartTimer();
+        //tim.StartTimer();
         //TableMinSetFromSave(3, tableReserarchMin);
         //if (data != nullptr){
         
@@ -221,7 +229,8 @@ void Scene1(int saveNumber, Saving * data = nullptr)
             DrawTextureEx(RoomInfo.RoomTex, RoomInfo.PositionSpawn, 0, 7.5, WHITE);
 
             panel.DrawObj();
-
+            //tim.Animation();
+            //tim.Draw();
             computer.DrawObj();
             dispenser.DrawObj();
 
@@ -325,6 +334,7 @@ void Scene1(int saveNumber, Saving * data = nullptr)
           dataGame[saveNumber].Robot = Robot;
           dataGame[saveNumber].Singularit = Singularit;
 	      
+          cellsTable.SaveToFile("save/", "tables.dat");
 
           saveNumber = saveNumber + 1;
           std::string numberSaveStr = std::to_string(saveNumber);
@@ -334,7 +344,7 @@ void Scene1(int saveNumber, Saving * data = nullptr)
           SaveData("save/", saveName);
           CloseWindow(); 
         }
-
+        
         hero->points = Knowledge_Point;
         hero->money = Money_Point;  
         DrawText(TextFormat("Knowledge : %04d", hero->points), 30, 80, 20, WHITE);

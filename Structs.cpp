@@ -12,10 +12,17 @@
 #include"TechTree2.0.cpp"
 #include"buildObj.hpp"
 #include"selectionBtn.cpp"
+
+#include <cereal/types/vector.hpp>
+#include <cereal/types/string.hpp>
+#include <cereal/archives/json.hpp>
+#include <cereal/types/memory.hpp>
+#include <sstream>
+
 using json = nlohmann::json;
 namespace sw = stopwatch;
 
-float sizeBuild = 1.5f;
+float sizeBuild = 4.5f;
 // for times
 
 //------------------------------------------------------------------------------------
@@ -689,6 +696,7 @@ BuildObj::BuildObj(): NameObj("buildCell"), Path("src/location/laboratory/buildi
              DrawTextureEx(imgAnim, PositionSpawn, 0, sizeObject, WHITE);
             }
         }
+
 /*
         bool BuildObj::isNull() const {
             return this == nullptr;  
@@ -871,24 +879,21 @@ BuildObj::BuildObj(): NameObj("buildCell"), Path("src/location/laboratory/buildi
             Vector2 Position;
         public:
             GuiElem(){} 
-    }
+    };
 
     class ItemMenuSelection : public GuiElem{
         private:
             Rectangle menuRec;
         public:
             ItemMenuSelection(){}
-    }
+    };
 
     class MenuSelection : public GuiElem{
         private:
-            int id;
-            bool isDraw;
-            Vector2 Position;
             Rectangle buttonRec;
         public:
             MenuSelection(){}
-    }
+    };
     
     //building, which something generate
     class Generator{
@@ -917,7 +922,7 @@ BuildObj::BuildObj(): NameObj("buildCell"), Path("src/location/laboratory/buildi
             int currentFrame;
             int nextFrameDataOffset;
         public:
-            GeneratorKnowledge(){
+            Generator(){
                 nextFrameDataOffset = 0;
                 currentFrame = 0;
                 framesCounter = 0;
@@ -940,9 +945,7 @@ BuildObj::BuildObj(): NameObj("buildCell"), Path("src/location/laboratory/buildi
             void setPath(std::string path){
                 Path = path;
             }
-            void setMoney(int num){
-                money = num;
-            }
+            
             // Prive build
             void setMoneyWithdraw(int num){
                 moneyWithdraw = num;
@@ -970,18 +973,23 @@ BuildObj::BuildObj(): NameObj("buildCell"), Path("src/location/laboratory/buildi
             }
             // need call it for animation
             void setAnimation(){
-                img = LoadImageAnim(Path, &animFrames);
+                img = LoadImageAnim(Path.c_str(), &animFrames);
                 imgAnim = LoadTextureFromImage(img);
             }
             void Animation(){
-                if (this.framesCounter >= animFrames){
+                //std::cout << "framesCounter: " << framesCounter << std::endl;
+                framesCounter++;
+                if (framesCounter >= animFrames){
                     currentFrame++;
-
+                    //std::cout << "currentFrame: " << currentFrame << std::endl;
                     if (currentFrame >= 4) currentFrame = 0;
                         nextFrameDataOffset = img.height*img.height*4*currentFrame;
                         UpdateTexture(imgAnim, reinterpret_cast<uint8_t*>(img.data) + nextFrameDataOffset);
                         framesCounter = 0;
                     }
+            }
+            int getFramesCounter(){
+                return framesCounter;
             }
             void Draw(){
 	            if (isDraw){ 
@@ -1005,7 +1013,8 @@ BuildObj::BuildObj(): NameObj("buildCell"), Path("src/location/laboratory/buildi
                     isExistTimer = true;
                 }
             }
-            ~GeneratorKnowledge(){
+
+            ~Generator(){
                 isExistTimer = false;
                 delete watch_time;
             }
@@ -1019,52 +1028,104 @@ BuildObj::BuildObj(): NameObj("buildCell"), Path("src/location/laboratory/buildi
             std::vector<BuildObj> cells;
             std::vector<BuildObj> cellsBuild;
             Camera2D camera;
+            
+            TableDat tableGameSave[50];
+
         public:
             Board(){
+                
                 sizeCells = 50;
                 cells.resize(sizeCells);
                 cellsBuild.resize(sizeCells);
                 for (int i = 0; i < cells.size(); i++){
                     cells[i].numCells = i; // from 0 + 1 ... 
                     cellsBuild[i].numCells = i;
+                    
+                    tableGameSave[i].type = "";
+                    tableGameSave[i].idTables = i;
+
                 }
             }
             void setCamera(Camera2D &cam){
                 camera = cam;
             }
-            void setPos(){
+            void Draw(){
                 int j = 0;
                 int q = 0; 
                     for (int i = 0; i < cells.size(); i++){
                         cells[i].setPath("src/location/laboratory/buildingCell.png");
-                        Vector2 positionPlace = {170 + 100 * q, 500 + 100 * j}; 
-                        //positionPlace = GetWorldToScreen2D(positionPlace, camera);
+                        Vector2 positionPlace = {170 + 100 * q, 500 + 100 * j};
+                        
+                        //save in struct of arrays build
+                        tableGameSave[i].xpos = 170 + 100 * q;
+                        tableGameSave[i].ypos = 500 + 100 * j;
+ 
+                        //for debug
+                        //cells[i].DrawRect();
+                        
+                        cells[i].clickEventListenSimple(camera, cells[i]);
+                    
                         cells[i].SetPosObj(positionPlace.x, positionPlace.y);
                         cells[i].SetPosRect(positionPlace.x, positionPlace.y);
                         cells[i].Draw();
-                        //for debug
-                        //cells[i].DrawRect();
-                        cells[i].clickEventListenSimple(camera, cells[i]);
+
                         q++;
                         // if i is 10, 20, 30 ...
                         if ((i + 1) % 10 == 0){
                             j++;
                             q = 0;
                         }                       
-                }
-                    
-
+                } 
+            }
+            void SaveToFile(std::string path, std::string name){
+                std::string extension = ".dat";
+                std::string fullNameFile = path + name + extension; 
+                std::ofstream file(fullNameFile, std::ios::out | std::ios::binary);
                 
-            }
-            void clicked(){
+                if(!file) {
+                    std::cout << "Cannot open file!" << std::endl;
+                }
 
-                setPos();
-            }
-            void Draw(){
+                for (int i = 0; i < cells.size(); i++){
+                    tableGameSave[i].isExists = cells[i].isDraw;
+                }
 
-                clicked();
+                //rewrite it
+                file.write((char *)&tableGameSave, sizeof(tableGameSave));
+                file.close();
+
+                if(!file.good()) {
+                    std::cout << "Error occurred at writing time!" << std::endl;
+                }
             }
-    };
+            bool isHasSave(const std::string& name){
+                std::ifstream f(name.c_str());
+                return f.good();
+            }
+            void LoadFromFile(std::string path, std::string name){
+                std::string extension = ".dat";
+                std::string fullNameFile = path + name + extension;
+                std::ifstream file(fullNameFile, std::ios::out | std::ios::binary);
+                if(!file) {
+                    std::cout << "Cannot open file!" << std::endl;
+                }
+
+                file.read((char *) &tableGameSave, sizeof(tableGameSave));
+                file.close();
+                
+                for (int i = 0; i < cells.size(); i++){
+                    std::cout << "id: " << tableGameSave[i].idTables << " pos x: " << tableGameSave[i].xpos << " pos y: " << tableGameSave[i].ypos << std::endl;
+                    cells[i].isDraw = tableGameSave[i].isExists;
+                    //cells[i].SetPosObj(tableGameSave[i].xpos, tableGameSave[i].ypos);
+                    //cells[i].SetPosRect(tableGameSave[i].xpos, tableGameSave[i].ypos);
+                }
+
+                if(!file.good()) {
+                    std::cout << "Error occurred at reading time!" << std::endl;
+                }
+            }
+
+        };
 
 
 

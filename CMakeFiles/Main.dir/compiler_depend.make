@@ -108,6 +108,7 @@ CMakeFiles/Main.dir/Main.cpp.o: Main.cpp \
   /include/c++/13.2.1/bits/uniform_int_dist.h \
   /include/c++/13.2.1/bits/unique_ptr.h \
   /include/c++/13.2.1/bits/unordered_map.h \
+  /include/c++/13.2.1/bits/unordered_set.h \
   /include/c++/13.2.1/bits/uses_allocator.h \
   /include/c++/13.2.1/bits/utility.h \
   /include/c++/13.2.1/bits/valarray_after.h \
@@ -119,6 +120,7 @@ CMakeFiles/Main.dir/Main.cpp.o: Main.cpp \
   /include/c++/13.2.1/cctype \
   /include/c++/13.2.1/cerrno \
   /include/c++/13.2.1/chrono \
+  /include/c++/13.2.1/climits \
   /include/c++/13.2.1/clocale \
   /include/c++/13.2.1/cmath \
   /include/c++/13.2.1/compare \
@@ -130,6 +132,7 @@ CMakeFiles/Main.dir/Main.cpp.o: Main.cpp \
   /include/c++/13.2.1/ctime \
   /include/c++/13.2.1/cwchar \
   /include/c++/13.2.1/cwctype \
+  /include/c++/13.2.1/cxxabi.h \
   /include/c++/13.2.1/debug/assertions.h \
   /include/c++/13.2.1/debug/debug.h \
   /include/c++/13.2.1/deque \
@@ -171,8 +174,10 @@ CMakeFiles/Main.dir/Main.cpp.o: Main.cpp \
   /include/c++/13.2.1/thread \
   /include/c++/13.2.1/tuple \
   /include/c++/13.2.1/type_traits \
+  /include/c++/13.2.1/typeindex \
   /include/c++/13.2.1/typeinfo \
   /include/c++/13.2.1/unordered_map \
+  /include/c++/13.2.1/unordered_set \
   /include/c++/13.2.1/utility \
   /include/c++/13.2.1/valarray \
   /include/c++/13.2.1/vector \
@@ -186,6 +191,7 @@ CMakeFiles/Main.dir/Main.cpp.o: Main.cpp \
   /include/c++/13.2.1/x86_64-pc-linux-gnu/bits/cpu_defines.h \
   /include/c++/13.2.1/x86_64-pc-linux-gnu/bits/ctype_base.h \
   /include/c++/13.2.1/x86_64-pc-linux-gnu/bits/ctype_inline.h \
+  /include/c++/13.2.1/x86_64-pc-linux-gnu/bits/cxxabi_tweaks.h \
   /include/c++/13.2.1/x86_64-pc-linux-gnu/bits/error_constants.h \
   /include/c++/13.2.1/x86_64-pc-linux-gnu/bits/gthr-default.h \
   /include/c++/13.2.1/x86_64-pc-linux-gnu/bits/gthr.h \
@@ -236,6 +242,53 @@ CMakeFiles/Main.dir/Main.cpp.o: Main.cpp \
   include/raylib.hpp \
   include/raymath.hpp \
   include/Texture.hpp \
+  include/cereal/access.hpp \
+  include/cereal/archives/json.hpp \
+  include/cereal/cereal.hpp \
+  include/cereal/details/helpers.hpp \
+  include/cereal/details/polymorphic_impl.hpp \
+  include/cereal/details/polymorphic_impl_fwd.hpp \
+  include/cereal/details/static_object.hpp \
+  include/cereal/details/traits.hpp \
+  include/cereal/details/util.hpp \
+  include/cereal/external/base64.hpp \
+  include/cereal/external/rapidjson/allocators.h \
+  include/cereal/external/rapidjson/document.h \
+  include/cereal/external/rapidjson/encodedstream.h \
+  include/cereal/external/rapidjson/encodings.h \
+  include/cereal/external/rapidjson/rapidjson.h \
+  include/cereal/external/rapidjson/error/error.h \
+  include/cereal/external/rapidjson/allocators.h \
+  include/cereal/external/rapidjson/rapidjson.h \
+  include/cereal/external/rapidjson/stream.h \
+  include/cereal/external/rapidjson/internal/biginteger.h \
+  include/cereal/external/rapidjson/internal/diyfp.h \
+  include/cereal/external/rapidjson/internal/dtoa.h \
+  include/cereal/external/rapidjson/internal/ieee754.h \
+  include/cereal/external/rapidjson/internal/itoa.h \
+  include/cereal/external/rapidjson/internal/meta.h \
+  include/cereal/external/rapidjson/internal/pow10.h \
+  include/cereal/external/rapidjson/internal/stack.h \
+  include/cereal/external/rapidjson/internal/strfunc.h \
+  include/cereal/external/rapidjson/internal/strtod.h \
+  include/cereal/external/rapidjson/internal/swap.h \
+  include/cereal/external/rapidjson/istreamwrapper.h \
+  include/cereal/external/rapidjson/memorystream.h \
+  include/cereal/external/rapidjson/ostreamwrapper.h \
+  include/cereal/external/rapidjson/prettywriter.h \
+  include/cereal/external/rapidjson/rapidjson.h \
+  include/cereal/external/rapidjson/reader.h \
+  include/cereal/external/rapidjson/stream.h \
+  include/cereal/external/rapidjson/stringbuffer.h \
+  include/cereal/external/rapidjson/writer.h \
+  include/cereal/macros.hpp \
+  include/cereal/specialize.hpp \
+  include/cereal/types/base_class.hpp \
+  include/cereal/types/common.hpp \
+  include/cereal/types/memory.hpp \
+  include/cereal/types/polymorphic.hpp \
+  include/cereal/types/string.hpp \
+  include/cereal/types/vector.hpp \
   include/json/allocator.h \
   include/json/config.h \
   include/json/forwards.h \
@@ -319,12 +372,15 @@ CMakeFiles/Main.dir/Main.cpp.o: Main.cpp \
   /usr/include/bits/iscanonical.h \
   /usr/include/bits/libc-header-start.h \
   /usr/include/bits/libm-simd-decl-stubs.h \
+  /usr/include/bits/local_lim.h \
   /usr/include/bits/locale.h \
   /usr/include/bits/long-double.h \
   /usr/include/bits/math-vector.h \
   /usr/include/bits/mathcalls-helper-functions.h \
   /usr/include/bits/mathcalls-narrow.h \
   /usr/include/bits/mathcalls.h \
+  /usr/include/bits/posix1_lim.h \
+  /usr/include/bits/posix2_lim.h \
   /usr/include/bits/pthread_stack_min-dynamic.h \
   /usr/include/bits/pthreadtypes-arch.h \
   /usr/include/bits/pthreadtypes.h \
@@ -369,11 +425,13 @@ CMakeFiles/Main.dir/Main.cpp.o: Main.cpp \
   /usr/include/bits/types/wint_t.h \
   /usr/include/bits/typesizes.h \
   /usr/include/bits/uintn-identity.h \
+  /usr/include/bits/uio_lim.h \
   /usr/include/bits/waitflags.h \
   /usr/include/bits/waitstatus.h \
   /usr/include/bits/wchar.h \
   /usr/include/bits/wctype-wchar.h \
   /usr/include/bits/wordsize.h \
+  /usr/include/bits/xopen_lim.h \
   /usr/include/ctype.h \
   /usr/include/endian.h \
   /usr/include/errno.h \
@@ -381,8 +439,11 @@ CMakeFiles/Main.dir/Main.cpp.o: Main.cpp \
   /usr/include/features.h \
   /usr/include/gnu/stubs-64.h \
   /usr/include/gnu/stubs.h \
+  /usr/include/inttypes.h \
   /usr/include/libintl.h \
+  /usr/include/limits.h \
   /usr/include/linux/errno.h \
+  /usr/include/linux/limits.h \
   /usr/include/locale.h \
   /usr/include/math.h \
   /usr/include/pthread.h \
@@ -401,6 +462,8 @@ CMakeFiles/Main.dir/Main.cpp.o: Main.cpp \
   /usr/include/wchar.h \
   /usr/include/wctype.h \
   /usr/lib/clang/16/include/__stddef_max_align_t.h \
+  /usr/lib/clang/16/include/inttypes.h \
+  /usr/lib/clang/16/include/limits.h \
   /usr/lib/clang/16/include/sanitizer/tsan_interface.h \
   /usr/lib/clang/16/include/stdarg.h \
   /usr/lib/clang/16/include/stddef.h \
@@ -411,11 +474,9 @@ CMakeFiles/Main.dir/Main.cpp.o: Main.cpp \
 
 /usr/lib/clang/16/include/sanitizer/tsan_interface.h:
 
+/usr/lib/clang/16/include/inttypes.h:
+
 /usr/lib/clang/16/include/__stddef_max_align_t.h:
-
-/usr/include/wchar.h:
-
-/usr/include/sys/types.h:
 
 /usr/include/sys/cdefs.h:
 
@@ -429,15 +490,15 @@ CMakeFiles/Main.dir/Main.cpp.o: Main.cpp \
 
 /usr/include/linux/errno.h:
 
+/usr/include/limits.h:
+
+/usr/include/inttypes.h:
+
 /usr/include/gnu/stubs.h:
 
 /usr/include/gnu/stubs-64.h:
 
 /usr/include/features-time64.h:
-
-/usr/include/stdint.h:
-
-/usr/include/endian.h:
 
 /usr/include/stdio.h:
 
@@ -465,8 +526,6 @@ CMakeFiles/Main.dir/Main.cpp.o: Main.cpp \
 
 /usr/include/bits/types/FILE.h:
 
-/usr/include/bits/timex.h:
-
 /usr/include/bits/timesize.h:
 
 /usr/include/bits/thread-shared-types.h:
@@ -474,8 +533,6 @@ CMakeFiles/Main.dir/Main.cpp.o: Main.cpp \
 /usr/include/bits/struct_rwlock.h:
 
 /usr/include/bits/struct_mutex.h:
-
-/usr/include/bits/stdio_lim.h:
 
 /usr/include/bits/types/clockid_t.h:
 
@@ -493,9 +550,13 @@ CMakeFiles/Main.dir/Main.cpp.o: Main.cpp \
 
 /usr/include/bits/pthread_stack_min-dynamic.h:
 
-/usr/include/bits/mathcalls.h:
+/usr/include/wchar.h:
+
+/usr/include/bits/posix1_lim.h:
 
 /usr/include/bits/mathcalls-helper-functions.h:
+
+/usr/include/bits/uio_lim.h:
 
 /usr/include/bits/math-vector.h:
 
@@ -601,13 +662,101 @@ include/nlohmann/detail/iterators/iterator_traits.hpp:
 
 include/nlohmann/detail/iterators/iter_impl.hpp:
 
-/include/c++/13.2.1/cstring:
+include/nlohmann/detail/input/position_t.hpp:
 
-/usr/include/bits/types/__fpos64_t.h:
+include/nlohmann/detail/input/json_sax.hpp:
 
-/include/c++/13.2.1/bits/predefined_ops.h:
+include/nlohmann/detail/input/input_adapters.hpp:
+
+include/nlohmann/detail/macro_unscope.hpp:
+
+include/nlohmann/detail/input/binary_reader.hpp:
+
+include/nlohmann/detail/conversions/to_json.hpp:
+
+include/nlohmann/detail/conversions/to_chars.hpp:
+
+/usr/include/bits/xopen_lim.h:
+
+include/nlohmann/detail/input/lexer.hpp:
+
+include/nlohmann/detail/conversions/from_json.hpp:
+
+/usr/include/ctype.h:
+
+include/nlohmann/detail/abi_macros.hpp:
+
+include/nlohmann/byte_container_with_subtype.hpp:
+
+/usr/include/bits/types/locale_t.h:
+
+include/nlohmann/adl_serializer.hpp:
+
+include/json/writer.h:
+
+include/json/version.h:
+
+include/json/reader.h:
+
+include/json/forwards.h:
+
+include/json/allocator.h:
+
+include/cereal/types/vector.hpp:
+
+include/cereal/types/polymorphic.hpp:
+
+include/cereal/types/base_class.hpp:
+
+include/cereal/specialize.hpp:
+
+include/cereal/macros.hpp:
+
+include/cereal/external/rapidjson/writer.h:
+
+/usr/include/bits/stdio_lim.h:
+
+include/cereal/external/rapidjson/stringbuffer.h:
+
+include/cereal/external/rapidjson/reader.h:
+
+include/cereal/external/rapidjson/prettywriter.h:
+
+include/cereal/external/rapidjson/ostreamwrapper.h:
+
+include/cereal/external/rapidjson/memorystream.h:
+
+include/cereal/external/rapidjson/istreamwrapper.h:
+
+/usr/include/stdint.h:
+
+/usr/include/endian.h:
+
+include/cereal/external/rapidjson/internal/stack.h:
+
+include/cereal/types/common.hpp:
+
+include/cereal/external/rapidjson/internal/meta.h:
+
+include/nlohmann/detail/exceptions.hpp:
+
+include/cereal/external/rapidjson/internal/itoa.h:
+
+include/cereal/external/rapidjson/internal/ieee754.h:
+
+include/cereal/external/rapidjson/internal/dtoa.h:
+
+/usr/include/bits/timex.h:
+
+include/cereal/external/rapidjson/internal/diyfp.h:
+
+/usr/include/bits/mathcalls.h:
+
+include/cereal/external/rapidjson/internal/biginteger.h:
 
 /include/c++/13.2.1/cstdio:
+
+include/cereal/external/rapidjson/encodedstream.h:
 
 /include/c++/13.2.1/cstddef:
 
@@ -625,13 +774,23 @@ include/Color.hpp:
 
 /include/c++/13.2.1/bits/valarray_array.tcc:
 
+/usr/include/bits/posix2_lim.h:
+
+include/cereal/external/rapidjson/internal/swap.h:
+
 /include/c++/13.2.1/bits/stl_bvector.h:
 
+include/cereal/cereal.hpp:
+
 /include/c++/13.2.1/bits/utility.h:
+
+include/cereal/external/rapidjson/allocators.h:
 
 /include/c++/13.2.1/bits/uniform_int_dist.h:
 
 /include/c++/13.2.1/bits/streambuf_iterator.h:
+
+include/cereal/types/string.hpp:
 
 /include/c++/13.2.1/bits/stl_raw_storage_iter.h:
 
@@ -643,11 +802,11 @@ include/Color.hpp:
 
 /include/c++/13.2.1/bits/stl_vector.h:
 
+/include/c++/13.2.1/bits/unordered_set.h:
+
 /include/c++/13.2.1/cstdint:
 
 include/AudioStream.hpp:
-
-include/json/writer.h:
 
 /include/c++/13.2.1/bits/stl_pair.h:
 
@@ -668,6 +827,10 @@ include/AudioDevice.hpp:
 /include/c++/13.2.1/ext/string_conversions.h:
 
 /include/c++/13.2.1/bits/std_function.h:
+
+include/cereal/external/rapidjson/document.h:
+
+/usr/include/bits/local_lim.h:
 
 /include/c++/13.2.1/bits/std_thread.h:
 
@@ -709,9 +872,15 @@ include/nlohmann/detail/output/serializer.hpp:
 
 /include/c++/13.2.1/ostream:
 
-/include/c++/13.2.1/bits/postypes.h:
+/usr/include/bits/types/__fpos64_t.h:
 
-include/Sound.hpp:
+/include/c++/13.2.1/bits/predefined_ops.h:
+
+/include/c++/13.2.1/cstring:
+
+/include/c++/13.2.1/climits:
+
+/include/c++/13.2.1/bits/postypes.h:
 
 /include/c++/13.2.1/bits/stl_multimap.h:
 
@@ -728,6 +897,8 @@ include/json/value.h:
 /include/c++/13.2.1/bits/stl_heap.h:
 
 /include/c++/13.2.1/ext/alloc_traits.h:
+
+/usr/lib/clang/16/include/limits.h:
 
 /include/c++/13.2.1/bits/cxxabi_init_exception.h:
 
@@ -809,6 +980,10 @@ include/nlohmann/json.hpp:
 
 /include/c++/13.2.1/x86_64-pc-linux-gnu/bits/c++locale.h:
 
+include/json/json.h:
+
+Main.cpp:
+
 /include/c++/13.2.1/bits/locale_facets.h:
 
 /include/c++/13.2.1/bits/erase_if.h:
@@ -817,6 +992,8 @@ include/nlohmann/json.hpp:
 
 /include/c++/13.2.1/bits/exception.h:
 
+include/cereal/details/util.hpp:
+
 /include/c++/13.2.1/cassert:
 
 /usr/include/bits/types/time_t.h:
@@ -824,6 +1001,10 @@ include/nlohmann/json.hpp:
 /include/c++/13.2.1/bits/this_thread_sleep.h:
 
 /include/c++/13.2.1/bits/locale_facets_nonio.h:
+
+include/nlohmann/detail/hash.hpp:
+
+/include/c++/13.2.1/bits/mask_array.h:
 
 /include/c++/13.2.1/bits/allocator.h:
 
@@ -867,6 +1048,8 @@ include/Font.hpp:
 
 include/RayCollision.hpp:
 
+include/cereal/external/base64.hpp:
+
 /include/c++/13.2.1/bits/algorithmfwd.h:
 
 /include/c++/13.2.1/tuple:
@@ -884,6 +1067,10 @@ include/RayCollision.hpp:
 /include/c++/13.2.1/bits/exception_defines.h:
 
 /include/c++/13.2.1/bits/atomic_lockfree_defines.h:
+
+include/cereal/external/rapidjson/internal/strfunc.h:
+
+include/cereal/external/rapidjson/error/error.h:
 
 /include/c++/13.2.1/bits/ostream.tcc:
 
@@ -917,17 +1104,11 @@ include/Text.hpp:
 
 /include/c++/13.2.1/bits/charconv.h:
 
-include/json/allocator.h:
-
 /include/c++/13.2.1/bits/stl_tempbuf.h:
 
 /include/c++/13.2.1/bits/enable_special_members.h:
 
 /include/c++/13.2.1/bits/memoryfwd.h:
-
-include/nlohmann/detail/macro_unscope.hpp:
-
-include/nlohmann/detail/input/binary_reader.hpp:
 
 include/nlohmann/thirdparty/hedley/hedley.hpp:
 
@@ -938,8 +1119,6 @@ include/nlohmann/thirdparty/hedley/hedley.hpp:
 /include/c++/13.2.1/clocale:
 
 /include/c++/13.2.1/ext/numeric_traits.h:
-
-/include/c++/13.2.1/bits/basic_ios.tcc:
 
 /usr/include/alloca.h:
 
@@ -961,6 +1140,10 @@ include/Model.hpp:
 
 /include/c++/13.2.1/cwctype:
 
+/include/c++/13.2.1/bits/basic_ios.tcc:
+
+/include/c++/13.2.1/cxxabi.h:
+
 /include/c++/13.2.1/debug/debug.h:
 
 /include/c++/13.2.1/x86_64-pc-linux-gnu/bits/c++config.h:
@@ -973,21 +1156,29 @@ include/Model.hpp:
 
 /include/c++/13.2.1/ext/type_traits.h:
 
-include/nlohmann/detail/conversions/to_json.hpp:
+include/nlohmann/detail/iterators/primitive_iterator.hpp:
+
+include/json/config.h:
+
+include/raymath.hpp:
 
 /usr/include/bits/flt-eval-method.h:
 
 /include/c++/13.2.1/fstream:
+
+include/nlohmann/detail/input/parser.hpp:
+
+include/cereal/types/memory.hpp:
+
+/include/c++/13.2.1/bits/forward_list.tcc:
+
+include/cereal/external/rapidjson/stream.h:
 
 include/nlohmann/detail/meta/is_sax.hpp:
 
 /include/c++/13.2.1/bits/stl_algo.h:
 
 /include/c++/13.2.1/iomanip:
-
-/include/c++/13.2.1/bits/mask_array.h:
-
-include/nlohmann/detail/hash.hpp:
 
 /include/c++/13.2.1/iosfwd:
 
@@ -1001,13 +1192,9 @@ include/nlohmann/detail/string_escape.hpp:
 
 /include/c++/13.2.1/limits:
 
+include/cereal/external/rapidjson/internal/strtod.h:
+
 /include/c++/13.2.1/locale:
-
-include/nlohmann/detail/input/lexer.hpp:
-
-include/nlohmann/detail/conversions/from_json.hpp:
-
-include/nlohmann/detail/input/position_t.hpp:
 
 /usr/include/bits/wchar.h:
 
@@ -1027,11 +1214,11 @@ include/nlohmann/detail/meta/identity_tag.hpp:
 
 /include/c++/13.2.1/ratio:
 
-include/nlohmann/detail/input/json_sax.hpp:
-
 /usr/include/bits/time64.h:
 
 /include/c++/13.2.1/set:
+
+include/cereal/external/rapidjson/encodings.h:
 
 /include/c++/13.2.1/stack:
 
@@ -1045,15 +1232,25 @@ include/nlohmann/detail/input/json_sax.hpp:
 
 /include/c++/13.2.1/system_error:
 
-/usr/include/bits/typesizes.h:
-
-/include/c++/13.2.1/unordered_map:
+/include/c++/13.2.1/typeindex:
 
 /include/c++/13.2.1/bits/alloc_traits.h:
 
 /include/c++/13.2.1/valarray:
 
 /include/c++/13.2.1/x86_64-pc-linux-gnu/bits/c++io.h:
+
+include/cereal/archives/json.hpp:
+
+/usr/include/bits/typesizes.h:
+
+/include/c++/13.2.1/unordered_map:
+
+include/cereal/details/traits.hpp:
+
+include/cereal/external/rapidjson/internal/pow10.h:
+
+/include/c++/13.2.1/unordered_set:
 
 /include/c++/13.2.1/vector:
 
@@ -1071,13 +1268,17 @@ include/Camera2D.hpp:
 
 /include/c++/13.2.1/x86_64-pc-linux-gnu/bits/basic_file.h:
 
-/include/c++/13.2.1/x86_64-pc-linux-gnu/bits/time_members.h:
-
 /include/c++/13.2.1/algorithm:
 
 /include/c++/13.2.1/debug/assertions.h:
 
 /include/c++/13.2.1/x86_64-pc-linux-gnu/bits/cpu_defines.h:
+
+/include/c++/13.2.1/x86_64-pc-linux-gnu/bits/cxxabi_tweaks.h:
+
+include/ModelAnimation.hpp:
+
+include/TextureUnmanaged.hpp:
 
 /usr/include/bits/pthreadtypes-arch.h:
 
@@ -1131,9 +1332,7 @@ include/Matrix.hpp:
 
 include/Mesh.hpp:
 
-include/ModelAnimation.hpp:
-
-include/TextureUnmanaged.hpp:
+include/cereal/details/polymorphic_impl.hpp:
 
 include/Ray.hpp:
 
@@ -1142,8 +1341,6 @@ include/nlohmann/detail/iterators/iteration_proxy.hpp:
 include/raylib-cpp-utils.hpp:
 
 include/RaylibException.hpp:
-
-include/json/forwards.h:
 
 include/Rectangle.hpp:
 
@@ -1169,46 +1366,30 @@ include/Material.hpp:
 
 include/Vector3.hpp:
 
+include/json/json_features.h:
+
+include/VrStereoConfig.hpp:
+
 include/Window.hpp:
 
 include/Wave.hpp:
 
 include/raylib.hpp:
 
-include/nlohmann/detail/iterators/primitive_iterator.hpp:
+include/cereal/access.hpp:
 
-include/raymath.hpp:
+/usr/include/linux/limits.h:
 
-include/json/config.h:
+/include/c++/13.2.1/x86_64-pc-linux-gnu/bits/time_members.h:
 
-Main.cpp:
+include/cereal/details/helpers.hpp:
 
-include/json/json.h:
+/usr/include/sys/types.h:
 
-include/VrStereoConfig.hpp:
+include/cereal/details/polymorphic_impl_fwd.hpp:
 
-include/json/json_features.h:
+include/Sound.hpp:
 
-include/json/reader.h:
+include/cereal/details/static_object.hpp:
 
-include/json/version.h:
-
-/usr/include/bits/types/locale_t.h:
-
-include/nlohmann/adl_serializer.hpp:
-
-include/nlohmann/byte_container_with_subtype.hpp:
-
-/usr/include/ctype.h:
-
-include/nlohmann/detail/abi_macros.hpp:
-
-include/nlohmann/detail/conversions/to_chars.hpp:
-
-include/nlohmann/detail/input/input_adapters.hpp:
-
-include/nlohmann/detail/exceptions.hpp:
-
-/include/c++/13.2.1/bits/forward_list.tcc:
-
-include/nlohmann/detail/input/parser.hpp:
+include/cereal/external/rapidjson/rapidjson.h:

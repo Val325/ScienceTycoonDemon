@@ -344,6 +344,69 @@ CMakeFiles/Main.dir/Main.cpp.o: \
   /home/ghost/progects/ScienceTycoon/ScienceTycoonDemon/buildObj.hpp \
   /home/ghost/progects/ScienceTycoon/ScienceTycoonDemon/selectionBtn.cpp \
   /home/ghost/progects/ScienceTycoon/ScienceTycoonDemon/SaveData.cpp \
+  /home/ghost/progects/ScienceTycoon/ScienceTycoonDemon/include/cereal/types/vector.hpp \
+  /home/ghost/progects/ScienceTycoon/ScienceTycoonDemon/include/cereal/cereal.hpp \
+  /bin/../lib64/gcc/x86_64-pc-linux-gnu/13.2.1/../../../../include/c++/13.2.1/unordered_set \
+  /bin/../lib64/gcc/x86_64-pc-linux-gnu/13.2.1/../../../../include/c++/13.2.1/bits/unordered_set.h \
+  /home/ghost/progects/ScienceTycoon/ScienceTycoonDemon/include/cereal/macros.hpp \
+  /home/ghost/progects/ScienceTycoon/ScienceTycoonDemon/include/cereal/details/traits.hpp \
+  /bin/../lib64/gcc/x86_64-pc-linux-gnu/13.2.1/../../../../include/c++/13.2.1/typeindex \
+  /home/ghost/progects/ScienceTycoon/ScienceTycoonDemon/include/cereal/access.hpp \
+  /home/ghost/progects/ScienceTycoon/ScienceTycoonDemon/include/cereal/specialize.hpp \
+  /home/ghost/progects/ScienceTycoon/ScienceTycoonDemon/include/cereal/details/helpers.hpp \
+  /home/ghost/progects/ScienceTycoon/ScienceTycoonDemon/include/cereal/details/static_object.hpp \
+  /home/ghost/progects/ScienceTycoon/ScienceTycoonDemon/include/cereal/types/base_class.hpp \
+  /home/ghost/progects/ScienceTycoon/ScienceTycoonDemon/include/cereal/details/polymorphic_impl_fwd.hpp \
+  /home/ghost/progects/ScienceTycoon/ScienceTycoonDemon/include/cereal/types/common.hpp \
+  /home/ghost/progects/ScienceTycoon/ScienceTycoonDemon/include/cereal/types/string.hpp \
+  /home/ghost/progects/ScienceTycoon/ScienceTycoonDemon/include/cereal/archives/json.hpp \
+  /home/ghost/progects/ScienceTycoon/ScienceTycoonDemon/include/cereal/details/util.hpp \
+  /bin/../lib64/gcc/x86_64-pc-linux-gnu/13.2.1/../../../../include/c++/13.2.1/cxxabi.h \
+  /bin/../lib64/gcc/x86_64-pc-linux-gnu/13.2.1/../../../../include/c++/13.2.1/x86_64-pc-linux-gnu/bits/cxxabi_tweaks.h \
+  /home/ghost/progects/ScienceTycoon/ScienceTycoonDemon/include/cereal/external/rapidjson/prettywriter.h \
+  /home/ghost/progects/ScienceTycoon/ScienceTycoonDemon/include/cereal/external/rapidjson/writer.h \
+  /home/ghost/progects/ScienceTycoon/ScienceTycoonDemon/include/cereal/external/rapidjson/stream.h \
+  /home/ghost/progects/ScienceTycoon/ScienceTycoonDemon/include/cereal/external/rapidjson/rapidjson.h \
+  /usr/lib/clang/16/include/inttypes.h /usr/include/inttypes.h \
+  /home/ghost/progects/ScienceTycoon/ScienceTycoonDemon/include/cereal/external/rapidjson/encodings.h \
+  /home/ghost/progects/ScienceTycoon/ScienceTycoonDemon/include/cereal/external/rapidjson/internal/meta.h \
+  /home/ghost/progects/ScienceTycoon/ScienceTycoonDemon/include/cereal/external/rapidjson/internal/../rapidjson.h \
+  /home/ghost/progects/ScienceTycoon/ScienceTycoonDemon/include/cereal/external/rapidjson/internal/stack.h \
+  /home/ghost/progects/ScienceTycoon/ScienceTycoonDemon/include/cereal/external/rapidjson/internal/../allocators.h \
+  /home/ghost/progects/ScienceTycoon/ScienceTycoonDemon/include/cereal/external/rapidjson/internal/swap.h \
+  /home/ghost/progects/ScienceTycoon/ScienceTycoonDemon/include/cereal/external/rapidjson/internal/strfunc.h \
+  /home/ghost/progects/ScienceTycoon/ScienceTycoonDemon/include/cereal/external/rapidjson/internal/../stream.h \
+  /home/ghost/progects/ScienceTycoon/ScienceTycoonDemon/include/cereal/external/rapidjson/internal/dtoa.h \
+  /home/ghost/progects/ScienceTycoon/ScienceTycoonDemon/include/cereal/external/rapidjson/internal/itoa.h \
+  /home/ghost/progects/ScienceTycoon/ScienceTycoonDemon/include/cereal/external/rapidjson/internal/diyfp.h \
+  /home/ghost/progects/ScienceTycoon/ScienceTycoonDemon/include/cereal/external/rapidjson/internal/ieee754.h \
+  /home/ghost/progects/ScienceTycoon/ScienceTycoonDemon/include/cereal/external/rapidjson/stringbuffer.h \
+  /home/ghost/progects/ScienceTycoon/ScienceTycoonDemon/include/cereal/external/rapidjson/ostreamwrapper.h \
+  /home/ghost/progects/ScienceTycoon/ScienceTycoonDemon/include/cereal/external/rapidjson/istreamwrapper.h \
+  /home/ghost/progects/ScienceTycoon/ScienceTycoonDemon/include/cereal/external/rapidjson/document.h \
+  /home/ghost/progects/ScienceTycoon/ScienceTycoonDemon/include/cereal/external/rapidjson/reader.h \
+  /home/ghost/progects/ScienceTycoon/ScienceTycoonDemon/include/cereal/external/rapidjson/allocators.h \
+  /home/ghost/progects/ScienceTycoon/ScienceTycoonDemon/include/cereal/external/rapidjson/encodedstream.h \
+  /home/ghost/progects/ScienceTycoon/ScienceTycoonDemon/include/cereal/external/rapidjson/memorystream.h \
+  /home/ghost/progects/ScienceTycoon/ScienceTycoonDemon/include/cereal/external/rapidjson/internal/strtod.h \
+  /home/ghost/progects/ScienceTycoon/ScienceTycoonDemon/include/cereal/external/rapidjson/internal/biginteger.h \
+  /home/ghost/progects/ScienceTycoon/ScienceTycoonDemon/include/cereal/external/rapidjson/internal/pow10.h \
+  /bin/../lib64/gcc/x86_64-pc-linux-gnu/13.2.1/../../../../include/c++/13.2.1/climits \
+  /usr/lib/clang/16/include/limits.h /usr/include/limits.h \
+  /usr/include/bits/posix1_lim.h /usr/include/bits/local_lim.h \
+  /usr/include/linux/limits.h /usr/include/bits/posix2_lim.h \
+  /usr/include/bits/xopen_lim.h /usr/include/bits/uio_lim.h \
+  /home/ghost/progects/ScienceTycoon/ScienceTycoonDemon/include/cereal/external/rapidjson/error/error.h \
+  /home/ghost/progects/ScienceTycoon/ScienceTycoonDemon/include/cereal/external/rapidjson/error/../rapidjson.h \
+  /home/ghost/progects/ScienceTycoon/ScienceTycoonDemon/include/cereal/external/base64.hpp \
+  /bin/../lib64/gcc/x86_64-pc-linux-gnu/13.2.1/../../../../include/c++/13.2.1/stack \
+  /bin/../lib64/gcc/x86_64-pc-linux-gnu/13.2.1/../../../../include/c++/13.2.1/deque \
+  /bin/../lib64/gcc/x86_64-pc-linux-gnu/13.2.1/../../../../include/c++/13.2.1/bits/stl_deque.h \
+  /bin/../lib64/gcc/x86_64-pc-linux-gnu/13.2.1/../../../../include/c++/13.2.1/bits/deque.tcc \
+  /bin/../lib64/gcc/x86_64-pc-linux-gnu/13.2.1/../../../../include/c++/13.2.1/bits/stl_stack.h \
+  /home/ghost/progects/ScienceTycoon/ScienceTycoonDemon/include/cereal/types/memory.hpp \
+  /home/ghost/progects/ScienceTycoon/ScienceTycoonDemon/include/cereal/types/polymorphic.hpp \
+  /home/ghost/progects/ScienceTycoon/ScienceTycoonDemon/include/cereal/details/polymorphic_impl.hpp \
   /usr/include/GLFW/glfw3.h /usr/include/GL/gl.h /usr/include/GL/glext.h \
   /usr/include/KHR/khrplatform.h \
   /bin/../lib64/gcc/x86_64-pc-linux-gnu/13.2.1/../../../../include/c++/13.2.1/thread \
@@ -357,9 +420,4 @@ CMakeFiles/Main.dir/Main.cpp.o: \
   /home/ghost/progects/ScienceTycoon/ScienceTycoonDemon/include/json/forwards.h \
   /home/ghost/progects/ScienceTycoon/ScienceTycoonDemon/include/json/reader.h \
   /home/ghost/progects/ScienceTycoon/ScienceTycoonDemon/include/json/value.h \
-  /bin/../lib64/gcc/x86_64-pc-linux-gnu/13.2.1/../../../../include/c++/13.2.1/deque \
-  /bin/../lib64/gcc/x86_64-pc-linux-gnu/13.2.1/../../../../include/c++/13.2.1/bits/stl_deque.h \
-  /bin/../lib64/gcc/x86_64-pc-linux-gnu/13.2.1/../../../../include/c++/13.2.1/bits/deque.tcc \
-  /bin/../lib64/gcc/x86_64-pc-linux-gnu/13.2.1/../../../../include/c++/13.2.1/stack \
-  /bin/../lib64/gcc/x86_64-pc-linux-gnu/13.2.1/../../../../include/c++/13.2.1/bits/stl_stack.h \
   /home/ghost/progects/ScienceTycoon/ScienceTycoonDemon/include/json/writer.h
