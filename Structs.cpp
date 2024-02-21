@@ -553,16 +553,22 @@ BuildObj::BuildObj(): NameObj("buildCell"), Path("src/location/laboratory/buildi
 
 
            if (CheckCollisionPointRec(PositionClick, frameRec) && IsMouseButtonDown(0)){
-                std::cout << "x: " << PositionClick.x << " y:" << PositionClick.y << std::endl;
-                std::cout << "numCells: " << numCells << std::endl;
+                if (obj.isDraw){
+                    std::cout << "x: " << PositionClick.x << " y:" << PositionClick.y << std::endl;
+                    std::cout << "numCells: " << numCells << std::endl;
+                }
                 //isClicked = false;
                 obj.isDraw = false;
             }
            if (CheckCollisionPointRec(PositionClick, frameRec)){
                 
-                shadow.SetPosObj(frameRec.x + 5, frameRec.y + 5);
-                shadow.DrawObj();
-                std::cout << "framerec x: " << frameRec.x << " y:" << frameRec.y << std::endl;
+                
+                if (obj.isDraw){
+                    shadow.SetPosObj(frameRec.x + 7, frameRec.y + 7);
+                    shadow.DrawObj();
+                    std::cout << "framerec x: " << frameRec.x << " y:" << frameRec.y << std::endl;
+                }
+                
            }
 
         }
