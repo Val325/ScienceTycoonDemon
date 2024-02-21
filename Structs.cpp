@@ -731,16 +731,32 @@ BuildObj::BuildObj(): NameObj("buildCell"), Path("src/location/laboratory/buildi
         private:
             Rectangle menuRec;
         public:
-            ItemMenuSelection(){}
-    };
+            ItemMenuSelection(){
+
+            }
+            void SetId(){}
+            void Draw(){}
+            void SetPos(){}
+    }; 
 
     class MenuSelection : public GuiElem{
         private:
             Rectangle buttonRec;
+            std::vector<ItemMenuSelection> itemsMenu;
         public:
-            MenuSelection(){}
+            MenuSelection(){
+                buttonRec = (Rectangle){ 344, 352, 256, 128 };
+            }
+            void Draw(){
+                GuiWindowBox(buttonRec, "Select table");
+            }
+            void SetPos(int xpos, int ypos){
+                buttonRec.x = xpos;
+                buttonRec.y = ypos;
+            }
     };
-    
+
+
     //building, which something generate
     class Generator{
         private:

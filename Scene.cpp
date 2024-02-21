@@ -45,6 +45,7 @@ void Scene1(int saveNumber, Saving * data = nullptr)
     BuildObj buildCells [amountBuildCell];
     int pointsCell [amountBuildCell];
     Board cellsTable;
+    MenuSelection men; 
     //save_num = saveNumber + 1;
 /*
       for (int i = 0; i < amountBuildCell; ++i){
@@ -187,6 +188,7 @@ void Scene1(int saveNumber, Saving * data = nullptr)
     while (!WindowShouldClose())
     {
         cellsTable.setCamera(camera);
+        
         //tim.StartTimer();
         //TableMinSetFromSave(3, tableReserarchMin);
         //if (data != nullptr){
@@ -344,7 +346,7 @@ void Scene1(int saveNumber, Saving * data = nullptr)
           SaveData("save/", saveName);
           CloseWindow(); 
         }
-        
+        men.Draw(); 
         hero->points = Knowledge_Point;
         hero->money = Money_Point;  
         DrawText(TextFormat("Knowledge : %04d", hero->points), 30, 80, 20, WHITE);
