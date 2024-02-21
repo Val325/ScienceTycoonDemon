@@ -395,7 +395,7 @@ float sizeBuild = 4.5f;
         }
     
 
-BuildObj::BuildObj(std::string name, const char *path, float size): NameObj("buildCell"), Path("src/location/laboratory/buildingCell.png"), sizeObject(1.5f){
+BuildObj::BuildObj(std::string name, const char *path, float size): NameObj("buildCell"), Path("src/location/laboratory/buildingCell.png"), sizeObject(1.5f),shadow("shadow","src/shadowpanel.png", 5.0f){
             NameObj = name;
             sizeObject = size;
             Path = path;
@@ -423,7 +423,7 @@ BuildObj::BuildObj(std::string name, const char *path, float size): NameObj("bui
             flipsCounterLeft = 0;
             flipsCounterRight = 1;
             }
-BuildObj::BuildObj(): NameObj("buildCell"), Path("src/location/laboratory/buildingCell.png"), sizeObject(1.5f){
+BuildObj::BuildObj(): NameObj("buildCell"), Path("src/location/laboratory/buildingCell.png"), sizeObject(1.5f), shadow("shadow","src/shadowpanel.png", 5.0f){
             NameObj = "buildCell";
             sizeObject = 1.5f;
             Path = "src/location/laboratory/buildingCell.png";
@@ -549,6 +549,8 @@ BuildObj::BuildObj(): NameObj("buildCell"), Path("src/location/laboratory/buildi
         void BuildObj::clickEventListenSimple(Camera2D camera, BuildObj &obj){
            Vector2 PositionClick = GetMousePosition();
            PositionClick = GetScreenToWorld2D(PositionClick, camera);
+           ; 
+
 
            if (CheckCollisionPointRec(PositionClick, frameRec) && IsMouseButtonDown(0)){
                 std::cout << "x: " << PositionClick.x << " y:" << PositionClick.y << std::endl;
@@ -556,6 +558,12 @@ BuildObj::BuildObj(): NameObj("buildCell"), Path("src/location/laboratory/buildi
                 //isClicked = false;
                 obj.isDraw = false;
             }
+           if (CheckCollisionPointRec(PositionClick, frameRec)){
+                
+                shadow.SetPosObj(frameRec.x + 5, frameRec.y + 5);
+                shadow.DrawObj();
+                std::cout << "framerec x: " << frameRec.x << " y:" << frameRec.y << std::endl;
+           }
 
         }
 
@@ -703,174 +711,6 @@ BuildObj::BuildObj(): NameObj("buildCell"), Path("src/location/laboratory/buildi
         }
 */
 
-
-    class Object{
-        private:
-        Vector2 PositionSpawn;
-        std::string NameObj;
-        std::string Path;
-
-        float sizeObject;
-        float WidthTile;
-        float HeigthTile;
-        bool Permeable;
-        bool drawOutline;
-        
-        Image image;
-        Texture2D TextureGame;
-        Rectangle frameRec;
-
-        double startTime;
-        int startTimeTimer;
-        int interval;
-        bool flag;
-        int currentTime;
-        int elapsedTime;
-
-        bool pause_obj;
-        bool isStopTimer;
-        public:
-            Rectangle CollisionRec;
-        Object(std::string name, std::string path, float size){
-            NameObj = name;
-            sizeObject = size;
-
-            PositionSpawn = (Vector2){0.0, 0.0};
-            image = LoadImage(path.c_str());
-
-            WidthTile = (float)image.width * sizeObject;
-            HeigthTile = (float)image.height * sizeObject;
-            drawOutline = false;
-
-            CollisionRec = (Rectangle){ PositionSpawn.x, PositionSpawn.y, (float)WidthTile, (float)HeigthTile};
-            frameRec; 
-            TextureGame = LoadTextureFromImage(image);
-            
-
-            startTime = GetTime(); // сохраняем текущее время
-            startTimeTimer = static_cast<int>(GetTime());
-            interval = 20; 
-            flag = false;
-            pause_obj = false;
-        }
-        void setSize(float size){
-            sizeObject = size; 
-        }
-        void setInterval(int num){
-	        interval = num;
-	    }
-        void setStartTime(int num){
-            startTimeTimer = num;
-        }
-        void pause(){
-            pause_obj = true;
-            currentTime = 0;
-            elapsedTime = 0;
-        }
-        void play(){
-            pause_obj = false;
-        }
-        bool returnIsPause(){
-            return pause_obj;
-        }
-        int returnElapsedTime(){
-            return elapsedTime;
-        }
-        void setElapsedTime(int num){
-            elapsedTime = num;
-        }
-        int returnCurrentTime(){
-            return currentTime;
-        }
-        void setCurrentTime(int num){
-            currentTime = num;
-        }
-        int countTimer(bool exist){
-
-            
-        }
-        void countTimer(int time){
-
-        }
-
-        Rectangle ReturnRect(bool draw){
-            //Vector2 PositionRect = GetScreenToWorld2D({PositionSpawn.x, PositionSpawn.y});
-            Rectangle checkRect = (Rectangle){PositionSpawn.x, PositionSpawn.y, (float)WidthTile, (float)HeigthTile/2.0f};
-            
-            if (draw)
-            {
-               DrawRectangle(checkRect.x, checkRect.y, (float)checkRect.width, (float)checkRect.height, GREEN);
-            }
-
-            return checkRect;
-        }
-        Rectangle ReturnRect(bool draw, Camera2D camera){
-            Vector2 PositionRect = GetWorldToScreen2D(PositionSpawn, camera);
-            Rectangle checkRect = (Rectangle){PositionSpawn.x, PositionSpawn.y, (float)WidthTile, (float)HeigthTile/2.0f};
-            //Rectangle checkRect = (Rectangle){PositionRect.x, PositionRect.y, (float)WidthTile, (float)HeigthTile/2.0f}; 
-            
-            if (draw)
-            {
-               DrawRectangle(checkRect.x, checkRect.y, (float)checkRect.width, (float)checkRect.height, GREEN);
-            }
-
-            return checkRect;
-        }
-        Vector2 ReturnPosition(){
-            return PositionSpawn;
-        }
-        void SetPosObj(Vector2 PositionSpawn){
-  
-            PositionSpawn = (Vector2){0.0, 0.0};
-        }
-
-        void SetPosObj(float x, float y){
-            PositionSpawn = (Vector2){x, y};
-        }
-
-        void DrawRect(){
-            if (drawOutline){
-                DrawRectangle(frameRec.x, frameRec.y, (float)WidthTile, (float)HeigthTile, GREEN);
-            }
-        }
-
-        void DrawObj(){
-            DrawTextureEx(TextureGame, PositionSpawn, 0, sizeObject, WHITE);
-        }
-        void DrawOutline(bool isDraw){
-            if (isDraw){
-                DrawRectangle(frameRec.x, frameRec.y, (float)WidthTile, (float)HeigthTile, BLACK);
-            }
-        }
-
-        bool clickEventListenSimple(Camera2D camera){
-           Vector2 PositionClick = GetMousePosition();
-           //PositionClick = GetScreenToWorld2D(PositionClick, camera);
-           frameRec = (Rectangle){ PositionSpawn.x, PositionSpawn.y, (float)WidthTile, (float)HeigthTile}; 
-           if (CheckCollisionPointRec(PositionClick, frameRec) && IsMouseButtonDown(0)){
-                //std::cout << "you click here!" << std::endl;
-   
-                //temporaly
-                //hardcoding
-                
-              return true; 
-	
-          
-            
-           }
-            return false;
-        }
-        bool IsHoverObj(){
-           Vector2 PositionClick = GetMousePosition();
-           //PositionClick = GetScreenToWorld2D(PositionClick, camera);
-           frameRec = (Rectangle){ PositionSpawn.x, PositionSpawn.y, (float)WidthTile, (float)HeigthTile}; 
-           if (CheckCollisionPointRec(PositionClick, frameRec)){
-                //std::cout << "you hover here!" << std::endl;
-                return true; 
-           }
-           return false;
-        }
-    };
     
     class GuiElem{
         private:
