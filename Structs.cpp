@@ -30,6 +30,124 @@ float sizeBuild = 4.5f;
 //------------------------------------------------------------------------------------
 //
 //
+    class GuiElem{
+        private:
+            int id;
+            bool isDraw;
+            Vector2 Position;
+        public:
+            GuiElem(){} 
+    };
+
+    class ItemMenuSelection : public GuiElem{
+        private:
+            Rectangle menuRec;
+        public:
+            ItemMenuSelection(){
+
+            }
+            void SetId(){}
+            void Draw(){}
+            void SetPos(){}
+    }; 
+
+    class MenuSelection : public GuiElem{
+        private:
+            Rectangle buttonRec;
+            bool isOpenMenu;
+            std::vector<ItemMenuSelection> itemsMenu;
+        public:
+            MenuSelection(){
+                isOpenMenu = false;
+                buttonRec = (Rectangle){ 344, 352, 256, 128 };
+            }
+            void Draw(){
+                if (isOpenMenu){
+                    isOpenMenu = !GuiWindowBox(buttonRec, "Select table");
+                }
+            }
+            void toggleDraw(){
+                isOpenMenu = !isOpenMenu;
+            }
+            void setDrawFalse(){
+                isOpenMenu = false;
+            }
+            void setDrawTrue(){
+                isOpenMenu = true;
+            }
+            void SetPos(int xpos, int ypos){
+                buttonRec.x = xpos;
+                buttonRec.y = ypos;
+            }
+    };
+
+class BuildObj{
+        private:
+            Vector2 PositionSpawn;
+            Image img;
+            Texture2D imgAnim;
+            
+            Object shadow;
+
+            std::string NameObj;
+            std::string Path;
+
+            double startTime;
+            int startTimeTimer;
+            int interval;
+            bool flag;
+
+            float sizeObject;
+            float speedHero;
+            int points;
+            int nextFrameDataOffset;
+            int currentFrame;
+
+            int flipsCounterLeft;
+            int flipsCounterRight;
+            int framesSpeed;
+            int animFrames;
+            bool collision;
+            bool exists;
+            bool isSect;
+	    bool isClickedTable;
+            std::vector<BuildObj> ojects;
+	    Vector2 PositionClickTable;
+        public:
+            bool isDraw;
+	        int id;
+            Rectangle frameRec;
+            int framesCounter;
+            int price;
+            int numCells;
+        BuildObj(std::string name, const char *path, float size);   
+	BuildObj();
+
+    void countPoint(int num, bool exist);         //
+	void setInterval(int num);
+    int countPointRet(int num, int addPoint, bool exist);        
+	int getPoints();
+	int ReturnID();
+	bool IsExist();
+    void setPath(std::string path_img);
+	void SetIsExist(bool ex);
+    void clickEventListenSimple(Camera2D camera, BuildObj &obj, MenuSelection &menu);
+    void clickEventListen(Camera2D camera, int &money, int id_cell, std::map<std::string, BuildObj> tableRes, BuildObj cell[]);
+    void clickEventListenV2(Camera2D camera, int &money, int id_cell, std::map<std::string, BuildObj> tableRes, BuildObj cell[]);  
+	void SelectionPopUp(Camera2D camera, Player &play, int &money, BuildObj cell[], int id_cell,std::map<std::string, BuildObj> tableRes);
+	void DrawRect();
+	Rectangle ReturnframeRec();
+	float ReturnframeRecX();
+	float ReturnframeRecY();
+	Vector2 ReturnPostionClick(Camera2D);
+    void animation(BuildObj &obj); 
+	void SetPosObj(float x, float y);
+    Vector2 getPosVector();
+    void SetPosRect(float x, float y);
+	void countAnim(BuildObj &obj);         
+    void Draw();
+    //bool isNull() const;
+ };
 
 	Player::Player(const char *path, int knowledgeData, int moneyData){
             PositionSpawn = (Vector2){ (float)GetScreenWidth()/2.0f, (float)GetScreenHeight()/2.0f };
@@ -108,7 +226,7 @@ float sizeBuild = 4.5f;
         }
         Rectangle Player::ReturnframeRec(){
             Rectangle heroRect = (Rectangle){ PositionSpawn.x + 20.0f, PositionSpawn.y + 24.0f, (float)imgAnim.width * 0.5f, (float)imgAnim.height};
-            //DrawRectangle(heroRect.x, heroRect.y, (float)heroRect.width, (float)heroRect.height, RED);
+            //DrawRectangle(Просто злая сказка же для наших глубинариев. Наших мальчиков в трусиках трахают на фронте гейсолдаты НАТО. Это будет эпично heroRect.x, heroRect.y, (float)heroRect.width, (float)heroRect.height, RED);
 
             return heroRect;
         }
@@ -395,321 +513,6 @@ float sizeBuild = 4.5f;
         }
     
 
-BuildObj::BuildObj(std::string name, const char *path, float size): NameObj("buildCell"), Path("src/location/laboratory/buildingCell.png"), sizeObject(1.5f),shadow("shadow","src/shadowpanel.png", 5.0f){
-            NameObj = name;
-            sizeObject = size;
-            Path = path;
-            PositionSpawn = (Vector2){ (float)GetScreenWidth()/2.0f, (float)GetScreenHeight()/2.0f };
-            animFrames = 0;
-            img = LoadImageAnim(path, &animFrames);
-            imgAnim = LoadTextureFromImage(img);
-            price = 50;
-            numCells = 0;
-
-            startTime = GetTime(); // сохраняем текущее время
-            startTimeTimer = static_cast<int>(GetTime()) - 5;
-            interval = 5;
-            flag = false;
-
-            exists = false;
-            isSect = false;
-	    isClickedTable = false;
-            frameRec; 
-            speedHero = 2.0f;
-            points = 0;
-            nextFrameDataOffset = 0;
-            currentFrame = 0;
-            framesCounter = 0;
-            flipsCounterLeft = 0;
-            flipsCounterRight = 1;
-            }
-BuildObj::BuildObj(): NameObj("buildCell"), Path("src/location/laboratory/buildingCell.png"), sizeObject(1.5f), shadow("shadow","src/shadowpanel.png", 5.0f){
-            NameObj = "buildCell";
-            sizeObject = 1.5f;
-            Path = "src/location/laboratory/buildingCell.png";
-            PositionSpawn = (Vector2){ (float)GetScreenWidth()/2.0f, (float)GetScreenHeight()/2.0f };
-            animFrames = 0;
-            img = LoadImageAnim(Path.c_str(), &animFrames);
-            imgAnim = LoadTextureFromImage(img);
-            price = 50;
-            numCells = 0;
-
-            startTime = GetTime(); // сохраняем текущее время
-            startTimeTimer = static_cast<int>(GetTime()) - 5;
-            interval = 5;
-            flag = false;
-            /*
-            Image img;
-            Texture2D imgAnim;
-            int animFrames;
-            int framesCounter;
-            int currentFrame;
-            int nextFrameDataOffset;
-            */
-	    isClickedTable = false;
-            exists = false;
-            frameRec; 
-            speedHero = 2.0f;
-            points = 0;
-            nextFrameDataOffset = 0;
-            currentFrame = 0;
-            framesCounter = 0;
-            flipsCounterLeft = 0;
-            flipsCounterRight = 1;
-            isDraw = true;
-        }
-
-        void BuildObj::setPath(std::string path_img){
-           Path = path_img; 
-        }
-        void BuildObj::countPoint(int num, bool exist){
-            
-        }
-	void BuildObj::setInterval(int num){
-	    interval = num;
-	}
-         //
-        int BuildObj::countPointRet(int num, int addPoint, bool exist){
-            int currentTime = static_cast<int>(GetTime());
-            int elapsedTime = currentTime - startTimeTimer;
-            
-            
-            int totalPoint = 0;
-           
-
-            if (elapsedTime >= interval) 
-            {
-                flag = true;  
-                startTimeTimer = currentTime;  
-            }
-    
-            if (flag && exist)  
-            {
-
-                Knowledge_Point += (AmountMinTable * 10) + (AmountMidTable * 20) + (AmountTopTable * 30);
-		std::cout << "Knowledge_Point: "<< Knowledge_Point  << std::endl;
-                flag = false;  
-            }
-           
-            //std::cout << "currentTime: " << currentTime << std::endl;
-            //std::cout << "elapsedTime: " << elapsedTime << std::endl;
-            
-            return totalPoint;
-        }
-        int BuildObj::getPoints(){
-            return points;
-        }
-        bool BuildObj::IsExist(){
-            return exists;
-        }
-	Rectangle BuildObj::ReturnframeRec(){
-	    return frameRec;	
-	}	
-	float BuildObj::ReturnframeRecX(){
-	    return frameRec.x;	
-	}	
-	float BuildObj::ReturnframeRecY(){
-	    return frameRec.y;	
-	}
-	int BuildObj::ReturnID(){
-	    return id;	
-	}
-
-	Vector2 BuildObj::ReturnPostionClick(Camera2D camera){
-
-	  Vector2 PositionClick = GetScreenToWorld2D(PositionClick, camera); 
-          if (CheckCollisionPointRec(PositionClick, frameRec) && IsMouseButtonDown(0) && !isClickedTable){
-             isClickedTable = true;
-	     PositionClickTable = PositionClick;
-	     return PositionClickTable; 
-          }
-          if (isClickedTable) {
-
-
-	     if (!allObj.empty()) {
-		for (int i = 0; i <= allObj.size(); i++){
-			//allObj[i].Draw();
-			
-			//allObj[i].SetPosObj(allObj[i].ReturnframeRec().x + 10.0f,allObj[i].ReturnframeRec().x - 60.0f);
-			//allObj[i].SetPosRect(allObj[i].getPosVector().x, allObj[i].getPosVector().y);
-
-			//allObj[i].SetPosObj(buildCells[i].getPosVector().x + 10.0f, buildCells[i].getPosVector().y - 60.0f);
-			//
-			//allObj[i].Draw();
-			//allObj[i].countAnim(allObj[i]);
-			//allObj[i].animation(allObj[i]);
-	    	}
-	    }
-
-	     return PositionClickTable;
-          }
-	
-	    
-	}
-        void BuildObj::clickEventListenSimple(Camera2D camera, BuildObj &obj){
-           Vector2 PositionClick = GetMousePosition();
-           PositionClick = GetScreenToWorld2D(PositionClick, camera);
-           ; 
-
-
-           if (CheckCollisionPointRec(PositionClick, frameRec) && IsMouseButtonDown(0)){
-                if (obj.isDraw){
-                    std::cout << "x: " << PositionClick.x << " y:" << PositionClick.y << std::endl;
-                    std::cout << "numCells: " << numCells << std::endl;
-                }
-                //isClicked = false;
-                obj.isDraw = false;
-            }
-           if (CheckCollisionPointRec(PositionClick, frameRec)){
-                
-                
-                if (obj.isDraw){
-                    shadow.SetPosObj(frameRec.x + 7, frameRec.y + 7);
-                    shadow.DrawObj();
-                    std::cout << "framerec x: " << frameRec.x << " y:" << frameRec.y << std::endl;
-                }
-                
-           }
-
-        }
-
-        void BuildObj::clickEventListen(Camera2D camera, int &money, int id_cell,std::map<std::string, BuildObj> tableRes, BuildObj cell[]){
-            
-
-            bool isLoadTexture = false;
-            money = PlayerMoney;
-            Vector2 PositionClick = GetMousePosition();
-            Vector2 PositionBeforeClick = PositionSpawn;
-            PositionClick = GetScreenToWorld2D(PositionClick, camera);
-            BuildObj *table;
-            bool isClosed;
-            int click_id = 0;
-            //!exists
-            if (CheckCollisionPointRec(PositionClick, frameRec) 
-                    && IsMouseButtonDown(0) 
-                    && !allObjIsExists[id_cell] 
-                    && !allObjIsSelected[id_cell]
-                    && money >= 0)
-            {
-                click_id = id_cell;
-                numCells += 1;
-                //money -= price * numCells;
-                //money -= price;
-		        chooseTable = id_cell;	
-               	WindowBoxPopUpSelectTableActive = true;
-                exists = true;
-                allObjIsExists[id_cell] = true;
-            }
-
-//if (exists){
-         if (exists){   
-	        std::cout << "PositionBeforeClick: x: " << PositionBeforeClick.x << " y: " << PositionBeforeClick.y << std::endl;
-            std::cout << "PositionSpawn: x: " << PositionSpawn.x << " y: " << PositionSpawn.y << std::endl;
-            std::cout << "allObj[id_cell].getPosVector(): x: " << allObj[id_cell].getPosVector().x << " y: " << allObj[id_cell].getPosVector().y << std::endl;
-
-        if (!WindowBoxPopUpSelectTableActive && !allObjIsExists[id_cell] && allObjIsSelected[id_cell]){
-            
-            allObj[id_cell].countAnim(allObj[id_cell]);
-		    allObj[id_cell].animation(allObj[id_cell]);
-        }
-
-        
-			
-		
-		
-        }
-}
-          void BuildObj::clickEventListenV2(Camera2D camera, int &money, int id_cell,std::map<std::string, BuildObj> tableRes, BuildObj cell[]){
-            
-          }
-	
-        void BuildObj::SelectionPopUp(Camera2D camera, Player &play, int &money, BuildObj cell[], int id_cell,std::map<std::string, BuildObj> tableRes){
-          Vector2 PositionClick = GetMousePosition();
-          Vector2 PositionPlayer = play.ReturnPostion();
-          int isClosed;
-	  BuildObj table;
-          
-          if (CheckCollisionPointRec(PositionClick, frameRec) && IsMouseButtonDown(0) && !isSect){
-            //numCells += 1;
-                
-            //money -= price * numCells; 
-            isSect = true; 
-          }
-          if (isSect) {
-            play.setMovable(false);
-	    
-            //isClosed = selectionBtn(camera ,id_cell, tableRes);
-	    //chooseTable = id_cell; 
-	    
-	    
-            if (isClosed == 0) {
-              isSect = false;
-              play.setMovable(true);
-
-	      
-            }/*
-	    if (!allObj.empty()) {
-		for (int i = 0; i <= allObj.size(); i++){
-			//allObj[i].Draw();
-			//allObj[i].SetPosObj(allObj[i].ReturnframeRec().x + 10.0f,allObj[i].ReturnframeRec().x - 60.0f);
-			
-			
-		
-			allObj[i].SetPosRect(frameRec.x + 10.0f, frameRec.y - 60.0f);
-			allObj[i].SetPosObj(cell[i].frameRec.x,cell[i].frameRec.y);
-
-			
-			//allObj[i].Draw();
-			//allObj[i].countAnim(allObj[i]);
-			//allObj[i].animation(allObj[i]);
-			
-	    	}
-	    }*/
-
-          }
-	 
-        }
-        void BuildObj::DrawRect(){
-            DrawRectangle(frameRec.x, frameRec.y, frameRec.width, frameRec.height, RED);
-        }
-        void BuildObj::animation(BuildObj &obj) {
-        if (obj.framesCounter >= animFrames){
-
-            currentFrame++;
-
-            if (currentFrame >= 4) currentFrame = 0;
-
-                nextFrameDataOffset = img.height*img.height*4*currentFrame;
-
-                UpdateTexture(imgAnim, reinterpret_cast<uint8_t*>(img.data) + nextFrameDataOffset);
-
-
-
-                framesCounter = 0;
-
-
-            }
-        }
-        void BuildObj::SetPosObj(float x, float y){
-            PositionSpawn = (Vector2){x, y};
-        }
-        Vector2 BuildObj::getPosVector(){
-            return PositionSpawn;
-        }
-        void BuildObj::SetPosRect(float x, float y){
-            frameRec = (Rectangle){ x, y, (float)imgAnim.width * 1.5f, (float)imgAnim.height * 1.5f};
-        }
-        void BuildObj::countAnim(BuildObj &obj){
-            obj.framesCounter++;
-        }
-        void BuildObj::SetIsExist(bool ex){
-            exists = ex;
-	} 
-        void BuildObj::Draw(){
-	        if (isDraw){ 
-             DrawTextureEx(imgAnim, PositionSpawn, 0, sizeObject, WHITE);
-            }
-        }
 
 /*
         bool BuildObj::isNull() const {
@@ -718,43 +521,8 @@ BuildObj::BuildObj(): NameObj("buildCell"), Path("src/location/laboratory/buildi
 */
 
     
-    class GuiElem{
-        private:
-            int id;
-            bool isDraw;
-            Vector2 Position;
-        public:
-            GuiElem(){} 
-    };
 
-    class ItemMenuSelection : public GuiElem{
-        private:
-            Rectangle menuRec;
-        public:
-            ItemMenuSelection(){
 
-            }
-            void SetId(){}
-            void Draw(){}
-            void SetPos(){}
-    }; 
-
-    class MenuSelection : public GuiElem{
-        private:
-            Rectangle buttonRec;
-            std::vector<ItemMenuSelection> itemsMenu;
-        public:
-            MenuSelection(){
-                buttonRec = (Rectangle){ 344, 352, 256, 128 };
-            }
-            void Draw(){
-                GuiWindowBox(buttonRec, "Select table");
-            }
-            void SetPos(int xpos, int ypos){
-                buttonRec.x = xpos;
-                buttonRec.y = ypos;
-            }
-    };
 
 
     //building, which something generate
@@ -890,7 +658,7 @@ BuildObj::BuildObj(): NameObj("buildCell"), Path("src/location/laboratory/buildi
             std::vector<BuildObj> cells;
             std::vector<BuildObj> cellsBuild;
             Camera2D camera;
-            
+ 
             TableDat tableGameSave[50];
 
         public:
@@ -911,7 +679,7 @@ BuildObj::BuildObj(): NameObj("buildCell"), Path("src/location/laboratory/buildi
             void setCamera(Camera2D &cam){
                 camera = cam;
             }
-            void Draw(){
+            void Draw(MenuSelection &menuSelect){
                 int j = 0;
                 int q = 0; 
                     for (int i = 0; i < cells.size(); i++){
@@ -925,7 +693,7 @@ BuildObj::BuildObj(): NameObj("buildCell"), Path("src/location/laboratory/buildi
                         //for debug
                         //cells[i].DrawRect();
                         
-                        cells[i].clickEventListenSimple(camera, cells[i]);
+                        cells[i].clickEventListenSimple(camera, cells[i], menuSelect);
                     
                         cells[i].SetPosObj(positionPlace.x, positionPlace.y);
                         cells[i].SetPosRect(positionPlace.x, positionPlace.y);
@@ -989,6 +757,326 @@ BuildObj::BuildObj(): NameObj("buildCell"), Path("src/location/laboratory/buildi
 
         };
 
+
+
+
+BuildObj::BuildObj(std::string name, const char *path, float size): NameObj("buildCell"), Path("src/location/laboratory/buildingCell.png"), sizeObject(1.5f),shadow("shadow","src/shadowpanel.png", 5.0f){
+            NameObj = name;
+            sizeObject = size;
+            Path = path;
+            PositionSpawn = (Vector2){ (float)GetScreenWidth()/2.0f, (float)GetScreenHeight()/2.0f };
+            animFrames = 0;
+            img = LoadImageAnim(path, &animFrames);
+            imgAnim = LoadTextureFromImage(img);
+            price = 50;
+            numCells = 0;
+
+            startTime = GetTime(); // сохраняем текущее время
+            startTimeTimer = static_cast<int>(GetTime()) - 5;
+            interval = 5;
+            flag = false;
+
+            exists = false;
+            isSect = false;
+	    isClickedTable = false;
+            frameRec; 
+            speedHero = 2.0f;
+            points = 0;
+            nextFrameDataOffset = 0;
+            currentFrame = 0;
+            framesCounter = 0;
+            flipsCounterLeft = 0;
+            flipsCounterRight = 1;
+            }
+BuildObj::BuildObj(): NameObj("buildCell"), Path("src/location/laboratory/buildingCell.png"), sizeObject(1.5f), shadow("shadow","src/shadowpanel.png", 5.0f){
+            NameObj = "buildCell";
+            sizeObject = 1.5f;
+            Path = "src/location/laboratory/buildingCell.png";
+            PositionSpawn = (Vector2){ (float)GetScreenWidth()/2.0f, (float)GetScreenHeight()/2.0f };
+            animFrames = 0;
+            img = LoadImageAnim(Path.c_str(), &animFrames);
+            imgAnim = LoadTextureFromImage(img);
+            price = 50;
+            numCells = 0;
+
+            startTime = GetTime(); // сохраняем текущее время
+            startTimeTimer = static_cast<int>(GetTime()) - 5;
+            interval = 5;
+            flag = false;
+            /*
+            Image img;
+            Texture2D imgAnim;
+            int animFrames;
+            int framesCounter;
+            int currentFrame;
+            int nextFrameDataOffset;
+            */
+	    isClickedTable = false;
+            exists = false;
+            frameRec; 
+            speedHero = 2.0f;
+            points = 0;
+            nextFrameDataOffset = 0;
+            currentFrame = 0;
+            framesCounter = 0;
+            flipsCounterLeft = 0;
+            flipsCounterRight = 1;
+            isDraw = true;
+        }
+
+        void BuildObj::setPath(std::string path_img){
+           Path = path_img; 
+        }
+        void BuildObj::countPoint(int num, bool exist){
+            
+        }
+	void BuildObj::setInterval(int num){
+	    interval = num;
+	}
+         //
+        int BuildObj::countPointRet(int num, int addPoint, bool exist){
+            int currentTime = static_cast<int>(GetTime());
+            int elapsedTime = currentTime - startTimeTimer;
+            
+            
+            int totalPoint = 0;
+           
+
+            if (elapsedTime >= interval) 
+            {
+                flag = true;  
+                startTimeTimer = currentTime;  
+            }
+    
+            if (flag && exist)  
+            {
+
+                Knowledge_Point += (AmountMinTable * 10) + (AmountMidTable * 20) + (AmountTopTable * 30);
+		std::cout << "Knowledge_Point: "<< Knowledge_Point  << std::endl;
+                flag = false;  
+            }
+           
+            //std::cout << "currentTime: " << currentTime << std::endl;
+            //std::cout << "elapsedTime: " << elapsedTime << std::endl;
+            
+            return totalPoint;
+        }
+        int BuildObj::getPoints(){
+            return points;
+        }
+        bool BuildObj::IsExist(){
+            return exists;
+        }
+	Rectangle BuildObj::ReturnframeRec(){
+	    return frameRec;	
+	}	
+	float BuildObj::ReturnframeRecX(){
+	    return frameRec.x;	
+	}	
+	float BuildObj::ReturnframeRecY(){
+	    return frameRec.y;	
+	}
+	int BuildObj::ReturnID(){
+	    return id;	
+	}
+	Vector2 BuildObj::ReturnPostionClick(Camera2D camera){
+
+	  Vector2 PositionClick = GetScreenToWorld2D(PositionClick, camera); 
+          if (CheckCollisionPointRec(PositionClick, frameRec) && IsMouseButtonDown(0) && !isClickedTable){
+             isClickedTable = true;
+	     PositionClickTable = PositionClick;
+	     return PositionClickTable; 
+          }
+          if (isClickedTable) {
+
+
+	    // if (!allObj.empty()) {
+		//for (int i = 0; i <= allObj.size(); i++){
+			//allObj[i].Draw();
+			
+			//allObj[i].SetPosObj(allObj[i].ReturnframeRec().x + 10.0f,allObj[i].ReturnframeRec().x - 60.0f);
+			//allObj[i].SetPosRect(allObj[i].getPosVector().x, allObj[i].getPosVector().y);
+
+			//allObj[i].SetPosObj(buildCells[i].getPosVector().x + 10.0f, buildCells[i].getPosVector().y - 60.0f);
+			//
+			//allObj[i].Draw();
+			//allObj[i].countAnim(allObj[i]);
+			//allObj[i].animation(allObj[i]);
+	    //	}
+	    //}
+
+	     return PositionClickTable;
+          }
+	
+	    
+	}
+    void BuildObj::clickEventListenSimple(Camera2D camera, BuildObj &obj, MenuSelection &menu){
+           Vector2 PositionClick = GetMousePosition();
+           PositionClick = GetScreenToWorld2D(PositionClick, camera);
+            
+
+           if (CheckCollisionPointRec(PositionClick, frameRec) && IsMouseButtonDown(0)){
+                if (obj.isDraw){
+                    std::cout << "x: " << PositionClick.x << " y:" << PositionClick.y << std::endl;
+                    std::cout << "numCells: " << numCells << std::endl;
+                    
+                    menu.toggleDraw(); 
+                    obj.isDraw = false;
+                }
+                //isClicked = false;
+                
+            }
+           if (CheckCollisionPointRec(PositionClick, frameRec)){
+                
+                
+                if (obj.isDraw){
+                    shadow.SetPosObj(frameRec.x + 7, frameRec.y + 7);
+                    shadow.DrawObj();
+                    std::cout << "framerec x: " << frameRec.x << " y:" << frameRec.y << std::endl;
+                }
+                
+           }
+            menu.Draw();
+        }
+
+        void BuildObj::clickEventListen(Camera2D camera, int &money, int id_cell,std::map<std::string, BuildObj> tableRes, BuildObj cell[]){
+            
+            /*
+            bool isLoadTexture = false;
+            money = PlayerMoney;
+            Vector2 PositionClick = GetMousePosition();
+            Vector2 PositionBeforeClick = PositionSpawn;
+            PositionClick = GetScreenToWorld2D(PositionClick, camera);
+            BuildObj *table;
+            bool isClosed;
+            int click_id = 0;
+            //!exists
+            if (CheckCollisionPointRec(PositionClick, frameRec) 
+                    && IsMouseButtonDown(0) 
+                    && !allObjIsExists[id_cell] 
+                    && !allObjIsSelected[id_cell]
+                    && money >= 0)
+            {
+                click_id = id_cell;
+                numCells += 1;
+                //money -= price * numCells;
+                //money -= price;
+		        chooseTable = id_cell;	
+               	WindowBoxPopUpSelectTableActive = true;
+                exists = true;
+                allObjIsExists[id_cell] = true;
+            }
+
+//if (exists){
+         if (exists){   
+	        std::cout << "PositionBeforeClick: x: " << PositionBeforeClick.x << " y: " << PositionBeforeClick.y << std::endl;
+            std::cout << "PositionSpawn: x: " << PositionSpawn.x << " y: " << PositionSpawn.y << std::endl;
+            std::cout << "allObj[id_cell].getPosVector(): x: " << allObj[id_cell].getPosVector().x << " y: " << allObj[id_cell].getPosVector().y << std::endl;
+
+        if (!WindowBoxPopUpSelectTableActive && !allObjIsExists[id_cell] && allObjIsSelected[id_cell]){
+            
+            allObj[id_cell].countAnim(allObj[id_cell]);
+		    allObj[id_cell].animation(allObj[id_cell]);
+            */
+        //}
+
+        
+			
+		
+		
+        //}
+}
+          void BuildObj::clickEventListenV2(Camera2D camera, int &money, int id_cell,std::map<std::string, BuildObj> tableRes, BuildObj cell[]){
+            
+          }
+	
+        void BuildObj::SelectionPopUp(Camera2D camera, Player &play, int &money, BuildObj cell[], int id_cell,std::map<std::string, BuildObj> tableRes){
+          Vector2 PositionClick = GetMousePosition();
+          Vector2 PositionPlayer = play.ReturnPostion();
+          int isClosed;
+	  BuildObj table;
+          
+          if (CheckCollisionPointRec(PositionClick, frameRec) && IsMouseButtonDown(0) && !isSect){
+            //numCells += 1;
+                
+            //money -= price * numCells; 
+            isSect = true; 
+          }
+          if (isSect) {
+            play.setMovable(false);
+	    
+            //isClosed = selectionBtn(camera ,id_cell, tableRes);
+	    //chooseTable = id_cell; 
+	    
+	    
+            if (isClosed == 0) {
+              isSect = false;
+              play.setMovable(true);
+
+	      
+            }/*
+	    if (!allObj.empty()) {
+		for (int i = 0; i <= allObj.size(); i++){
+			//allObj[i].Draw();
+			//allObj[i].SetPosObj(allObj[i].ReturnframeRec().x + 10.0f,allObj[i].ReturnframeRec().x - 60.0f);
+			
+			
+		
+			allObj[i].SetPosRect(frameRec.x + 10.0f, frameRec.y - 60.0f);
+			allObj[i].SetPosObj(cell[i].frameRec.x,cell[i].frameRec.y);
+
+			
+			//allObj[i].Draw();
+			//allObj[i].countAnim(allObj[i]);
+			//allObj[i].animation(allObj[i]);
+			
+	    	}
+	    }*/
+
+          }
+	 
+        }
+        void BuildObj::DrawRect(){
+            DrawRectangle(frameRec.x, frameRec.y, frameRec.width, frameRec.height, RED);
+        }
+        void BuildObj::animation(BuildObj &obj) {
+        if (obj.framesCounter >= animFrames){
+
+            currentFrame++;
+
+            if (currentFrame >= 4) currentFrame = 0;
+
+                nextFrameDataOffset = img.height*img.height*4*currentFrame;
+
+                UpdateTexture(imgAnim, reinterpret_cast<uint8_t*>(img.data) + nextFrameDataOffset);
+
+
+
+                framesCounter = 0;
+
+
+            }
+        }
+        void BuildObj::SetPosObj(float x, float y){
+            PositionSpawn = (Vector2){x, y};
+        }
+        Vector2 BuildObj::getPosVector(){
+            return PositionSpawn;
+        }
+        void BuildObj::SetPosRect(float x, float y){
+            frameRec = (Rectangle){ x, y, (float)imgAnim.width * 1.5f, (float)imgAnim.height * 1.5f};
+        }
+        void BuildObj::countAnim(BuildObj &obj){
+            obj.framesCounter++;
+        }
+        void BuildObj::SetIsExist(bool ex){
+            exists = ex;
+	} 
+        void BuildObj::Draw(){
+	        if (isDraw){ 
+             DrawTextureEx(imgAnim, PositionSpawn, 0, sizeObject, WHITE);
+            }
+        }
 
 
     struct TileStruct{

@@ -39,18 +39,20 @@ const char* bool_cast(const bool b) {
 void Scene1(int saveNumber, Saving * data = nullptr)
 {
 
-    allObj.resize(10);
+    //allObj.resize(10);
     int amountBuildCell = 10;
     int amountActiveBuildCell = 0;
     BuildObj buildCells [amountBuildCell];
     int pointsCell [amountBuildCell];
     Board cellsTable;
-    MenuSelection men; 
+    MenuSelection men;
+    //men.setDrawTrue();
+    
     //save_num = saveNumber + 1;
 /*
       for (int i = 0; i < amountBuildCell; ++i){
             BuildObj buildCell("buildCell" + std::to_string(i),"src/location/laboratory/buildingCell.png", 1.5f);
-            allObj[i].SetPosObj(150 + 100 * i, 500 );
+            //allObj[i].SetPosObj(150 + 100 * i, 500 );
             buildCell.SetPosRect(150 + 100 * i, 500);
             buildCells[i] = buildCell;
             buildCell.id = i;
@@ -277,8 +279,8 @@ void Scene1(int saveNumber, Saving * data = nullptr)
             for (int i = 0; i < amountBuildCell; i++)
             {
                 if (false){ 
-                allObj[i].Draw();
-	            clickEvent(camera, hero->money, i, tables, buildCells);
+                //allObj[i].Draw();
+	            //clickEvent(camera, hero->money, i, tables, buildCells);
                 buildCells[i].clickEventListen(camera, hero->money, i, tables, buildCells);
                 pointsCell[i] = buildCells[i].countPointRet(hero->points, 5, buildCells[i].IsExist());
                 hero->points += pointsCell[i];
@@ -286,13 +288,13 @@ void Scene1(int saveNumber, Saving * data = nullptr)
 
             }
 
-            cellsTable.Draw();     
+            cellsTable.Draw(men);     
             hero->DrawHero();
             hero->SpeedUp();
             
         
         EndMode2D();
-        selectionBtn(camera, chooseTable, tables, buildCells);
+        //selectionBtn(camera, chooseTable, tables, buildCells);
         
                
         DrawText(TextFormat("InBorder: %s", bool_cast(CheckCollisionRecs(hero->ReturnframeRec(), computer.ReturnRect(false)))), 30, 140, 20, WHITE);
@@ -346,7 +348,7 @@ void Scene1(int saveNumber, Saving * data = nullptr)
           SaveData("save/", saveName);
           CloseWindow(); 
         }
-        men.Draw(); 
+        men.Draw();
         hero->points = Knowledge_Point;
         hero->money = Money_Point;  
         DrawText(TextFormat("Knowledge : %04d", hero->points), 30, 80, 20, WHITE);

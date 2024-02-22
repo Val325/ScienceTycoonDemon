@@ -9,7 +9,7 @@
 // Controls Functions Definitions (local)
 //------------------------------------------------------------------------------------
 //
-std::vector<BuildObj> allObj;
+//std::vector<BuildObj> allObj;
 //int Knowledge_Point = 0;
 //BuildObj allObj[10];
 bool allObjIsExists[10] = {false};
@@ -24,7 +24,7 @@ int save_num;
 int AmountMinTable = 0;
 int AmountMidTable = 0;
 int AmountTopTable = 0;
-
+/*
 void TableMin(int id_cell, BuildObj obj)
 {
 
@@ -91,12 +91,12 @@ void TableEnd(int id_cell, BuildObj obj)
     }
     
 }
-
+*/
 
 //------------------------------------------------------------------------------------
 // Program main entry point
 //------------------------------------------------------------------------------------
-void clickEvent(Camera2D camera, int &money, int id_cell,std::map<std::string, BuildObj> tableRes, BuildObj cell[]){
+//void clickEvent(Camera2D camera, int &money, int id_cell,std::map<std::string, BuildObj> tableRes, BuildObj cell[]){
    
         
 
@@ -109,8 +109,8 @@ void clickEvent(Camera2D camera, int &money, int id_cell,std::map<std::string, B
         }*/
 
 
-}
-
+//}
+/*
 bool selectionBtn(Camera2D camera,int id_cell, std::map<std::string, BuildObj> tableRes, BuildObj cell[]){
     Rectangle layoutRecs[7] = {
         (Rectangle){ 344, 352, 256, 128 },
@@ -140,4 +140,4 @@ bool selectionBtn(Camera2D camera,int id_cell, std::map<std::string, BuildObj> t
           allObjIsExists[id_cell] = false; 
   return WindowBoxPopUpSelectTableActive; 
 }
-
+*/
