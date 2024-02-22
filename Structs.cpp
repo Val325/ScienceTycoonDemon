@@ -12,6 +12,7 @@
 #include"TechTree2.0.cpp"
 #include"buildObj.hpp"
 #include"selectionBtn.cpp"
+#include "raygui.h"
 
 #include <cereal/types/vector.hpp>
 #include <cereal/types/string.hpp>
@@ -32,23 +33,73 @@ float sizeBuild = 4.5f;
 //
     class GuiElem{
         private:
+        public:
             int id;
             bool isDraw;
             Vector2 Position;
-        public:
             GuiElem(){} 
     };
 
     class ItemMenuSelection : public GuiElem{
         private:
-            Rectangle menuRec;
+            Rectangle itemRec;
+            Rectangle labelRec;
+
+            bool IsExist;
+            bool IsClick;
+            
+            std::string typeSpawn;
+            std::string label;
+            std::string buttonText;
         public:
             ItemMenuSelection(){
-
+                IsExist = false;
+                IsClick = false;
+                itemRec = (Rectangle){ 352, 384, 120, 24 };
+                labelRec = (Rectangle){ 480, 384, 120, 24 };
             }
-            void SetId(){}
-            void Draw(){}
-            void SetPos(){}
+            void SetId(int num){
+                id = num;
+            }
+            void SetType(std::string text){
+                typeSpawn = text;
+            }
+            void SetLabel(std::string text){
+                label = text;
+            }
+            void SetButtonText(std::string text){
+                buttonText = text;
+            }
+            void Draw(){
+                if (IsExist){
+                    if (GuiButton(itemRec, buttonText.c_str())){
+                        IsClick = true;
+                        toggleDraw();
+                    }
+                    IsClick = false;
+                    GuiLabel(labelRec, label.c_str());
+                }
+            }
+            bool GetClick(){
+                return IsClick;
+            }
+            void toggleDraw(){
+                IsExist = !IsExist;
+            }
+            void setDrawFalse(){
+                IsExist = false;
+            }
+            void setDrawTrue(){
+                IsExist = true;
+            }
+            void SetItemPos(int xpos, int ypos){
+                itemRec.x = xpos;
+                itemRec.y = ypos;
+            }
+            void SetLabelPos(int xpos, int ypos){
+                labelRec.x = xpos;
+                labelRec.y = ypos;
+            }
     }; 
 
     class MenuSelection : public GuiElem{
@@ -60,11 +111,18 @@ float sizeBuild = 4.5f;
             MenuSelection(){
                 isOpenMenu = false;
                 buttonRec = (Rectangle){ 344, 352, 256, 128 };
+                ItemMenuSelection tableMin;
+                tableMin.SetLabel("table test");
+                tableMin.SetButtonText("button test");
+                itemsMenu.push_back(tableMin);
             }
             void Draw(){
                 if (isOpenMenu){
+                    itemsMenu[0].setDrawTrue();
                     isOpenMenu = !GuiWindowBox(buttonRec, "Select table");
+                    itemsMenu[0].Draw(); 
                 }
+                //setDrawTrue(); 
             }
             void toggleDraw(){
                 isOpenMenu = !isOpenMenu;
@@ -919,7 +977,6 @@ BuildObj::BuildObj(): NameObj("buildCell"), Path("src/location/laboratory/buildi
                 if (obj.isDraw){
                     std::cout << "x: " << PositionClick.x << " y:" << PositionClick.y << std::endl;
                     std::cout << "numCells: " << numCells << std::endl;
-                    
                     menu.toggleDraw(); 
                     obj.isDraw = false;
                 }
@@ -936,7 +993,6 @@ BuildObj::BuildObj(): NameObj("buildCell"), Path("src/location/laboratory/buildi
                 }
                 
            }
-            menu.Draw();
         }
 
         void BuildObj::clickEventListen(Camera2D camera, int &money, int id_cell,std::map<std::string, BuildObj> tableRes, BuildObj cell[]){
