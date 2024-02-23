@@ -357,11 +357,11 @@ void Scene1(int saveNumber, Saving * data = nullptr)
         if (isHelpOpen){
             Rectangle layoutHelp = { 344, 352, 224, 96 };
             Rectangle HelpText = { 344, 352, 224, 96 };
-            IsPause = true;
+            //IsPause = true;
             nlohmann::json data = json::parse(DownloadJson("text/helptext.json"));
             DrawText(TextFormat(std::string(data["help"]).c_str()), 550, 200, 20, WHITE);
         }else{
-            IsPause = false;
+            //IsPause = false;
         }
 
         EndDrawing();

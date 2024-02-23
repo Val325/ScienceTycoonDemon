@@ -973,7 +973,7 @@ BuildObj::BuildObj(): NameObj("buildCell"), Path("src/location/laboratory/buildi
            PositionClick = GetScreenToWorld2D(PositionClick, camera);
             
 
-           if (CheckCollisionPointRec(PositionClick, frameRec) && IsMouseButtonDown(0)){
+           if (CheckCollisionPointRec(PositionClick, frameRec) && IsMouseButtonDown(0) && !IsPause){
                 if (obj.isDraw){
                     std::cout << "x: " << PositionClick.x << " y:" << PositionClick.y << std::endl;
                     std::cout << "numCells: " << numCells << std::endl;
@@ -983,7 +983,7 @@ BuildObj::BuildObj(): NameObj("buildCell"), Path("src/location/laboratory/buildi
                 //isClicked = false;
                 
             }
-           if (CheckCollisionPointRec(PositionClick, frameRec)){
+           if (CheckCollisionPointRec(PositionClick, frameRec) && !IsPause){
                 
                 
                 if (obj.isDraw){
