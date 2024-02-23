@@ -80,6 +80,12 @@ float sizeBuild = 4.5f;
                     GuiLabel(labelRec, label.c_str());
                 }
             }
+            Rectangle GetItemRec(){
+                return itemRec; 
+            }
+            std::string GetButtonText(){
+                return buttonText; 
+            }
             bool GetClick(){
                 return IsClick;
             }
@@ -107,20 +113,64 @@ float sizeBuild = 4.5f;
             Rectangle buttonRec;
             bool isOpenMenu;
             std::vector<ItemMenuSelection> itemsMenu;
+            std::vector<bool> isClicked;
+            bool IsOneClicked;
         public:
             MenuSelection(){
+                IsOneClicked = false;
                 isOpenMenu = false;
                 buttonRec = (Rectangle){ 344, 352, 256, 128 };
+
                 ItemMenuSelection tableMin;
-                tableMin.SetLabel("table test");
-                tableMin.SetButtonText("button test");
+                tableMin.SetLabel("table min");
+                tableMin.SetButtonText("buy table min");
                 itemsMenu.push_back(tableMin);
+                //isClicked.push_back();
+
+
+                ItemMenuSelection tableMid;
+                tableMid.SetLabel("table min");
+                // + 30 
+                tableMid.SetItemPos(352, 416);
+                tableMid.SetLabelPos(480, 416);
+                tableMid.SetButtonText("buy table min");
+                itemsMenu.push_back(tableMid);
+
+
+                ItemMenuSelection tableTop;
+                tableTop.SetLabel("table min");
+                tableTop.SetItemPos(352, 448);
+                tableTop.SetLabelPos(480, 448);
+                tableTop.SetButtonText("buy table min");
+                itemsMenu.push_back(tableTop);
+
             }
             void Draw(){
                 if (isOpenMenu){
                     itemsMenu[0].setDrawTrue();
+                    itemsMenu[1].setDrawTrue();
+                    itemsMenu[2].setDrawTrue();
                     isOpenMenu = !GuiWindowBox(buttonRec, "Select table");
-                    itemsMenu[0].Draw(); 
+                    itemsMenu[0].Draw();
+                    itemsMenu[1].Draw();
+                    itemsMenu[2].Draw();
+                    
+                    if (GuiButton(itemsMenu[0].GetItemRec(), itemsMenu[0].GetButtonText().c_str()) && !IsOneClicked){
+                       std::cout << "min clicked" << std::endl; 
+                       IsOneClicked = true;
+                    }
+                    if (GuiButton(itemsMenu[1].GetItemRec(), itemsMenu[1].GetButtonText().c_str()) && !IsOneClicked){
+                       std::cout << "mid clicked" << std::endl;
+                       IsOneClicked = true;
+                    }                    
+                    if (GuiButton(itemsMenu[2].GetItemRec(), itemsMenu[2].GetButtonText().c_str()) && !IsOneClicked){
+                       std::cout << "top clicked" << std::endl;
+                       IsOneClicked = true;
+                    }
+                    
+                    if (!isOpenMenu){
+                        IsOneClicked = false;
+                    }
                 }
                 //setDrawTrue(); 
             }
