@@ -31,6 +31,133 @@ float sizeBuild = 4.5f;
 //------------------------------------------------------------------------------------
 //
 //
+    //building, which something generate
+    class Generator{
+        private:
+            //Main data
+            int id;
+            int moneyWithdraw;
+            int moneyGetPerTimer;
+            int pointsGetPerTimer; 
+            std::string NameObj;
+            std::string Path;
+            std::string Type; 
+            Vector2 Position;
+            bool isDraw;
+            
+            //Timer
+            sw::Stopwatch* watch_time;
+            int timeElapse;
+            bool isExistTimer;
+
+            //Animation
+            Image img;
+            Texture2D imgAnim;
+            int animFrames;
+            int framesCounter;
+            int currentFrame;
+            int nextFrameDataOffset;
+        public:
+            Generator(){
+                nextFrameDataOffset = 0;
+                currentFrame = 0;
+                framesCounter = 0;
+                animFrames = 0;
+                isDraw = true;
+
+                //timer
+                timeElapse = 5;
+                watch_time = new sw::Stopwatch;
+                watch_time->start();
+                watch_time->reset();           
+                isExistTimer = true;
+            }
+            void setId(int num){
+                id = num;
+            }
+            void setName(std::string name){
+                NameObj = name;
+            }
+            void setPath(std::string path){
+                Path = path;
+            }
+            
+            // Prive build
+            void setMoneyWithdraw(int num){
+                moneyWithdraw = num;
+            }
+            // Money per time
+            void setMoneyPerTimer(int num){
+                moneyGetPerTimer = num;
+            }
+            // Knowledge point per time
+            void setPointsPerTimer(int num){
+                moneyGetPerTimer = num;
+            }
+            void setPosition(Vector2 pos){
+                Position = pos;
+            }
+            void setPosition(int x, int y){
+                Position.x = x;
+                Position.y = y;
+            }
+            void setDraw(bool isDrawing){
+                isDraw = isDrawing;
+            }
+            void SetElapseTime(int time){
+                timeElapse = time;
+            }
+            // need call it for animation
+            void setAnimation(){
+                img = LoadImageAnim(Path.c_str(), &animFrames);
+                imgAnim = LoadTextureFromImage(img);
+            }
+            void Animation(){
+                //std::cout << "framesCounter: " << framesCounter << std::endl;
+                framesCounter++;
+                if (framesCounter >= animFrames){
+                    currentFrame++;
+                    //std::cout << "currentFrame: " << currentFrame << std::endl;
+                    if (currentFrame >= 4) currentFrame = 0;
+                        nextFrameDataOffset = img.height*img.height*4*currentFrame;
+                        UpdateTexture(imgAnim, reinterpret_cast<uint8_t*>(img.data) + nextFrameDataOffset);
+                        framesCounter = 0;
+                    }
+            }
+            int getFramesCounter(){
+                return framesCounter;
+            }
+            void Draw(){
+	            if (isDraw){ 
+                    DrawTextureEx(imgAnim, Position, 0, sizeBuild, WHITE);
+                }
+            }
+            void StartTimer(){
+                if (isExistTimer){
+                    auto timer = watch_time->elapsed<sw::s>();
+                    if (timer >= timeElapse){
+                        isExistTimer = false;
+                    }else{
+                        std::cout << "Time: " << timer << std::endl;
+                    } 
+                }
+                if (!isExistTimer){
+                    delete watch_time;
+                    watch_time = new sw::Stopwatch;
+                    watch_time->start();
+                    watch_time->reset();           
+                    isExistTimer = true;
+                }
+            }
+
+            ~Generator(){
+                isExistTimer = false;
+                delete watch_time;
+            }
+    };
+
+
+
     class GuiElem{
         private:
         public:
@@ -51,6 +178,8 @@ float sizeBuild = 4.5f;
             std::string typeSpawn;
             std::string label;
             std::string buttonText;
+
+
         public:
             ItemMenuSelection(){
                 IsExist = false;
@@ -70,6 +199,7 @@ float sizeBuild = 4.5f;
             void SetButtonText(std::string text){
                 buttonText = text;
             }
+
             void Draw(){
                 if (IsExist){
                     if (GuiButton(itemRec, buttonText.c_str())){
@@ -110,10 +240,15 @@ float sizeBuild = 4.5f;
 
     class MenuSelection : public GuiElem{
         private:
+            int IdClickBuild;
             Rectangle buttonRec;
             bool isOpenMenu;
             std::vector<ItemMenuSelection> itemsMenu;
             std::vector<bool> isClicked;
+             
+            std::vector<Generator> GeneratorBuild;
+            TableDat tableGameSave[50];
+
             bool IsOneClicked;
         public:
             MenuSelection(){
@@ -156,15 +291,18 @@ float sizeBuild = 4.5f;
                     itemsMenu[2].Draw();
                     
                     if (GuiButton(itemsMenu[0].GetItemRec(), itemsMenu[0].GetButtonText().c_str()) && !IsOneClicked){
-                       std::cout << "min clicked" << std::endl; 
+                       std::cout << "min clicked" << std::endl;
+                       std::cout << "Click num: " << IdClickBuild << std::endl;
                        IsOneClicked = true;
                     }
                     if (GuiButton(itemsMenu[1].GetItemRec(), itemsMenu[1].GetButtonText().c_str()) && !IsOneClicked){
                        std::cout << "mid clicked" << std::endl;
+                       std::cout << "Click num: " << IdClickBuild << std::endl;
                        IsOneClicked = true;
                     }                    
                     if (GuiButton(itemsMenu[2].GetItemRec(), itemsMenu[2].GetButtonText().c_str()) && !IsOneClicked){
                        std::cout << "top clicked" << std::endl;
+                       std::cout << "Click num: " << IdClickBuild << std::endl;
                        IsOneClicked = true;
                     }
                     
@@ -173,6 +311,22 @@ float sizeBuild = 4.5f;
                     }
                 }
                 //setDrawTrue(); 
+            }
+            void SetGeneratorBuild(std::vector<Generator> &GenBuild){
+                GeneratorBuild = GenBuild;
+            }
+            void SetTableBuild(struct TableDat * data){
+                for (int i = 0; i < GeneratorBuild.size(); i++){
+                    tableGameSave[i].type = data[i].type;
+                    tableGameSave[i].isExists = data[i].isExists;
+                    tableGameSave[i].idTables = data[i].idTables;
+                    tableGameSave[i].xpos = data[i].xpos;
+                    tableGameSave[i].ypos = data[i].ypos;
+                }
+
+            }
+            void IdClick(int id){
+                IdClickBuild = id;
             }
             void toggleDraw(){
                 isOpenMenu = !isOpenMenu;
@@ -239,7 +393,7 @@ class BuildObj{
 	bool IsExist();
     void setPath(std::string path_img);
 	void SetIsExist(bool ex);
-    void clickEventListenSimple(Camera2D camera, BuildObj &obj, MenuSelection &menu);
+    void clickEventListenSimple(Camera2D camera, BuildObj &obj, MenuSelection &menu, std::vector<Generator> &GenBuild, struct TableDat * data);
     void clickEventListen(Camera2D camera, int &money, int id_cell, std::map<std::string, BuildObj> tableRes, BuildObj cell[]);
     void clickEventListenV2(Camera2D camera, int &money, int id_cell, std::map<std::string, BuildObj> tableRes, BuildObj cell[]);  
 	void SelectionPopUp(Camera2D camera, Player &play, int &money, BuildObj cell[], int id_cell,std::map<std::string, BuildObj> tableRes);
@@ -627,157 +781,25 @@ class BuildObj{
             return this == nullptr;  
         }
 */
-
-    
-
-
-
-
-    //building, which something generate
-    class Generator{
-        private:
-            //Main data
-            int id;
-            int moneyWithdraw;
-            int moneyGetPerTimer;
-            int pointsGetPerTimer; 
-            std::string NameObj;
-            std::string Path;
-            std::string Type; 
-            Vector2 Position;
-            bool isDraw;
-            
-            //Timer
-            sw::Stopwatch* watch_time;
-            int timeElapse;
-            bool isExistTimer;
-
-            //Animation
-            Image img;
-            Texture2D imgAnim;
-            int animFrames;
-            int framesCounter;
-            int currentFrame;
-            int nextFrameDataOffset;
-        public:
-            Generator(){
-                nextFrameDataOffset = 0;
-                currentFrame = 0;
-                framesCounter = 0;
-                animFrames = 0;
-                isDraw = true;
-
-                //timer
-                timeElapse = 5;
-                watch_time = new sw::Stopwatch;
-                watch_time->start();
-                watch_time->reset();           
-                isExistTimer = true;
-            }
-            void setId(int num){
-                id = num;
-            }
-            void setName(std::string name){
-                NameObj = name;
-            }
-            void setPath(std::string path){
-                Path = path;
-            }
-            
-            // Prive build
-            void setMoneyWithdraw(int num){
-                moneyWithdraw = num;
-            }
-            // Money per time
-            void setMoneyPerTimer(int num){
-                moneyGetPerTimer = num;
-            }
-            // Knowledge point per time
-            void setPointsPerTimer(int num){
-                moneyGetPerTimer = num;
-            }
-            void setPosition(Vector2 pos){
-                Position = pos;
-            }
-            void setPosition(int x, int y){
-                Position.x = x;
-                Position.y = y;
-            }
-            void setDraw(bool isDrawing){
-                isDraw = isDrawing;
-            }
-            void SetElapseTime(int time){
-                timeElapse = time;
-            }
-            // need call it for animation
-            void setAnimation(){
-                img = LoadImageAnim(Path.c_str(), &animFrames);
-                imgAnim = LoadTextureFromImage(img);
-            }
-            void Animation(){
-                //std::cout << "framesCounter: " << framesCounter << std::endl;
-                framesCounter++;
-                if (framesCounter >= animFrames){
-                    currentFrame++;
-                    //std::cout << "currentFrame: " << currentFrame << std::endl;
-                    if (currentFrame >= 4) currentFrame = 0;
-                        nextFrameDataOffset = img.height*img.height*4*currentFrame;
-                        UpdateTexture(imgAnim, reinterpret_cast<uint8_t*>(img.data) + nextFrameDataOffset);
-                        framesCounter = 0;
-                    }
-            }
-            int getFramesCounter(){
-                return framesCounter;
-            }
-            void Draw(){
-	            if (isDraw){ 
-                    DrawTextureEx(imgAnim, Position, 0, sizeBuild, WHITE);
-                }
-            }
-            void StartTimer(){
-                if (isExistTimer){
-                    auto timer = watch_time->elapsed<sw::s>();
-                    if (timer >= timeElapse){
-                        isExistTimer = false;
-                    }else{
-                        std::cout << "Time: " << timer << std::endl;
-                    } 
-                }
-                if (!isExistTimer){
-                    delete watch_time;
-                    watch_time = new sw::Stopwatch;
-                    watch_time->start();
-                    watch_time->reset();           
-                    isExistTimer = true;
-                }
-            }
-
-            ~Generator(){
-                isExistTimer = false;
-                delete watch_time;
-            }
-    };
-
-
     
     class Board{
         private:
             int sizeCells;
             std::vector<BuildObj> cells;
-            std::vector<BuildObj> cellsBuild;
+            std::vector<Generator> GeneratorBuild;
             Camera2D camera;
  
             TableDat tableGameSave[50];
-
+            MenuSelection menu;
         public:
             Board(){
                 
                 sizeCells = 50;
                 cells.resize(sizeCells);
-                cellsBuild.resize(sizeCells);
+                GeneratorBuild.resize(sizeCells);
                 for (int i = 0; i < cells.size(); i++){
                     cells[i].numCells = i; // from 0 + 1 ... 
-                    cellsBuild[i].numCells = i;
+                    GeneratorBuild[i].setId(i);
                     
                     tableGameSave[i].type = "";
                     tableGameSave[i].idTables = i;
@@ -787,9 +809,16 @@ class BuildObj{
             void setCamera(Camera2D &cam){
                 camera = cam;
             }
+            void SetMenu(MenuSelection &men){
+                menu = men;
+            }
             void Draw(MenuSelection &menuSelect){
                 int j = 0;
-                int q = 0; 
+                int q = 0;
+
+                menuSelect.SetGeneratorBuild(GeneratorBuild);
+                menuSelect.SetTableBuild(tableGameSave);
+
                     for (int i = 0; i < cells.size(); i++){
                         cells[i].setPath("src/location/laboratory/buildingCell.png");
                         Vector2 positionPlace = {170 + 100 * q, 500 + 100 * j};
@@ -801,7 +830,9 @@ class BuildObj{
                         //for debug
                         //cells[i].DrawRect();
                         
-                        cells[i].clickEventListenSimple(camera, cells[i], menuSelect);
+
+
+                        cells[i].clickEventListenSimple(camera, cells[i], menuSelect, GeneratorBuild, tableGameSave);
                     
                         cells[i].SetPosObj(positionPlace.x, positionPlace.y);
                         cells[i].SetPosRect(positionPlace.x, positionPlace.y);
@@ -1018,7 +1049,7 @@ BuildObj::BuildObj(): NameObj("buildCell"), Path("src/location/laboratory/buildi
 	
 	    
 	}
-    void BuildObj::clickEventListenSimple(Camera2D camera, BuildObj &obj, MenuSelection &menu){
+    void BuildObj::clickEventListenSimple(Camera2D camera, BuildObj &obj, MenuSelection &menu, std::vector<Generator> &GenBuild, struct TableDat * data){
            Vector2 PositionClick = GetMousePosition();
            PositionClick = GetScreenToWorld2D(PositionClick, camera);
             
@@ -1029,6 +1060,10 @@ BuildObj::BuildObj(): NameObj("buildCell"), Path("src/location/laboratory/buildi
                     std::cout << "numCells: " << numCells << std::endl;
                     menu.toggleDraw(); 
                     obj.isDraw = false;
+                    //GenBuild
+                    //get click
+                    int numClick = obj.numCells;
+                    menu.IdClick(numClick);
                 }
                 //isClicked = false;
                 

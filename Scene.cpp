@@ -45,7 +45,8 @@ void Scene1(int saveNumber, Saving * data = nullptr)
     BuildObj buildCells [amountBuildCell];
     int pointsCell [amountBuildCell];
     Board cellsTable;
-    MenuSelection men;
+    MenuSelection menu;
+    cellsTable.SetMenu(menu);
     //men.setDrawTrue();
     
     //save_num = saveNumber + 1;
@@ -288,7 +289,7 @@ void Scene1(int saveNumber, Saving * data = nullptr)
 
             }
 
-            cellsTable.Draw(men);     
+            cellsTable.Draw(menu);     
             hero->DrawHero();
             hero->SpeedUp();
             
@@ -348,7 +349,7 @@ void Scene1(int saveNumber, Saving * data = nullptr)
           SaveData("save/", saveName);
           CloseWindow(); 
         }
-        men.Draw();
+        menu.Draw();
         hero->points = Knowledge_Point;
         hero->money = Money_Point;  
         DrawText(TextFormat("Knowledge : %04d", hero->points), 30, 80, 20, WHITE);
